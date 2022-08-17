@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts.DataSo;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.UIManager
 {
@@ -14,24 +15,24 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Button _buyButton;
         [SerializeField] private Image _unitImage;
 
-        public event Action BuyUnitAction; 
+        public event Action<UnitType> BuyUnitAction;
 
-        private UnitDataSo _unitDataSo;
+        private UnitType _unitType;
 
         private void Awake()
         {
             _buyButton.onClick.AddListener(BuyButton);
         }
-        public void Currncy(UnitDataSo unitDataSo)
+        public void Setup(UnitDataSo unitDataSo)
         {
             _priceText.text = unitDataSo.Price.ToString();
-            //image
-            //method SETUP
+            _unitImage.sprite = unitDataSo.UnitSprite;
+            _unitType = unitDataSo.UnitType;
         }
 
         public void BuyButton()
         {
-            BuyUnitAction?.Invoke();
+            BuyUnitAction?.Invoke(_unitType);
         }
     }
 }

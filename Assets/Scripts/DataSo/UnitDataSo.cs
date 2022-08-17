@@ -6,17 +6,18 @@ using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.DataSo
 {
-    [CreateAssetMenu(fileName = "UnitShopData", menuName = "ScriptableObjects/UnitShopData", order = 1)]
-    public class UnitDataSo : MonoBehaviour
+    [CreateAssetMenu(fileName = "UnitData", menuName = "ScriptableObjects/UnitData", order = 1)]
+    public class UnitDataSo : ScriptableObject
     {
         public int Price => _price;
-        public Image UnitImage => _unitImage;
-        public TypeUnit TypeUnit => _typeUnit;
+        public int HP => _hp;
+        public Sprite UnitSprite => _unitSprite;
+        public UnitType UnitType => _unitType;
 
         [Header("View")]
-        [SerializeField] private Image _unitImage;
+        [SerializeField] private Sprite _unitSprite;
         [SerializeField] private int _price;
-       //health
-        [SerializeField] private TypeUnit _typeUnit;
+        [SerializeField] private int _hp;       
+        [SerializeField] private UnitType _unitType;
     }
 }
