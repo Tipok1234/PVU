@@ -6,7 +6,20 @@ namespace Assets.Scripts.Models
 {
     public class BaseUnit : MonoBehaviour
     {
-        [SerializeField] private int _hp;
-        [SerializeField] private Collider _colliderUnit;
+        public float HP => _hp;
+        public Collider ColliderUnit => _colliderUnit;
+
+        [SerializeField] protected float _hp;
+        [SerializeField] protected Collider _colliderUnit;
+
+        private void Awake()
+        {
+
+        }
+
+        public void TakeDamage(float damage)
+        {
+            _hp -= damage;
+        }
     }
 }
