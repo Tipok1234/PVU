@@ -1232,10 +1232,10 @@ Animator:
   m_GameObject: {fileID: 1634723230223232}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 006a8310361e17a42a3af42b9a2e3756, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64b103d076aa7d048acbc966657439a1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1258,6 +1258,7 @@ MonoBehaviour:
   _selfTransform: {fileID: 4730071277584034}
   _moveSpeed: 1
   _damage: 0
+  _animator: {fileID: 95579080373870624}
 --- !u!136 &8714114488558234744
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1269,9 +1270,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &1668488162763408
 GameObject:
   m_ObjectHideFlags: 0

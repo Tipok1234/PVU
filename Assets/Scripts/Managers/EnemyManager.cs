@@ -10,6 +10,7 @@ namespace Assets.Scripts.Managers
         [SerializeField] private Transform[] _spawnPositions;
         [SerializeField] private GameObject[] _unitPrefabs;
 
+
         private void Start()
         {
             Setup();

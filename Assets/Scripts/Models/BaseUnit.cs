@@ -17,9 +17,19 @@ namespace Assets.Scripts.Models
 
         }
 
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
             _hp -= damage;
+        }
+
+        public virtual void Create()
+        {
+
+        }
+
+        public virtual void Death()
+        {
+
         }
     }
 }

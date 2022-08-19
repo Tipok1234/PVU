@@ -7,6 +7,8 @@ namespace Assets.Scripts.Grids
 {
     public class Grid : MonoBehaviour
     {
+        public GameObject GameUnit => _gameUnit;
+        public List<GameUnitModel> GameUnitModels => _gameUnitModels;
 
         private GridCell[] _gridCell;
         [SerializeField] private GameObject _selectGameUnit;
@@ -15,6 +17,7 @@ namespace Assets.Scripts.Grids
         private Camera _mainCamera;
 
         private GameObject _gameUnit;
+        private static FieldBounes _fieldBounes;
 
         private void Awake()
         {
@@ -80,6 +83,12 @@ namespace Assets.Scripts.Grids
                     k++;
                 }
             }
+            _fieldBounes = new FieldBounes(0,w,0,l);
+        }
+
+        static public Vector3 GetXZFieldRandomVector()
+        {
+            return _fieldBounes.GetXZFieldRandomVector();
         }
 
         public void StartPlaceUnit(UnitType unitType)
@@ -111,5 +120,34 @@ namespace Assets.Scripts.Grids
         [SerializeField] private UnitType _unitType;
         [SerializeField] private GameObject _unitPrefab;
         [SerializeField] private float _posY;
+    }
+
+    public class FieldBounes
+    {
+        public float MinX => _minX;
+        public float MaxX => _maxX;
+        public float MinY => _minY;
+        public float MaxY => _maxY;
+
+        private float _minX = 0;
+        private float _maxX = 0;
+        private float _minY = 0;
+        private float _maxY = 0;
+
+        public FieldBounes(float mixX, float maxX, float minY, float maxY)
+        {
+            _minX = mixX;
+            _maxX = maxX;
+            _minY = minY;
+            _maxY = maxY;
+        }
+
+       public Vector3 GetXZFieldRandomVector()
+        {
+            float randomX = Random.Range(_minX, _maxX);
+            float randomZ = Random.Range(_minY, _maxY);
+            return new Vector3(randomX, 0, randomZ);
+        }
+
     }
 }
