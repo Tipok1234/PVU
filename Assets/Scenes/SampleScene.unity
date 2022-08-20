@@ -392,6 +392,7 @@ MonoBehaviour:
   - {fileID: 1634723230223232, guid: cfc86fa99fda43a4182c88a7924f84be, type: 3}
   - {fileID: 1423762985213010, guid: b0bc29cfe5d9cd745859a0f77d4303da, type: 3}
   - {fileID: 1327342949782858, guid: 14dd171a52655a84e80e7e6c77e81813, type: 3}
+  _spawnTime: 5
 --- !u!4 &351281422
 Transform:
   m_ObjectHideFlags: 0
@@ -1217,7 +1218,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 175789121775386785, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2583906590177926896, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
       propertyPath: m_Enabled
@@ -1229,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2583906590177926898, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2583906590177926902, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
       propertyPath: m_RootOrder
