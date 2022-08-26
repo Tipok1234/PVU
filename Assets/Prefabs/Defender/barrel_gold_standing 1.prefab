@@ -127,4 +127,4 @@ MonoBehaviour:
   _colliderUnit: {fileID: 4152333605567350561}
   _softIncomeAmount: 5
   _softIncomeCooldown: 3
-  _gunPowderPrefab: {fileID: 2583906590177926898, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
+  _gunPowderPrefab: {fileID: -8650014227383921676, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}

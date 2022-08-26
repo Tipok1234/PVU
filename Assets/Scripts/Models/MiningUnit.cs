@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Assets.Scripts.Models
 {
     public class MiningUnit : DefenceUnit
     {
+        public GunPowderModel GunPowderModel => _gunPowderPrefab;
+
         [SerializeField] private int _softIncomeAmount;
         [SerializeField] private float _softIncomeCooldown;
-        [SerializeField] private GameObject _gunPowderPrefab;
-
+        [SerializeField] private GunPowderModel _gunPowderPrefab;
 
         private const float _yPos = 4;
         private float _currentSoftIncomeTimer = 0;

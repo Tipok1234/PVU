@@ -1,21 +1,24 @@
 using Assets.Scripts.Enums;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using Assets.Scripts.Models;
 using UnityEngine;
 
 namespace Assets.Scripts.Grids
 {
     public class Grid : MonoBehaviour
     {
-        public GameObject GameUnit => _gameUnit;
-        public List<GameUnitModel> GameUnitModels => _gameUnitModels;
-
-        private GridCell[] _gridCell;
+        public event Action<int> CurrencyCollectedAction;
+        public List<GameUnitModel> GameUnitModels => _gameUnitModels;        
+        
         [SerializeField] private GameObject _selectGameUnit;
         [SerializeField] private GridCell _gridCellPrefab;
         [SerializeField] private List<GameUnitModel> _gameUnitModels;
-        private Camera _mainCamera;
 
+
+        private Camera _mainCamera;
+        private GridCell[] _gridCell;
         private GameObject _gameUnit;
         private static FieldBounes _fieldBounes;
 
@@ -26,6 +29,7 @@ namespace Assets.Scripts.Grids
 
         private void Update()
         {
+
             if (_gameUnit != null)
             {
                 var groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -63,6 +67,23 @@ namespace Assets.Scripts.Grids
                     _gameUnit = null;
                 }
             }
+
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+
+                    if (Physics.Raycast(ray, out RaycastHit hitInfo))
+                    {
+                        if (hitInfo.transform.TryGetComponent<GunPowderModel>(out GunPowderModel gunPowderModel))
+                        {
+                            CurrencyCollectedAction?.Invoke(gunPowderModel.SoftCurrency);
+                            gunPowderModel.gameObject.SetActive(false);
+                        }
+                    }
+                }              
+            }
         }
         public void Setup(int w, int l)
         {
@@ -83,7 +104,7 @@ namespace Assets.Scripts.Grids
                     k++;
                 }
             }
-            _fieldBounes = new FieldBounes(0,w,0,l);
+            _fieldBounes = new FieldBounes(0, w, 0, l);
         }
 
         static public Vector3 GetXZFieldRandomVector()
@@ -100,7 +121,7 @@ namespace Assets.Scripts.Grids
 
             for (int i = 0; i < _gameUnitModels.Count; i++)
             {
-                if(unitType == _gameUnitModels[i].UnitType)
+                if (unitType == _gameUnitModels[i].UnitType)
                 {
                     _gameUnit = Instantiate(_gameUnitModels[i].UnitPrefab);
                     _gameUnit.SetActive(true);
@@ -142,12 +163,11 @@ namespace Assets.Scripts.Grids
             _maxY = maxY;
         }
 
-       public Vector3 GetXZFieldRandomVector()
+        public Vector3 GetXZFieldRandomVector()
         {
-            float randomX = Random.Range(_minX, _maxX);
-            float randomZ = Random.Range(_minY, _maxY);
+            float randomX = UnityEngine.Random.Range(_minX, _maxX);
+            float randomZ = UnityEngine.Random.Range(_minY, _maxY);
             return new Vector3(randomX, 0, randomZ);
         }
-
     }
 }

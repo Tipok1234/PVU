@@ -24,7 +24,7 @@ namespace Assets.Scripts.Models
 
         public virtual void Create()
         {
-
+            
         }
 
         public virtual void Death()

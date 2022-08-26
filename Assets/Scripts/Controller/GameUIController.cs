@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.UIManager;
 using Assets.Scripts.Enums;
+using System;
+using Assets.Scripts.Models;
 
 namespace Assets.Scripts.Controller
 {
@@ -14,8 +17,16 @@ namespace Assets.Scripts.Controller
         [SerializeField] private Transform _spawnParent;
 
         [SerializeField] private Grids.Grid _grid;
+        [SerializeField] private TMP_Text _scoreText;
+
+        public event Action<UnitType,int> OnBuyUnitAction;
 
         private List<UnitGameUI> _unitGameUIList = new List<UnitGameUI>();
+
+        private void Start()
+        {
+            _scoreText.text = 100.ToString();
+        }
 
         public void InstantiateUnit()
         {
@@ -41,7 +52,19 @@ namespace Assets.Scripts.Controller
         }
         private void OnBuyUnit(UnitType unitType)
         {
-            _grid.StartPlaceUnit(unitType);
+            for (int i = 0; i < _unitDataSo.Length; i++)
+            {
+                if (_unitDataSo[i].UnitType == unitType)
+                {
+                    OnBuyUnitAction?.Invoke(unitType, _unitDataSo[i].Price);
+                    break;
+                }
+            }
+        }
+
+        public void UpdateSoftCurrency(int softCurrencyAmount)
+        {
+            _scoreText.text = softCurrencyAmount.ToString();
         }
     }
 }
