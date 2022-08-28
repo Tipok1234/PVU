@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1465828555447153772}
   - component: {fileID: 7866299058566753960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_15 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400040, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400038, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400036, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400034, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400032, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400030, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400028, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400026, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400024, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400022, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400020, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400018, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400016, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400014, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400012, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400010, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400008, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400006, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400004, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400002, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
+    - {fileID: 6400000, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
 --- !u!4 &1465828556777573020 stripped
 Transform:

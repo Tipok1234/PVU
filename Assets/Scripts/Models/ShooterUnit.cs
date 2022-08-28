@@ -8,24 +8,54 @@ namespace Assets.Scripts.Models
     {
         [SerializeField] private Bullet _bullet;
        
-        [SerializeField] private float _speedBullet;
+        [SerializeField] private float _reloadTime;
+        [SerializeField] private LayerMask _enemyLayer;
+
+        private float _currentReloadTime = 0;
+        [SerializeField] private float _damageUnit = 10;
 
         private bool _isTarget;
 
-        private void Update()
+        private void FixedUpdate()
         {
-            if(Input.GetKeyDown(KeyCode.S))
+            if (_isDead)
+                return;
+
+
+            _currentReloadTime += Time.deltaTime;
+            if (_currentReloadTime >= _reloadTime)
             {
-                Instantiate(_bullet, transform.position, _bullet.transform.rotation).Setup();
+                var ray = new Ray(transform.position, transform.right * (-10));
 
-                var ray = new Ray(transform.position, transform.forward);
-                RaycastHit hit;
+               // Debug.DrawRay(transform.position, transform.right * (- 10f),Color.red,3.0f);
 
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                if (Physics.Raycast(ray, out RaycastHit hit, 150f, _enemyLayer))
                 {
-                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                    if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
+                    {
+                        Instantiate(_bullet, transform.position, _bullet.transform.rotation).Setup(_damageUnit);
+                        _currentReloadTime = 0;
+                    }
                 }
             }
+        }
+
+        public override void TakeDamage(float damage)
+        {
+            Debug.LogError(_hp);
+            _hp -= damage;
+
+            if(_hp <= 0)
+            {
+                Death();
+            }
+        }
+
+        public override void Death()
+        {
+            _isDead = true;
+            _colliderUnit.enabled = false;
+            Destroy(gameObject);
         }
     }
 }

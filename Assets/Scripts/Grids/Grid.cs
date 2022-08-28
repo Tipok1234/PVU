@@ -10,8 +10,9 @@ namespace Assets.Scripts.Grids
     public class Grid : MonoBehaviour
     {
         public event Action<int> CurrencyCollectedAction;
-        public List<GameUnitModel> GameUnitModels => _gameUnitModels;        
-        
+        public List<GameUnitModel> GameUnitModels => _gameUnitModels;
+
+        [SerializeField] private LayerMask _gridCellLayer;
         [SerializeField] private GameObject _selectGameUnit;
         [SerializeField] private GridCell _gridCellPrefab;
         [SerializeField] private List<GameUnitModel> _gameUnitModels;
@@ -47,7 +48,7 @@ namespace Assets.Scripts.Grids
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (Physics.Raycast(ray, out RaycastHit hitInfo))
+                    if (Physics.Raycast(ray, out RaycastHit hitInfo, _gridCellLayer))
                     {
                         if (hitInfo.transform.TryGetComponent<GridCell>(out GridCell gridCell))
                         {

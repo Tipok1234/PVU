@@ -12,10 +12,8 @@ namespace Assets.Scripts.Models
         [SerializeField] protected float _hp;
         [SerializeField] protected Collider _colliderUnit;
 
-        private void Awake()
-        {
-
-        }
+        protected bool _isDead = false;
+        protected bool _isActive = false;
 
         public virtual void TakeDamage(float damage)
         {

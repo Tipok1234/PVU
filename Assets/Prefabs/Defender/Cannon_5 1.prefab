@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6960314791875191536}
   - component: {fileID: 3658771024515912081}
   - component: {fileID: 4452293035230770176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon_5 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,10 +58,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222abcfb8753e9841923e07dafe78722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 0
+  _hp: 30
   _colliderUnit: {fileID: 3658771024515912081}
   _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
-  _speedBullet: 20
+  _reloadTime: 2.5
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageUnit: 10
 --- !u!1001 &6960314793366923068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,7 +121,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6400008, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
+    - {fileID: 6400006, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
+    - {fileID: 6400004, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
+    - {fileID: 6400002, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
+    - {fileID: 6400000, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
 --- !u!4 &6960314793367322044 stripped
 Transform:

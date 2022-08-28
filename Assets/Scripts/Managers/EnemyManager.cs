@@ -34,7 +34,7 @@ namespace Assets.Scripts.Managers
 
                     for (int i = 0; i < unitCount; i++)
                     {
-                        var randomPos = Random.Range(0, _spawnPositions.Length);
+                        var randomPos =  Random.Range(0, _spawnPositions.Length);
                         var randomUnitPrefab = Random.Range(0, _unitPrefabs.Length);
 
                         Instantiate(_unitPrefabs[randomUnitPrefab], _spawnPositions[randomPos]);

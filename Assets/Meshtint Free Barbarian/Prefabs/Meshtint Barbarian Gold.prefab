@@ -1351,7 +1351,7 @@ GameObject:
   - component: {fileID: 95785311282749608}
   - component: {fileID: 755607491233837150}
   - component: {fileID: 4346725619091868695}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Meshtint Barbarian Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   _selfTransform: {fileID: 4749245984341470}
   _moveSpeed: 0.4
   _damage: 0
+  _animator: {fileID: 0}
 --- !u!136 &4346725619091868695
 CapsuleCollider:
   m_ObjectHideFlags: 0

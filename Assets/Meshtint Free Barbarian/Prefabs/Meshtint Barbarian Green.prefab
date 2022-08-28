@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 95833583461909682}
   - component: {fileID: 8602370106346288299}
   - component: {fileID: 3172774232677772365}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Meshtint Barbarian Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}

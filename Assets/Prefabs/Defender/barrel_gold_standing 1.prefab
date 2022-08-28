@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64760982176649488}
   - component: {fileID: 4152333605567350561}
   - component: {fileID: 4440519693163276381}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: barrel_gold_standing 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 95804848747135216}
   - component: {fileID: 5408708162917052852}
   - component: {fileID: 2539224608885195966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Meshtint Barbarian Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}

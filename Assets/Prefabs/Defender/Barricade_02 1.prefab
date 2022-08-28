@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2305444}
   - component: {fileID: 8015350958617988695}
   - component: {fileID: -3386280723998905399}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barricade_02 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,5 +110,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _colliderUnit: {fileID: 8015350958617988695}
-  _wallUnit: {fileID: 178770}
-  _damage: 5
