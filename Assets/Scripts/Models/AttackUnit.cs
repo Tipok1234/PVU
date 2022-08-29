@@ -22,11 +22,8 @@ namespace Assets.Scripts.Models
 
         private void FixedUpdate()
         {
-
             if (_isDead)
                 return;
-
-
 
 
             var ray = new Ray(transform.position, transform.forward * (0.5f));

@@ -12,10 +12,22 @@ namespace Assets.Scripts.Models
         {
 
         }
-        public void DeathWall()
-        {
 
-        }       
+        public override void TakeDamage(float damage)
+        {
+            _hp -= damage;
+
+            if (_hp <= 0)
+            {
+                Death();
+            }
+        }
+        public override void Death()
+        {
+            _isDead = true;
+            _colliderUnit.enabled = false;
+            Destroy(gameObject);
+        }
     }
 }
 

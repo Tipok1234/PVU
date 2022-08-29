@@ -7,14 +7,12 @@ namespace Assets.Scripts.Models
     public class ShooterUnit : DefenceUnit
     {
         [SerializeField] private Bullet _bullet;
-       
-        [SerializeField] private float _reloadTime;
         [SerializeField] private LayerMask _enemyLayer;
 
-        private float _currentReloadTime = 0;
+        [SerializeField] private float _reloadTime;
         [SerializeField] private float _damageUnit = 10;
 
-        private bool _isTarget;
+        private float _currentReloadTime = 0;
 
         private void FixedUpdate()
         {
@@ -27,13 +25,11 @@ namespace Assets.Scripts.Models
             {
                 var ray = new Ray(transform.position, transform.right * (-10));
 
-               // Debug.DrawRay(transform.position, transform.right * (- 10f),Color.red,3.0f);
-
                 if (Physics.Raycast(ray, out RaycastHit hit, 150f, _enemyLayer))
                 {
                     if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                     {
-                        Instantiate(_bullet, transform.position, _bullet.transform.rotation).Setup(_damageUnit);
+                        Instantiate(_bullet, transform.position + new Vector3(0,0.4f,0), _bullet.transform.rotation).Setup(_damageUnit);
                         _currentReloadTime = 0;
                     }
                 }
@@ -42,7 +38,6 @@ namespace Assets.Scripts.Models
 
         public override void TakeDamage(float damage)
         {
-            Debug.LogError(_hp);
             _hp -= damage;
 
             if(_hp <= 0)

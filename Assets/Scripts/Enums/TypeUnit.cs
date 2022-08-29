@@ -5,6 +5,7 @@ namespace Assets.Scripts.Enums
         Mining_Unit,
         Shooter_Unit,
         Shooter_Unit_1,
+        Piercing_Unit,
         Wall_Unit
     }
 }

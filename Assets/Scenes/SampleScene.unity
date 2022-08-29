@@ -159,16 +159,19 @@ MonoBehaviour:
   _gridCellPrefab: {fileID: 5986193329487211045, guid: 6c9ec134eb070c84bb9a1168abd5dc9f, type: 3}
   _gameUnitModels:
   - _unitType: 0
-    _unitPrefab: {fileID: 1509607895093206, guid: 7b64e58612762d040a84a9953281b080, type: 3}
+    _unitPrefab: {fileID: 4440519693163276381, guid: 7b64e58612762d040a84a9953281b080, type: 3}
     _posY: 0
   - _unitType: 1
-    _unitPrefab: {fileID: 1465828555447153773, guid: 0e41d70452b33cc41a5600bfe9483078, type: 3}
+    _unitPrefab: {fileID: -5891056907343366438, guid: 0e41d70452b33cc41a5600bfe9483078, type: 3}
     _posY: 0
   - _unitType: 2
-    _unitPrefab: {fileID: 6960314791875191537, guid: 3ff01997ab641b24d84ae49d7d953782, type: 3}
+    _unitPrefab: {fileID: 4452293035230770176, guid: 3ff01997ab641b24d84ae49d7d953782, type: 3}
+    _posY: 0
+  - _unitType: 4
+    _unitPrefab: {fileID: -3386280723998905399, guid: af64c31ac6018b1438f7511aea29e55c, type: 3}
     _posY: 0
   - _unitType: 3
-    _unitPrefab: {fileID: 178770, guid: af64c31ac6018b1438f7511aea29e55c, type: 3}
+    _unitPrefab: {fileID: -5924598904556257763, guid: 7c8439dd0c18ad6489abf8c88b48a87b, type: 3}
     _posY: 0
 --- !u!4 &22512617
 Transform:
@@ -860,6 +863,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6f60ddb7f8b9624409eeda350605438e, type: 2}
   - {fileID: 11400000, guid: 5efacc49f28328049a8e0ebb5d9285b6, type: 2}
   - {fileID: 11400000, guid: 528ff0a17cdba2442851124425771e48, type: 2}
+  - {fileID: 11400000, guid: 7de4884729dff024ab311fc26dbeb0ff, type: 2}
   _unitGameUIPrefab: {fileID: 6125259482940958976, guid: cabfef589f5010d4fa96189ada44f7bf, type: 3}
   _spawnParent: {fileID: 717212129}
   _grid: {fileID: 22512616}

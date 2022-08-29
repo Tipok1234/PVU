@@ -20,7 +20,7 @@ namespace Assets.Scripts.Grids
 
         private Camera _mainCamera;
         private GridCell[] _gridCell;
-        private GameObject _gameUnit;
+        private DefenceUnit _gameUnit;
         private static FieldBounes _fieldBounes;
 
         private void Awake()
@@ -57,6 +57,7 @@ namespace Assets.Scripts.Grids
 
 
                             gridCell.PlaceUnit(_gameUnit.transform);
+                            _gameUnit.Create();
                             _gameUnit = null;
                         }
                     }
@@ -64,7 +65,7 @@ namespace Assets.Scripts.Grids
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    _gameUnit.SetActive(false);
+                    _gameUnit.gameObject.SetActive(false);
                     _gameUnit = null;
                 }
             }
@@ -125,7 +126,7 @@ namespace Assets.Scripts.Grids
                 if (unitType == _gameUnitModels[i].UnitType)
                 {
                     _gameUnit = Instantiate(_gameUnitModels[i].UnitPrefab);
-                    _gameUnit.SetActive(true);
+                    _gameUnit.gameObject.SetActive(true);
                     break;
                 }
             }
@@ -136,11 +137,11 @@ namespace Assets.Scripts.Grids
     public class GameUnitModel
     {
         public UnitType UnitType => _unitType;
-        public GameObject UnitPrefab => _unitPrefab;
+        public DefenceUnit UnitPrefab => _unitPrefab;
         public float PosY => _posY;
 
         [SerializeField] private UnitType _unitType;
-        [SerializeField] private GameObject _unitPrefab;
+        [SerializeField] private DefenceUnit _unitPrefab;
         [SerializeField] private float _posY;
     }
 

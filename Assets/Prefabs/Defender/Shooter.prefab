@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3658771024515912081}
   - component: {fileID: 4452293035230770176}
   m_Layer: 8
-  m_Name: Cannon_5 1
+  m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,10 +61,10 @@ MonoBehaviour:
   _hp: 30
   _colliderUnit: {fileID: 3658771024515912081}
   _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
-  _reloadTime: 2.5
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  _reloadTime: 1.5
   _damageUnit: 10
 --- !u!1001 &6960314793366923068
 PrefabInstance:
@@ -87,7 +87,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.345
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7b92c1b47557c4d9ead29e6143960e83, type: 3}
       propertyPath: m_LocalPosition.z

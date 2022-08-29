@@ -6,13 +6,13 @@ namespace Assets.Scripts.Models
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float _speedBullet;
-        [SerializeField] private float _bulletLifeTime;
-        [SerializeField] private LayerMask _enemyLayer;
+        [SerializeField] protected float _speedBullet;
+        [SerializeField] protected float _bulletLifeTime;
+        [SerializeField] protected LayerMask _enemyLayer;
 
-        private float _currentTimeBullet = 0;
-        private float _damage;
-        private bool _isActive;
+        protected float _currentTimeBullet = 0;
+        protected float _damage;
+        protected bool _isActive;
 
         private void FixedUpdate()
         {

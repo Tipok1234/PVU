@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1465828555447153772}
   - component: {fileID: 7866299058566753960}
+  - component: {fileID: -5891056907343366438}
   m_Layer: 8
-  m_Name: Cannon_15 1
+  m_Name: DoubleShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +46,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5891056907343366438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465828555447153773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c72ec8da0637541aef69777bf6999e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 30
+  _colliderUnit: {fileID: 7866299058566753960}
+  _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _reloadTime: 1.5
+  _reloadTimeBullet: 0.1
+  _damageUnit: 10
 --- !u!1001 &1465828556777967644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,7 +88,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.3175
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d1be5cbea130544f6b29523de1f28c65, type: 3}
       propertyPath: m_LocalPosition.z
