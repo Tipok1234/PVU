@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Assets.Scripts.Models
 {
@@ -37,6 +38,11 @@ namespace Assets.Scripts.Models
             }
         }
 
+        private void TransformShooter()
+        {
+            gameObject.transform.DOMove(new Vector3(2, 0, 0),2);
+        }
+
         public override void TakeDamage(float damage)
         {
             _hp -= damage;
@@ -49,6 +55,7 @@ namespace Assets.Scripts.Models
 
         public override void Death()
         {
+            base.Death();
             _isDead = true;
             _colliderUnit.enabled = false;
             Destroy(gameObject);

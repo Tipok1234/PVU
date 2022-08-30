@@ -56,7 +56,7 @@ namespace Assets.Scripts.Grids
                                 return;
 
 
-                            gridCell.PlaceUnit(_gameUnit.transform);
+                            gridCell.PlaceUnit(_gameUnit);
                             _gameUnit.Create();
                             _gameUnit = null;
                         }

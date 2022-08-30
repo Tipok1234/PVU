@@ -1,3 +1,4 @@
+using Assets.Scripts.Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,18 +20,32 @@ namespace Assets.Scripts.Grids
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private GameObject _hightLight;
 
+        private BaseUnit _baseUnit;
+
         public void SetCell(int x, int z)
         {
             _x = x;
             _z = z;
         }
 
-        public void PlaceUnit(Transform unit)
+        public void PlaceUnit(BaseUnit unit)
         {
-            unit.SetParent(_spawnPoint);
-            unit.localPosition = Vector3.zero;
+            _baseUnit = unit;
+            _baseUnit.transform.SetParent(_spawnPoint);
+            _baseUnit.transform.localPosition = Vector3.zero;
+            _baseUnit.UnitDeadAction += OnUnitDead;
 
             _isBusy = true;
+        }
+
+        public void SetEmpty()
+        {
+            _isBusy = false;
+        }
+        private void OnUnitDead()
+        {
+            _baseUnit.UnitDeadAction -= OnUnitDead;
+            SetEmpty();
         }
 
         private void OnMouseEnter()

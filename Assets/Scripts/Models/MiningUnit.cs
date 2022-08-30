@@ -8,7 +8,6 @@ namespace Assets.Scripts.Models
 {
     public class MiningUnit : DefenceUnit
     {
-        public GunPowderModel GunPowderModel => _gunPowderPrefab;
 
         [SerializeField] private int _softIncomeAmount;
         [SerializeField] private float _softIncomeCooldown;
@@ -43,11 +42,11 @@ namespace Assets.Scripts.Models
         }
         public override void Death()
         {
-            //base.Death();
+            base.Death();
+            StopCoroutine(IncomeCoroutine());
             _isDead = true;
             _colliderUnit.enabled = false;
             Destroy(gameObject);
-            StopCoroutine(IncomeCoroutine());
         }
 
         private IEnumerator IncomeCoroutine()
@@ -59,7 +58,7 @@ namespace Assets.Scripts.Models
                     //Vector3 newPos = Grids.Grid.GetXZFieldRandomVector();
                     //newPos.y = _yPos;
 
-                    Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity);
+                    Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity).Setup();
                     _currentSoftIncomeTimer = 0;
                 }
 
