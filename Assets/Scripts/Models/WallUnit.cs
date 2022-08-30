@@ -25,9 +25,9 @@ namespace Assets.Scripts.Models
         public override void Death()
         {
             base.Death();
-            _isDead = true;
-            _colliderUnit.enabled = false;
-            Destroy(gameObject);
+            //_isDead = true;
+            //_colliderUnit.enabled = false;
+            //Destroy(gameObject);
         }
     }
 }

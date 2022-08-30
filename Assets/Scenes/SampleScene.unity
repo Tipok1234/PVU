@@ -173,6 +173,9 @@ MonoBehaviour:
   - _unitType: 3
     _unitPrefab: {fileID: -5924598904556257763, guid: 7c8439dd0c18ad6489abf8c88b48a87b, type: 3}
     _posY: 0
+  - _unitType: 4
+    _unitPrefab: {fileID: -5924598904556257763, guid: 7c8439dd0c18ad6489abf8c88b48a87b, type: 3}
+    _posY: 0
 --- !u!4 &22512617
 Transform:
   m_ObjectHideFlags: 0
@@ -394,6 +397,8 @@ MonoBehaviour:
   _unitPrefabs:
   - {fileID: 1634723230223232, guid: 162f08b0c25c87f4d84a397790bc31d7, type: 3}
   - {fileID: 1634723230223232, guid: 162f08b0c25c87f4d84a397790bc31d7, type: 3}
+  - {fileID: 1438169871030806, guid: b776b7bf7ed47c04785c122b07a0eafd, type: 3}
+  - {fileID: 1438169871030806, guid: b776b7bf7ed47c04785c122b07a0eafd, type: 3}
   _spawnTime: 5
 --- !u!4 &351281422
 Transform:
@@ -602,8 +607,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: 0}
-  m_SizeDelta: {x: 900, y: 0}
+  m_AnchoredPosition: {x: 660.22253, y: 0}
+  m_SizeDelta: {x: 1320.445, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &717212130
 MonoBehaviour:
@@ -864,6 +869,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5efacc49f28328049a8e0ebb5d9285b6, type: 2}
   - {fileID: 11400000, guid: 528ff0a17cdba2442851124425771e48, type: 2}
   - {fileID: 11400000, guid: 7de4884729dff024ab311fc26dbeb0ff, type: 2}
+  - {fileID: 11400000, guid: a9b3c74eb4a94fc43b346fc845d669c9, type: 2}
   _unitGameUIPrefab: {fileID: 6125259482940958976, guid: cabfef589f5010d4fa96189ada44f7bf, type: 3}
   _spawnParent: {fileID: 717212129}
   _grid: {fileID: 22512616}

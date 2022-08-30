@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using Assets.Scripts.Models;
 using UnityEngine;
+using Assets.Scripts.Controller;
 
 namespace Assets.Scripts.Grids
 {
@@ -17,6 +18,8 @@ namespace Assets.Scripts.Grids
         [SerializeField] private GridCell _gridCellPrefab;
         [SerializeField] private List<GameUnitModel> _gameUnitModels;
 
+        private GameUIController _gameUIController;
+        private bool _isSell;
 
         private Camera _mainCamera;
         private GridCell[] _gridCell;
@@ -57,9 +60,15 @@ namespace Assets.Scripts.Grids
 
 
                             gridCell.PlaceUnit(_gameUnit);
+                            Debug.LogError("!!!!!");
                             _gameUnit.Create();
                             _gameUnit = null;
+                            _isSell = true;
                         }
+                        //else
+                        //{
+                        //    _gameUIController.SellButtonAction += SellButton;
+                        //}
                     }
                 }
 

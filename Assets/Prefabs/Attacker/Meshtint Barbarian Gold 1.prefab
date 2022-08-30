@@ -1412,7 +1412,8 @@ MonoBehaviour:
   _colliderUnit: {fileID: 3208904601820001377}
   _selfTransform: {fileID: 4749245984341470}
   _moveSpeed: 0.5
-  _damage: 0
+  _reloadTime: 0
+  _damage: 10
   _animator: {fileID: 95785311282749608}
   _allyLayer:
     serializedVersion: 2

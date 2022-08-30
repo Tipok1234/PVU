@@ -5,16 +5,22 @@ using UnityEngine;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.UIManager;
 using Assets.Scripts.Enums;
+using UnityEngine.UI;
 using System;
 using Assets.Scripts.Models;
+using System;
 
 namespace Assets.Scripts.Controller
 {
     public class GameUIController : MonoBehaviour
     {
+        public event Action SellButtonAction;
+
         [SerializeField] private UnitDataSo[] _unitDataSo;
         [SerializeField] private UnitGameUI _unitGameUIPrefab;
         [SerializeField] private Transform _spawnParent;
+
+        [SerializeField] private Button _sellButton;
 
         [SerializeField] private Grids.Grid _grid;
         [SerializeField] private TMP_Text _scoreText;
@@ -23,6 +29,10 @@ namespace Assets.Scripts.Controller
 
         private List<UnitGameUI> _unitGameUIList = new List<UnitGameUI>();
 
+        private void Awake()
+        {
+            _sellButton.onClick.AddListener(SellButton);
+        }
         private void Start()
         {
             _scoreText.text = 100.ToString();
@@ -37,7 +47,6 @@ namespace Assets.Scripts.Controller
                 UnitGameUI unitUI = Instantiate(_unitGameUIPrefab, _spawnParent);
                 unitUI.Setup(_unitDataSo[i]);
                 unitUI.BuyUnitAction += OnBuyUnit;
-
                 _unitGameUIList.Add(unitUI);
             }            
         }
@@ -61,7 +70,11 @@ namespace Assets.Scripts.Controller
                 }
             }
         }
-
+        public void SellButton()
+        {
+                SellButtonAction?.Invoke();
+                BaseUnit.Instance.Death();
+        }
         public void UpdateSoftCurrency(int softCurrencyAmount)
         {
             _scoreText.text = softCurrencyAmount.ToString();

@@ -507,7 +507,8 @@ MonoBehaviour:
   _colliderUnit: {fileID: 7656252503877831175}
   _selfTransform: {fileID: 4400326549755546}
   _moveSpeed: 0.5
-  _damage: 0
+  _reloadTime: 0
+  _damage: 10
   _animator: {fileID: 95804848747135216}
   _allyLayer:
     serializedVersion: 2
