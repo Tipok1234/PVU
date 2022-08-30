@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Assets.Scripts.Grids;
 
 namespace Assets.Scripts.Models
 {
@@ -12,6 +13,8 @@ namespace Assets.Scripts.Models
         [SerializeField] private int _softIncomeAmount;
         [SerializeField] private float _softIncomeCooldown;
         [SerializeField] private GunPowderModel _gunPowderPrefab;
+        [SerializeField] private Transform _spawnDimond;
+        private GridCell _gridCell;
 
         private const float _yPos = 4;
         private float _currentSoftIncomeTimer = 0;
@@ -28,9 +31,22 @@ namespace Assets.Scripts.Models
             _currentSoftIncomeTimer = 0;
             StartCoroutine(IncomeCoroutine());
         }
+
+        public override void TakeDamage(float damage)
+        {
+            _hp -= damage;
+
+            if (_hp <= 0)
+            {
+                Death();
+            }
+        }
         public override void Death()
         {
-            base.Death();
+            //base.Death();
+            _isDead = true;
+            _colliderUnit.enabled = false;
+            Destroy(gameObject);
             StopCoroutine(IncomeCoroutine());
         }
 
@@ -40,10 +56,10 @@ namespace Assets.Scripts.Models
             {
                 if (_currentSoftIncomeTimer >= _softIncomeCooldown)
                 {
-                    Vector3 newPos = Grids.Grid.GetXZFieldRandomVector();
-                    newPos.y = _yPos;
+                    //Vector3 newPos = Grids.Grid.GetXZFieldRandomVector();
+                    //newPos.y = _yPos;
 
-                    Instantiate(_gunPowderPrefab, newPos , Quaternion.identity);
+                    Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity);
                     _currentSoftIncomeTimer = 0;
                 }
 

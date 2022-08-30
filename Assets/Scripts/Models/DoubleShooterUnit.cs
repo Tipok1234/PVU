@@ -8,6 +8,7 @@ namespace Assets.Scripts.Models
     {
         [SerializeField] private Bullet _bullet;
         [SerializeField] private LayerMask _enemyLayer;
+        [SerializeField] private Transform _spawnBullet;
 
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _reloadTimeBullet;
@@ -39,11 +40,11 @@ namespace Assets.Scripts.Models
                     {
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
-                            Instantiate(_bullet, transform.position + new Vector3(0,0.5f,0), _bullet.transform.rotation).Setup(_damageUnit);
+                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
 
                             yield return new WaitForSeconds(_reloadTimeBullet);
 
-                            Instantiate(_bullet, transform.position + new Vector3(0, 0.5f, 0), _bullet.transform.rotation).Setup(_damageUnit);
+                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
 
                             _currentReloadTime = 0;
                         }

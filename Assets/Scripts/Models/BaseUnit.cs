@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Grids;
 
 namespace Assets.Scripts.Models
 {
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Models
 
         [SerializeField] protected float _hp;
         [SerializeField] protected Collider _colliderUnit;
+
 
         protected bool _isDead = false;
         protected bool _isActive = false;
@@ -27,7 +29,7 @@ namespace Assets.Scripts.Models
 
         public virtual void Death()
         {
-
+            
         }
     }
 }
