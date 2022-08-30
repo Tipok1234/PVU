@@ -10,7 +10,7 @@ namespace Assets.Scripts.Models
         {
             if (_isActive)
             {
-                var ray = new Ray(transform.position, transform.forward * (-0.15f));
+                var ray = new Ray(transform.position, transform.right * (-0.15f));
 
 
                 if (Physics.Raycast(ray, out RaycastHit hit, 0.15f, _enemyLayer))
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Models
                         }
                     }
                 }
-                transform.position += Vector3.back * _speedBullet * Time.deltaTime;
+                transform.position += Vector3.right * _speedBullet * Time.deltaTime;
                 _currentTimeBullet += Time.deltaTime;
             }
         }

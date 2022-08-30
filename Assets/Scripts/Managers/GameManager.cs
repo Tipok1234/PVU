@@ -14,8 +14,9 @@ namespace Assets.Scripts.Managers
         private int _length = 10;
 
        [SerializeField] private Grids.Grid _grid;
-
+        [SerializeField] private EnemyManager _enemyManager;
        [SerializeField] private GameUIController _gameUIController;
+
         private int _currentSoftCurrency = 1000; 
 
         private void Awake()
@@ -27,6 +28,7 @@ namespace Assets.Scripts.Managers
         private void Start()
         {
             _grid.Setup(_width,_length);
+            _enemyManager.Setup(_grid.EnemySpawnPoints);
             _gameUIController.InstantiateUnit();
         }
 

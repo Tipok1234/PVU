@@ -21,9 +21,9 @@ namespace Assets.Scripts.Models
                 //transform.Translate(_speedBullet * Time.deltaTime * Vector3.back);
                 //transform.position += Vector3.back * _speedBullet * Time.deltaTime;
 
-                var ray = new Ray(transform.position, transform.forward * (-0.15f));
+                var ray = new Ray(transform.position, transform.right * (-0.15f));
 
-                //Debug.DrawRay(transform.position, transform.forward * (-0.15f), Color.red, Time.deltaTime);
+              //  Debug.DrawRay(transform.position, transform.forward * (-0.15f), Color.red, Time.deltaTime);
 
                 if (Physics.Raycast(ray, out RaycastHit hit, 0.15f, _enemyLayer))
                 {
@@ -38,7 +38,7 @@ namespace Assets.Scripts.Models
                 {
                     ResetBullet();
                 }
-                transform.position += Vector3.back * _speedBullet * Time.deltaTime;
+                transform.position += Vector3.right * _speedBullet * Time.deltaTime;
                 _currentTimeBullet += Time.deltaTime;
             }
         }

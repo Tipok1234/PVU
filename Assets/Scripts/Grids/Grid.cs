@@ -10,16 +10,22 @@ namespace Assets.Scripts.Grids
 {
     public class Grid : MonoBehaviour
     {
+        public IReadOnlyList<Transform> EnemySpawnPoints => _enemySpawnPoints;
         public event Action<int> UnitSoldAction;
         public event Action<int> CurrencyCollectedAction;
         public List<GameUnitModel> GameUnitModels => _gameUnitModels;
 
         [SerializeField] private LayerMask _gridCellLayer;
         [SerializeField] private GameObject _selectGameUnit;
+        [SerializeField] private GameObject _cartObject;
+       // [SerializeField] private Transform[] _spawnCart;
+
         [SerializeField] private GridCell _gridCellPrefab;
         [SerializeField] private List<GameUnitModel> _gameUnitModels;
 
         [SerializeField] private GameUIController _gameUIController;
+
+        private List<Transform> _enemySpawnPoints = new List<Transform>();
         private bool _isSell;
 
         private Camera _mainCamera;
@@ -110,18 +116,34 @@ namespace Assets.Scripts.Grids
 
             int k = 0;
 
-            for (int i = 0; i < w; i++)
+
+            for (int i = 0; i < l; i++)
             {
-                for (int j = 0; j < l; j++)
+                for (int j = 0; j < w; j++)
                 {
                     var cell = Instantiate(_gridCellPrefab, new Vector3(i, 0, j), Quaternion.identity);
                     cell.SetCell(i, j);
                     cell.transform.parent = transform;
 
+                    cell.transform.name = k.ToString();
+
                     _gridCell[k] = cell;
 
-                    k++;
+                    k++;                                                     
                 }
+            }
+
+            for (int i = 0; i < w; i++)
+            {
+                Vector3 cartPos = new Vector3(-1, 0.25f, i);
+                Instantiate(_cartObject, cartPos, _cartObject.transform.rotation,transform);
+                
+
+                Vector3 enemyPos = new Vector3(l + 1, 0,i);
+                Transform enemyPoint = new GameObject("SpawnPosition_" + i).transform;
+                enemyPoint.position = enemyPos;
+                enemyPoint.SetParent(transform); 
+                _enemySpawnPoints.Add(enemyPoint);
             }
             _fieldBounes = new FieldBounes(0, w, 0, l);
         }

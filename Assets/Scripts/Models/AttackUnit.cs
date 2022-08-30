@@ -49,7 +49,7 @@ namespace Assets.Scripts.Models
         }
         public void WalkUnit()
         {
-                _selfTransform.transform.position += Vector3.forward * _moveSpeed * Time.deltaTime;
+                _selfTransform.transform.position += Vector3.right * (-1f) * _moveSpeed * Time.deltaTime;
                 _animator.SetBool("Walk", true);
                 _animator.SetBool("Attack", false);
 
