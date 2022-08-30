@@ -20,6 +20,7 @@ namespace Assets.Scripts.Managers
 
         private void Awake()
         {
+            _grid.UnitSoldAction += OnUnitSold;
             _grid.CurrencyCollectedAction += OnCurrencyCollected;
             _gameUIController.OnBuyUnitAction += BuyUnit;
         }
@@ -29,7 +30,12 @@ namespace Assets.Scripts.Managers
             _gameUIController.InstantiateUnit();
         }
 
-        public void OnCurrencyCollected(int softCurrency)
+        private void OnUnitSold(int soldValue)
+        {
+            _currentSoftCurrency += soldValue;
+            _gameUIController.UpdateSoftCurrency(_currentSoftCurrency);
+        }
+        private void OnCurrencyCollected(int softCurrency)
         {
             _currentSoftCurrency += softCurrency;
             _gameUIController.UpdateSoftCurrency(_currentSoftCurrency);

@@ -10,6 +10,7 @@ namespace Assets.Scripts.Grids
 {
     public class Grid : MonoBehaviour
     {
+        public event Action<int> UnitSoldAction;
         public event Action<int> CurrencyCollectedAction;
         public List<GameUnitModel> GameUnitModels => _gameUnitModels;
 
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Grids
         [SerializeField] private GridCell _gridCellPrefab;
         [SerializeField] private List<GameUnitModel> _gameUnitModels;
 
-        private GameUIController _gameUIController;
+        [SerializeField] private GameUIController _gameUIController;
         private bool _isSell;
 
         private Camera _mainCamera;
@@ -29,6 +30,7 @@ namespace Assets.Scripts.Grids
         private void Awake()
         {
             _mainCamera = Camera.main;
+            _gameUIController.SellButtonAction += SellButton;
         }
 
         private void Update()
@@ -60,15 +62,9 @@ namespace Assets.Scripts.Grids
 
 
                             gridCell.PlaceUnit(_gameUnit);
-                            Debug.LogError("!!!!!");
                             _gameUnit.Create();
                             _gameUnit = null;
-                            _isSell = true;
                         }
-                        //else
-                        //{
-                        //    _gameUIController.SellButtonAction += SellButton;
-                        //}
                     }
                 }
 
@@ -91,10 +87,22 @@ namespace Assets.Scripts.Grids
                         {
                             CurrencyCollectedAction?.Invoke(gunPowderModel.SoftCurrency);
                             gunPowderModel.gameObject.SetActive(false);
+                            return;
+                        }
+                        
+                        if(_isSell && hitInfo.transform.TryGetComponent<DefenceUnit>(out DefenceUnit defenceUnit))
+                        {
+                            UnitSoldAction?.Invoke(defenceUnit.Sell());
+                            _isSell = false;
                         }
                     }
                 }              
             }
+        }
+
+        public void SellButton()
+        {
+                _isSell = true;
         }
         public void Setup(int w, int l)
         {

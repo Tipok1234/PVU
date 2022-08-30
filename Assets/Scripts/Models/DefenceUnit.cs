@@ -7,5 +7,10 @@ namespace Assets.Scripts.Models
     public class DefenceUnit : BaseUnit
     {
         
+        public virtual int Sell()
+        {
+            base.Death();
+            return 10;
+        }
     }
 }

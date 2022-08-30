@@ -73,7 +73,7 @@ namespace Assets.Scripts.Controller
         public void SellButton()
         {
                 SellButtonAction?.Invoke();
-                BaseUnit.Instance.Death();
+               // BaseUnit.Instance.Death();
         }
         public void UpdateSoftCurrency(int softCurrencyAmount)
         {
