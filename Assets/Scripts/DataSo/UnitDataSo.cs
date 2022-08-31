@@ -12,12 +12,12 @@ namespace Assets.Scripts.DataSo
         public int Price => _price;
         public int HP => _hp;
         public Sprite UnitSprite => _unitSprite;
-        public UnitType UnitType => _unitType;
+        public DefenceUnitType DefencUnitType => _defenceUnitType;
 
         [Header("View")]
         [SerializeField] private Sprite _unitSprite;
         [SerializeField] private int _price;
         [SerializeField] private int _hp;       
-        [SerializeField] private UnitType _unitType;
+        [SerializeField] private DefenceUnitType _defenceUnitType;
     }
 }

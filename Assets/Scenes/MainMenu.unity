@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startGameButton: {fileID: 1604905634}
   _optionButton: {fileID: 314091815}
-  _optionCanvas: {fileID: 1109773809}
+  _loadingScene: {fileID: 1109773809}
   _gameCanvas: {fileID: 1425392147}
 --- !u!1 &1454005048
 GameObject:

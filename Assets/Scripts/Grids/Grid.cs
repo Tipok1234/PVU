@@ -11,17 +11,18 @@ namespace Assets.Scripts.Grids
     public class Grid : MonoBehaviour
     {
         public IReadOnlyList<Transform> EnemySpawnPoints => _enemySpawnPoints;
+        public event Action<DefenceUnitType> UnitCreateAction;
         public event Action<int> UnitSoldAction;
         public event Action<int> CurrencyCollectedAction;
-        public List<GameUnitModel> GameUnitModels => _gameUnitModels;
+       // public List<GameUnitModel> GameUnitModels => _gameUnitModels;
 
         [SerializeField] private LayerMask _gridCellLayer;
         [SerializeField] private GameObject _selectGameUnit;
         [SerializeField] private GameObject _cartObject;
-       // [SerializeField] private Transform[] _spawnCart;
 
         [SerializeField] private GridCell _gridCellPrefab;
-        [SerializeField] private List<GameUnitModel> _gameUnitModels;
+        // [SerializeField] private List<GameUnitModel> _gameUnitModels;
+        [SerializeField] private DefenceUnit[] _defenceUnits;
 
         [SerializeField] private GameUIController _gameUIController;
 
@@ -69,6 +70,7 @@ namespace Assets.Scripts.Grids
 
                             gridCell.PlaceUnit(_gameUnit);
                             _gameUnit.Create();
+                            UnitCreateAction?.Invoke(_gameUnit.DefencUnitType);
                             _gameUnit = null;
                         }
                     }
@@ -153,37 +155,24 @@ namespace Assets.Scripts.Grids
             return _fieldBounes.GetXZFieldRandomVector();
         }
 
-        public void StartPlaceUnit(UnitType unitType)
+        public void StartPlaceUnit(DefenceUnitType unitType)
         {
             if (_gameUnit != null)
             {
                 Destroy(_gameUnit);
             }
 
-            for (int i = 0; i < _gameUnitModels.Count; i++)
+            for (int i = 0; i < _defenceUnits.Length; i++)
             {
-                if (unitType == _gameUnitModels[i].UnitType)
+                if (unitType == _defenceUnits[i].DefencUnitType)
                 {
-                    _gameUnit = Instantiate(_gameUnitModels[i].UnitPrefab);
+                    _gameUnit = Instantiate(_defenceUnits[i]);
                     _gameUnit.gameObject.SetActive(true);
                     break;
                 }
             }
         }
     }
-
-    [System.Serializable]
-    public class GameUnitModel
-    {
-        public UnitType UnitType => _unitType;
-        public DefenceUnit UnitPrefab => _unitPrefab;
-        public float PosY => _posY;
-
-        [SerializeField] private UnitType _unitType;
-        [SerializeField] private DefenceUnit _unitPrefab;
-        [SerializeField] private float _posY;
-    }
-
     public class FieldBounes
     {
         public float MinX => _minX;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 23272905234613848}
   - component: {fileID: 4152333605567350561}
   - component: {fileID: 4440519693163276381}
-  - component: {fileID: 5409640182280402182}
+  - component: {fileID: 4453292606612044507}
   m_Layer: 8
   m_Name: Mining
   m_TagString: Untagged
@@ -116,8 +116,8 @@ MonoBehaviour:
   _softIncomeCooldown: 7
   _gunPowderPrefab: {fileID: 4809060521006752121, guid: 7f8700aa7b84a09458be09fe1aa253ca, type: 3}
   _spawnDimond: {fileID: 7071430838357703759}
-  _animationUnit: {fileID: 5409640182280402182}
---- !u!114 &5409640182280402182
+  _animationUnit: {fileID: 4453292606612044507}
+--- !u!114 &4453292606612044507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,12 +126,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1509607895093206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a56c65de930a84facd74c989fbdd47, type: 3}
+  m_Script: {fileID: 11500000, guid: a7be9746c587dc54da5220e081eb5d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gunModel: {fileID: 4083487280795186}
-  _xStartPos: 0
-  _xEndPos: 0
+  _miningModel: {fileID: 4083487280795186}
   _animationTime: 0.2
 --- !u!1 &4947304988706194754
 GameObject:

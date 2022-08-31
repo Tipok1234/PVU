@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Controller;
+using Assets.Scripts.AnimationsModel;
+
 namespace Assets.Scripts.Models
 {
     public class ShooterUnit : DefenceUnit
@@ -13,7 +15,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _damageUnit = 10;
 
-        [SerializeField] private AnimationUnit _animationUnit;
+        [SerializeField] private AnimationGun _animationUnit;
 
         private float _currentReloadTime = 0;
 
@@ -21,23 +23,36 @@ namespace Assets.Scripts.Models
         {
             if (_isDead)
                 return;
-
-
-            _currentReloadTime += Time.deltaTime;
-            if (_currentReloadTime >= _reloadTime)
+            
+            if(_isActive)
             {
-                var ray = new Ray(transform.position, transform.right * (-10));
-
-                if (Physics.Raycast(ray, out RaycastHit hit, 150f, _enemyLayer))
+                _currentReloadTime += Time.deltaTime;
+                if (_currentReloadTime >= _reloadTime)
                 {
-                    if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
+                    var ray = new Ray(transform.position, transform.right * (-10));
+
+                    if (Physics.Raycast(ray, out RaycastHit hit, 150f, _enemyLayer))
                     {
-                        Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
-                        _animationUnit.AnimationGun();
-                        _currentReloadTime = 0;
+                        if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
+                        {
+                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
+                            _animationUnit.AnimationGuns();
+                            _currentReloadTime = 0;
+                        }
                     }
                 }
             }
+
+        }
+
+        public override void Create()
+        {
+            base.Create();
+        }
+
+        public void CreateShooter()
+        {
+
         }
         public override void TakeDamage(float damage)
         {

@@ -347,7 +347,7 @@ MonoBehaviour:
   _hp: 100
   _colliderUnit: {fileID: 7985406495794394334}
   _selfTransform: {fileID: 4168634819871070}
-  _moveSpeed: 0.1
+  _moveSpeed: 1.5
   _reloadTime: 3.4
   _damage: 10
   _animator: {fileID: 95247164175502188}
@@ -362,7 +362,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438169871030806}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 2
   m_Height: 4.5

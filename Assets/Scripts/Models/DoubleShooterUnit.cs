@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Controller;
 using UnityEngine;
+using Assets.Scripts.AnimationsModel;
 
 namespace Assets.Scripts.Models
 {
@@ -14,7 +15,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _reloadTimeBullet;
         [SerializeField] private float _damageUnit = 10;
-        [SerializeField] private AnimationUnit _animationUnit;
+        [SerializeField] private AnimationGun _animationUnit;
 
         private float _currentReloadTime = 0;
 
@@ -26,6 +27,7 @@ namespace Assets.Scripts.Models
 
         public override void Create()
         {
+            base.Create();
             StartCoroutine(LogicCoroutine());
         }
         private IEnumerator LogicCoroutine()
@@ -42,12 +44,12 @@ namespace Assets.Scripts.Models
                     {
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
-                            _animationUnit.AnimationGun();
+                            _animationUnit.AnimationGuns();
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
 
                             yield return new WaitForSeconds(_reloadTimeBullet);
 
-                            _animationUnit.AnimationGun();
+                            _animationUnit.AnimationGuns();
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
 
                             _currentReloadTime = 0;

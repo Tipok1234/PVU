@@ -25,13 +25,15 @@ namespace Assets.Scripts.Models
 
         public virtual void Create()
         {
-            
+            _isActive = true;
+            _colliderUnit.enabled = true;
         }
 
         public virtual void Death()
         {
             UnitDeadAction?.Invoke();
             _isDead = true;
+            _isActive = false;
             _colliderUnit.enabled = false;
             Destroy(gameObject);
         }

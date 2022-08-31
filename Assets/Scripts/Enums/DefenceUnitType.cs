@@ -1,10 +1,10 @@
 namespace Assets.Scripts.Enums
 {
-    public enum UnitType
+    public enum DefenceUnitType
     {
         Mining_Unit,
         Shooter_Unit,
-        Shooter_Unit_1,
+        DoubleShooter_Unit,
         Piercing_Unit,
         Wall_Unit
     }

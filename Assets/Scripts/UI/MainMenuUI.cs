@@ -11,7 +11,7 @@ namespace Assets.Scripts.UIManager
 
         [SerializeField] private Button _startGameButton;
         [SerializeField] private Button _optionButton;
-        [SerializeField] private Canvas _optionCanvas;
+        [SerializeField] private Canvas _loadingScene;
         [SerializeField] private Canvas _gameCanvas;
         void Start()
         {
@@ -23,9 +23,8 @@ namespace Assets.Scripts.UIManager
         {
             SceneManager.LoadScene("SampleScene");
             _gameCanvas.enabled = !_gameCanvas.enabled;
-            _optionCanvas.enabled = true;
+            _loadingScene.enabled = true;
         }
-
         private void OpenOptionCanvas()
         {
 

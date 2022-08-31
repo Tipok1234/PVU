@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6960314791875191536}
   - component: {fileID: 3658771024515912081}
   - component: {fileID: 4452293035230770176}
-  - component: {fileID: -6533978249110307648}
+  - component: {fileID: 628777901238319005}
   m_Layer: 8
   m_Name: Shooter
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider:
   m_GameObject: {fileID: 6960314791875191537}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 30
   _colliderUnit: {fileID: 3658771024515912081}
+  _unitDefenceType: 1
   _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
   _enemyLayer:
     serializedVersion: 2
@@ -132,8 +133,8 @@ MonoBehaviour:
   _spawnBullet: {fileID: 5156615679410924299}
   _reloadTime: 1.5
   _damageUnit: 10
-  _animationUnit: {fileID: -6533978249110307648}
---- !u!114 &-6533978249110307648
+  _animationUnit: {fileID: 628777901238319005}
+--- !u!114 &628777901238319005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6960314791875191537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a56c65de930a84facd74c989fbdd47, type: 3}
+  m_Script: {fileID: 11500000, guid: f888cddf55ce95f4db1ffd1d5b8c2829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _gunModel: {fileID: 8015253207947500653}

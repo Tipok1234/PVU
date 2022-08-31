@@ -8,7 +8,6 @@ using Assets.Scripts.Enums;
 using UnityEngine.UI;
 using System;
 using Assets.Scripts.Models;
-using System;
 
 namespace Assets.Scripts.Controller
 {
@@ -16,7 +15,6 @@ namespace Assets.Scripts.Controller
     {
         public event Action SellButtonAction;
 
-        [SerializeField] private UnitDataSo[] _unitDataSo;
         [SerializeField] private UnitGameUI _unitGameUIPrefab;
         [SerializeField] private Transform _spawnParent;
 
@@ -25,7 +23,7 @@ namespace Assets.Scripts.Controller
         [SerializeField] private Grids.Grid _grid;
         [SerializeField] private TMP_Text _scoreText;
 
-        public event Action<UnitType,int> OnBuyUnitAction;
+        public event Action<DefenceUnitType> OnBuyUnitAction;
 
         private List<UnitGameUI> _unitGameUIList = new List<UnitGameUI>();
 
@@ -38,17 +36,17 @@ namespace Assets.Scripts.Controller
             _scoreText.text = 100.ToString();
         }
 
-        public void InstantiateUnit()
+        public void Setup(UnitDataSo[] unitDataSo)
         {
             ResetUI();
 
-            for (int i = 0; i < _unitDataSo.Length; i++)
+            for (int i = 0; i < unitDataSo.Length; i++)
             {
                 UnitGameUI unitUI = Instantiate(_unitGameUIPrefab, _spawnParent);
-                unitUI.Setup(_unitDataSo[i]);
+                unitUI.Setup(unitDataSo[i]);
                 unitUI.BuyUnitAction += OnBuyUnit;
                 _unitGameUIList.Add(unitUI);
-            }            
+            }
         }
 
         private void ResetUI()
@@ -57,25 +55,19 @@ namespace Assets.Scripts.Controller
             {
                 _unitGameUIList[i].BuyUnitAction -= OnBuyUnit;
             }
+
             _unitGameUIList.Clear();
         }
-        private void OnBuyUnit(UnitType unitType)
+        private void OnBuyUnit(DefenceUnitType unitType)
         {
-            for (int i = 0; i < _unitDataSo.Length; i++)
-            {
-                if (_unitDataSo[i].UnitType == unitType)
-                {
-                    OnBuyUnitAction?.Invoke(unitType, _unitDataSo[i].Price);
-                    break;
-                }
-            }
+            OnBuyUnitAction?.Invoke(unitType);
         }
         public void SellButton()
         {
-                SellButtonAction?.Invoke();
+            SellButtonAction?.Invoke();
         }
         public void UpdateSoftCurrency(int softCurrencyAmount)
-        {
+        {   
             _scoreText.text = softCurrencyAmount.ToString();
         }
     }

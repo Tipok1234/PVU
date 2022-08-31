@@ -15,19 +15,19 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Button _buyButton;
         [SerializeField] private Image _unitImage;
 
-        public event Action<UnitType> BuyUnitAction;
+        public event Action<DefenceUnitType> BuyUnitAction;
 
-        private UnitType _unitType;
+        private DefenceUnitType _unitType;
 
         private void Awake()
         {
             _buyButton.onClick.AddListener(BuyButton);
         }
         public void Setup(UnitDataSo unitDataSo)
-        {
+        {       
             _priceText.text = unitDataSo.Price.ToString();
             _unitImage.sprite = unitDataSo.UnitSprite;
-            _unitType = unitDataSo.UnitType;
+            _unitType = unitDataSo.DefencUnitType;
         }
 
         public void BuyButton()
