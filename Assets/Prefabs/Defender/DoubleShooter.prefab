@@ -71,7 +71,7 @@ MonoBehaviour:
   _reloadTime: 1.5
   _reloadTimeBullet: 0.1
   _damageUnit: 10
-  _animationUnit: {fileID: -3639456127121112246}
+  _animationModel: {fileID: -3639456127121112246}
 --- !u!114 &-3639456127121112246
 MonoBehaviour:
   m_ObjectHideFlags: 0

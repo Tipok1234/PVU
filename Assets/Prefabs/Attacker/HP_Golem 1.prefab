@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _colliderUnit: {fileID: 7985406495794394334}
+  _attackUnitType: 2
   _selfTransform: {fileID: 4168634819871070}
   _moveSpeed: 1.5
   _reloadTime: 3.4

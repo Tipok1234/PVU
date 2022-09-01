@@ -366,7 +366,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423762985213010}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -377,7 +377,7 @@ Transform:
   - {fileID: 4347903602868822}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!95 &95833583461909682
 Animator:
   serializedVersion: 3
@@ -411,9 +411,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 50
   _colliderUnit: {fileID: 6531450229519688334}
+  _attackUnitType: 0
   _selfTransform: {fileID: 4221654534789252}
   _moveSpeed: 0.5
-  _reloadTime: 0
+  _reloadTime: 3.4
   _damage: 10
   _animator: {fileID: 95833583461909682}
   _allyLayer:

@@ -1,9 +1,13 @@
 using UnityEngine;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {
     public class AttackUnit : BaseUnit
     {
+        public AttackUnitType AttackUnitType => _attackUnitType;
+
+        [SerializeField] private AttackUnitType _attackUnitType;
         [SerializeField] private Transform _selfTransform;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _reloadTime;
@@ -60,6 +64,7 @@ namespace Assets.Scripts.Models
 
         public void DeathUnit()
         {
+            base.Death();
             _isDead = true;
             _animator.SetTrigger("Death");
             _isWalk = false;

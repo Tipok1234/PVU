@@ -15,7 +15,6 @@ namespace Assets.Scripts.Grids
         public event Action<int> CurrencyCollectedAction;
 
         [SerializeField] private LayerMask _gridCellLayer;
-        [SerializeField] private GameObject _selectGameUnit;
         [SerializeField] private GameObject _cartObject;
 
         [SerializeField] private GridCell _gridCellPrefab;
@@ -139,7 +138,7 @@ namespace Assets.Scripts.Grids
                 Vector3 enemyPos = new Vector3(l + 1, 0,i);
                 Transform enemyPoint = new GameObject("SpawnPosition_" + i).transform;
                 enemyPoint.position = enemyPos;
-                enemyPoint.SetParent(transform); 
+                enemyPoint.SetParent(transform);
                 _enemySpawnPoints.Add(enemyPoint);
             }
             _fieldBounes = new FieldBounes(0, w, 0, l);
@@ -167,6 +166,14 @@ namespace Assets.Scripts.Grids
                 }
             }
         }
+
+        //public void Clear()
+        //{
+        //    for (int i = 0; i < _defenceUnits.Length; i++)
+        //    {
+        //        Destroy(_defenceUnits[i]);
+        //    }
+        //}
     }
     public class FieldBounes
     {
