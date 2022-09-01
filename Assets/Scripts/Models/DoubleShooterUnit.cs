@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts.Controller;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
 
@@ -15,7 +13,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _reloadTimeBullet;
         [SerializeField] private float _damageUnit = 10;
-        [SerializeField] private AnimationGun _animationUnit;
+        [SerializeField] private AnimationModel _animationModel;
 
         private float _currentReloadTime = 0;
 
@@ -44,12 +42,12 @@ namespace Assets.Scripts.Models
                     {
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
-                            _animationUnit.AnimationGuns();
+                            _animationModel.PlayAnimation();
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
 
                             yield return new WaitForSeconds(_reloadTimeBullet);
 
-                            _animationUnit.AnimationGuns();
+                            _animationModel.PlayAnimation();
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
 
                             _currentReloadTime = 0;
@@ -62,7 +60,6 @@ namespace Assets.Scripts.Models
 
         public override void TakeDamage(float damage)
         {
-            Debug.LogError(_hp);
             _hp -= damage;
 
             if (_hp <= 0)
@@ -74,10 +71,7 @@ namespace Assets.Scripts.Models
         public override void Death()
         {
             base.Death();
-            //_isDead = true;
-            //_colliderUnit.enabled = false;
             StopCoroutine(LogicCoroutine());
-            //Destroy(gameObject);
         }
     }
 

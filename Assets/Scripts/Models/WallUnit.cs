@@ -8,11 +8,6 @@ namespace Assets.Scripts.Models
 {
     public class WallUnit : DefenceUnit
     {
-        private void FixedUpdate()
-        {
-
-        }
-
         public override void TakeDamage(float damage)
         {
             _hp -= damage;
@@ -25,9 +20,6 @@ namespace Assets.Scripts.Models
         public override void Death()
         {
             base.Death();
-            //_isDead = true;
-            //_colliderUnit.enabled = false;
-            //Destroy(gameObject);
         }
     }
 }

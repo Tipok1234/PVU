@@ -7,7 +7,6 @@ using Assets.Scripts.UIManager;
 using Assets.Scripts.Enums;
 using UnityEngine.UI;
 using System;
-using Assets.Scripts.Models;
 
 namespace Assets.Scripts.Controller
 {

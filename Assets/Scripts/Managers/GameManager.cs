@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Controller;
 using Assets.Scripts.Enums;
@@ -52,22 +50,17 @@ namespace Assets.Scripts.Managers
 
         public void BuyUnit(DefenceUnitType unitType)
         {
-            Debug.LogError(unitType);
-
             for (int i = 0; i < _unitDataSo.Length; i++)
             {
                 if (_unitDataSo[i].DefencUnitType == unitType)
                 {
-                    _grid.StartPlaceUnit(unitType);
-                    break;
+                    if (_currentSoftCurrency >= _unitDataSo[i].Price)
+                    {
+                        _grid.StartPlaceUnit(unitType);
+                        break;
+                    }
                 }
             }
-            //if (_currentSoftCurrency >= unitPrice)
-            //{
-            //    //_currentSoftCurrency -= unitPrice;
-                
-            //    //_gameUIController.UpdateSoftCurrency(_currentSoftCurrency);
-            //}
         }
         public void OnUnitCreated(DefenceUnitType defenceUnit)
         {

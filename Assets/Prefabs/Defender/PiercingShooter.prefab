@@ -57,7 +57,7 @@ MonoBehaviour:
   _spawnBullet: {fileID: 1875370327986419658}
   _reloadTime: 2.5
   _damageUnit: 10
-  _animationUnit: {fileID: 7678373207486177393}
+  _animationModel: {fileID: 7678373207486177393}
 --- !u!65 &7650478941099878869
 BoxCollider:
   m_ObjectHideFlags: 0

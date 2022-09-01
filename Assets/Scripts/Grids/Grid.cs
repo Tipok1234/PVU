@@ -1,5 +1,4 @@
 using Assets.Scripts.Enums;
-using System.Collections;
 using System.Collections.Generic;
 using System;
 using Assets.Scripts.Models;
@@ -14,16 +13,13 @@ namespace Assets.Scripts.Grids
         public event Action<DefenceUnitType> UnitCreateAction;
         public event Action<int> UnitSoldAction;
         public event Action<int> CurrencyCollectedAction;
-       // public List<GameUnitModel> GameUnitModels => _gameUnitModels;
 
         [SerializeField] private LayerMask _gridCellLayer;
         [SerializeField] private GameObject _selectGameUnit;
         [SerializeField] private GameObject _cartObject;
 
         [SerializeField] private GridCell _gridCellPrefab;
-        // [SerializeField] private List<GameUnitModel> _gameUnitModels;
         [SerializeField] private DefenceUnit[] _defenceUnits;
-
         [SerializeField] private GameUIController _gameUIController;
 
         private List<Transform> _enemySpawnPoints = new List<Transform>();
@@ -138,8 +134,7 @@ namespace Assets.Scripts.Grids
             for (int i = 0; i < w; i++)
             {
                 Vector3 cartPos = new Vector3(-1, 0.25f, i);
-                Instantiate(_cartObject, cartPos, _cartObject.transform.rotation,transform);
-                
+                Instantiate(_cartObject, cartPos, _cartObject.transform.rotation,transform);               
 
                 Vector3 enemyPos = new Vector3(l + 1, 0,i);
                 Transform enemyPoint = new GameObject("SpawnPosition_" + i).transform;

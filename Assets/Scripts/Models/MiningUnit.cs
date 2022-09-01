@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
-using Assets.Scripts.Grids;
-using Assets.Scripts.Controller;
 using Assets.Scripts.AnimationsModel;
 
 namespace Assets.Scripts.Models
@@ -15,10 +11,8 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _softIncomeCooldown;
         [SerializeField] private GunPowderModel _gunPowderPrefab;
         [SerializeField] private Transform _spawnDimond;
-        [SerializeField] private AnimationMining _animationUnit;
-        private GridCell _gridCell;
+        [SerializeField] private AnimationModel _animationModel;
 
-        private const float _yPos = 4;
         private float _currentSoftIncomeTimer = 0;
 
         private void Start()
@@ -47,9 +41,6 @@ namespace Assets.Scripts.Models
         {
             base.Death();
             StopCoroutine(IncomeCoroutine());
-            //_isDead = true;
-            //_colliderUnit.enabled = false;
-            //Destroy(gameObject);
         }
 
         private IEnumerator IncomeCoroutine()
@@ -58,9 +49,7 @@ namespace Assets.Scripts.Models
             {
                 if (_currentSoftIncomeTimer >= _softIncomeCooldown)
                 {
-                    //Vector3 newPos = Grids.Grid.GetXZFieldRandomVector();
-                    //newPos.y = _yPos;
-                    _animationUnit.AnimationsMining();
+                    _animationModel.PlayAnimation();
                     Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity).Setup();
                     _currentSoftIncomeTimer = 0;
                 }

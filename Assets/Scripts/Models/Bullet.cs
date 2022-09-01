@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Models
@@ -18,9 +16,6 @@ namespace Assets.Scripts.Models
         {
             if(_isActive)
             {
-                //transform.Translate(_speedBullet * Time.deltaTime * Vector3.back);
-                //transform.position += Vector3.back * _speedBullet * Time.deltaTime;
-
                 var ray = new Ray(transform.position, transform.right * (0.15f));
 
                 Debug.DrawRay(transform.position, transform.right * (0.15f), Color.red, Time.deltaTime);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -11,6 +9,7 @@ namespace Assets.Scripts.UIManager
         public Canvas RestartGameCanvas => _restartGameCanvas;
 
         [SerializeField] private Canvas _restartGameCanvas;
+        [SerializeField] private Canvas _loadingScene;
         [SerializeField] private Button _restartGameButton;
         [SerializeField] private Button _mainMenuButton;
 
@@ -27,13 +26,13 @@ namespace Assets.Scripts.UIManager
 
         public void RestartGameUI()
         {
-            //Debug.LogError("!!!!!!");
             _restartGameCanvas.enabled = true;
         }
         public void MainMenuScene()
         {
             SceneManager.LoadScene("MainMenu");
             _restartGameCanvas.enabled = !_restartGameButton.enabled;
+            _loadingScene.enabled = true;
         }
     }
 }

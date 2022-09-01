@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts.Grids;
 using System;
 
 namespace Assets.Scripts.Models

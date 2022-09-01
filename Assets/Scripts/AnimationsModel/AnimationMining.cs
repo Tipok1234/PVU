@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 namespace Assets.Scripts.AnimationsModel
 {
-    public class AnimationMining : MonoBehaviour
+    public class AnimationMining : AnimationModel
     {
         [SerializeField] private Transform _miningModel;
         [SerializeField] private float _animationTime;
 
-        public void AnimationsMining()
+        public override void PlayAnimation()
         {
             Sequence mySequence = DOTween.Sequence();
             mySequence.Prepend(_miningModel.DOScale(new Vector3(5f, 5f, 5f), _animationTime));
