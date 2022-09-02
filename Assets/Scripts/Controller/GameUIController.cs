@@ -66,7 +66,20 @@ namespace Assets.Scripts.Controller
         }
         private void OnBuyUnit(DefenceUnitType unitType)
         {
+
             UnitSelectedAction?.Invoke(unitType);
+        }
+
+        public void RechargePlaceCooldown(DefenceUnitType unitType)
+        {
+            for (int i = 0; i < _unitGameUIList.Count; i++)
+            {
+                if (_unitGameUIList[i].UnitType == unitType)
+                {
+                    _unitGameUIList[i].RechargeTime();
+                    break;
+                }
+            }
         }
         public void SellButton()
         {

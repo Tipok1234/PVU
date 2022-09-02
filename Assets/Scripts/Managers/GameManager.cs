@@ -93,6 +93,7 @@ namespace Assets.Scripts.Managers
                     _currentGunpowder -= _unitDataSo[i].Price;
                     _gameUIController.UpdateSoftCurrency(_currentGunpowder);
                     _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
+                    _gameUIController.RechargePlaceCooldown(defenceUnit);
                     break;
                 }
             }
