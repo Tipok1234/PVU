@@ -22,7 +22,7 @@ namespace Assets.Scripts.Controller
         [SerializeField] private Grids.Grid _grid;
         [SerializeField] private TMP_Text _scoreText;
 
-        public event Action<DefenceUnitType> OnBuyUnitAction;
+        public event Action<DefenceUnitType> UnitSelectedAction;
 
         private List<UnitGameUI> _unitGameUIList = new List<UnitGameUI>();
 
@@ -59,7 +59,7 @@ namespace Assets.Scripts.Controller
         }
         private void OnBuyUnit(DefenceUnitType unitType)
         {
-            OnBuyUnitAction?.Invoke(unitType);
+            UnitSelectedAction?.Invoke(unitType);
         }
         public void SellButton()
         {

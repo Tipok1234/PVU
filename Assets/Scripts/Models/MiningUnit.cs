@@ -37,9 +37,9 @@ namespace Assets.Scripts.Models
                 Death();
             }
         }
-        public override void Death()
+        public override void Death(float deathTime = 0)
         {
-            base.Death();
+            base.Death(deathTime);
             StopCoroutine(IncomeCoroutine());
         }
 

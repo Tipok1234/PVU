@@ -19,7 +19,7 @@ namespace Assets.Scripts.Managers
         [SerializeField] private GameOverWindow _gameOverWindow;
         [SerializeField] private LevelManager _levelManager;
 
-        [SerializeField] private NextLevelWindow _nextLevelWindow;
+        [SerializeField] private LevelComplete _levelComplete;
         [SerializeField] private UnitDataSo[] _unitDataSo;
         private DataManager _dataManager;
 
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Managers
             _grid.UnitSoldAction += OnUnitSold;
             _grid.CurrencyCollectedAction += OnCurrencyCollected;
             _grid.UnitCreateAction += OnUnitCreated;
-            _gameUIController.OnBuyUnitAction += SelectUnit;
+            _gameUIController.UnitSelectedAction += OnUnitSelect;
             _gameOver.RestartGameAction += RestartGame;
             _enemyManager.LevelCompletedAction += OnLevelCompleted;
 
@@ -51,7 +51,8 @@ namespace Assets.Scripts.Managers
 
         public void OnLevelCompleted()
         {
-            _nextLevelWindow.NextLevel();
+            _levelComplete.ShowWindow();
+            _dataManager.UpdateLevel();
         }
         private void OnUnitSold(int soldValue)
         {
@@ -64,7 +65,7 @@ namespace Assets.Scripts.Managers
             _gameUIController.UpdateSoftCurrency(_currentGunpowder);
         }
 
-        public void SelectUnit(DefenceUnitType unitType)
+        public void OnUnitSelect(DefenceUnitType unitType)
         {
             for (int i = 0; i < _unitDataSo.Length; i++)
             {

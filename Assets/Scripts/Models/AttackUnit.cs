@@ -62,9 +62,9 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Attack", true);
         }
 
-        public void DeathUnit()
+        private void DeathUnit()
         {
-            base.Death();
+
             _isDead = true;
             _animator.SetTrigger("Death");
             _isWalk = false;
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", false);
             _colliderUnit.enabled = false;
-            Destroy(gameObject, 3f);
+            base.Death(3.0f);
         }
 
         public override void TakeDamage(float damage)

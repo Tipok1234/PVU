@@ -17,10 +17,6 @@ namespace Assets.Scripts.Models
                 Death();
             }
         }
-        public override void Death()
-        {
-            base.Death();
-        }
     }
 }
 

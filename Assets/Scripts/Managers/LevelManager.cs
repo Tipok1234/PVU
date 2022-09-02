@@ -15,6 +15,7 @@ namespace Assets.Scripts.Managers
 
         public LevelDataSO GetLevelByIndex(int index)
         {
+            Debug.LogError(index);
             if (index >= _levels.Length)
             {
                 Debug.LogError("Wrong Level Index");

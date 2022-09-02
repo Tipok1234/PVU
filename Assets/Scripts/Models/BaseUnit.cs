@@ -26,13 +26,13 @@ namespace Assets.Scripts.Models
             _colliderUnit.enabled = true;
         }
 
-        public virtual void Death()
+        public virtual void Death(float deathTime = 0)
         {
             UnitDeadAction?.Invoke();
             _isDead = true;
             _isActive = false;
             _colliderUnit.enabled = false;
-            Destroy(gameObject);
+            Destroy(gameObject,deathTime);
         }
     }
 }

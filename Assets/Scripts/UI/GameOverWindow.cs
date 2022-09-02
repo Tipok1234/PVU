@@ -21,7 +21,9 @@ namespace Assets.Scripts.UIManager
 
         public void RestartGame()
         {
-            _restartGameCanvas.enabled = !_restartGameCanvas.enabled;
+            //_restartGameCanvas.enabled = !_restartGameCanvas.enabled;
+
+            SceneManager.LoadScene("GameScene");
         }
 
         public void RestartGameUI()

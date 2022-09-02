@@ -21,7 +21,7 @@ namespace Assets.Scripts.UIManager
 
         private void StartGame()
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("GameScene");
             _gameCanvas.enabled = !_gameCanvas.enabled;
             _loadingScene.enabled = true;
         }

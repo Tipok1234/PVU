@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 297309852}
   - component: {fileID: 297309855}
   m_Layer: 0
-  m_Name: NextLevelGameCanvas
+  m_Name: LevelCompleteCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,7 +748,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextLevelButton: {fileID: 435066667}
   _nextGameCanvas: {fileID: 297309854}
-  _gameCanvas: {fileID: 990946823}
 --- !u!1 &351281420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,7 +1850,7 @@ MonoBehaviour:
   _gameOver: {fileID: 1272634780}
   _gameOverWindow: {fileID: 55881374}
   _levelManager: {fileID: 1418450338}
-  _nextLevelWindow: {fileID: 297309855}
+  _levelComplete: {fileID: 297309855}
   _unitDataSo:
   - {fileID: 11400000, guid: bf65df82402650d42a7e8a27bcf77250, type: 2}
   - {fileID: 11400000, guid: 6f60ddb7f8b9624409eeda350605438e, type: 2}
@@ -2158,6 +2157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levels:
   - {fileID: 11400000, guid: 89ce62134df12bc499d7e8276e4ce9ee, type: 2}
+  - {fileID: 11400000, guid: 7d09f4ae952c052428b1957ee6c1d992, type: 2}
 --- !u!4 &1418450339
 Transform:
   m_ObjectHideFlags: 0

@@ -36,8 +36,8 @@ namespace Assets.Scripts.Managers
         }
         public void UpdateLevel()
         {
-            int newLevel = PlayerPrefs.GetInt(_nameLevelKey, 0) + 1;
-            PlayerPrefs.SetInt(_nameLevelKey, newLevel);
+            _levelIndex++;
+            PlayerPrefs.SetInt(_nameLevelKey, _levelIndex);
         }
         public void UpdateCurrency()
         {
