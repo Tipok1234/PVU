@@ -48,6 +48,13 @@ namespace Assets.Scripts.Controller
             }
         }
 
+        public void UpdateUnitGameUIItems(int gunPowder)
+        {
+            for (int i = 0; i < _unitGameUIList.Count; i++)
+            {
+                _unitGameUIList[i].HightLight(gunPowder >= _unitGameUIList[i].UnitPrice);
+            }
+        }
         private void ResetUI()
         {
             for (int i = 0; i < _unitGameUIList.Count; i++)
@@ -66,7 +73,7 @@ namespace Assets.Scripts.Controller
             SellButtonAction?.Invoke();
         }
         public void UpdateSoftCurrency(int softCurrencyAmount)
-        {   
+        {
             _scoreText.text = softCurrencyAmount.ToString();
         }
     }

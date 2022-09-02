@@ -205,6 +205,8 @@ MonoBehaviour:
   _priceText: {fileID: 4502256089980794065}
   _buyButton: {fileID: 4502256089827805137}
   _unitImage: {fileID: 4502256089449764765}
+  _noMoneyColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+  _normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4502256089827805151
 GameObject:
   m_ObjectHideFlags: 0

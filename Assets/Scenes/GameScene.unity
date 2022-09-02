@@ -163,6 +163,7 @@ MonoBehaviour:
   - {fileID: -5891056907343366438, guid: 0e41d70452b33cc41a5600bfe9483078, type: 3}
   - {fileID: 4452293035230770176, guid: 3ff01997ab641b24d84ae49d7d953782, type: 3}
   - {fileID: -5924598904556257763, guid: 7c8439dd0c18ad6489abf8c88b48a87b, type: 3}
+  - {fileID: -4021908266205086866, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
   _gameUIController: {fileID: 990946825}
 --- !u!4 &22512617
 Transform:
@@ -1857,6 +1858,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5efacc49f28328049a8e0ebb5d9285b6, type: 2}
   - {fileID: 11400000, guid: 7de4884729dff024ab311fc26dbeb0ff, type: 2}
   - {fileID: 11400000, guid: 528ff0a17cdba2442851124425771e48, type: 2}
+  - {fileID: 11400000, guid: 1ff9df3e6372c2542bc79a116144c6da, type: 2}
+  _unitGameUI: {fileID: 6125259482940958976, guid: cabfef589f5010d4fa96189ada44f7bf, type: 3}
 --- !u!1 &1148342404
 GameObject:
   m_ObjectHideFlags: 0

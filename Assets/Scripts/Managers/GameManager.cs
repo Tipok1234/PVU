@@ -21,6 +21,7 @@ namespace Assets.Scripts.Managers
 
         [SerializeField] private LevelComplete _levelComplete;
         [SerializeField] private UnitDataSo[] _unitDataSo;
+
         private DataManager _dataManager;
 
         private int _softCurrency = 0;
@@ -45,8 +46,9 @@ namespace Assets.Scripts.Managers
             _enemyManager.Setup(_grid.EnemySpawnPoints, _levelManager.GetLevelByIndex(_dataManager.LevelIndex));
             _gameUIController.Setup(_unitDataSo);
 
+            //_gameUIController.UpdateSoftCurrency(_currentGunpowder);
             _gameUIController.UpdateSoftCurrency(_currentGunpowder);
-            _gameUIController.UpdateSoftCurrency(_currentGunpowder);
+            _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
         }
 
         public void OnLevelCompleted()
@@ -58,15 +60,18 @@ namespace Assets.Scripts.Managers
         {
             _currentGunpowder += soldValue;
             _gameUIController.UpdateSoftCurrency(_currentGunpowder);
+            _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
         }
         private void OnCurrencyCollected(int softCurrency)
         {
             _currentGunpowder += softCurrency;
             _gameUIController.UpdateSoftCurrency(_currentGunpowder);
+            _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
         }
 
         public void OnUnitSelect(DefenceUnitType unitType)
         {
+
             for (int i = 0; i < _unitDataSo.Length; i++)
             {
                 if (_unitDataSo[i].DefencUnitType == unitType)
@@ -87,6 +92,7 @@ namespace Assets.Scripts.Managers
                 {
                     _currentGunpowder -= _unitDataSo[i].Price;
                     _gameUIController.UpdateSoftCurrency(_currentGunpowder);
+                    _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
                     break;
                 }
             }

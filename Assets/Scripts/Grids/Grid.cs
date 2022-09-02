@@ -166,14 +166,6 @@ namespace Assets.Scripts.Grids
                 }
             }
         }
-
-        //public void Clear()
-        //{
-        //    for (int i = 0; i < _defenceUnits.Length; i++)
-        //    {
-        //        Destroy(_defenceUnits[i]);
-        //    }
-        //}
     }
     public class FieldBounes
     {
