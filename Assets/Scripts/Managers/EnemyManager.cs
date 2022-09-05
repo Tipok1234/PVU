@@ -38,7 +38,6 @@ namespace Assets.Scripts.Managers
             {
                 if(waveIndex >= _levelDataSo.Waves.Length)
                 {
-                    Debug.LogError("Level SpawnEnemy");
                     yield break;
                 }
                         

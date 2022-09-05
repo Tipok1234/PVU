@@ -43,12 +43,12 @@ namespace Assets.Scripts.Models
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
                             _animationModel.PlayAnimation();
-                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
+                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right);
 
                             yield return new WaitForSeconds(_reloadTimeBullet);
 
                             _animationModel.PlayAnimation();
-                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
+                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right);
 
                             _currentReloadTime = 0;
                         }

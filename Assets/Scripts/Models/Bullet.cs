@@ -12,13 +12,18 @@ namespace Assets.Scripts.Models
         protected float _damage;
         protected bool _isActive;
 
+        private Vector3 _direction;
+
         private void FixedUpdate()
         {
             if(_isActive)
             {
-                var ray = new Ray(transform.position, transform.right * (0.15f));
+                transform.position += _direction * _speedBullet * Time.deltaTime;
+                _currentTimeBullet += Time.deltaTime;
 
-                Debug.DrawRay(transform.position, transform.right * (0.15f), Color.red, Time.deltaTime);
+                var ray = new Ray(transform.position, _direction * (0.15f));
+
+                Debug.DrawRay(transform.position, _direction * (0.15f), Color.red, Time.deltaTime);
 
                 if (Physics.Raycast(ray, out RaycastHit hit, 0.15f, _enemyLayer))
                 {
@@ -33,14 +38,26 @@ namespace Assets.Scripts.Models
                 {
                     ResetBullet();
                 }
-                transform.position += Vector3.right * _speedBullet * Time.deltaTime;
-                _currentTimeBullet += Time.deltaTime;
+
+
             }
         }
-        public void Setup(float damage)
+
+        //private void RotateTowardsEnemy(Vector3 targetPos)
+        //{
+        //    Vector3 lookRotation = (targetPos - transform.position);
+        //    //_gunModel.transform.forward = lookRotation;
+        //    transform.rotation = Quaternion.LookRotation(lookRotation);
+        //}
+        public void Setup(float damage, Vector3 direction)
         {
-            _isActive = true;
+
+            _direction = direction.normalized;
+            _direction.y = 0;
+            //transform.rotation = Quaternion.LookRotation(_direction);
             _damage = damage;
+            _isActive = true;
+            
         }
 
 

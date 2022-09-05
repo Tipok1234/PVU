@@ -15,6 +15,7 @@ namespace Assets.Scripts.Models
 
         [SerializeField] private GameObject _gunModel;
 
+        [SerializeField] private float _sphereRadius;
         private float _currentReloadTime = 0;
         private AttackUnit _attackUnit;
 
@@ -33,10 +34,9 @@ namespace Assets.Scripts.Models
                 _currentReloadTime += Time.deltaTime;
                 if (_currentReloadTime >= _reloadTime)
                 {
-
-                    if (Physics.CheckSphere(transform.position, 10f, _enemyLayer))
+                    if (Physics.CheckSphere(transform.position, _sphereRadius, _enemyLayer))
                     {
-                        var hitsInfo = Physics.SphereCastAll(transform.position, 10, transform.position, 10f, _enemyLayer);
+                        var hitsInfo = Physics.OverlapSphere(transform.position, _sphereRadius, _enemyLayer);
 
                         float nearDistance = 10000f;
 
@@ -46,19 +46,24 @@ namespace Assets.Scripts.Models
                         for (int i = 0; i < hitsInfo.Length; i++)
                         {
 
-                            var testDistance = Vector3.Distance(transform.position, hitsInfo[i].transform.position);
+                            float testDistance = Vector3.Distance(transform.position, hitsInfo[i].transform.position);
 
                             if (testDistance < nearDistance)
+                            {
+                                nearDistance = testDistance;
                                 targetIndex = i;
-
+                            }
                         }
 
-                        if (hitsInfo[targetIndex].transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
-                        {       
-                            _attackUnit = enemy;
-                            
-                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit);
-                            _currentReloadTime = 0;         
+                        if (targetIndex < hitsInfo.Length)
+                        {
+                            if (hitsInfo[targetIndex].transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
+                            {
+                                _attackUnit = enemy;
+
+                                Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
+                                _currentReloadTime = 0;
+                            }
                         }
                     }
                 }             
@@ -68,25 +73,19 @@ namespace Assets.Scripts.Models
         private void RotateTowardsEnemy()
         {
             Vector3 lookRotation = (_attackUnit.transform.position - _gunModel.transform.position);
-            //_gunModel.transform.forward = lookRotation;
             _gunModel.transform.rotation = Quaternion.LookRotation(lookRotation);
         }
 
-        void OnDrawGizmosSelected()
-        {
-            // Draw a yellow sphere at the transform's position
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(transform.position, 10f);
-        }
+        //void OnDrawGizmosSelected()
+        //{
+        //    // Draw a yellow sphere at the transform's position
+        //    Gizmos.color = Color.yellow;
+        //    Gizmos.DrawSphere(transform.position, 12f);
+        //}
 
         public override void Create()
         {
             base.Create();
-        }
-
-        public void CreateShooter()
-        {
-
         }
         public override void TakeDamage(float damage)
         {
