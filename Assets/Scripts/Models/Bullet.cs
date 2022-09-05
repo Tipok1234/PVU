@@ -37,7 +37,6 @@ namespace Assets.Scripts.Models
                 _currentTimeBullet += Time.deltaTime;
             }
         }
-
         public void Setup(float damage)
         {
             _isActive = true;

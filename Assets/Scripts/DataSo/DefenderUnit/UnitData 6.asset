@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef369c3e061315945ac980de834ce7a5, type: 3}
-  m_Name: UnitData 2
+  m_Name: UnitData 6
   m_EditorClassIdentifier: 
-  _unitSprite: {fileID: 21300000, guid: 1d48643c81fea214887f74ef68bebddd, type: 3}
-  _price: 200
-  _hp: 25
-  _placeCooldown: 5
-  _defenceUnitType: 6
+  _unitSprite: {fileID: 21300000, guid: 2c04f4986ebc72e48a8b0c3eb2e42db2, type: 3}
+  _price: 400
+  _hp: 60
+  _placeCooldown: 10
+  _defenceUnitType: 5

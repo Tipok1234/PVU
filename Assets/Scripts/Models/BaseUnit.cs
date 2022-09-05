@@ -7,6 +7,7 @@ namespace Assets.Scripts.Models
     {
         public event Action UnitDeadAction;
         public float HP => _hp;
+        public bool IsDead => _isDead;
         public Collider ColliderUnit => _colliderUnit;
 
         [SerializeField] protected float _hp;
