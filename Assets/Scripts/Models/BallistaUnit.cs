@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.AnimationsModel;
 
 namespace Assets.Scripts.Models
 {
@@ -14,6 +15,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _damageUnit = 10;
 
         [SerializeField] private GameObject _gunModel;
+        [SerializeField] private AnimationModel _animationModel;
 
         [SerializeField] private float _sphereRadius;
         private float _currentReloadTime = 0;
@@ -61,6 +63,7 @@ namespace Assets.Scripts.Models
                             {
                                 _attackUnit = enemy;
 
+                                _animationModel.PlayAnimation();
                                 Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
                                 _currentReloadTime = 0;
                             }

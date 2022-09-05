@@ -13,9 +13,9 @@ namespace Assets.Scripts.AnimationsModel
         public override void PlayAnimation()
         {
             Sequence mySequence = DOTween.Sequence();
-            mySequence.Prepend(_gunModel.DOLocalMoveX(_xEndPos, _animationTime));
+            mySequence.Prepend(_gunModel.DOLocalMoveX(_xEndPos, _animationTime).SetEase(Ease.OutElastic));
             mySequence.AppendInterval(0.4f);
-            mySequence.Append(_gunModel.DOLocalMoveX(_xStartPos, _animationTime));
+            mySequence.Append(_gunModel.DOLocalMoveX(_xStartPos, _animationTime).SetEase(Ease.Linear));
         }
     }
 }
