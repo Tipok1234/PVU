@@ -1,0 +1,10 @@
+diff a/Assets/Scripts/Grids/Grid.cs b/Assets/Scripts/Grids/Grid.cs	(rejected hunks)
+@@ -104,7 +104,7 @@
+                     k++;
+                 }
+             }
+-            _fieldBounes = new FieldBounes(0,w,0,l);
++            _fieldBounes = new FieldBounes(0, w, 0, l);
+         }
+ 
+         static public Vector3 GetXZFieldRandomVector()

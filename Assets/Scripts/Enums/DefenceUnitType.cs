@@ -9,6 +9,7 @@ namespace Assets.Scripts.Enums
         Mine_Unit,
         Ballista_Unit,
         Spike_Unit,
-        Wall_Unit
+        Wall_Unit,
+        Chest_Unit
     }
 }

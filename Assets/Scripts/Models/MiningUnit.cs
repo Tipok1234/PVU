@@ -6,8 +6,7 @@ namespace Assets.Scripts.Models
 {
     public class MiningUnit : DefenceUnit
     {
-
-        [SerializeField] private int _softIncomeAmount;
+      //  [SerializeField] private int _softIncomeAmount;
         [SerializeField] private float _softIncomeCooldown;
         [SerializeField] private GunPowderModel _gunPowderPrefab;
         [SerializeField] private Transform _spawnDimond;
