@@ -17,12 +17,6 @@ namespace Assets.Scripts.Models
 
         private float _currentReloadTime = 0;
 
-        private void FixedUpdate()
-        {
-            if (_isDead)
-                return;
-        }
-
         public override void Create()
         {
             base.Create();
@@ -70,8 +64,9 @@ namespace Assets.Scripts.Models
 
         public override void Death(float deathTime = 0)
         {
-            base.Death(deathTime);
             StopCoroutine(LogicCoroutine());
+            base.Death(deathTime);
+           
         }
     }
 

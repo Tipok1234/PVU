@@ -8,10 +8,5 @@ namespace Assets.Scripts.Models
         public DefenceUnitType DefencUnitType => _unitDefenceType;
 
         [SerializeField] protected DefenceUnitType _unitDefenceType;
-        public virtual int Sell()
-        {
-            base.Death();
-            return 10;
-        }
     }
 }

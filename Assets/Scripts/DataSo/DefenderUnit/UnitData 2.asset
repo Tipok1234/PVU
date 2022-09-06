@@ -16,4 +16,4 @@ MonoBehaviour:
   _price: 200
   _hp: 25
   _placeCooldown: 5
-  _defenceUnitType: 6
+  _defenceUnitType: 7

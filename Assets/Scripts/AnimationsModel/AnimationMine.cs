@@ -11,7 +11,7 @@ namespace Assets.Scripts.AnimationsModel
         [SerializeField] private float _animationTime;
         public override void PlayAnimation()
         {
-            _mineModel.DOMoveY(0.2f, _animationTime);
+            _mineModel.DOMoveY(0.2f, _animationTime).SetEase(Ease.InOutCubic);
         }
     }
 }

@@ -56,8 +56,19 @@ namespace Assets.Scripts.Managers
             _levelComplete.ShowWindow();
             _dataManager.UpdateLevel();
         }
-        private void OnUnitSold(int soldValue)
+        private void OnUnitSold(DefenceUnitType unitType)
         {
+            int soldValue = 0;
+
+            for (int i = 0; i < _unitDataSo.Length; i++)
+            {
+                if (_unitDataSo[i].DefencUnitType == unitType)
+                {
+                    soldValue = (int)(_unitDataSo[i].Price * 0.5f);
+                    break;
+                }
+            }
+
             _currentGunpowder += soldValue;
             _gameUIController.UpdateSoftCurrency(_currentGunpowder);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);

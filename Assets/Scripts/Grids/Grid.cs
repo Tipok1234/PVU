@@ -11,7 +11,7 @@ namespace Assets.Scripts.Grids
     {
         public IReadOnlyList<Transform> EnemySpawnPoints => _enemySpawnPoints;
         public event Action<DefenceUnitType> UnitCreateAction;
-        public event Action<int> UnitSoldAction;
+        public event Action<DefenceUnitType> UnitSoldAction;
         public event Action<int> CurrencyCollectedAction;
 
         [SerializeField] private LayerMask _gridCellLayer;
@@ -95,7 +95,8 @@ namespace Assets.Scripts.Grids
                         
                         if(_isSell && hitInfo.transform.TryGetComponent<DefenceUnit>(out DefenceUnit defenceUnit))
                         {
-                            UnitSoldAction?.Invoke(defenceUnit.Sell());
+                            UnitSoldAction?.Invoke(defenceUnit.DefencUnitType);
+                            defenceUnit.Death();
                             _isSell = false;
                         }
                     }

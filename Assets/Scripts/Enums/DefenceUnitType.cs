@@ -8,6 +8,7 @@ namespace Assets.Scripts.Enums
         Piercing_Unit,
         Mine_Unit,
         Ballista_Unit,
+        Spike_Unit,
         Wall_Unit
     }
 }

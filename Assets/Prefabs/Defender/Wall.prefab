@@ -110,4 +110,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _colliderUnit: {fileID: 8015350958617988695}
-  _unitDefenceType: 6
+  _unitDefenceType: 7
