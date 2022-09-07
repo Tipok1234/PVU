@@ -10,6 +10,8 @@ namespace Assets.Scripts.Enums
         Ballista_Unit,
         Spike_Unit,
         Wall_Unit,
-        Chest_Unit
+        Chest_Unit,
+        Frost_Unit,
+        Bomb_Unit
     }
 }
