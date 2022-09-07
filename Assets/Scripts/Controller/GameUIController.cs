@@ -20,7 +20,7 @@ namespace Assets.Scripts.Controller
         [SerializeField] private Button _sellButton;
 
         [SerializeField] private Grids.Grid _grid;
-        [SerializeField] private TMP_Text _scoreText;
+        [SerializeField] private TMP_Text _gameCurrencyText;
         [SerializeField] private TMP_Text _softCurrencyText;
 
         public event Action<DefenceUnitType> UnitSelectedAction;
@@ -30,11 +30,6 @@ namespace Assets.Scripts.Controller
         private void Awake()
         {
             _sellButton.onClick.AddListener(SellButton);
-        }
-        private void Start()
-        {
-            _scoreText.text = 100.ToString();
-            _softCurrencyText.text = 50.ToString();
         }
 
         public void Setup(UnitDataSo[] unitDataSo)
@@ -87,9 +82,14 @@ namespace Assets.Scripts.Controller
         {
             SellButtonAction?.Invoke();
         }
+        public void UpdateGameCurrency(int gameCurrencyAmount)
+        {
+            _gameCurrencyText.text = gameCurrencyAmount.ToString();
+        }
+
         public void UpdateSoftCurrency(int softCurrencyAmount)
         {
-            _scoreText.text = softCurrencyAmount.ToString();
+            _softCurrencyText.text = softCurrencyAmount.ToString();
         }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Assets.Scripts.Enums;
 using System;
 
 namespace Assets.Scripts.Managers
@@ -7,12 +8,15 @@ namespace Assets.Scripts.Managers
     {
         public int LevelIndex => _levelIndex;
         public int SoftCurrency => _softCurrency;
+        public int HardCurrency => _hardCurrency;
 
         private int _levelIndex;
         private int _softCurrency;
+        private int _hardCurrency;
 
-        private string _nameLevelKey;
-        private string _nameCurrencyKey;
+        private string _levelKey = "Level";
+        private string _softCurrencyKey = "SoftCurrency";
+        private string _hardCurrencyKey = "HardCurrency";
 
         private static DataManager instance;
 
@@ -31,17 +35,30 @@ namespace Assets.Scripts.Managers
 
         public void LoadData()
         {
-            _softCurrency = PlayerPrefs.GetInt(_nameCurrencyKey, 100);
-            _levelIndex = PlayerPrefs.GetInt(_nameLevelKey, 0);
+            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 10);
+            _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
         }
         public void UpdateLevel()
         {
             _levelIndex++;
-            PlayerPrefs.SetInt(_nameLevelKey, _levelIndex);
+            PlayerPrefs.SetInt(_levelKey, _levelIndex);
         }
-        public void UpdateCurrency()
+        public void AddCurrency(int currencyAmount,CurrencyType currencyType)
         {
-            PlayerPrefs.SetInt(_nameCurrencyKey,_softCurrency);
+            switch (currencyType)
+            {
+                case CurrencyType.SoftCurrency:
+                    //_softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 10);
+                    _softCurrency += currencyAmount;
+                    PlayerPrefs.SetInt(_softCurrencyKey, _softCurrency);
+                    break;
+                case CurrencyType.HardCurrency:
+                    //_hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 10);
+                    _hardCurrency += currencyAmount;
+                    PlayerPrefs.SetInt(_hardCurrencyKey, _hardCurrency);
+                    break;
+            }
+
         }
         public void Save<T>(string key, T saveData)
         {

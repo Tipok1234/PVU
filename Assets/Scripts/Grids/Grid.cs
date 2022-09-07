@@ -12,7 +12,7 @@ namespace Assets.Scripts.Grids
         public IReadOnlyList<Transform> EnemySpawnPoints => _enemySpawnPoints;
         public event Action<DefenceUnitType> UnitCreateAction;
         public event Action<DefenceUnitType> UnitSoldAction;
-        public event Action<int> CurrencyCollectedAction;
+        public event Action<int,CurrencyType> CurrencyCollectedAction;
 
         [SerializeField] private LayerMask _gridCellLayer;
         [SerializeField] private GameObject _cartObject;
@@ -86,14 +86,14 @@ namespace Assets.Scripts.Grids
 
                     if (Physics.Raycast(ray, out RaycastHit hitInfo))
                     {
-                        if (hitInfo.transform.TryGetComponent<GunPowderModel>(out GunPowderModel gunPowderModel))
+                        if (hitInfo.transform.TryGetComponent<ResourceModel>(out ResourceModel resourceModel))
                         {
-                            CurrencyCollectedAction?.Invoke(gunPowderModel.SoftCurrency);
-                            gunPowderModel.gameObject.SetActive(false);
+                            CurrencyCollectedAction?.Invoke(resourceModel.CurrencyAmount, resourceModel.CurrencyType);
+                            resourceModel.gameObject.SetActive(false);
                             return;
                         }
                         
-                        if(_isSell && hitInfo.transform.TryGetComponent<DefenceUnit>(out DefenceUnit defenceUnit))
+                        if (_isSell && hitInfo.transform.TryGetComponent<DefenceUnit>(out DefenceUnit defenceUnit))
                         {
                             UnitSoldAction?.Invoke(defenceUnit.DefencUnitType);
                             defenceUnit.Death();

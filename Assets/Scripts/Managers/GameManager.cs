@@ -40,14 +40,15 @@ namespace Assets.Scripts.Managers
         private void Start()
         {
             _dataManager = FindObjectOfType<DataManager>();
+            _dataManager.LoadData();
             _softCurrency = _dataManager.SoftCurrency;
 
             _grid.Setup(_width, _length);
             _enemyManager.Setup(_grid.EnemySpawnPoints, _levelManager.GetLevelByIndex(_dataManager.LevelIndex));
             _gameUIController.Setup(_unitDataSo);
 
-            //_gameUIController.UpdateSoftCurrency(_currentGunpowder);
-            _gameUIController.UpdateSoftCurrency(_currentGunpowder);
+            _gameUIController.UpdateSoftCurrency(_softCurrency);
+            _gameUIController.UpdateGameCurrency(_currentGunpowder);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
         }
 
@@ -70,14 +71,25 @@ namespace Assets.Scripts.Managers
             }
 
             _currentGunpowder += soldValue;
-            _gameUIController.UpdateSoftCurrency(_currentGunpowder);
+            _gameUIController.UpdateGameCurrency(_currentGunpowder);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
         }
-        private void OnCurrencyCollected(int softCurrency)
+        private void OnCurrencyCollected(int currencyAmount,CurrencyType currencyType)
         {
-            _currentGunpowder += softCurrency;
-            _gameUIController.UpdateSoftCurrency(_currentGunpowder);
-            _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
+            switch(currencyType)
+            {
+                case CurrencyType.GameCurrency:
+                    _currentGunpowder += currencyAmount;
+                    _gameUIController.UpdateGameCurrency(_currentGunpowder);
+                    _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
+                    break;
+                case CurrencyType.SoftCurrency:
+                    _softCurrency += currencyAmount;
+                    _gameUIController.UpdateSoftCurrency(_softCurrency);
+                    _dataManager.AddCurrency(currencyAmount, currencyType);
+                    break;
+
+            }
         }
 
         public void OnUnitSelect(DefenceUnitType unitType)
@@ -102,7 +114,7 @@ namespace Assets.Scripts.Managers
                 if (_unitDataSo[i].DefencUnitType == defenceUnit)
                 {
                     _currentGunpowder -= _unitDataSo[i].Price;
-                    _gameUIController.UpdateSoftCurrency(_currentGunpowder);
+                    _gameUIController.UpdateGameCurrency(_currentGunpowder);
                     _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
                     _gameUIController.RechargePlaceCooldown(defenceUnit);
                     break;

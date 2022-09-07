@@ -166,6 +166,7 @@ MonoBehaviour:
   - {fileID: -4021908266205086866, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
   - {fileID: 647949729611509415, guid: deac9ebeb93499a4dad295cbe313ac32, type: 3}
   - {fileID: 6047368056997125172, guid: 67a93ca1f3ecc964da800e601eef4777, type: 3}
+  - {fileID: -1962755522481879464, guid: aa13d37dd338b024689251d74bd5ff35, type: 3}
   _gameUIController: {fileID: 990946825}
 --- !u!4 &22512617
 Transform:
@@ -1938,7 +1939,7 @@ MonoBehaviour:
   _spawnParent: {fileID: 717212129}
   _sellButton: {fileID: 1650153825}
   _grid: {fileID: 22512616}
-  _scoreText: {fileID: 1188777648}
+  _gameCurrencyText: {fileID: 1188777648}
   _softCurrencyText: {fileID: 112439929}
 --- !u!1 &1083087478
 GameObject:
@@ -1999,6 +2000,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ff9df3e6372c2542bc79a116144c6da, type: 2}
   - {fileID: 11400000, guid: 22c060d78cba8084c9407f7e10e99e65, type: 2}
   - {fileID: 11400000, guid: 7ee1faacd66557d409e97a71a37fd591, type: 2}
+  - {fileID: 11400000, guid: a49668ca67857074486b0f1b29b04e52, type: 2}
 --- !u!1 &1148342404
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,16 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {
     public class MiningUnit : DefenceUnit
     {
-      //  [SerializeField] private int _softIncomeAmount;
+        [SerializeField] private int _softIncomeAmount;
         [SerializeField] private float _softIncomeCooldown;
-        [SerializeField] private GunPowderModel _gunPowderPrefab;
+        [SerializeField] private ResourceModel _gunPowderPrefab;
         [SerializeField] private Transform _spawnDimond;
         [SerializeField] private AnimationModel _animationModel;
+        [SerializeField] private CurrencyType _currencyType;
 
         private float _currentSoftIncomeTimer = 0;
 
@@ -38,8 +40,8 @@ namespace Assets.Scripts.Models
         }
         public override void Death(float deathTime = 0)
         {
-            base.Death(deathTime);
             StopCoroutine(IncomeCoroutine());
+            base.Death(deathTime);
         }
 
         private IEnumerator IncomeCoroutine()
@@ -49,7 +51,7 @@ namespace Assets.Scripts.Models
                 if (_currentSoftIncomeTimer >= _softIncomeCooldown)
                 {
                     _animationModel.PlayAnimation();
-                    Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity).Setup();
+                    Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity).Setup(_softIncomeAmount, _currencyType);
                     _currentSoftIncomeTimer = 0;
                 }
 
