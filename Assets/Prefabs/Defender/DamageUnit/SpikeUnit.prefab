@@ -147,7 +147,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _damage: 10
-  _reloadTimeDamage: 0
+  _reloadTimeDamage: 2
   _animationModel: {fileID: -2279884026411911093}
 --- !u!114 &-2279884026411911093
 MonoBehaviour:

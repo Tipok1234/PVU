@@ -41,7 +41,7 @@ namespace Assets.Scripts.Models
                     }
                     
                 }
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(_reloadTimeDamage);
             }
         }
 
