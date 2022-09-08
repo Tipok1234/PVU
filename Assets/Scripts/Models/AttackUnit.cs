@@ -16,7 +16,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private LayerMask _allyLayer;
 
         private float _currentReloadTime = 0;
-        
+
 
         private bool _isWalk = true;
         private bool _isAttack = true;
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Models
             var ray = new Ray(transform.position, transform.forward * (0.5f));
 
             Debug.DrawRay(transform.position, transform.forward * (0.5f), Color.red, Time.deltaTime);
-            
+
             if (Physics.Raycast(ray, out RaycastHit hit, 0.5f, _allyLayer))
             {
                 AttackerUnit();
@@ -51,9 +51,9 @@ namespace Assets.Scripts.Models
         }
         public void WalkUnit()
         {
-                _selfTransform.transform.position += Vector3.right * (-1f) * _moveSpeed * Time.deltaTime;
-                _animator.SetBool("Walk", true);
-                _animator.SetBool("Attack", false);
+            _selfTransform.transform.position += Vector3.right * (-1f) * _moveSpeed * Time.deltaTime;
+            _animator.SetBool("Walk", true);
+            _animator.SetBool("Attack", false);
 
         }
         private void AttackerUnit()
@@ -83,6 +83,24 @@ namespace Assets.Scripts.Models
             {
                 DeathUnit();
             }
+        }
+
+        public void TakeDamageDebuff(float damage, BaseDebuff baseDebuff)
+        {
+            switch (baseDebuff.DebuffType)
+            {
+                case DebuffType.Frost_Debuff:
+                    FrostDebuff fd = baseDebuff as FrostDebuff;
+
+                    break;
+                case DebuffType.Stun_Debuff:
+
+                    break;
+            }
+
+
+
+            _hp -= damage;
         }
     }
 }

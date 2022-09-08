@@ -1,4 +1,5 @@
 using UnityEngine;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {
@@ -13,6 +14,7 @@ namespace Assets.Scripts.Models
         protected bool _isActive;
 
         private Vector3 _direction;
+        private BaseDebuff _baseDebuff;
 
         private void FixedUpdate()
         {
@@ -29,8 +31,17 @@ namespace Assets.Scripts.Models
                 {
                     if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                     {
+                        if(_baseDebuff == null)
+                        {
+                            enemy.TakeDamage(_damage);
+                        }
+                        else
+                        {
+                            enemy.TakeDamageDebuff(_damage,_baseDebuff);
+                        }
+                        
                         ResetBullet();
-                        enemy.TakeDamage(_damage);
+                        return;
                     }
                 }
 
@@ -43,21 +54,23 @@ namespace Assets.Scripts.Models
             }
         }
 
-        //private void RotateTowardsEnemy(Vector3 targetPos)
-        //{
-        //    Vector3 lookRotation = (targetPos - transform.position);
-        //    //_gunModel.transform.forward = lookRotation;
-        //    transform.rotation = Quaternion.LookRotation(lookRotation);
-        //}
         public void Setup(float damage, Vector3 direction)
         {
-
             _direction = direction.normalized;
             _direction.y = 0;
-            //transform.rotation = Quaternion.LookRotation(_direction);
             _damage = damage;
             _isActive = true;
             
+        }
+
+        public void Setup(float damage, Vector3 direction, BaseDebuff baseDebuff)
+        {
+            _baseDebuff = baseDebuff;
+            _direction = direction.normalized;
+            _direction.y = 0;
+            _damage = damage;
+            _isActive = true;
+
         }
 
 

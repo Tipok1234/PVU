@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {
@@ -20,6 +21,8 @@ namespace Assets.Scripts.Models
         {
             _hp -= damage;
         }
+
+
 
         public virtual void Create()
         {
