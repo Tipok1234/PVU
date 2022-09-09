@@ -12,6 +12,8 @@ namespace Assets.Scripts.Controller
 {
     public class GameUIController : MonoBehaviour
     {
+        public TMP_Text SoftCurrency;
+
         public event Action SellButtonAction;
 
         [SerializeField] private UnitGameUI _unitGameUIPrefab;

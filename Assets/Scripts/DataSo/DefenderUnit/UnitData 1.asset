@@ -17,3 +17,14 @@ MonoBehaviour:
   _hp: 10
   _placeCooldown: 5
   _defenceUnitType: 0
+  _unitCharacteristicDatas:
+  - _value: 100
+    _characteristicUnitType: 0
+  - _value: 10
+    _characteristicUnitType: 2
+  - _value: 25
+    _characteristicUnitType: 5
+  - _value: 5
+    _characteristicUnitType: 4
+  - _value: 10
+    _characteristicUnitType: 3
