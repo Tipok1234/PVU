@@ -1688,6 +1688,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bf65df82402650d42a7e8a27bcf77250, type: 2}
   - {fileID: 11400000, guid: 6f60ddb7f8b9624409eeda350605438e, type: 2}
   - {fileID: 11400000, guid: 5efacc49f28328049a8e0ebb5d9285b6, type: 2}
+  _defenceUnitsUpgradeConfig: {fileID: 11400000, guid: d2f5ea483266a8a4581b351df3b6dee8, type: 2}
 --- !u!1 &1002486300
 GameObject:
   m_ObjectHideFlags: 0

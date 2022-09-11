@@ -30,6 +30,7 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private TMP_Text _hardCurrencyText;
 
         [SerializeField] private UnitDataSo[] _unitDataSO;
+        [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
 
@@ -71,8 +72,10 @@ namespace Assets.Scripts.UIManager
                 {
                     for (int j = 0; j < _unitDataSO[i].UnitCharacteristicDatas.Length; j++)
                     {
+                        UnitCharacteristicData unitData = _defenceUnitsUpgradeConfig.DefenceUpgradeUnit(_unitDataSO[i].DefencUnitType, _unitDataSO[i].Level+1, _unitDataSO[i].UnitCharacteristicDatas[j].CharacteristicUnitType);
+                        //_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(_unitDataSO[i].DefencUnitType, _unitDataSO[i].Level);
                         UnitCharacteristicUIItem unitUI = Instantiate(_characteristicUnitUIPrefab, _spawnCharacteristicParent);
-                        unitUI.Setup(_unitDataSO[i].UnitCharacteristicDatas[j]);
+                        unitUI.Setup(_unitDataSO[i].UnitCharacteristicDatas[j], unitData);
                         _imageUnit.sprite = _unitDataSO[i].UnitSprite;
                         _unitName.text = _unitDataSO[i].DefencUnitType.ToString();
 

@@ -12,6 +12,7 @@ namespace Assets.Scripts.DataSo
         public bool IsOpen => _isOpen;
         public int Price => _price;
         public int HP => _hp;
+        public int Level => _level;
         public float PlaceCooldown => _placeCooldown;
         public Sprite UnitSprite => _unitSprite;
         public DefenceUnitType DefencUnitType => _defenceUnitType;
@@ -25,8 +26,14 @@ namespace Assets.Scripts.DataSo
         [SerializeField] private DefenceUnitType _defenceUnitType;
         [SerializeField] private UnitCharacteristicData[] _unitCharacteristicDatas;
 
+        private int _level = 1;
+
         private bool _isOpen;
 
+        public void SetLevel(int level)
+        {
+            _level = level;
+        }
         public void OpenUnit()
         {
             _isOpen = true;

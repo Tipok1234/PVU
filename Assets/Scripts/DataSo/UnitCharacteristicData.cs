@@ -12,6 +12,6 @@ namespace Assets.Scripts.DataSo
         public CharacteristicUnitType CharacteristicUnitType => _characteristicUnitType;
 
         [SerializeField] private float _value;
-        [SerializeField] private CharacteristicUnitType _characteristicUnitType;
+        [SerializeField] private CharacteristicUnitType _characteristicUnitType;       
     }
 }
