@@ -7,11 +7,15 @@ namespace Assets.Scripts.DataSo
     public class DefenceUnitUpgradeData
     {
         public DefenceUnitType DefenceUnitType => _defenceUnitType;
+        public int UnlockUnitPrice => _unlockUnitPrice;
         public DefenceUnitUpgradeDataModel[] DefenceUnitUpgradeDataModel => _defenceUnitUpgradeDataModel;
 
         [SerializeField] private DefenceUnitType _defenceUnitType;
+        [SerializeField] private CurrencyType _currencyUnlockType;
+        [SerializeField] private int _unlockUnitPrice;
 
         [SerializeField] private DefenceUnitUpgradeDataModel[] _defenceUnitUpgradeDataModel;
+
     }
 
     [System.Serializable]

@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48ba2ef946af13c48b7b0ff08a103685, type: 3}
-  m_Name: UpgradeDefence
+  m_Name: DefenceUnitsUpgradeConfig
   m_EditorClassIdentifier: 
   _defenceUnitUpgradeDatas:
   - _defenceUnitType: 0
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 5
     _defenceUnitUpgradeDataModel:
     - _unitCharacteristicDatas:
       - _value: 100
         _characteristicUnitType: 0
       - _value: 50
         _characteristicUnitType: 2
-      - _value: 5
+      - _value: 10
         _characteristicUnitType: 3
       - _value: 10
         _characteristicUnitType: 4
@@ -32,42 +34,30 @@ MonoBehaviour:
         _characteristicUnitType: 0
       - _value: 50
         _characteristicUnitType: 2
-      - _value: 5
+      - _value: 10
+        _characteristicUnitType: 3
+      - _value: 9
+        _characteristicUnitType: 4
+      - _value: 30
+        _characteristicUnitType: 5
+      _upgradeCost: 200
+    - _unitCharacteristicDatas:
+      - _value: 100
+        _characteristicUnitType: 0
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 8
         _characteristicUnitType: 3
       - _value: 8
         _characteristicUnitType: 4
-      - _value: 30
-        _characteristicUnitType: 5
-      _upgradeCost: 200
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
-        _characteristicUnitType: 3
-      - _value: 5
-        _characteristicUnitType: 4
-      - _value: 30
+      - _value: 35
         _characteristicUnitType: 5
       _upgradeCost: 200
   - _defenceUnitType: 1
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 10
     _defenceUnitUpgradeDataModel:
     - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
       - _value: 100
         _characteristicUnitType: 0
       - _value: 10
@@ -76,54 +66,38 @@ MonoBehaviour:
         _characteristicUnitType: 2
       - _value: 6
         _characteristicUnitType: 3
-      - _value: 5
+      - _value: 8
         _characteristicUnitType: 4
       _upgradeCost: 150
     - _unitCharacteristicDatas:
       - _value: 100
         _characteristicUnitType: 0
-      - _value: 100
-        _characteristicUnitType: 0
       - _value: 12
         _characteristicUnitType: 1
-      - _value: 55
-        _characteristicUnitType: 2
-      - _value: 6
-        _characteristicUnitType: 3
-      - _value: 4.5
-        _characteristicUnitType: 4
-      _upgradeCost: 350
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 15
-        _characteristicUnitType: 1
-      - _value: 65
-        _characteristicUnitType: 2
-      - _value: 6
-        _characteristicUnitType: 3
-      - _value: 4
-        _characteristicUnitType: 4
-      _upgradeCost: 500
-  - _defenceUnitType: 2
-    _defenceUnitUpgradeDataModel:
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
       - _value: 50
+        _characteristicUnitType: 2
+      - _value: 5.5
+        _characteristicUnitType: 3
+      - _value: 8
+        _characteristicUnitType: 4
+      _upgradeCost: 300
+    - _unitCharacteristicDatas:
+      - _value: 100
+        _characteristicUnitType: 0
+      - _value: 14
+        _characteristicUnitType: 1
+      - _value: 60
         _characteristicUnitType: 2
       - _value: 5
         _characteristicUnitType: 3
-      - _value: 10
+      - _value: 8
         _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 100
+      _upgradeCost: 450
+  - _defenceUnitType: 2
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 15
+    _defenceUnitUpgradeDataModel:
     - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
       - _value: 250
         _characteristicUnitType: 0
       - _value: 10
@@ -132,73 +106,267 @@ MonoBehaviour:
         _characteristicUnitType: 2
       - _value: 6
         _characteristicUnitType: 3
-      - _value: 5
+      - _value: 10
         _characteristicUnitType: 4
-      _upgradeCost: 250
+      _upgradeCost: 200
     - _unitCharacteristicDatas:
-      - _value: 100
+      - _value: 250
         _characteristicUnitType: 0
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 15
+      - _value: 12
         _characteristicUnitType: 1
-      - _value: 55
+      - _value: 50
         _characteristicUnitType: 2
-      - _value: 6
+      - _value: 5.5
         _characteristicUnitType: 3
-      - _value: 4.5
+      - _value: 9
         _characteristicUnitType: 4
-      - _value: 4.5
+      _upgradeCost: 400
+    - _unitCharacteristicDatas:
+      - _value: 250
+        _characteristicUnitType: 0
+      - _value: 14
+        _characteristicUnitType: 1
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 5
+        _characteristicUnitType: 3
+      - _value: 8
+        _characteristicUnitType: 4
+      _upgradeCost: 400
+  - _defenceUnitType: 3
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 20
+    _defenceUnitUpgradeDataModel:
+    - _unitCharacteristicDatas:
+      - _value: 150
+        _characteristicUnitType: 0
+      - _value: 12
+        _characteristicUnitType: 1
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 7
+        _characteristicUnitType: 3
+      - _value: 10
+        _characteristicUnitType: 4
+      _upgradeCost: 150
+    - _unitCharacteristicDatas:
+      - _value: 150
+        _characteristicUnitType: 0
+      - _value: 14
+        _characteristicUnitType: 1
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 6.5
+        _characteristicUnitType: 3
+      - _value: 9
+        _characteristicUnitType: 4
+      _upgradeCost: 300
+    - _unitCharacteristicDatas:
+      - _value: 150
+        _characteristicUnitType: 0
+      - _value: 14
+        _characteristicUnitType: 1
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 6.5
+        _characteristicUnitType: 3
+      - _value: 8
+        _characteristicUnitType: 4
+      _upgradeCost: 450
+  - _defenceUnitType: 4
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 25
+    _defenceUnitUpgradeDataModel:
+    - _unitCharacteristicDatas:
+      - _value: 75
+        _characteristicUnitType: 0
+      - _value: 400
+        _characteristicUnitType: 1
+      - _value: 10
+        _characteristicUnitType: 3
+      - _value: 15
+        _characteristicUnitType: 4
+      _upgradeCost: 150
+    - _unitCharacteristicDatas:
+      - _value: 75
+        _characteristicUnitType: 0
+      - _value: 600
+        _characteristicUnitType: 1
+      - _value: 8
+        _characteristicUnitType: 3
+      - _value: 13
+        _characteristicUnitType: 4
+      _upgradeCost: 300
+    - _unitCharacteristicDatas:
+      - _value: 50
+        _characteristicUnitType: 0
+      - _value: 800
+        _characteristicUnitType: 1
+      - _value: 7
+        _characteristicUnitType: 3
+      - _value: 11
         _characteristicUnitType: 4
       _upgradeCost: 500
+  - _defenceUnitType: 5
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 30
+    _defenceUnitUpgradeDataModel:
     - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 100
+      - _value: 350
         _characteristicUnitType: 0
       - _value: 15
         _characteristicUnitType: 1
-      - _value: 65
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 7
+        _characteristicUnitType: 3
+      - _value: 10
+        _characteristicUnitType: 4
+      _upgradeCost: 300
+    - _unitCharacteristicDatas:
+      - _value: 350
+        _characteristicUnitType: 0
+      - _value: 20
+        _characteristicUnitType: 1
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 7
+        _characteristicUnitType: 3
+      - _value: 9
+        _characteristicUnitType: 4
+      _upgradeCost: 600
+    - _unitCharacteristicDatas:
+      - _value: 350
+        _characteristicUnitType: 0
+      - _value: 20
+        _characteristicUnitType: 1
+      - _value: 50
         _characteristicUnitType: 2
       - _value: 6
         _characteristicUnitType: 3
-      - _value: 4
+      - _value: 7
         _characteristicUnitType: 4
-      - _value: 4
-        _characteristicUnitType: 4
-      _upgradeCost: 750
-  - _defenceUnitType: 3
+      _upgradeCost: 900
+  - _defenceUnitType: 6
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 35
     _defenceUnitUpgradeDataModel:
     - _unitCharacteristicDatas:
       - _value: 100
         _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
+      - _value: 10
+        _characteristicUnitType: 1
+      - _value: 12
         _characteristicUnitType: 3
       - _value: 10
         _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
       _upgradeCost: 100
     - _unitCharacteristicDatas:
       - _value: 100
         _characteristicUnitType: 0
-      - _value: 150
-        _characteristicUnitType: 0
-      - _value: 10
+      - _value: 15
         _characteristicUnitType: 1
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 6
+      - _value: 10
         _characteristicUnitType: 3
-      - _value: 5
+      - _value: 10
         _characteristicUnitType: 4
       _upgradeCost: 200
     - _unitCharacteristicDatas:
       - _value: 100
         _characteristicUnitType: 0
-      - _value: 100
+      - _value: 20
+        _characteristicUnitType: 1
+      - _value: 8
+        _characteristicUnitType: 3
+      - _value: 8
+        _characteristicUnitType: 4
+      _upgradeCost: 300
+  - _defenceUnitType: 7
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 40
+    _defenceUnitUpgradeDataModel:
+    - _unitCharacteristicDatas:
+      - _value: 200
+        _characteristicUnitType: 0
+      - _value: 400
+        _characteristicUnitType: 2
+      - _value: 12
+        _characteristicUnitType: 4
+      _upgradeCost: 150
+    - _unitCharacteristicDatas:
+      - _value: 200
+        _characteristicUnitType: 0
+      - _value: 550
+        _characteristicUnitType: 2
+      - _value: 10
+        _characteristicUnitType: 4
+      _upgradeCost: 300
+    - _unitCharacteristicDatas:
+      - _value: 200
+        _characteristicUnitType: 0
+      - _value: 700
+        _characteristicUnitType: 2
+      - _value: 8
+        _characteristicUnitType: 4
+      _upgradeCost: 450
+  - _defenceUnitType: 8
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 45
+    _defenceUnitUpgradeDataModel:
+    - _unitCharacteristicDatas:
+      - _value: 200
+        _characteristicUnitType: 0
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 15
+        _characteristicUnitType: 3
+      - _value: 20
+        _characteristicUnitType: 4
+      - _value: 10
+        _characteristicUnitType: 5
+      _upgradeCost: 250
+    - _unitCharacteristicDatas:
+      - _value: 200
+        _characteristicUnitType: 0
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 14
+        _characteristicUnitType: 3
+      - _value: 18
+        _characteristicUnitType: 4
+      - _value: 15
+        _characteristicUnitType: 5
+      _upgradeCost: 500
+    - _unitCharacteristicDatas:
+      - _value: 200
+        _characteristicUnitType: 0
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 12
+        _characteristicUnitType: 3
+      - _value: 15
+        _characteristicUnitType: 4
+      - _value: 20
+        _characteristicUnitType: 5
+      _upgradeCost: 750
+  - _defenceUnitType: 9
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 50
+    _defenceUnitUpgradeDataModel:
+    - _unitCharacteristicDatas:
+      - _value: 150
+        _characteristicUnitType: 0
+      - _value: 12
+        _characteristicUnitType: 1
+      - _value: 50
+        _characteristicUnitType: 2
+      - _value: 7
+        _characteristicUnitType: 3
+      - _value: 10
+        _characteristicUnitType: 4
+      _upgradeCost: 180
+    - _unitCharacteristicDatas:
+      - _value: 150
         _characteristicUnitType: 0
       - _value: 14
         _characteristicUnitType: 1
@@ -206,382 +374,52 @@ MonoBehaviour:
         _characteristicUnitType: 2
       - _value: 6
         _characteristicUnitType: 3
-      - _value: 4.5
+      - _value: 8
         _characteristicUnitType: 4
-      _upgradeCost: 400
+      _upgradeCost: 360
     - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 100
+      - _value: 150
         _characteristicUnitType: 0
       - _value: 16
         _characteristicUnitType: 1
       - _value: 65
         _characteristicUnitType: 2
-      - _value: 6
-        _characteristicUnitType: 3
-      - _value: 4
-        _characteristicUnitType: 4
-      _upgradeCost: 550
-  - _defenceUnitType: 4
-    _defenceUnitUpgradeDataModel:
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 25
-        _characteristicUnitType: 0
-      - _value: 500
-        _characteristicUnitType: 1
-      - _value: 25
-        _characteristicUnitType: 2
-      - _value: 10
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      _upgradeCost: 150
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 20
-        _characteristicUnitType: 0
-      - _value: 500
-        _characteristicUnitType: 1
-      - _value: 25
-        _characteristicUnitType: 2
-      - _value: 6
-        _characteristicUnitType: 3
-      - _value: 8
-        _characteristicUnitType: 4
-      _upgradeCost: 300
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 5
-        _characteristicUnitType: 0
-      - _value: 600
-        _characteristicUnitType: 1
-      - _value: 25
-        _characteristicUnitType: 2
-      - _value: 4
-        _characteristicUnitType: 3
-      - _value: 4
-        _characteristicUnitType: 4
-      _upgradeCost: 450
-  - _defenceUnitType: 5
-    _defenceUnitUpgradeDataModel:
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 350
-        _characteristicUnitType: 0
-      - _value: 15
-        _characteristicUnitType: 1
-      - _value: 100
-        _characteristicUnitType: 2
-      - _value: 10
-        _characteristicUnitType: 3
-      - _value: 8
-        _characteristicUnitType: 4
-      _upgradeCost: 350
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 350
-        _characteristicUnitType: 0
-      - _value: 20
-        _characteristicUnitType: 1
-      - _value: 100
-        _characteristicUnitType: 2
-      - _value: 10
-        _characteristicUnitType: 3
-      - _value: 7.5
-        _characteristicUnitType: 4
-      _upgradeCost: 600
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 350
-        _characteristicUnitType: 0
-      - _value: 25
-        _characteristicUnitType: 1
-      - _value: 100
-        _characteristicUnitType: 2
-      - _value: 10
+      - _value: 5.5
         _characteristicUnitType: 3
       - _value: 7
         _characteristicUnitType: 4
-      _upgradeCost: 1000
-  - _defenceUnitType: 6
-    _defenceUnitUpgradeDataModel:
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 75
-        _characteristicUnitType: 0
-      - _value: 10
-        _characteristicUnitType: 1
-      - _value: 10
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 75
-        _characteristicUnitType: 0
-      - _value: 10
-        _characteristicUnitType: 1
-      - _value: 8
-        _characteristicUnitType: 3
-      - _value: 8
-        _characteristicUnitType: 4
-      _upgradeCost: 200
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 75
-        _characteristicUnitType: 0
-      - _value: 15
-        _characteristicUnitType: 1
-      - _value: 6
-        _characteristicUnitType: 3
-      - _value: 6
-        _characteristicUnitType: 4
-      _upgradeCost: 300
-  - _defenceUnitType: 7
-    _defenceUnitUpgradeDataModel:
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 150
-        _characteristicUnitType: 2
-      - _value: 8
-        _characteristicUnitType: 3
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 250
-        _characteristicUnitType: 2
-      - _value: 7
-        _characteristicUnitType: 3
-      _upgradeCost: 200
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 350
-        _characteristicUnitType: 2
-      - _value: 6
-        _characteristicUnitType: 3
-      _upgradeCost: 300
-  - _defenceUnitType: 8
-    _defenceUnitUpgradeDataModel:
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 200
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 20
-        _characteristicUnitType: 3
-      - _value: 20
-        _characteristicUnitType: 4
-      - _value: 10
-        _characteristicUnitType: 5
-      _upgradeCost: 300
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 200
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 17
-        _characteristicUnitType: 3
-      - _value: 20
-        _characteristicUnitType: 4
-      - _value: 15
-        _characteristicUnitType: 5
-      _upgradeCost: 600
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 20
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 17
-        _characteristicUnitType: 3
-      - _value: 15
-        _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 1000
-  - _defenceUnitType: 9
-    _defenceUnitUpgradeDataModel:
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
-        _characteristicUnitType: 3
-      - _value: 10
-        _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
-      _upgradeCost: 100
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 200
-        _characteristicUnitType: 0
-      - _value: 75
-        _characteristicUnitType: 2
-      - _value: 12
-        _characteristicUnitType: 1
-      - _value: 10
-        _characteristicUnitType: 3
-      - _value: 8
-        _characteristicUnitType: 4
-      _upgradeCost: 200
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 200
-        _characteristicUnitType: 0
-      - _value: 75
-        _characteristicUnitType: 2
-      - _value: 14
-        _characteristicUnitType: 1
-      - _value: 10
-        _characteristicUnitType: 3
-      - _value: 7.5
-        _characteristicUnitType: 4
-      _upgradeCost: 400
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 200
-        _characteristicUnitType: 0
-      - _value: 100
-        _characteristicUnitType: 2
-      - _value: 17
-        _characteristicUnitType: 1
-      - _value: 10
-        _characteristicUnitType: 3
-      - _value: 7
-        _characteristicUnitType: 4
-      _upgradeCost: 700
+      _upgradeCost: 540
   - _defenceUnitType: 10
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 55
     _defenceUnitUpgradeDataModel:
     - _unitCharacteristicDatas:
-      - _value: 100
+      - _value: 150
         _characteristicUnitType: 0
-      - _value: 50
-        _characteristicUnitType: 2
-      - _value: 5
+      - _value: 800
+        _characteristicUnitType: 1
+      - _value: 2
         _characteristicUnitType: 3
-      - _value: 10
+      - _value: 15
         _characteristicUnitType: 4
-      - _value: 25
-        _characteristicUnitType: 5
       _upgradeCost: 100
     - _unitCharacteristicDatas:
-      - _value: 100
+      - _value: 150
         _characteristicUnitType: 0
-      - _value: 175
-        _characteristicUnitType: 0
-      - _value: 10
-        _characteristicUnitType: 2
-      - _value: 600
+      - _value: 1000
         _characteristicUnitType: 1
-      - _value: 20
-        _characteristicUnitType: 3
       - _value: 2
+        _characteristicUnitType: 3
+      - _value: 13
         _characteristicUnitType: 4
       _upgradeCost: 200
     - _unitCharacteristicDatas:
-      - _value: 100
+      - _value: 150
         _characteristicUnitType: 0
-      - _value: 175
-        _characteristicUnitType: 0
-      - _value: 10
-        _characteristicUnitType: 2
-      - _value: 800
+      - _value: 1200
         _characteristicUnitType: 1
-      - _value: 15
-        _characteristicUnitType: 3
       - _value: 2
-        _characteristicUnitType: 4
-      _upgradeCost: 400
-    - _unitCharacteristicDatas:
-      - _value: 100
-        _characteristicUnitType: 0
-      - _value: 175
-        _characteristicUnitType: 0
-      - _value: 20
-        _characteristicUnitType: 2
-      - _value: 800
-        _characteristicUnitType: 1
-      - _value: 13
         _characteristicUnitType: 3
-      - _value: 2
+      - _value: 11
         _characteristicUnitType: 4
-      _upgradeCost: 550
+      _upgradeCost: 300

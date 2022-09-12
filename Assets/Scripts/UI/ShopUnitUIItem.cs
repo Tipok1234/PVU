@@ -15,11 +15,15 @@ namespace Assets.Scripts.UIManager
 
         [SerializeField] private Image _unitImage;
         [SerializeField] private Image _openImage;
+
+
+        [SerializeField] private TMP_Text _priceBuyUnitText;
         [SerializeField] private Button _selectUnitButton;
 
         private DefenceUnitType _defenceUnitType;
         private void Awake()
         {
+            _priceBuyUnitText.text = 10.ToString();
             _selectUnitButton.onClick.AddListener(SelectUnitUI);
         }
 
@@ -28,11 +32,14 @@ namespace Assets.Scripts.UIManager
             _defenceUnitType = unitDataSO.DefencUnitType;
             _unitImage.sprite = unitDataSO.UnitSprite;
             _openImage.enabled = !unitDataSO.IsOpen;
+            _priceBuyUnitText.enabled = !unitDataSO.IsOpen;
         }
         public void OpenUnit()
         {
             _openImage.enabled = false;
+            _priceBuyUnitText.gameObject.SetActive(false);
         }
+
         public void SelectUnitUI()
         {
             SelectUnitAction?.Invoke(_defenceUnitType);

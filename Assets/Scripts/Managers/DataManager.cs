@@ -1,6 +1,8 @@
 using UnityEngine;
 using Assets.Scripts.Enums;
 using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Assets.Scripts.Managers
 {
@@ -19,6 +21,9 @@ namespace Assets.Scripts.Managers
         private string _hardCurrencyKey = "HardCurrency";
 
         private static DataManager instance;
+
+
+        private Dictionary<DefenceUnitType, int> _unitsDictionary = new Dictionary<DefenceUnitType, int>();
 
         private void Awake()
         {
@@ -60,6 +65,33 @@ namespace Assets.Scripts.Managers
             }
 
         }
+
+        public void BuyUnit(DefenceUnitType defenceUnitType)
+        {
+            var unitDictionary = _unitsDictionary.ContainsKey(defenceUnitType);
+
+            if (unitDictionary == true)
+                return;
+
+            _unitsDictionary.Add(defenceUnitType, 0);
+            //Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
+        }
+
+        public void LevelUpUnit(DefenceUnitType defenceUnitType)
+        {
+            var unitDictionary = _unitsDictionary.ContainsKey(defenceUnitType);
+
+            if (unitDictionary == false)
+                return;
+
+            int level = _unitsDictionary[defenceUnitType];
+            level++;
+            _unitsDictionary[defenceUnitType] = level;
+
+           // Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
+        }
+
+
         public void Save<T>(string key, T saveData)
         {
             string jsonDataString = JsonUtility.ToJson(saveData, true);

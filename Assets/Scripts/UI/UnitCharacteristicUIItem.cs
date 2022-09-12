@@ -15,13 +15,31 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Image _mainImage;
 
         [SerializeField] private TMP_Text _typeText;
-        [SerializeField] private TMP_Text _valueText;       
-        public void Setup(UnitCharacteristicData unitCharacteristicData, UnitCharacteristicData unitCharacteristicDatas )
+        [SerializeField] private TMP_Text _valueText;
+
+
+        public void Setup(UnitCharacteristicData current, UnitCharacteristicData next)
         {
-            _typeText.text = unitCharacteristicData.CharacteristicUnitType.ToString();
-            _valueText.text =  unitCharacteristicData.Value.ToString() + ("------- ") + unitCharacteristicDatas.Value.ToString();
+            _typeText.text = current.CharacteristicUnitType.ToString();
+
+            if (current.Value == next.Value)
+            {
+
+                _valueText.text = current.Value.ToString();
+            }
+            else
+            {
+                _valueText.text = current.Value.ToString() + (" >> ") + next.Value.ToString();
+            }
+
 
             //_valueText.text = unitCharacteristicData.Value.ToString();
+        }
+
+        public void SetupLowLevel(UnitCharacteristicData current)
+        {
+            _typeText.text = current.CharacteristicUnitType.ToString();
+            _valueText.text = current.Value.ToString();
         }
 
     }

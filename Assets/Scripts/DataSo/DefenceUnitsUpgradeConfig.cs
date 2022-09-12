@@ -25,43 +25,42 @@ namespace Assets.Scripts.DataSo
 
         public UnitCharacteristicData DefenceUpgradeUnit(DefenceUnitType defenceUnitType,int level, CharacteristicUnitType characteristicUnitType)
         {
+            Debug.LogError(level);
+
             for (int i = 0; i < _defenceUnitUpgradeDatas.Length; i++)
             {
                 if (_defenceUnitUpgradeDatas[i].DefenceUnitType == defenceUnitType)
                 {
+
                     var unitDatas = _defenceUnitUpgradeDatas[i].DefenceUnitUpgradeDataModel[level].UnitCharacteristicDatas;
 
                     for (int j = 0; j < unitDatas.Length; j++)
                     {
-                        if(unitDatas[j].CharacteristicUnitType == characteristicUnitType)
+                       // Debug.LogError(level);
+
+                        if (unitDatas[j].CharacteristicUnitType == characteristicUnitType)
                         {
                             return unitDatas[j];
                         }
                     }
-
                 }
-
-
-
-
-
-
-                //for (int j = 0; j < _defenceUnitUpgradeDatas[i].DefenceUnitUpgradeDataModel.Length; i++)
-                //{
-                //    for (int k = 0; k < _defenceUnitUpgradeDatas[i].DefenceUnitUpgradeDataModel[j].UnitCharacteristicDatas.Length; k++)
-                //    {
-                //        if (_defenceUnitUpgradeDatas[i].DefenceUnitType == defenceUnitType && _defenceUnitUpgradeDatas[i].DefenceUnitUpgradeDataModel[j].
-                //            UnitCharacteristicDatas[k].CharacteristicUnitType == characteristicUnitType)
-                //        {
-                //            return _defenceUnitUpgradeDatas[i].DefenceUnitUpgradeDataModel[level].UnitCharacteristicDatas[k];
-                //        }
-                //    }
-
-                //}
             }
 
             Debug.LogError("Config not found");
             return null;
+        }
+
+        public bool IsMaxUnitLevel(DefenceUnitType defenceUnitType,int level)
+        {
+            for (int i = 0; i < _defenceUnitUpgradeDatas.Length; i++)
+            {
+                if (_defenceUnitUpgradeDatas[i].DefenceUnitType == defenceUnitType)
+                {
+                    return _defenceUnitUpgradeDatas[i].DefenceUnitUpgradeDataModel.Length - 1 == level;
+                }
+            }
+
+            return false;
         }
     }
 }

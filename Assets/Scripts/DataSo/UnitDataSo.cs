@@ -26,13 +26,18 @@ namespace Assets.Scripts.DataSo
         [SerializeField] private DefenceUnitType _defenceUnitType;
         [SerializeField] private UnitCharacteristicData[] _unitCharacteristicDatas;
 
-        private int _level = 1;
+        [SerializeField] private int _level;
 
-        private bool _isOpen;
+        [SerializeField] private bool _isOpen;
 
         public void SetLevel(int level)
         {
             _level = level;
+        }
+
+        public void LevelUpUnit()
+        {
+            _level++;
         }
         public void OpenUnit()
         {
