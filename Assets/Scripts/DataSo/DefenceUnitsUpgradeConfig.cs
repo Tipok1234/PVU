@@ -27,8 +27,6 @@ namespace Assets.Scripts.DataSo
 
         public UnitCharacteristicData DefenceUpgradeUnit(DefenceUnitType defenceUnitType,int level, CharacteristicUnitType characteristicUnitType)
         {
-           // Debug.LogError(level);
-
             for (int i = 0; i < _defenceUnitUpgradeDatas.Length; i++)
             {
                 if (_defenceUnitUpgradeDatas[i].DefenceUnitType == defenceUnitType)
@@ -38,8 +36,6 @@ namespace Assets.Scripts.DataSo
 
                     for (int j = 0; j < unitDatas.Length; j++)
                     {
-                       // Debug.LogError(level);
-
                         if (unitDatas[j].CharacteristicUnitType == characteristicUnitType)
                         {
                             return unitDatas[j];

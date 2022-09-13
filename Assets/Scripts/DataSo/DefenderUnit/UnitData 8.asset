@@ -17,6 +17,16 @@ MonoBehaviour:
   _hp: 30
   _placeCooldown: 5
   _defenceUnitType: 8
-  _unitCharacteristicDatas: []
+  _unitCharacteristicDatas:
+  - _value: 200
+    _characteristicUnitType: 0
+  - _value: 25
+    _characteristicUnitType: 2
+  - _value: 15
+    _characteristicUnitType: 3
+  - _value: 25
+    _characteristicUnitType: 4
+  - _value: 20
+    _characteristicUnitType: 5
   _level: 0
   _isOpen: 0
