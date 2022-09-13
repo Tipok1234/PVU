@@ -343,9 +343,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitImage: {fileID: 4502256089449764765}
   _openImage: {fileID: 7223827286266036604}
-  _butUnitImage: {fileID: 4518766045227361165}
   _priceBuyUnitText: {fileID: 2473973860424558266}
   _selectUnitButton: {fileID: 4502256089827805137}
+  _defenceUnitUpgradeDatas:
+  - _defenceUnitType: 0
+    _currencyUnlockType: 2
+    _unlockUnitPrice: 20
+    _defenceUnitUpgradeDataModel: []
+  - _defenceUnitType: 7
+    _currencyUnlockType: 0
+    _unlockUnitPrice: 50
+    _defenceUnitUpgradeDataModel: []
 --- !u!1 &4502256089827805151
 GameObject:
   m_ObjectHideFlags: 0

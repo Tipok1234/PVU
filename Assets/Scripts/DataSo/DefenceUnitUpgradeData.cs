@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.Scripts.Enums;
+using Assets.Scripts.UIManager;
 
 namespace Assets.Scripts.DataSo
 {
@@ -7,6 +8,7 @@ namespace Assets.Scripts.DataSo
     public class DefenceUnitUpgradeData
     {
         public DefenceUnitType DefenceUnitType => _defenceUnitType;
+        public CurrencyType CurrencyUnlockType => _currencyUnlockType;
         public int UnlockUnitPrice => _unlockUnitPrice;
         public DefenceUnitUpgradeDataModel[] DefenceUnitUpgradeDataModel => _defenceUnitUpgradeDataModel;
 
@@ -15,7 +17,6 @@ namespace Assets.Scripts.DataSo
         [SerializeField] private int _unlockUnitPrice;
 
         [SerializeField] private DefenceUnitUpgradeDataModel[] _defenceUnitUpgradeDataModel;
-
     }
 
     [System.Serializable]

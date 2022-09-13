@@ -8,6 +8,8 @@ namespace Assets.Scripts.DataSo
     [CreateAssetMenu(fileName = "UpgradeDefence", menuName = "UpgradeSO/UpgradeDefence")]
     public class DefenceUnitsUpgradeConfig : ScriptableObject
     {
+        public DefenceUnitUpgradeData[] DefenceUnitUpgradeDatas => _defenceUnitUpgradeDatas;
+
         [SerializeField] private DefenceUnitUpgradeData[] _defenceUnitUpgradeDatas;
         public DefenceUnitUpgradeDataModel DefenceUpgradeUnits(DefenceUnitType defenceUnitType, int level)
         {
@@ -25,7 +27,7 @@ namespace Assets.Scripts.DataSo
 
         public UnitCharacteristicData DefenceUpgradeUnit(DefenceUnitType defenceUnitType,int level, CharacteristicUnitType characteristicUnitType)
         {
-            Debug.LogError(level);
+           // Debug.LogError(level);
 
             for (int i = 0; i < _defenceUnitUpgradeDatas.Length; i++)
             {

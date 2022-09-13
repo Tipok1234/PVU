@@ -13,8 +13,8 @@ namespace Assets.Scripts.Managers
         public int HardCurrency => _hardCurrency;
 
         private int _levelIndex;
-        private int _softCurrency;
-        private int _hardCurrency;
+        private int _softCurrency = 1200;
+        private int _hardCurrency = 50;
 
         private string _levelKey = "Level";
         private string _softCurrencyKey = "SoftCurrency";
@@ -41,14 +41,52 @@ namespace Assets.Scripts.Managers
         public void LoadData()
         {
             _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 10);
+            // _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 25);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
+        }
+
+
+        public bool CheckCurrency(int currencyAmount, CurrencyType currencyType)
+        {
+            switch (currencyType)
+            {
+                case CurrencyType.SoftCurrency:
+
+                    return _softCurrency >= currencyAmount;
+
+                case CurrencyType.HardCurrency:
+
+                    return _hardCurrency >= currencyAmount;
+            }
+            return false;
+        }
+
+
+
+        public void RemoveCurrency(int currencyAmount, CurrencyType currencyType)
+        {
+            switch (currencyType)
+            {
+                case CurrencyType.SoftCurrency:
+
+                    _softCurrency -= currencyAmount;
+                    PlayerPrefs.SetInt(_softCurrencyKey, _softCurrency);
+
+                    break;
+                case CurrencyType.HardCurrency:
+
+                    _hardCurrency -= currencyAmount;
+                    PlayerPrefs.SetInt(_hardCurrencyKey, _hardCurrency);
+                    break;
+            }
         }
         public void UpdateLevel()
         {
             _levelIndex++;
             PlayerPrefs.SetInt(_levelKey, _levelIndex);
         }
-        public void AddCurrency(int currencyAmount,CurrencyType currencyType)
+
+        public void AddCurrency(int currencyAmount, CurrencyType currencyType)
         {
             switch (currencyType)
             {
@@ -88,7 +126,7 @@ namespace Assets.Scripts.Managers
             level++;
             _unitsDictionary[defenceUnitType] = level;
 
-           // Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
+            // Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
         }
 
 
@@ -97,9 +135,9 @@ namespace Assets.Scripts.Managers
             string jsonDataString = JsonUtility.ToJson(saveData, true);
             PlayerPrefs.SetString(key, jsonDataString);
         }
-        public T Load<T>(string key)where T : new()
+        public T Load<T>(string key) where T : new()
         {
-            if(PlayerPrefs.HasKey(key))
+            if (PlayerPrefs.HasKey(key))
             {
                 string loadedString = PlayerPrefs.GetString(key);
                 return JsonUtility.FromJson<T>(loadedString);

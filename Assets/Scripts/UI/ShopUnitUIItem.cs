@@ -7,11 +7,14 @@ using TMPro;
 using Assets.Scripts.Enums;
 using Assets.Scripts.DataSo;
 
+
 namespace Assets.Scripts.UIManager
 {
     public class ShopUnitUIItem : MonoBehaviour
     {
         public event Action<DefenceUnitType> SelectUnitAction;
+
+        public TMP_Text PriceBuyUnitText => _priceBuyUnitText;
 
         [SerializeField] private Image _unitImage;
         [SerializeField] private Image _openImage;
@@ -21,9 +24,10 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Button _selectUnitButton;
 
         private DefenceUnitType _defenceUnitType;
+        private int _priceUnit;
         private void Awake()
         {
-            _priceBuyUnitText.text = 10.ToString();
+          
             _selectUnitButton.onClick.AddListener(SelectUnitUI);
         }
 
@@ -33,6 +37,19 @@ namespace Assets.Scripts.UIManager
             _unitImage.sprite = unitDataSO.UnitSprite;
             _openImage.enabled = !unitDataSO.IsOpen;
             _priceBuyUnitText.enabled = !unitDataSO.IsOpen;
+        }
+
+        public void SetupUnlockUnit(DefenceUnitsUpgradeConfig defenceUnitsUpgradeConfig)
+        {
+            for (int i = 0; i < defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas.Length; i++)
+            {
+                _priceUnit = defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas[i].UnlockUnitPrice;
+
+                if (_defenceUnitType == defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas[i].DefenceUnitType)
+                {
+                    _priceBuyUnitText.text = _priceUnit.ToString();
+                }
+            }
         }
         public void OpenUnit()
         {

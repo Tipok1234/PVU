@@ -52,7 +52,7 @@ MonoBehaviour:
         _characteristicUnitType: 4
       - _value: 35
         _characteristicUnitType: 5
-      _upgradeCost: 200
+      _upgradeCost: 300
   - _defenceUnitType: 1
     _currencyUnlockType: 2
     _unlockUnitPrice: 10
@@ -132,7 +132,7 @@ MonoBehaviour:
         _characteristicUnitType: 3
       - _value: 8
         _characteristicUnitType: 4
-      _upgradeCost: 400
+      _upgradeCost: 600
   - _defenceUnitType: 3
     _currencyUnlockType: 2
     _unlockUnitPrice: 20
