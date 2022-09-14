@@ -186,6 +186,8 @@ MonoBehaviour:
         _characteristicUnitType: 3
       - _value: 15
         _characteristicUnitType: 4
+      - _value: 10
+        _characteristicUnitType: 2
       _upgradeCost: 150
     - _unitCharacteristicDatas:
       - _value: 75
@@ -196,6 +198,8 @@ MonoBehaviour:
         _characteristicUnitType: 3
       - _value: 13
         _characteristicUnitType: 4
+      - _value: 10
+        _characteristicUnitType: 2
       _upgradeCost: 300
     - _unitCharacteristicDatas:
       - _value: 50
@@ -206,6 +210,20 @@ MonoBehaviour:
         _characteristicUnitType: 3
       - _value: 11
         _characteristicUnitType: 4
+      - _value: 15
+        _characteristicUnitType: 2
+      _upgradeCost: 500
+    - _unitCharacteristicDatas:
+      - _value: 50
+        _characteristicUnitType: 0
+      - _value: 800
+        _characteristicUnitType: 1
+      - _value: 7
+        _characteristicUnitType: 3
+      - _value: 11
+        _characteristicUnitType: 4
+      - _value: 20
+        _characteristicUnitType: 2
       _upgradeCost: 500
   - _defenceUnitType: 5
     _currencyUnlockType: 2

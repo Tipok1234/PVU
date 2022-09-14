@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
@@ -14,20 +12,19 @@ namespace Assets.Scripts.UIManager
     {
         public event Action<DefenceUnitType> SelectUnitAction;
 
-        public TMP_Text PriceBuyUnitText => _priceBuyUnitText;
-
         [SerializeField] private Image _unitImage;
-        [SerializeField] private Image _openImage;
+        [SerializeField] private Image _lockImage;
+        [SerializeField] private Image _hardCurrencyImage;
+        [SerializeField] private Image _softCurrencyImage;
 
 
-        [SerializeField] private TMP_Text _priceBuyUnitText;
+        [SerializeField] private TMP_Text _unlockUnitText;
+        [SerializeField] private TMP_Text _priceUpgradeUnitText;
         [SerializeField] private Button _selectUnitButton;
 
         private DefenceUnitType _defenceUnitType;
-        private int _priceUnit;
         private void Awake()
         {
-          
             _selectUnitButton.onClick.AddListener(SelectUnitUI);
         }
 
@@ -35,26 +32,59 @@ namespace Assets.Scripts.UIManager
         {
             _defenceUnitType = unitDataSO.DefencUnitType;
             _unitImage.sprite = unitDataSO.UnitSprite;
-            _openImage.enabled = !unitDataSO.IsOpen;
-            _priceBuyUnitText.enabled = !unitDataSO.IsOpen;
-        }
 
-        public void SetupUnlockUnit(DefenceUnitsUpgradeConfig defenceUnitsUpgradeConfig)
-        {
-            for (int i = 0; i < defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas.Length; i++)
+
+            if (unitDataSO.IsOpen)
             {
-                _priceUnit = defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas[i].UnlockUnitPrice;
-
-                if (_defenceUnitType == defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas[i].DefenceUnitType)
-                {
-                    _priceBuyUnitText.text = _priceUnit.ToString();
-                }
+                OpenUnit();
+            }
+            else
+            {
+                CloseUnit();
             }
         }
+
+        public void UpdatePriceText(int price, CurrencyType currencyType)
+        {
+            switch (currencyType)
+            {
+                case CurrencyType.HardCurrency:
+                    _unlockUnitText.text = price.ToString();
+                    break;
+
+
+                case CurrencyType.SoftCurrency:
+                    _priceUpgradeUnitText.text = price.ToString();
+                    break;
+            }
+        }
+
+        private void CloseUnit()
+        {
+            _hardCurrencyImage.enabled = true;
+            _lockImage.enabled = true;
+            _unlockUnitText.enabled = true;
+
+            _softCurrencyImage.enabled = false;
+            _priceUpgradeUnitText.enabled = false;
+        }
+
         public void OpenUnit()
         {
-            _openImage.enabled = false;
-            _priceBuyUnitText.gameObject.SetActive(false);
+            _lockImage.enabled = false;
+            _unlockUnitText.enabled = false;
+            _softCurrencyImage.enabled = true;
+            _priceUpgradeUnitText.enabled = true;
+            _hardCurrencyImage.enabled = false;
+        }
+
+        public void DisablePrices()
+        {
+            _lockImage.enabled = false;
+            _unlockUnitText.enabled = false;
+            _softCurrencyImage.enabled = false;
+            _priceUpgradeUnitText.enabled = false;
+            _hardCurrencyImage.enabled = false;
         }
 
         public void SelectUnitUI()

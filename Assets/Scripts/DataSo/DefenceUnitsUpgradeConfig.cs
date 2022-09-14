@@ -18,11 +18,25 @@ namespace Assets.Scripts.DataSo
                 if (_defenceUnitUpgradeDatas[i].DefenceUnitType == defenceUnitType)
                 {
                     return _defenceUnitUpgradeDatas[i].DefenceUnitUpgradeDataModel[level];
-                }
+                }               
             }
 
             Debug.LogError("Config not found");
             return null;
+        }
+
+        public int GetDefenceUnitUnlockPrice(DefenceUnitType defenceUnitType)
+        {
+            for (int i = 0; i < _defenceUnitUpgradeDatas.Length; i++)
+            {
+                if (_defenceUnitUpgradeDatas[i].DefenceUnitType == defenceUnitType)
+                {
+                    return _defenceUnitUpgradeDatas[i].UnlockUnitPrice;
+                }
+            }
+
+            Debug.LogError("Config not found");
+            return 0;
         }
 
         public UnitCharacteristicData DefenceUpgradeUnit(DefenceUnitType defenceUnitType,int level, CharacteristicUnitType characteristicUnitType)

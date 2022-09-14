@@ -66,19 +66,38 @@ namespace Assets.Scripts.UIManager
             {
                 UnitDataSo unitDataSo = _unitDataSO[i];
 
+
+             //   Debug.LogError(unitDataSo.Level);
+
                 if (defenceUnitType == unitDataSo.DefencUnitType)
                 {
-                    if (_defenceUnitsUpgradeConfig.IsMaxUnitLevel(defenceUnitType, unitDataSo.Level))
+
+                    Debug.LogError(unitDataSo.Level);
+
+                    if (_defenceUnitsUpgradeConfig.IsMaxUnitLevel(defenceUnitType, unitDataSo.Level)) //&& unitDataSo.Level >= 3)
+                    {
+                        //_shopUnitUIItemPrefab.DisablePrices();
                         return;
+                    }
+
+                    Debug.LogError(unitDataSo.Level);
 
                     DefenceUnitUpgradeDataModel unitUpgrade = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, unitDataSo.Level);
+
+                   // Debug.LogError(unitUpgrade.UpgradeCost);
 
                     if (_dataManager.CheckCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency))
                     {
                         _dataManager.RemoveCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency);
 
+                         Debug.LogError(unitUpgrade.UpgradeCost);
+
                         _dataManager.LevelUpUnit(defenceUnitType);
                         unitDataSo.LevelUpUnit();
+
+
+                        _shopWindow.UpgradeUnit();
+
                     }
                 }
             }
