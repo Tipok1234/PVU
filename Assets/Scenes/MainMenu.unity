@@ -1741,6 +1741,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5399d37dc4d33b4ea33b289b40ef567, type: 2}
   - {fileID: 11400000, guid: 452143def9520594b807bb2f018ad3b8, type: 2}
   - {fileID: 11400000, guid: 528ff0a17cdba2442851124425771e48, type: 2}
+  - {fileID: 11400000, guid: b382e930ee45ef54398797a8c4c8b3d7, type: 2}
   _defenceUnitsUpgradeConfig: {fileID: 11400000, guid: d2f5ea483266a8a4581b351df3b6dee8, type: 2}
 --- !u!1 &942730598
 GameObject:
@@ -1776,7 +1777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &942730600
@@ -2366,6 +2367,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5399d37dc4d33b4ea33b289b40ef567, type: 2}
   - {fileID: 11400000, guid: 452143def9520594b807bb2f018ad3b8, type: 2}
   - {fileID: 11400000, guid: 528ff0a17cdba2442851124425771e48, type: 2}
+  - {fileID: 11400000, guid: b382e930ee45ef54398797a8c4c8b3d7, type: 2}
   _defenceUnitsUpgradeConfig: {fileID: 11400000, guid: d2f5ea483266a8a4581b351df3b6dee8, type: 2}
   _shopUnitUIItemPrefab: {fileID: 8618580947802959639, guid: 31ddcedd8ecef2b4ca902cf39d2f2095, type: 3}
 --- !u!4 &1232223059

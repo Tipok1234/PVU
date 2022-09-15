@@ -11,9 +11,9 @@ namespace Assets.Scripts.AnimationsModel
         public override void PlayAnimation()
         {
             Sequence mySequence = DOTween.Sequence();
-            mySequence.Prepend(_miningModel.DOScale(new Vector3(5f, 5f, 5f), _animationTime).SetEase(Ease.InOutCubic));
+            mySequence.Prepend(_miningModel.DOScale(new Vector3(0.5f, 0.5f, 0.5f), _animationTime).SetEase(Ease.InOutCubic));
             mySequence.AppendInterval(0.4f);
-            mySequence.Append(_miningModel.DOScale(new Vector3(10f, 10f, 10f), _animationTime).SetEase(Ease.InOutCubic));
+            mySequence.Append(_miningModel.DOScale(Vector3.one, _animationTime).SetEase(Ease.InOutCubic));
         }
     }
 }

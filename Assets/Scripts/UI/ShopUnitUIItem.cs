@@ -11,6 +11,8 @@ namespace Assets.Scripts.UIManager
     public class ShopUnitUIItem : MonoBehaviour
     {
         public event Action<DefenceUnitType> SelectUnitAction;
+        public DefenceUnitType DefenceUnitType => _defenceUnitType;
+        public bool IsOpen => _isOpen;
 
         [SerializeField] private Image _unitImage;
         [SerializeField] private Image _lockImage;
@@ -23,6 +25,7 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Button _selectUnitButton;
 
         private DefenceUnitType _defenceUnitType;
+        private bool _isOpen = false;
         private void Awake()
         {
             _selectUnitButton.onClick.AddListener(SelectUnitUI);
@@ -42,6 +45,7 @@ namespace Assets.Scripts.UIManager
             {
                 CloseUnit();
             }
+
         }
 
         public void UpdatePriceText(int price, CurrencyType currencyType)
@@ -67,6 +71,8 @@ namespace Assets.Scripts.UIManager
 
             _softCurrencyImage.enabled = false;
             _priceUpgradeUnitText.enabled = false;
+
+            _isOpen = false;
         }
 
         public void OpenUnit()
@@ -76,6 +82,8 @@ namespace Assets.Scripts.UIManager
             _softCurrencyImage.enabled = true;
             _priceUpgradeUnitText.enabled = true;
             _hardCurrencyImage.enabled = false;
+
+            _isOpen = true;
         }
 
         public void DisablePrices()

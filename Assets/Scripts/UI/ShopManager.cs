@@ -23,6 +23,7 @@ namespace Assets.Scripts.UIManager
 
             _shopWindow.BuyUnitAction += OnBuyUnit;
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
+            _shopWindow.SelectUnitAction += OnSelectedAction;
 
             _shopWindow.Setup(_unitDataSO);
         }
@@ -101,6 +102,11 @@ namespace Assets.Scripts.UIManager
                     }
                 }
             }
+        }
+
+        private void OnSelectedAction(DefenceUnitType defenceUnitType)
+        {
+
         }
     }
 }

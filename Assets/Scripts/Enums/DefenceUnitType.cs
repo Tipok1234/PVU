@@ -12,6 +12,7 @@ namespace Assets.Scripts.Enums
         Wall_Unit,
         Chest_Unit,
         Frost_Unit,
-        Bomb_Unit
+        Bomb_Unit,
+        Suicide_Unit
     }
 }
