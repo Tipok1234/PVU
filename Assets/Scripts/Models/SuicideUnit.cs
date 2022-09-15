@@ -44,10 +44,12 @@ namespace Assets.Scripts.Models
                     if (rayCast[i].transform.TryGetComponent<AttackUnit>(out AttackUnit enem))
                     {
                         enem.TakeDamage(_damage);
-                        Death();
+
                     }
                 }
             }
+            yield return new WaitForSeconds(0.5f);
+            Death();
         }
 
         //private void OnDrawGizmos()

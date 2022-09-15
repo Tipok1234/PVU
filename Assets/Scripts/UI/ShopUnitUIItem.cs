@@ -13,6 +13,7 @@ namespace Assets.Scripts.UIManager
         public event Action<DefenceUnitType> SelectUnitAction;
         public DefenceUnitType DefenceUnitType => _defenceUnitType;
         public bool IsOpen => _isOpen;
+        public Sprite UnitSprite => _unitImage.sprite;
 
         [SerializeField] private Image _unitImage;
         [SerializeField] private Image _lockImage;

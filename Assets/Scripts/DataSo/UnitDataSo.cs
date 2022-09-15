@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.DataSo
@@ -42,6 +39,11 @@ namespace Assets.Scripts.DataSo
         public void OpenUnit()
         {
             _isOpen = true;
+        }
+        public void ResetData()
+        {
+            _isOpen = false;
+            _level = 0;
         }
     }
 }

@@ -32,15 +32,12 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private TMP_Text _hardCurrencyText;
         [SerializeField] private TMP_Text _currentLevelText;
 
-        [SerializeField] private UnitDataSo[] _unitDataSO;
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
         private DataManager _dataManager;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
 
         private ShopUnitUIItem _selectedUnitUIItem;
-
-        private UnitDataSo _selectedUnitDataSO;
 
         private void Awake()
         {
@@ -59,12 +56,12 @@ namespace Assets.Scripts.UIManager
 
                 if (unitDataSo[i].IsOpen)
                 {
-                    var upgradeData = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(_unitDataSO[i].DefencUnitType, _unitDataSO[i].Level);
+                    var upgradeData = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
                     shopUI.UpdatePriceText(upgradeData.UpgradeCost, CurrencyType.SoftCurrency);
                 }
                 else
                 {
-                    int unlockPrice = _defenceUnitsUpgradeConfig.GetDefenceUnitUnlockPrice(_unitDataSO[i].DefencUnitType);
+                    int unlockPrice = _defenceUnitsUpgradeConfig.GetDefenceUnitUnlockPrice(unitDataSo[i].DefencUnitType);
                     shopUI.UpdatePriceText(unlockPrice, CurrencyType.HardCurrency);
                 }
 
@@ -85,105 +82,46 @@ namespace Assets.Scripts.UIManager
                 Destroy(_spawnCharacteristicParent.GetChild(i).gameObject);
             }
 
-
-            //SelectUnitAction?.Invoke(_selectedUnitDataSO.DefencUnitType);             #NEW SOLUTION
-
-            //for (int i = 0; i < _shopUnitUIItems.Count; i++)
-            //{
-            //    if (_shopUnitUIItems[i].DefenceUnitType == defenceUnitType)
-            //    {
-            //        if (_shopUnitUIItems[i].IsOpen)
-            //        {
-            //            _buyButton.gameObject.SetActive(false);
-            //            _upgradeButton.gameObject.SetActive(true);
-            //        }
-            //        else
-            //        {
-            //            _buyButton.gameObject.SetActive(true);
-            //            _upgradeButton.gameObject.SetActive(false);
-            //        }
-            //    }
-            //}
-
-            for (int i = 0; i < _unitDataSO.Length; i++)
+            for (int i = 0; i < _shopUnitUIItems.Count; i++)
             {
-                if (_unitDataSO[i].DefencUnitType == defenceUnitType)
+                if (_shopUnitUIItems[i].DefenceUnitType == defenceUnitType)
                 {
-
-                    if (_unitDataSO[i].IsOpen)
-                    {
-                        _buyButton.gameObject.SetActive(false);
-                        _upgradeButton.gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        _buyButton.gameObject.SetActive(true);
-                        _upgradeButton.gameObject.SetActive(false);
-                    }
-
-                    for (int j = 0; j < _unitDataSO[i].UnitCharacteristicDatas.Length; j++)
-                    {
-                        _selectedUnitUIItem = _shopUnitUIItems[i];
-                        _selectedUnitDataSO = _unitDataSO[i];
-
-                        UnitCharacteristicData d1 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnit(_selectedUnitDataSO.DefencUnitType,
-                        _selectedUnitDataSO.Level, _selectedUnitDataSO.UnitCharacteristicDatas[j].CharacteristicUnitType);
-
-                        UnitCharacteristicData d2 = d1;
-
-                        UnitCharacteristicUIItem unitUI = Instantiate(_characteristicUnitUIPrefab, _spawnCharacteristicParent);
-
-
-                        if (_selectedUnitDataSO.IsOpen)
-                        {
-                            if (!_defenceUnitsUpgradeConfig.IsMaxUnitLevel(_selectedUnitDataSO.DefencUnitType, _selectedUnitDataSO.Level))
-                            {
-                                d2 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnit(_selectedUnitDataSO.DefencUnitType,
-                                _selectedUnitDataSO.Level + 1, _selectedUnitDataSO.UnitCharacteristicDatas[j].CharacteristicUnitType);
-                            }
-                            else
-                            {
-                                _selectedUnitUIItem.DisablePrices();
-                            }
-                        }
-
-                        unitUI.Setup(d1, d2);
-
-                        _currentLevelText.text = (_selectedUnitDataSO.Level + 1).ToString();
-                        _imageUnit.sprite = _selectedUnitDataSO.UnitSprite;
-                        _unitName.text = _selectedUnitDataSO.DefencUnitType.ToString();
-
-                        SelectUnitAction?.Invoke(_selectedUnitDataSO.DefencUnitType);
-                    }
+                    _selectedUnitUIItem = _shopUnitUIItems[i];
                     break;
                 }
             }
+
+            SelectUnitAction?.Invoke(_selectedUnitUIItem.DefenceUnitType);
         }
 
-        //public void SelectUnit(DefenceUnitUpgradeData defenceUnitUpgradeData, UnitCharacteristicData unitCharacteristicData, int level)       #NEW METHOD
-        //{
-        //    UnitCharacteristicData d1 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnit(defenceUnitUpgradeData.DefenceUnitType,
-        //            level, unitCharacteristicData.CharacteristicUnitType);
+        public void DisableUnitPrice()
+        {
+            _selectedUnitUIItem.DisablePrices();
+        }
+        public void SelectUnit(DefenceUnitUpgradeDataModel d1, DefenceUnitUpgradeDataModel d2,int level)
+        {
+            if (_selectedUnitUIItem.IsOpen)
+            {
+                _buyButton.gameObject.SetActive(false);
+                _upgradeButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                _buyButton.gameObject.SetActive(true);
+                _upgradeButton.gameObject.SetActive(false);
+            }
 
-        //    UnitCharacteristicData d2 = d1;
+            for (int i = 0; i < d1.UnitCharacteristicDatas.Length; i++)
+            {
+                UnitCharacteristicUIItem unitUI = Instantiate(_characteristicUnitUIPrefab, _spawnCharacteristicParent);
 
-        //    UnitCharacteristicUIItem unitUI = Instantiate(_characteristicUnitUIPrefab, _spawnCharacteristicParent);
+                unitUI.Setup(d1.UnitCharacteristicDatas[i], d2.UnitCharacteristicDatas[i]);
+            }
 
-        //    if (_selectedUnitUIItem.IsOpen)
-        //    {
-        //        if (!_defenceUnitsUpgradeConfig.IsMaxUnitLevel(defenceUnitUpgradeData.DefenceUnitType, level))
-        //        {
-        //            d2 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnit(defenceUnitUpgradeData.DefenceUnitType,
-        //        level + 1, unitCharacteristicData.CharacteristicUnitType);
-        //        }
-        //    }
-
-        //    unitUI.Setup(d1, d2);
-
-        //    _currentLevelText.text = (level + 1).ToString();
-        //    _imageUnit.sprite = _selectedUnitDataSO.UnitSprite;          // #WRONG
-        //    _unitName.text = _selectedUnitUIItem.DefenceUnitType.ToString();
-        //}
+            _currentLevelText.text = (level + 1).ToString();
+            _imageUnit.sprite = _selectedUnitUIItem.UnitSprite;
+            _unitName.text = _selectedUnitUIItem.DefenceUnitType.ToString();
+        }
 
         public void UpdateCurrency()
         {
@@ -196,10 +134,10 @@ namespace Assets.Scripts.UIManager
             if (_selectedUnitUIItem == null)
                 return;
 
-            BuyUnitAction?.Invoke(_selectedUnitDataSO.DefencUnitType);
+            BuyUnitAction?.Invoke(_selectedUnitUIItem.DefenceUnitType);
         }
 
-        public void BuyUnit()
+        public void BuyUnit(int upgradeCost, CurrencyType currencyType)
         {
             _hardCurrencyText.text = _dataManager.HardCurrency.ToString();
 
@@ -208,11 +146,9 @@ namespace Assets.Scripts.UIManager
             _buyButton.gameObject.SetActive(false);
             _upgradeButton.gameObject.SetActive(true);
 
+            _selectedUnitUIItem.UpdatePriceText(upgradeCost, currencyType);
 
-            DefenceUnitUpgradeDataModel unitUpgrade = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(_selectedUnitDataSO.DefencUnitType, _selectedUnitDataSO.Level);
-            _selectedUnitUIItem.UpdatePriceText(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency);
-
-            OnUnitSelected(_selectedUnitDataSO.DefencUnitType);
+            OnUnitSelected(_selectedUnitUIItem.DefenceUnitType);
         }
 
         private void UpgradeUnitButton()
@@ -220,17 +156,15 @@ namespace Assets.Scripts.UIManager
             if (_selectedUnitUIItem == null)
                 return;
 
-            UpgradeUnitAction?.Invoke(_selectedUnitDataSO.DefencUnitType);
+            UpgradeUnitAction?.Invoke(_selectedUnitUIItem.DefenceUnitType);
         }
-        public void UpgradeUnit()
+        public void UpgradeUnit(int upgradeCost, CurrencyType currencyType)
         {
             _softCurrencyText.text = _dataManager.SoftCurrency.ToString();
 
-            OnUnitSelected(_selectedUnitDataSO.DefencUnitType);
+            OnUnitSelected(_selectedUnitUIItem.DefenceUnitType);
 
-            DefenceUnitUpgradeDataModel unitUpgrade = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(_selectedUnitDataSO.DefencUnitType, _selectedUnitDataSO.Level);
-
-            _selectedUnitUIItem.UpdatePriceText(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency);
+            _selectedUnitUIItem.UpdatePriceText(upgradeCost, currencyType);
         }
     }
 }

@@ -16,12 +16,8 @@ namespace Assets.Scripts.AnimationsModel
 
         public override void PlayAnimation()
         {
-           // Sequence mySequence = DOTween.Sequence();
-            //mySequence.Prepend(
-                _suicideRightModel.DOLocalMoveX(_xEndPos, _animationTime).SetEase(Ease.OutElastic);
-           // mySequence.AppendInterval(_animationTime);
-            //mySequence.Prepend(
-                _suicideLeftModel.DOLocalMoveX(_xStartPos, _animationTime).SetEase(Ease.OutElastic);
+            _suicideRightModel.DOLocalMoveX(_xEndPos, _animationTime).SetEase(Ease.InOutQuad);
+            _suicideLeftModel.DOLocalMoveX(_xStartPos, _animationTime).SetEase(Ease.InOutQuad);
         }
     }
 }

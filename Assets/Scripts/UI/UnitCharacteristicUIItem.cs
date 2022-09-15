@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Assets.Scripts.Managers;
 using UnityEngine.UI;
-using System;
 using Assets.Scripts.DataSo;
 
 namespace Assets.Scripts.UIManager
 {
     public class UnitCharacteristicUIItem : MonoBehaviour
     {
-        public Image MainImage => _mainImage;
-
         [SerializeField] private Image _mainImage;
 
         [SerializeField] private TMP_Text _typeText;
@@ -32,8 +28,7 @@ namespace Assets.Scripts.UIManager
                 _valueText.text = current.Value.ToString() + (" >> ") + next.Value.ToString();
             }
 
-
-            //_valueText.text = unitCharacteristicData.Value.ToString();
+            _mainImage.sprite = AssetManager.Instance.GetCharacteristicSprite(current.CharacteristicUnitType);
         }
 
         public void SetupLowLevel(UnitCharacteristicData current)
