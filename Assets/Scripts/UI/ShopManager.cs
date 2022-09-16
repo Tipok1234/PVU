@@ -70,9 +70,6 @@ namespace Assets.Scripts.UIManager
             {
                 UnitDataSo unitDataSo = _unitDataSO[i];
 
-
-                //   Debug.LogError(unitDataSo.Level);
-
                 if (defenceUnitType == unitDataSo.DefencUnitType)
                 {
 
@@ -85,8 +82,6 @@ namespace Assets.Scripts.UIManager
                     Debug.LogError(unitDataSo.Level);
 
                     DefenceUnitUpgradeDataModel unitUpgrade = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, unitDataSo.Level);
-
-                    // Debug.LogError(unitUpgrade.UpgradeCost);
 
                     if (_dataManager.CheckCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency))
                     {

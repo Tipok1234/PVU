@@ -33,6 +33,8 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private TMP_Text _currentLevelText;
 
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
+
+        [SerializeField] private SelectHandWindow _selectHandWindow;
         private DataManager _dataManager;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
@@ -54,6 +56,8 @@ namespace Assets.Scripts.UIManager
                 ShopUnitUIItem shopUI = Instantiate(_shopUnitUIItemPrefab, _spawnUnitParent);
                 shopUI.SelectUnitAction += OnUnitSelected;
 
+                _selectHandWindow.Setup(unitDataSo);
+
                 if (unitDataSo[i].IsOpen)
                 {
                     var upgradeData = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
@@ -67,6 +71,7 @@ namespace Assets.Scripts.UIManager
 
                 shopUI.Setup(unitDataSo[i]);
                 _shopUnitUIItems.Add(shopUI);
+
             }
 
 

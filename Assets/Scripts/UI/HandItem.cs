@@ -1,10 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+using Assets.Scripts.Enums;
 
 public class HandItem : MonoBehaviour
 {
-    [SerializeField] private Transform _spawnBGItem;
+    public event Action<DefenceUnitType> DeleteUnitHandActioon;
 
-    [SerializeField] private int _countHandItem;
+    public DefenceUnitType DefenceUnitType => _defenceUnitType;
+    [SerializeField] private Button _deleteUnitHandButton;
+    public bool IsBusy => _isBusy;
+    private bool _isBusy;
+    private DefenceUnitType _defenceUnitType;
+    private Transform _tranform;
+
+    private void Awake()
+    {
+        _deleteUnitHandButton.onClick.AddListener(DeleteUnit);
+    }
+
+    public void SetBusy(bool isBusy,DefenceUnitType defenceUnitType = default, Transform parent = null)
+    {
+        _isBusy = isBusy;
+        _tranform = parent;
+        _defenceUnitType = defenceUnitType;
+    }
+
+    public void DeleteUnit()
+    {
+        if (_isBusy == true)
+        { 
+            Destroy(_tranform.gameObject);
+            _isBusy = false;
+        }
+
+        DeleteUnitHandActioon?.Invoke(_defenceUnitType);
+
+
+    }
 }
