@@ -12,6 +12,7 @@ public class ShowUnitUIItem : MonoBehaviour
     public DefenceUnitType DefenceUnitType => _defenceUnitType;
     public Sprite UnitShowImage => _unitImage.sprite;
 
+    public Sprite LockImage => _lockImage.sprite;
 
     [SerializeField] private Button _selectUnitButton;
     [SerializeField] private Image _unitImage;
@@ -44,6 +45,9 @@ public class ShowUnitUIItem : MonoBehaviour
 
     public void SelectUnit()
     {
-        SelectHandUnitAction?.Invoke(this);
+        if(_lockImage.enabled == false)
+        {
+            SelectHandUnitAction?.Invoke(this);
+        }
     }
 }

@@ -17,9 +17,10 @@ public class BGImage : MonoBehaviour
 
     private DefenceUnitType _defenceUnitType;
 
-    public void Setup(UnitDataSo unitDataSo)
+
+    public void Setup(Sprite sprite, DefenceUnitType defenceUnitType)
     {
-        _defenceUnitType = unitDataSo.DefencUnitType;
-        _unitImage.sprite = unitDataSo.UnitSprite;
+        _defenceUnitType = defenceUnitType;
+        _unitImage.sprite = sprite;
     }
 }

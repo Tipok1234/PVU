@@ -10,6 +10,7 @@ public class HandItem : MonoBehaviour
     public event Action<DefenceUnitType> DeleteUnitHandActioon;
 
     public DefenceUnitType DefenceUnitType => _defenceUnitType;
+
     [SerializeField] private Button _deleteUnitHandButton;
     public bool IsBusy => _isBusy;
     private bool _isBusy;
@@ -28,16 +29,19 @@ public class HandItem : MonoBehaviour
         _defenceUnitType = defenceUnitType;
     }
 
+    public void SetBool(bool isBusy)
+    {
+        _isBusy = isBusy;
+    }
     public void DeleteUnit()
     {
         if (_isBusy == true)
-        { 
-            Destroy(_tranform.gameObject);
+        {
             _isBusy = false;
+            Destroy(_tranform.gameObject);
+            Debug.LogError("!!!!!");
         }
 
         DeleteUnitHandActioon?.Invoke(_defenceUnitType);
-
-
     }
 }

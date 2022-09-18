@@ -4223,6 +4223,7 @@ MonoBehaviour:
   _spawnHandUnitUI: {fileID: 1498165554}
   _spawnUnitImage: {fileID: 2127279976}
   _spawnShowInit: {fileID: 792289135}
+  _mainImage: {fileID: 1399054396}
   _handItem: {fileID: 6720021038920123027, guid: 2590575e04d8b104baf18d3a9ffb46b9, type: 3}
   _showUnitUIItem: {fileID: -4098994028663124891, guid: 1571c1179e6b46b4d95fae8caf010b47, type: 3}
   _bgImage: {fileID: 4389368905143159790, guid: 4aa0fde14753acd4eb24d7eaedcc59a2, type: 3}

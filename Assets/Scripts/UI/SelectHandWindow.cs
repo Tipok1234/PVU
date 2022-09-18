@@ -4,7 +4,9 @@ using UnityEngine;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
 using DG.Tweening;
+using UnityEngine.UI;
 using System;
+using TMPro;
 
 namespace Assets.Scripts.UIManager
 {
@@ -14,15 +16,19 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Transform _spawnUnitImage;
         [SerializeField] private Transform _spawnShowInit;
 
+        [SerializeField] private Image _mainImage;
+        [SerializeField] private TMP_Text _nameUnitText;
+
         [SerializeField] private HandItem _handItem;
         [SerializeField] private ShowUnitUIItem _showUnitUIItem;
         [SerializeField] private BGImage _bgImage;
 
         private int _countHandItem = 0;
 
+
+
         private List<HandItem> _handItems = new List<HandItem>();
         private List<ShowUnitUIItem> _showUnitUIItems = new List<ShowUnitUIItem>();
-        private List<BGImage> _bGImages = new List<BGImage>();
 
         public void Setup(UnitDataSo[] unitDataSO)
         {
@@ -30,7 +36,7 @@ namespace Assets.Scripts.UIManager
             {
                 _countHandItem++;
 
-                if (_countHandItem > 8)
+                if (_countHandItem > unitDataSO.Length)
                 {
                     break;
                 }
@@ -44,7 +50,6 @@ namespace Assets.Scripts.UIManager
                 handItem.DeleteUnitHandActioon += OnDeleteUnitHndAction;
 
                 showUnit.Setup(unitDataSO[i]);
-                _bgImage.Setup(unitDataSO[i]);
 
                 _showUnitUIItems.Add(showUnit);
             }
@@ -52,85 +57,43 @@ namespace Assets.Scripts.UIManager
 
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {
+
+            _nameUnitText.text = showUnitUIItem.DefenceUnitType.ToString();
+            _mainImage.sprite = showUnitUIItem.UnitShowImage;
+
+            for (int i = 0; i < _handItems.Count; i++)
+            {
+                if (_handItems[i].IsBusy && _handItems[i].DefenceUnitType == showUnitUIItem.DefenceUnitType)
+                    return;
+            }
+
             for (int i = 0; i < _handItems.Count; i++)
             {
                 if (_handItems[i].IsBusy)
                     continue;
 
+                
+                BGImage showUnit = Instantiate(_bgImage, showUnitUIItem.transform.position, Quaternion.identity, _spawnShowInit.parent.parent);
 
+               
 
-                BGImage showUnit = Instantiate(_bgImage, showUnitUIItem.transform.position,Quaternion.identity ,_spawnShowInit.parent.parent);
+                showUnit.Setup(showUnitUIItem.UnitShowImage, showUnitUIItem.DefenceUnitType);
 
-              //  showUnit.UnitImage = showUnitUIItem.UnitShowImage;
+                _handItems[i].SetBusy(true, showUnitUIItem.DefenceUnitType, showUnit.transform);
 
-                _handItems[i].SetBusy(true,DefenceUnitType.DoubleShooter_Unit, showUnit.transform);
                 showUnit.transform.DOMove(_handItems[i].transform.position, 0.7f).OnComplete(() =>
                 {
                     showUnit.transform.SetParent(_handItems[i].transform);
                 });
+
                 break;
+
             }
         }
         public void OnDeleteUnitHndAction(DefenceUnitType defenceUnitType)
         {
-            // ShowUnitUIItem showUnit = Instantiate(_showUnitUIItem, _spawnHandUnitUI);
 
-            //for (int i = 0; i < _handItems.Count; i++)
-            //{
-            //    if (_handItems[i].DefenceUnitType == defenceUnitType)
-            //    {
-            //        _handItems[i].SetBusy(false);
-            //        break;
-            //    }
-
-            //}
-    
-            // handItem.SetBusy(false);
-            //  handItem.SetBusy(false);
-
-            //handItem.SetBusy(false);
-
-            //for (int i = 0; i < _handItems.Count; i++)
-            //{
-            //    if (!_handItems[i].IsBusy)
-            //        continue;
-
-            //    _handItems[i].SetBusy(false);
-
-            //    //for (int j = 0; j < _showUnitUIItems.Count; j++)
-            //    //{
-
-            //    //    _handItems[i].SetBusy(false);
-            //    //}
-            //}
-
-            //HandItem handItem = Instantiate(_handItem, _spawnHandUnitUI);
-            //        _handItems[i].gameObject.SetActive(false);
-
-            //        //Destroy(_handItems[i]);
-            //        //showUnit.transform.DOMove(_showUnitUIItems[i].transform.position, 0.7f).OnComplete(() =>
-            //        //{
-            //        //    showUnit.transform.SetParent(_showUnitUIItems[i].transform);
-
-
-            //        //});
-            //    }
-
-            //    break;
-            //}
         }
-        //else if (_index >= 8)
-        //{
-        //    ShowUnitUIItem showUnit = Instantiate(_showUnitUIItem, _spawnHandUnitUI);
-        //    Debug.LogError("!!!!!");
-        //    showUnit.transform.DOMove(_showUnitUIItems[_index].transform.position, 0.7f).OnComplete(() => showUnit.transform.SetParent(_showUnitUIItems[_index].transform));
-        //    _index--;
-        //    _isBusy = false;
-        //}
-
-
-
-
 
     }
 }
