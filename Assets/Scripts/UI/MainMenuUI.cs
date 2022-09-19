@@ -13,19 +13,23 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Button _optionButton;
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _exitButton;
+        [SerializeField] private Button _exitOptionButton;
         [SerializeField] private Button _handButton;
 
         [SerializeField] private Canvas _shopCanvas;
         [SerializeField] private Canvas _loadingScene;
         [SerializeField] private Canvas _gameCanvas;
         [SerializeField] private Canvas _handCanvas;
+        [SerializeField] private Canvas _optionCanvas;
         void Start()
         {
             _startGameButton.onClick.AddListener(StartGame);
             _optionButton.onClick.AddListener(OpenOptionCanvas);
-            _shopButton.onClick.AddListener(OpenShopCanvas);
             _handButton.onClick.AddListener(OpenHandCanvas);
+            _exitOptionButton.onClick.AddListener(OpenOptionCanvas);
+            _shopButton.onClick.AddListener(OpenShopCanvas);
             _exitButton.onClick.AddListener(OpenShopCanvas);
+
         }
 
         private void StartGame()
@@ -46,7 +50,7 @@ namespace Assets.Scripts.UIManager
         }
         private void OpenOptionCanvas()
         {
-
+            _optionCanvas.enabled = !_optionCanvas.enabled;
         }
     }
 }
