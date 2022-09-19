@@ -18,6 +18,7 @@ namespace Assets.Scripts.UIManager
 
         [SerializeField] private Image _mainImage;
         [SerializeField] private TMP_Text _nameUnitText;
+        [SerializeField] private TMP_Text _lockText;
 
         [SerializeField] private HandItem _handItem;
         [SerializeField] private ShowUnitUIItem _showUnitUIItem;
@@ -36,58 +37,67 @@ namespace Assets.Scripts.UIManager
             {
                 _countHandItem++;
 
-                if (_countHandItem > unitDataSO.Length)
+                if (_countHandItem <= 8)
                 {
-                    break;
+                    HandItem handItem = Instantiate(_handItem, _spawnHandUnitUI);
+                    _handItems.Add(handItem);
+                    handItem.DeleteUnitHandActioon += OnDeleteUnitHndAction;
                 }
 
-                HandItem handItem = Instantiate(_handItem, _spawnHandUnitUI);
-                _handItems.Add(handItem);
 
-                ShowUnitUIItem showUnit = Instantiate(_showUnitUIItem, _spawnShowInit);
+                    ShowUnitUIItem showUnit = Instantiate(_showUnitUIItem, _spawnShowInit);
 
-                showUnit.SelectHandUnitAction += OnUnitSelected;
-                handItem.DeleteUnitHandActioon += OnDeleteUnitHndAction;
+                    showUnit.SelectHandUnitAction += OnUnitSelected;
 
-                showUnit.Setup(unitDataSO[i]);
 
-                _showUnitUIItems.Add(showUnit);
+                    showUnit.Setup(unitDataSO[i]);
+
+                    _showUnitUIItems.Add(showUnit);
+
+                
+                _nameUnitText.text = unitDataSO[1].DefencUnitType.ToString();
+                _mainImage.sprite = unitDataSO[1].UnitSprite;
             }
         }
 
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {
-
             _nameUnitText.text = showUnitUIItem.DefenceUnitType.ToString();
-            _mainImage.sprite = showUnitUIItem.UnitShowImage;
+            _mainImage.sprite = showUnitUIItem.UnitShowImage;          
 
-            for (int i = 0; i < _handItems.Count; i++)
+            if (showUnitUIItem.IsOpenImage)
             {
-                if (_handItems[i].IsBusy && _handItems[i].DefenceUnitType == showUnitUIItem.DefenceUnitType)
-                    return;
-            }
+                _lockText.gameObject.SetActive(false);
 
-            for (int i = 0; i < _handItems.Count; i++)
-            {
-                if (_handItems[i].IsBusy)
-                    continue;
-
-                
-                BGImage showUnit = Instantiate(_bgImage, showUnitUIItem.transform.position, Quaternion.identity, _spawnShowInit.parent.parent);
-
-               
-
-                showUnit.Setup(showUnitUIItem.UnitShowImage, showUnitUIItem.DefenceUnitType);
-
-                _handItems[i].SetBusy(true, showUnitUIItem.DefenceUnitType, showUnit.transform);
-
-                showUnit.transform.DOMove(_handItems[i].transform.position, 0.7f).OnComplete(() =>
+                for (int i = 0; i < _handItems.Count; i++)
                 {
-                    showUnit.transform.SetParent(_handItems[i].transform);
-                });
+                    if (_handItems[i].IsBusy && _handItems[i].DefenceUnitType == showUnitUIItem.DefenceUnitType)
+                        return;
+                }
 
-                break;
+                for (int i = 0; i < _handItems.Count; i++)
+                {
+                    if (_handItems[i].IsBusy)
+                        continue;
 
+
+                    BGImage showUnit = Instantiate(_bgImage, showUnitUIItem.transform.position, Quaternion.identity, _spawnShowInit.parent.parent);
+
+                    showUnit.Setup(showUnitUIItem.UnitShowImage, showUnitUIItem.DefenceUnitType);
+
+                    _handItems[i].SetBusy(true, showUnitUIItem.DefenceUnitType, showUnit.transform);
+
+                    showUnit.transform.DOMove(_handItems[i].transform.position, 0.7f).OnComplete(() =>
+                    {
+                        showUnit.transform.SetParent(_handItems[i].transform);
+                    });
+
+                    break;
+                }
+            }
+            else
+            {
+                _lockText.gameObject.SetActive(true);
             }
         }
         public void OnDeleteUnitHndAction(DefenceUnitType defenceUnitType)

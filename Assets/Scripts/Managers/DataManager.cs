@@ -13,8 +13,8 @@ namespace Assets.Scripts.Managers
         public int HardCurrency => _hardCurrency;
 
         private int _levelIndex;
-        private int _softCurrency = 1200;
-        private int _hardCurrency = 50;
+        private int _softCurrency;
+        private int _hardCurrency;
 
         private string _levelKey = "Level";
         private string _softCurrencyKey = "SoftCurrency";

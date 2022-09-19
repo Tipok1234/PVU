@@ -8,6 +8,8 @@ namespace Assets.Scripts.UIManager
 {
     public class UnitCharacteristicUIItem : MonoBehaviour
     {
+        public Sprite MainImage => _mainImage.sprite;
+
         [SerializeField] private Image _mainImage;
 
         [SerializeField] private TMP_Text _typeText;
@@ -20,7 +22,6 @@ namespace Assets.Scripts.UIManager
 
             if (current.Value == next.Value)
             {
-
                 _valueText.text = current.Value.ToString();
             }
             else

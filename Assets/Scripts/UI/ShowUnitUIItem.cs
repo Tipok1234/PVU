@@ -11,15 +11,14 @@ public class ShowUnitUIItem : MonoBehaviour
     public event Action<ShowUnitUIItem> SelectHandUnitAction;
     public DefenceUnitType DefenceUnitType => _defenceUnitType;
     public Sprite UnitShowImage => _unitImage.sprite;
-
-    public Sprite LockImage => _lockImage.sprite;
+    public bool IsOpenImage => _isOpenImage;
 
     [SerializeField] private Button _selectUnitButton;
     [SerializeField] private Image _unitImage;
     [SerializeField] private Image _lockImage;
 
     private DefenceUnitType _defenceUnitType;
-
+    private bool _isOpenImage;
 
     private void Awake()
     {
@@ -31,6 +30,7 @@ public class ShowUnitUIItem : MonoBehaviour
         _defenceUnitType = unitDataSo.DefencUnitType;
         _unitImage.sprite = unitDataSo.UnitSprite;
         _defenceUnitType = unitDataSo.DefencUnitType;
+        _isOpenImage = unitDataSo.IsOpen;
 
         if (unitDataSo.IsOpen)
         {
@@ -45,9 +45,9 @@ public class ShowUnitUIItem : MonoBehaviour
 
     public void SelectUnit()
     {
-        if(_lockImage.enabled == false)
-        {
+        //if(_lockImage.enabled == false)
+     //   {
             SelectHandUnitAction?.Invoke(this);
-        }
+       // }
     }
 }

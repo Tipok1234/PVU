@@ -39,7 +39,6 @@ public class HandItem : MonoBehaviour
         {
             _isBusy = false;
             Destroy(_tranform.gameObject);
-            Debug.LogError("!!!!!");
         }
 
         DeleteUnitHandActioon?.Invoke(_defenceUnitType);

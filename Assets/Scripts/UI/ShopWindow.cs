@@ -56,7 +56,7 @@ namespace Assets.Scripts.UIManager
                 ShopUnitUIItem shopUI = Instantiate(_shopUnitUIItemPrefab, _spawnUnitParent);
                 shopUI.SelectUnitAction += OnUnitSelected;
 
-                _selectHandWindow.Setup(unitDataSo);
+
 
                 if (unitDataSo[i].IsOpen)
                 {
@@ -73,6 +73,7 @@ namespace Assets.Scripts.UIManager
                 _shopUnitUIItems.Add(shopUI);
 
             }
+            _selectHandWindow.Setup(unitDataSo);
 
 
             UpdateCurrency();
@@ -103,7 +104,7 @@ namespace Assets.Scripts.UIManager
         {
             _selectedUnitUIItem.DisablePrices();
         }
-        public void SelectUnit(DefenceUnitUpgradeDataModel d1, DefenceUnitUpgradeDataModel d2,int level)
+        public void SelectUnit(DefenceUnitUpgradeDataModel d1, DefenceUnitUpgradeDataModel d2, int level)
         {
             if (_selectedUnitUIItem.IsOpen)
             {
