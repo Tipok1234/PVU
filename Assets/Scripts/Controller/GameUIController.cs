@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.UIManager;
+using Assets.Scripts.Managers;
 using Assets.Scripts.Enums;
 using UnityEngine.UI;
 using System;
@@ -18,8 +19,11 @@ namespace Assets.Scripts.Controller
 
         [SerializeField] private UnitGameUI _unitGameUIPrefab;
         [SerializeField] private Transform _spawnParent;
+        [SerializeField] private Canvas _optionCanvas;
 
         [SerializeField] private Button _sellButton;
+        [SerializeField] private Button _optionButton;
+        [SerializeField] private Button _exitOptionButton;
 
         [SerializeField] private Grids.Grid _grid;
         [SerializeField] private TMP_Text _gameCurrencyText;
@@ -32,8 +36,15 @@ namespace Assets.Scripts.Controller
         private void Awake()
         {
             _sellButton.onClick.AddListener(SellButton);
+            _optionButton.onClick.AddListener(OpenOptionCanvas);
+            _exitOptionButton.onClick.AddListener(OpenOptionCanvas);
         }
 
+        public void OpenOptionCanvas()
+        {
+            AudioManager.Instance.ClickSound();
+            _optionCanvas.enabled = !_optionCanvas.enabled;
+        }
         public void Setup(UnitDataSo[] unitDataSo)
         {
             ResetUI();

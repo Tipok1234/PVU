@@ -140,6 +140,8 @@ namespace Assets.Scripts.UIManager
             if (_selectedUnitUIItem == null)
                 return;
 
+          //  AudioManager.Instance.LevelUpSound();
+
             BuyUnitAction?.Invoke(_selectedUnitUIItem.DefenceUnitType);
         }
 

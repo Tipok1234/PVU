@@ -28,5 +28,5 @@ MonoBehaviour:
     _characteristicUnitType: 3
   - _value: 9
     _characteristicUnitType: 4
-  _level: 1
-  _isOpen: 1
+  _level: 0
+  _isOpen: 0

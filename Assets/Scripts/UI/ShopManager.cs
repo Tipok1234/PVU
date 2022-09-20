@@ -40,6 +40,8 @@ namespace Assets.Scripts.UIManager
 
                 if (_dataManager.CheckCurrency(upgradeData.UnlockUnitPrice, upgradeData.CurrencyUnlockType))
                 {
+                    AudioManager.Instance.LevelUpSound();
+
                     _dataManager.RemoveCurrency(upgradeData.UnlockUnitPrice, upgradeData.CurrencyUnlockType);
 
                     _dataManager.BuyUnit(defenceUnitType);
@@ -60,6 +62,10 @@ namespace Assets.Scripts.UIManager
                             break;
                         }
                     }
+                }
+                else
+                {
+                    AudioManager.Instance.NoMoneySound();
                 }
             }
         }
@@ -85,6 +91,7 @@ namespace Assets.Scripts.UIManager
 
                     if (_dataManager.CheckCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency))
                     {
+                        AudioManager.Instance.LevelUpSound();
                         _dataManager.RemoveCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency);
 
                         Debug.LogError(unitUpgrade.UpgradeCost);
@@ -95,6 +102,10 @@ namespace Assets.Scripts.UIManager
                         int upgradeCost = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
                         _shopWindow.UpgradeUnit(upgradeCost, CurrencyType.SoftCurrency);
 
+                    }
+                    else
+                    {
+                        AudioManager.Instance.NoMoneySound();
                     }
                 }
             }

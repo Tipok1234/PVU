@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Managers;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UIManager
@@ -37,19 +38,23 @@ namespace Assets.Scripts.UIManager
             SceneManager.LoadScene("GameScene");
             _gameCanvas.enabled = !_gameCanvas.enabled;
             _loadingScene.enabled = true;
+            AudioManager.Instance.OpenWindowSound();
         }
 
         private void OpenShopCanvas()
         {
+            AudioManager.Instance.OpenWindowSound();
             _shopCanvas.enabled = !_shopCanvas.enabled;
         }
 
         private void OpenHandCanvas()
         {
+            AudioManager.Instance.OpenWindowSound();
             _handCanvas.enabled = !_handCanvas.enabled;
         }
         private void OpenOptionCanvas()
         {
+            AudioManager.Instance.OpenWindowSound();
             _optionCanvas.enabled = !_optionCanvas.enabled;
         }
     }

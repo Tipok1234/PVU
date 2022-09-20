@@ -7,6 +7,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.UIManager
 {
@@ -86,6 +87,8 @@ namespace Assets.Scripts.UIManager
                     showUnit.Setup(showUnitUIItem.UnitShowImage, showUnitUIItem.DefenceUnitType);
 
                     _handItems[i].SetBusy(true, showUnitUIItem.DefenceUnitType, showUnit.transform);
+
+                    AudioManager.Instance.ClickSound();
 
                     showUnit.transform.DOMove(_handItems[i].transform.position, 0.7f).OnComplete(() =>
                     {

@@ -40,14 +40,11 @@ public class ShowUnitUIItem : MonoBehaviour
         {
             _lockImage.enabled = true;
         }
-       
+
     }
 
     public void SelectUnit()
     {
-        //if(_lockImage.enabled == false)
-     //   {
-            SelectHandUnitAction?.Invoke(this);
-       // }
+        SelectHandUnitAction?.Invoke(this);
     }
 }
