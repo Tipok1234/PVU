@@ -41,7 +41,6 @@ namespace Assets.Scripts.Models
             }
 
         }
-
         public override void Create()
         {
             base.Create();

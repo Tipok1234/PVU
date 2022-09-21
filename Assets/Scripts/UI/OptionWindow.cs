@@ -45,8 +45,6 @@ namespace Assets.Scripts.UIManager
             _sound = PlayerPrefs.GetFloat(_mixerSoundKey, 0.5f);
 
             GetSliderValue();
-            Debug.LogError("MUSIC : " + _music);
-            Debug.LogError("SOUND : " + _sound);
 
             SetVolumeMainSound(_music);
             SetVolumeSound(_sound);
@@ -167,9 +165,7 @@ namespace Assets.Scripts.UIManager
         public void GetSliderValue()
         {
             _sliderMusic.value = _music;
-            Debug.LogError("MUSIC VALUE : " + _sliderMusic.value );
             _sliderSound.value = _sound;
-            Debug.LogError("SOUND VALUE : " + _sliderSound.value);
         }
 
         public void SetVolumeMainSound(float volume)

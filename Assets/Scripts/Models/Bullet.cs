@@ -20,6 +20,7 @@ namespace Assets.Scripts.Models
         {
             if(_isActive)
             {
+
                 transform.position += _direction * _speedBullet * Time.deltaTime;
                 _currentTimeBullet += Time.deltaTime;
 
@@ -31,15 +32,14 @@ namespace Assets.Scripts.Models
                 {
                     if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                     {
-                        if(_baseDebuff == null)
+                        if (_baseDebuff == null)
                         {
                             enemy.TakeDamage(_damage);
                         }
                         else
                         {
-                            enemy.TakeDamageDebuff(_damage,_baseDebuff);
+                            enemy.TakeDamageDebuff(_damage, _baseDebuff);
                         }
-                        
                         ResetBullet();
                         return;
                     }
@@ -49,10 +49,30 @@ namespace Assets.Scripts.Models
                 {
                     ResetBullet();
                 }
-
-
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            Debug.LogError(collision.gameObject.name);
+            
+            if (collision.gameObject.tag == "DestroyBullet")
+            {
+                Debug.LogError("!!!!!");
+                Destroy(collision.gameObject);
+            }
+        }
+
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    Debug.LogError(other.gameObject.name);
+
+        //    if (other.transform.tag == "DestroyBullet")
+        //    {
+        //        Debug.LogError("!!!!!");
+        //        Destroy(other.gameObject);
+        //    }
+        //}
 
         public void Setup(float damage, Vector3 direction)
         {

@@ -8,6 +8,7 @@ namespace Assets.Scripts.Managers
 {
     public class DataManager : MonoBehaviour
     {
+        public IReadOnlyDictionary<DefenceUnitType, int> UnitsDictionary => _unitsDictionary;
         public int LevelIndex => _levelIndex;
         public int SoftCurrency => _softCurrency;
         public int HardCurrency => _hardCurrency;
@@ -19,12 +20,13 @@ namespace Assets.Scripts.Managers
         private string _levelKey = "Level";
         private string _softCurrencyKey = "SoftCurrency";
         private string _hardCurrencyKey = "HardCurrency";
+        private string _defencesUnitsUpgradeKey = "DefencesUnitsUpgradeKey";
 
         private static DataManager instance;
 
 
-        private Dictionary<DefenceUnitType, int> _unitsDictionary = new Dictionary<DefenceUnitType, int>();
-        
+        private Dictionary<DefenceUnitType, int> _unitsDictionary;
+        private bool _isDataLoaded;
 
         private void Awake()
         {
@@ -41,9 +43,25 @@ namespace Assets.Scripts.Managers
 
         public void LoadData()
         {
-            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 10);
-            // _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 25);
+            if (_isDataLoaded)
+                return;
+
+            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 100);
+            _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 15);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
+            
+            _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
+
+            if (_unitsDictionary.Count == 0)
+            {
+                Debug.LogError("LoadData ");
+                _unitsDictionary = new Dictionary<DefenceUnitType, int>();
+                _unitsDictionary.Add(DefenceUnitType.Mining_Unit, 0);
+                _unitsDictionary.Add(DefenceUnitType.Shooter_Unit, 0);
+                _unitsDictionary.Add(DefenceUnitType.Mine_Unit,0);
+            }
+
+            _isDataLoaded = true;
         }
 
 
@@ -92,12 +110,10 @@ namespace Assets.Scripts.Managers
             switch (currencyType)
             {
                 case CurrencyType.SoftCurrency:
-                    //_softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 10);
                     _softCurrency += currencyAmount;
                     PlayerPrefs.SetInt(_softCurrencyKey, _softCurrency);
                     break;
                 case CurrencyType.HardCurrency:
-                    //_hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 10);
                     _hardCurrency += currencyAmount;
                     PlayerPrefs.SetInt(_hardCurrencyKey, _hardCurrency);
                     break;
@@ -107,13 +123,14 @@ namespace Assets.Scripts.Managers
 
         public void BuyUnit(DefenceUnitType defenceUnitType)
         {
-            var unitDictionary = _unitsDictionary.ContainsKey(defenceUnitType);
-
-            if (unitDictionary == true)
+            if (_unitsDictionary.ContainsKey(defenceUnitType))
                 return;
 
             _unitsDictionary.Add(defenceUnitType, 0);
-            //Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
+            Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
+
+            Save(_defencesUnitsUpgradeKey, _unitsDictionary);
+
         }
 
         public void LevelUpUnit(DefenceUnitType defenceUnitType)
@@ -123,25 +140,25 @@ namespace Assets.Scripts.Managers
             if (unitDictionary == false)
                 return;
 
-            int level = _unitsDictionary[defenceUnitType];
-            level++;
-            _unitsDictionary[defenceUnitType] = level;
+            _unitsDictionary[defenceUnitType]++;
 
-            // Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
+            Save(_defencesUnitsUpgradeKey, _unitsDictionary);
         }
 
 
-        public void Save<T>(string key, T saveData)
+        private void Save<T>(string key, T saveData)
         {
-            string jsonDataString = JsonUtility.ToJson(saveData, true);
+            string jsonDataString = JsonConvert.SerializeObject(saveData);
             PlayerPrefs.SetString(key, jsonDataString);
+            Debug.LogError(key + " ---- " + jsonDataString);
         }
-        public T Load<T>(string key) where T : new()
+
+        private T Load<T>(string key) where T : new()
         {
             if (PlayerPrefs.HasKey(key))
             {
                 string loadedString = PlayerPrefs.GetString(key);
-                return JsonUtility.FromJson<T>(loadedString);
+                return JsonConvert.DeserializeObject<T>(loadedString);
             }
             else
             {

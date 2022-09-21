@@ -21,6 +21,22 @@ namespace Assets.Scripts.UIManager
         {
             _dataManager = FindObjectOfType<DataManager>();
 
+            _dataManager.LoadData();
+
+            for (int i = 0; i < _unitDataSO.Length; i++)
+            {
+                if (_dataManager.UnitsDictionary.TryGetValue(_unitDataSO[i].DefencUnitType, out int level))
+                {
+                    Debug.LogError("OpenUnit " + _unitDataSO[i].DefencUnitType);
+                    _unitDataSO[i].OpenUnit();
+                    _unitDataSO[i].SetLevel(level);
+                }
+                else
+                {
+                    _unitDataSO[i].ResetData();
+                }
+            }
+
             _shopWindow.BuyUnitAction += OnBuyUnit;
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
             _shopWindow.SelectUnitAction += OnSelectedAction;

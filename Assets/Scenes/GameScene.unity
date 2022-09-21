@@ -165,13 +165,13 @@ MonoBehaviour:
   - {fileID: -5891056907343366438, guid: 0e41d70452b33cc41a5600bfe9483078, type: 3}
   - {fileID: 4452293035230770176, guid: 3ff01997ab641b24d84ae49d7d953782, type: 3}
   - {fileID: -5924598904556257763, guid: 7c8439dd0c18ad6489abf8c88b48a87b, type: 3}
-  - {fileID: -4021908266205086866, guid: 551759d04672b9a46a8937229bbd1d40, type: 3}
   - {fileID: 647949729611509415, guid: deac9ebeb93499a4dad295cbe313ac32, type: 3}
   - {fileID: 6047368056997125172, guid: 67a93ca1f3ecc964da800e601eef4777, type: 3}
   - {fileID: -1962755522481879464, guid: aa13d37dd338b024689251d74bd5ff35, type: 3}
   - {fileID: -8605038124160994065, guid: a42ff52d375df0c4eb7579194c1f5f48, type: 3}
   - {fileID: 7615148551584226960, guid: 38d33b5a7dfc478449c0ba2c33070e02, type: 3}
   - {fileID: 3390684106666312745, guid: 76dc7547a771a1845882ab71951a7290, type: 3}
+  - {fileID: 4596005963051106115, guid: 62883bf0c78fb3b469eb90d8125b0eba, type: 3}
   _gameUIController: {fileID: 990946825}
 --- !u!4 &22512617
 Transform:
@@ -3295,6 +3295,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1815452927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815452929}
+  - component: {fileID: 1815452928}
+  m_Layer: 0
+  m_Name: DestroyRay
+  m_TagString: DestroyBullet
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1815452928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815452927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0151136, y: 0.91740036, z: 0.1245479}
+  m_Center: {x: 0.56073904, y: 0.25906146, z: 0.0980382}
+--- !u!4 &1815452929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815452927}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 9.482, y: 0.1, z: 5.7917023}
+  m_LocalScale: {x: 5.9417014, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2034927233
 GameObject:
   m_ObjectHideFlags: 0

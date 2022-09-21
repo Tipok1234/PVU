@@ -40,7 +40,7 @@ namespace Assets.Scripts.Managers
         private void Start()
         {
             _dataManager = FindObjectOfType<DataManager>();
-            _dataManager.LoadData();
+            //_dataManager.LoadData();
             _softCurrency = _dataManager.SoftCurrency;
 
             _grid.Setup(_width, _length);
