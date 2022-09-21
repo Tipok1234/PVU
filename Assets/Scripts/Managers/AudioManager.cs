@@ -8,8 +8,12 @@ namespace Assets.Scripts.Managers
 {
     public class AudioManager : MonoBehaviour
     {
+        //public float Music => _music;
+        //public float Sound => _sound;
         public static AudioManager Instance => _instance;
         public AudioSource MainSound => _mainSound;
+        public AudioMixer AudioMixer => _audioMixer;
+        public AudioMixer AudioMixerSound => _audioMixerSound;
 
         [SerializeField] private AudioSource _levelUpSound;
         [SerializeField] private AudioSource _noMoneySound;
@@ -20,13 +24,13 @@ namespace Assets.Scripts.Managers
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioMixer _audioMixerSound;
 
-        [SerializeField] private Slider _sliderMusic;
-        [SerializeField] private Slider _sliderSound;
-
         private static AudioManager _instance;
 
-        private string _mixerMusicKey = "MusicMixer";
-        private string _mixerSoundKey = "SoundMixer";
+        //private string _mixerMusicKey = "MusicMixer";
+        //private string _mixerSoundKey = "SoundMixer";
+
+        //private float _music;
+        //private float _sound;
 
         private void Awake()
         {
@@ -44,14 +48,14 @@ namespace Assets.Scripts.Managers
 
         private void Start()
         {
-            float music = PlayerPrefs.GetFloat(_mixerMusicKey, 0.5f);
-            float sound = PlayerPrefs.GetFloat(_mixerSoundKey, 0.5f);
+            //_music = PlayerPrefs.GetFloat(_mixerMusicKey, 0.5f);
+            //_sound = PlayerPrefs.GetFloat(_mixerSoundKey, 0.5f);
 
-            _sliderMusic.value = music;
-            _sliderSound.value = sound;
+            //Debug.LogError("MUSIC : " + _music);
+            //Debug.LogError("SOUND : " + _sound);
 
-            SetVolumeMainSound(music);
-            SetVolumeSound(sound);
+            //SetVolumeMainSound(_music);
+            //SetVolumeSound(_sound);
         }
 
         public void ClickSound()
@@ -86,20 +90,20 @@ namespace Assets.Scripts.Managers
             _clickSound.volume = 1;
         }
 
-        public void SetVolumeMainSound(float volume)
-        {
-            _audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
-            _audioMixer.SetFloat(_mixerMusicKey,volume);
-            PlayerPrefs.SetFloat(_mixerMusicKey, volume);
-            PlayerPrefs.Save();
-        }
+        //public void SetVolumeMainSound(float volume)
+        //{
+        //    _audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+        //    _audioMixer.SetFloat(_mixerMusicKey,volume);
+        //    PlayerPrefs.SetFloat(_mixerMusicKey, volume);
+        //    PlayerPrefs.Save();
+        //}
 
-        public void SetVolumeSound(float volume)
-        {
-            _audioMixerSound.SetFloat("volume", Mathf.Log10(volume) * 20);
-            _audioMixerSound.GetFloat(_mixerSoundKey, out volume);
-            PlayerPrefs.SetFloat(_mixerSoundKey, volume);
-            PlayerPrefs.Save();
-        }
+        //public void SetVolumeSound(float volume)
+        //{
+        //    _audioMixerSound.SetFloat("volume", Mathf.Log10(volume) * 20);
+        //    _audioMixerSound.SetFloat(_mixerSoundKey, volume);
+        //    PlayerPrefs.SetFloat(_mixerSoundKey, volume);
+        //    PlayerPrefs.Save();
+        //}
     }
 }

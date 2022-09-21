@@ -17,9 +17,18 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private TMP_Text _musicText;
         [SerializeField] private TMP_Text _languegeText;
 
+        [SerializeField] private Slider _sliderMusic;
+        [SerializeField] private Slider _sliderSound;
+
         private string _langueageToggleKey = "LanguageKey";
         private string _musicToggleKey = "MusicKey";
         private string _soundToggleKey = "SoundKey";
+
+        private string _mixerMusicKey = "MusicMixer";           //aud Manager
+        private string _mixerSoundKey = "SoundMixer";
+
+        private float _music;                               //aud Manager
+        private float _sound;
 
         private int value;
         private bool _isText;
@@ -30,6 +39,17 @@ namespace Assets.Scripts.UIManager
             _languageToggle.onValueChanged.AddListener(LanguageToggle);
             _musicToggle.onValueChanged.AddListener(TurnMusic);
             _soundToggle.onValueChanged.AddListener(TurnSound);
+
+
+            _music = PlayerPrefs.GetFloat(_mixerMusicKey, 0.5f);
+            _sound = PlayerPrefs.GetFloat(_mixerSoundKey, 0.5f);
+
+            GetSliderValue();
+            Debug.LogError("MUSIC : " + _music);
+            Debug.LogError("SOUND : " + _sound);
+
+            SetVolumeMainSound(_music);
+            SetVolumeSound(_sound);
 
 
             if (PlayerPrefs.HasKey(_musicToggleKey))
@@ -52,7 +72,9 @@ namespace Assets.Scripts.UIManager
 
             if(PlayerPrefs.HasKey(_langueageToggleKey))
             {
-                if (_isText)
+                value = PlayerPrefs.GetInt(_langueageToggleKey);
+
+                if (value == 1)
                 {
                     _languageToggle.isOn = true;
                     _languegeText.text = "EN";
@@ -66,7 +88,9 @@ namespace Assets.Scripts.UIManager
 
             if(PlayerPrefs.HasKey(_soundToggleKey))
             {
-                if(_isSound)
+                value = PlayerPrefs.GetInt(_soundToggleKey);
+
+                if (value == 1)
                 {
                     _soundToggle.isOn = true;
                     AudioManager.Instance.TurnOnAllSound();
@@ -85,19 +109,19 @@ namespace Assets.Scripts.UIManager
         {
             AudioManager.Instance.ClickSound();
 
+            value = _isText ? 1 : 0;
+
             if(_languageToggle.isOn)
             {
-                _isText = true;
                 _languegeText.text = "EN";
-              //  PlayerPrefs.SetString(_langueageToggleKey, _languegeText.text);
+                PlayerPrefs.SetInt(_langueageToggleKey, 1);
             }
             else
             {
-                _isText = false;
                 _languegeText.text = "RUS";
-              //  PlayerPrefs.SetString(_langueageToggleKey, _languegeText.text);
+                PlayerPrefs.SetInt(_langueageToggleKey, 0);
             }
-          //  PlayerPrefs.Save();
+            PlayerPrefs.Save();
         }
 
         private void TurnMusic(bool state)
@@ -123,16 +147,16 @@ namespace Assets.Scripts.UIManager
         {
             AudioManager.Instance.ClickSound();
 
+            value = _isSound ? 1 : 0;
+
             if (_soundToggle.isOn == true)
             {
-                _isSound = true;
                 AudioManager.Instance.TurnOnAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 1);
                 _soundText.text = "ON";
             }
             else
             {
-                _isSound = false;
                 _soundText.text = "OFF";
                 AudioManager.Instance.TurnOffAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 0);
@@ -140,7 +164,29 @@ namespace Assets.Scripts.UIManager
             PlayerPrefs.Save();
         }
 
-        
+        public void GetSliderValue()
+        {
+            _sliderMusic.value = _music;
+            Debug.LogError("MUSIC VALUE : " + _sliderMusic.value );
+            _sliderSound.value = _sound;
+            Debug.LogError("SOUND VALUE : " + _sliderSound.value);
+        }
+
+        public void SetVolumeMainSound(float volume)
+        {
+            AudioManager.Instance.AudioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
+            AudioManager.Instance.AudioMixer.SetFloat(_mixerMusicKey, volume);
+            PlayerPrefs.SetFloat(_mixerMusicKey, volume);
+            PlayerPrefs.Save();
+        }
+
+        public void SetVolumeSound(float volume)
+        {
+            AudioManager.Instance.AudioMixerSound.SetFloat("volume", Mathf.Log10(volume) * 20);
+            AudioManager.Instance.AudioMixerSound.SetFloat(_mixerSoundKey, volume);
+            PlayerPrefs.SetFloat(_mixerSoundKey, volume);
+            PlayerPrefs.Save();
+        }
         //private void Sound()
         //{
         //    AudioListener.pause = !AudioListener.pause;
