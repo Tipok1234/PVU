@@ -26,6 +26,12 @@ namespace Assets.Scripts.Models
                         }
                     }
                 }
+
+                if (Physics.Raycast(ray, out RaycastHit desctroyHit, 0.15f, _destoryBullet))
+                {
+                    ResetBullet();
+                }
+
                 transform.position += Vector3.right * _speedBullet * Time.deltaTime;
                 _currentTimeBullet += Time.deltaTime;
             }

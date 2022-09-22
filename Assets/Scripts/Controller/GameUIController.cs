@@ -45,16 +45,19 @@ namespace Assets.Scripts.Controller
             AudioManager.Instance.ClickSound();
             _optionCanvas.enabled = !_optionCanvas.enabled;
         }
-        public void Setup(UnitDataSo[] unitDataSo)
+        public void Setup(UnitDataSo[] unitDataSo) //, DataManager dataManager)
         {
             ResetUI();
 
             for (int i = 0; i < unitDataSo.Length; i++)
             {
-                UnitGameUI unitUI = Instantiate(_unitGameUIPrefab, _spawnParent);
-                unitUI.Setup(unitDataSo[i]);
-                unitUI.BuyUnitAction += OnBuyUnit;
-                _unitGameUIList.Add(unitUI);
+              //  if(dataManager.UnitHandItems.Contains(unitDataSo[i].DefencUnitType))
+              //  {
+                    UnitGameUI unitUI = Instantiate(_unitGameUIPrefab, _spawnParent);
+                    unitUI.Setup(unitDataSo[i]);
+                    unitUI.BuyUnitAction += OnBuyUnit;
+                    _unitGameUIList.Add(unitUI);
+              //  }
             }
         }
 

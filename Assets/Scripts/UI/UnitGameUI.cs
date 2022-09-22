@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 using DG.Tweening;
 
 namespace Assets.Scripts.UIManager
@@ -29,6 +30,16 @@ namespace Assets.Scripts.UIManager
         {
             _buyButton.onClick.AddListener(BuyButton);
         }
+
+        //public void Setup(DataManager dataManager)
+        //{
+        //    _placeCooldown = ((float)CharacteristicUnitType.Recharge);
+        //    _unitPrice = ((int)CharacteristicUnitType.Price);
+        //    _priceText.text = CharacteristicUnitType.Price.ToString();
+        //    _unitImage.sprite =
+        //    _unitType = unitDataSo.DefencUnitType;
+        //}
+
         public void Setup(UnitDataSo unitDataSo)
         {
             _placeCooldown = unitDataSo.PlaceCooldown;

@@ -8,6 +8,7 @@ namespace Assets.Scripts.Models
         [SerializeField] protected float _speedBullet;
         [SerializeField] protected float _bulletLifeTime;
         [SerializeField] protected LayerMask _enemyLayer;
+        [SerializeField] protected LayerMask _destoryBullet;
 
         protected float _currentTimeBullet = 0;
         protected float _damage;
@@ -44,6 +45,11 @@ namespace Assets.Scripts.Models
                         return;
                     }
                 }
+                
+                if(Physics.Raycast(ray, out RaycastHit desctroyHit,0.15f, _destoryBullet))
+                {
+                    ResetBullet();
+                }
 
                 if (_currentTimeBullet >= _bulletLifeTime)
                 {
@@ -51,28 +57,6 @@ namespace Assets.Scripts.Models
                 }
             }
         }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            Debug.LogError(collision.gameObject.name);
-            
-            if (collision.gameObject.tag == "DestroyBullet")
-            {
-                Debug.LogError("!!!!!");
-                Destroy(collision.gameObject);
-            }
-        }
-
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    Debug.LogError(other.gameObject.name);
-
-        //    if (other.transform.tag == "DestroyBullet")
-        //    {
-        //        Debug.LogError("!!!!!");
-        //        Destroy(other.gameObject);
-        //    }
-        //}
 
         public void Setup(float damage, Vector3 direction)
         {

@@ -9,6 +9,8 @@ namespace Assets.Scripts.Managers
     public class DataManager : MonoBehaviour
     {
         public IReadOnlyDictionary<DefenceUnitType, int> UnitsDictionary => _unitsDictionary;
+
+        public List<DefenceUnitType> UnitHandItems => _unitHandItems;
         public int LevelIndex => _levelIndex;
         public int SoftCurrency => _softCurrency;
         public int HardCurrency => _hardCurrency;
@@ -21,11 +23,14 @@ namespace Assets.Scripts.Managers
         private string _softCurrencyKey = "SoftCurrency";
         private string _hardCurrencyKey = "HardCurrency";
         private string _defencesUnitsUpgradeKey = "DefencesUnitsUpgradeKey";
+        private string _unitHandItemsKey = "UnitHandItemsKey";
 
         private static DataManager instance;
 
+        private List<DefenceUnitType> _unitHandItems;
 
         private Dictionary<DefenceUnitType, int> _unitsDictionary;
+
         private bool _isDataLoaded;
 
         private void Awake()
@@ -49,8 +54,12 @@ namespace Assets.Scripts.Managers
             _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 100);
             _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 15);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
-            
+
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
+            _unitHandItems = Load<List<DefenceUnitType>>(_unitHandItemsKey);
+
+
+            _unitHandItems = new List<DefenceUnitType>();
 
             if (_unitsDictionary.Count == 0)
             {
@@ -58,7 +67,7 @@ namespace Assets.Scripts.Managers
                 _unitsDictionary = new Dictionary<DefenceUnitType, int>();
                 _unitsDictionary.Add(DefenceUnitType.Mining_Unit, 0);
                 _unitsDictionary.Add(DefenceUnitType.Shooter_Unit, 0);
-                _unitsDictionary.Add(DefenceUnitType.Mine_Unit,0);
+                _unitsDictionary.Add(DefenceUnitType.Mine_Unit, 0);
             }
 
             _isDataLoaded = true;
@@ -131,6 +140,27 @@ namespace Assets.Scripts.Managers
 
             Save(_defencesUnitsUpgradeKey, _unitsDictionary);
 
+        }
+
+        public void SaveHandItem(DefenceUnitType defenceUnitType)
+        {
+            if (_unitHandItems.Contains(defenceUnitType))
+                return;
+
+            _unitHandItems.Add(defenceUnitType);
+            Debug.LogError("HAND LIST - " + _unitHandItems.Count);
+
+            Save(_unitHandItemsKey, _unitHandItems);
+        }
+
+        public void RemoveHandItem(DefenceUnitType defenceUnitType)
+        {
+            if (_unitHandItems.Contains(defenceUnitType))
+            {
+                _unitHandItems.Remove(defenceUnitType);
+
+                Save(_unitHandItemsKey, _unitHandItems);
+            }
         }
 
         public void LevelUpUnit(DefenceUnitType defenceUnitType)

@@ -113,3 +113,6 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  _destoryBullet:
+    serializedVersion: 2
+    m_Bits: 1024

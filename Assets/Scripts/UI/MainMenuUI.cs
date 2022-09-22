@@ -11,6 +11,7 @@ namespace Assets.Scripts.UIManager
     {
 
         [SerializeField] private Button _startGameButton;
+        [SerializeField] private Button _goFightButton;
         [SerializeField] private Button _optionButton;
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _exitButton;
@@ -25,6 +26,7 @@ namespace Assets.Scripts.UIManager
         void Start()
         {
             _startGameButton.onClick.AddListener(StartGame);
+            _goFightButton.onClick.AddListener(FightGame);
             _optionButton.onClick.AddListener(OpenOptionCanvas);
             _handButton.onClick.AddListener(OpenHandCanvas);
             _exitOptionButton.onClick.AddListener(OpenOptionCanvas);
@@ -35,12 +37,21 @@ namespace Assets.Scripts.UIManager
 
         private void StartGame()
         {
+            _handCanvas.enabled = !_handCanvas.enabled;
+           // _gameCanvas.enabled = !_gameCanvas.enabled;
+            //SceneManager.LoadScene("GameScene");
+            //_gameCanvas.enabled = !_gameCanvas.enabled;
+            //_loadingScene.enabled = true;
+            //AudioManager.Instance.OpenWindowSound();
+        }
+
+        private void FightGame()
+        {
             SceneManager.LoadScene("GameScene");
             _gameCanvas.enabled = !_gameCanvas.enabled;
             _loadingScene.enabled = true;
             AudioManager.Instance.OpenWindowSound();
         }
-
         private void OpenShopCanvas()
         {
             AudioManager.Instance.OpenWindowSound();

@@ -8,11 +8,15 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using Assets.Scripts.Managers;
+using Newtonsoft.Json;
 
 namespace Assets.Scripts.UIManager
 {
     public class SelectHandWindow : MonoBehaviour
     {
+        public event Action<DefenceUnitType> SaveHandItemAction;
+        public event Action<DefenceUnitType> RemoveHandItemAction;
+
         [SerializeField] private Transform _spawnHandUnitUI;
         [SerializeField] private Transform _spawnUnitImage;
         [SerializeField] private Transform _spawnShowInit;
@@ -26,8 +30,6 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private BGImage _bgImage;
 
         private int _countHandItem = 0;
-
-
 
         private List<HandItem> _handItems = new List<HandItem>();
         private List<ShowUnitUIItem> _showUnitUIItems = new List<ShowUnitUIItem>();
@@ -46,16 +48,16 @@ namespace Assets.Scripts.UIManager
                 }
 
 
-                    ShowUnitUIItem showUnit = Instantiate(_showUnitUIItem, _spawnShowInit);
+                ShowUnitUIItem showUnit = Instantiate(_showUnitUIItem, _spawnShowInit);
 
-                    showUnit.SelectHandUnitAction += OnUnitSelected;
+                showUnit.SelectHandUnitAction += OnUnitSelected;
 
 
-                    showUnit.Setup(unitDataSO[i]);
+                showUnit.Setup(unitDataSO[i]);
 
-                    _showUnitUIItems.Add(showUnit);
+                _showUnitUIItems.Add(showUnit);
 
-                
+
                 _nameUnitText.text = unitDataSO[1].DefencUnitType.ToString();
                 _mainImage.sprite = unitDataSO[1].UnitSprite;
             }
@@ -64,7 +66,7 @@ namespace Assets.Scripts.UIManager
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {
             _nameUnitText.text = showUnitUIItem.DefenceUnitType.ToString();
-            _mainImage.sprite = showUnitUIItem.UnitShowImage;          
+            _mainImage.sprite = showUnitUIItem.UnitShowImage;
 
             if (showUnitUIItem.IsOpenImage)
             {
@@ -95,6 +97,9 @@ namespace Assets.Scripts.UIManager
                         showUnit.transform.SetParent(_handItems[i].transform);
                     });
 
+
+                    SaveHandItemAction?.Invoke(_handItems[i].DefenceUnitType);
+
                     break;
                 }
             }
@@ -105,9 +110,8 @@ namespace Assets.Scripts.UIManager
         }
         public void OnDeleteUnitHndAction(DefenceUnitType defenceUnitType)
         {
-
+            RemoveHandItemAction?.Invoke(defenceUnitType);
         }
-
     }
 }
 
