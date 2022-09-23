@@ -15,7 +15,7 @@ MonoBehaviour:
   _unitSprite: {fileID: 21300000, guid: 5d807b98b1b15314fbae5c680e42a892, type: 3}
   _price: 100
   _hp: 10
-  _placeCooldown: 3
+  _placeCooldown: 0
   _defenceUnitType: 1
   _unitCharacteristicDatas:
   - _value: 100
@@ -29,4 +29,4 @@ MonoBehaviour:
   - _value: 8
     _characteristicUnitType: 4
   _level: 0
-  _isOpen: 0
+  _isOpen: 1

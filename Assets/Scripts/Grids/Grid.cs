@@ -59,21 +59,35 @@ namespace Assets.Scripts.Grids
                     {
                         if (hitInfo.transform.TryGetComponent<GridCell>(out GridCell gridCell))
                         {
-                            if (gridCell.IsBusy)
+                            if (gridCell.IsBusy && gridCell.BaseUnit.CurrentHP <= 20)
+                            {
+                                if (_gameUnit.DefencUnitType != gridCell.BaseUnit.DefencUnitType)
+                                    return;
+
+                                gridCell.RegenurationUnit();
+                                UnitCreateAction?.Invoke(_gameUnit.DefencUnitType);
+
+                                Destroy(_gameUnit.gameObject);
+                                _gameUnit = null;
+                            }
+                            else if (gridCell.IsBusy && gridCell.BaseUnit.CurrentHP > 20)
+                            {
                                 return;
-
-
-                            gridCell.PlaceUnit(_gameUnit);
-                            _gameUnit.Create();
-                            UnitCreateAction?.Invoke(_gameUnit.DefencUnitType);
-                            _gameUnit = null;
+                            }
+                            else if (!gridCell.IsBusy)
+                            {
+                                gridCell.PlaceUnit(_gameUnit);
+                                _gameUnit.Create();
+                                UnitCreateAction?.Invoke(_gameUnit.DefencUnitType);
+                                _gameUnit = null;
+                            }
                         }
                     }
                 }
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    _gameUnit.gameObject.SetActive(false);
+                    Destroy(_gameUnit.gameObject);
                     _gameUnit = null;
                 }
             }

@@ -54,9 +54,9 @@ namespace Assets.Scripts.Models
 
         public override void TakeDamage(float damage)
         {
-            _hp -= damage;
+            _currentHP -= damage;
 
-            if (_hp <= 0)
+            if (_currentHP <= 0)
             {
                 Death();
             }

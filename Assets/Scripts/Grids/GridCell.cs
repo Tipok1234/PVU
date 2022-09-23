@@ -5,6 +5,7 @@ namespace Assets.Scripts.Grids
 {
     public class GridCell : MonoBehaviour
     {
+        public DefenceUnit BaseUnit => _baseUnit;
         public Transform SpawnPoint => _spawnPoint;
         public int X => _x;
         public int Z => _z;
@@ -17,7 +18,7 @@ namespace Assets.Scripts.Grids
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private GameObject _hightLight;
 
-        private BaseUnit _baseUnit;
+        private DefenceUnit _baseUnit;
 
         public void SetCell(int x, int z)
         {
@@ -25,7 +26,7 @@ namespace Assets.Scripts.Grids
             _z = z;
         }
 
-        public void PlaceUnit(BaseUnit unit)
+        public void PlaceUnit(DefenceUnit unit)
         {
             _baseUnit = unit;
             _baseUnit.transform.SetParent(_spawnPoint);
@@ -33,6 +34,11 @@ namespace Assets.Scripts.Grids
             _baseUnit.UnitDeadAction += OnUnitDead;
 
             _isBusy = true;
+        }
+
+        public void RegenurationUnit()
+        {
+            _baseUnit.Refresh();
         }
 
         public void SetEmpty()
