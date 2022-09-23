@@ -2329,8 +2329,8 @@ MonoBehaviour:
     m_Top: 25
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 2
-  m_StartAxis: 0
+  m_StartCorner: 0
+  m_StartAxis: 1
   m_CellSize: {x: 160, y: 160}
   m_Spacing: {x: 50, y: 30}
   m_Constraint: 2
@@ -2461,7 +2461,7 @@ RectTransform:
   m_Children:
   - {fileID: 652434713}
   m_Father: {fileID: 1341511414}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2527,7 +2527,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &895898607
 MonoBehaviour:
@@ -4171,8 +4171,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 895898603}
   - {fileID: 1425392144}
+  - {fileID: 895898603}
   - {fileID: 1109773806}
   - {fileID: 913767000}
   - {fileID: 1388014746}
@@ -4428,7 +4428,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1388014750
 MonoBehaviour:
@@ -4931,7 +4931,7 @@ RectTransform:
   m_Children:
   - {fileID: 1690314421}
   m_Father: {fileID: 1341511414}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7090,6 +7090,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3301286278784627112, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3301286278784627115, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7243,6 +7248,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428435814100535104, guid: 3bf4c7fb26dcce642bd2aeffdc5ca33b,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7428435814100535132, guid: 3bf4c7fb26dcce642bd2aeffdc5ca33b,
         type: 3}

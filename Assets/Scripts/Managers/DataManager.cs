@@ -16,8 +16,8 @@ namespace Assets.Scripts.Managers
         public int HardCurrency => _hardCurrency;
 
         private int _levelIndex;
-        private int _softCurrency = 200;
-        private int _hardCurrency = 35;
+        private int _softCurrency;
+        private int _hardCurrency;
 
         private string _levelKey = "Level";
         private string _softCurrencyKey = "SoftCurrency";
@@ -51,15 +51,14 @@ namespace Assets.Scripts.Managers
             if (_isDataLoaded)
                 return;
 
-            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 100);
+            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 1000);
             _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 15);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
             _unitHandItems = Load<List<DefenceUnitType>>(_unitHandItemsKey);
 
-
-            _unitHandItems = new List<DefenceUnitType>();
+            Debug.LogError("LOAD " + _unitHandItems.Count);
 
             if (_unitsDictionary.Count == 0)
             {
@@ -148,9 +147,11 @@ namespace Assets.Scripts.Managers
                 return;
 
             _unitHandItems.Add(defenceUnitType);
-            Debug.LogError("HAND LIST - " + _unitHandItems.Count);
 
             Save(_unitHandItemsKey, _unitHandItems);
+
+            Debug.LogError("SAVE " + _unitHandItems.Count);
+
         }
 
         public void RemoveHandItem(DefenceUnitType defenceUnitType)
@@ -161,6 +162,8 @@ namespace Assets.Scripts.Managers
 
                 Save(_unitHandItemsKey, _unitHandItems);
             }
+
+            Debug.LogError("REMOVE " + _unitHandItems.Count);
         }
 
         public void LevelUpUnit(DefenceUnitType defenceUnitType)
@@ -180,7 +183,6 @@ namespace Assets.Scripts.Managers
         {
             string jsonDataString = JsonConvert.SerializeObject(saveData);
             PlayerPrefs.SetString(key, jsonDataString);
-            Debug.LogError(key + " ---- " + jsonDataString);
         }
 
         private T Load<T>(string key) where T : new()

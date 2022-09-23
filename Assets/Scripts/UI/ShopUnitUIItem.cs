@@ -37,7 +37,6 @@ namespace Assets.Scripts.UIManager
             _defenceUnitType = unitDataSO.DefencUnitType;
             _unitImage.sprite = unitDataSO.UnitSprite;
 
-
             if (unitDataSO.IsOpen)
             {
                 OpenUnit();

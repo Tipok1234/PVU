@@ -10,6 +10,7 @@ namespace Assets.Scripts.UIManager
 {
     public class ShopManager : MonoBehaviour
     {
+        [SerializeField] private SelectHandManager _selectHandManager;
         [SerializeField] private ShopWindow _shopWindow;
         [SerializeField] private UnitDataSo[] _unitDataSO;
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
@@ -27,7 +28,6 @@ namespace Assets.Scripts.UIManager
             {
                 if (_dataManager.UnitsDictionary.TryGetValue(_unitDataSO[i].DefencUnitType, out int level))
                 {
-                    Debug.LogError("OpenUnit " + _unitDataSO[i].DefencUnitType);
                     _unitDataSO[i].OpenUnit();
                     _unitDataSO[i].SetLevel(level);
                 }
@@ -42,6 +42,7 @@ namespace Assets.Scripts.UIManager
             _shopWindow.SelectUnitAction += OnSelectedAction;
 
             _shopWindow.Setup(_unitDataSO);
+            _selectHandManager.Setup(_unitDataSO,_dataManager);
         }
 
         private void OnBuyUnit(DefenceUnitType defenceUnitType)
@@ -142,6 +143,10 @@ namespace Assets.Scripts.UIManager
                         if (!_defenceUnitsUpgradeConfig.IsMaxUnitLevel(defenceUnitType, _unitDataSO[i].Level))
                         {
                             d2 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, _unitDataSO[i].Level+1);
+                        }
+                        else
+                        {
+                            _shopWindow.DisableUnitPrice();
                         }
                     }
                     _shopWindow.SelectUnit(d1, d2, _unitDataSO[i].Level);

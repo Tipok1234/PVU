@@ -9,6 +9,7 @@ using System;
 using TMPro;
 using Assets.Scripts.Managers;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace Assets.Scripts.UIManager
 {
@@ -34,13 +35,12 @@ namespace Assets.Scripts.UIManager
         private List<HandItem> _handItems = new List<HandItem>();
         private List<ShowUnitUIItem> _showUnitUIItems = new List<ShowUnitUIItem>();
 
-        public void Setup(UnitDataSo[] unitDataSO)
+        public void Setup(UnitDataSo[] unitDataSO,List<DefenceUnitType> unitHandItems)
         {
             for (int i = 0; i < unitDataSO.Length; i++)
             {
-                _countHandItem++;
 
-                if (_countHandItem <= 8)
+                if (_countHandItem < 8)
                 {
                     HandItem handItem = Instantiate(_handItem, _spawnHandUnitUI);
                     _handItems.Add(handItem);
@@ -48,18 +48,37 @@ namespace Assets.Scripts.UIManager
                 }
 
 
+                if (unitHandItems.Contains(unitDataSO[i].DefencUnitType))
+                {
+                    HandItem hand = _handItems.FirstOrDefault(h => !h.IsBusy);
+
+                    if (hand != null)
+                    {
+                        BGImage bgImage = Instantiate(_bgImage, hand.transform.position, Quaternion.identity, hand.transform);
+
+                        bgImage.Setup(unitDataSO[i].UnitSprite, unitDataSO[i].DefencUnitType);
+
+                        hand.SetBusy(true, unitDataSO[i].DefencUnitType, bgImage.transform);
+                    }
+                }
+
                 ShowUnitUIItem showUnit = Instantiate(_showUnitUIItem, _spawnShowInit);
 
                 showUnit.SelectHandUnitAction += OnUnitSelected;
 
+                if (unitDataSO[i].IsOpen)
+                {
+                    showUnit.transform.SetAsFirstSibling();
+                }
 
                 showUnit.Setup(unitDataSO[i]);
 
                 _showUnitUIItems.Add(showUnit);
 
-
                 _nameUnitText.text = unitDataSO[1].DefencUnitType.ToString();
                 _mainImage.sprite = unitDataSO[1].UnitSprite;
+
+                _countHandItem++;
             }
         }
 
@@ -96,7 +115,6 @@ namespace Assets.Scripts.UIManager
                     {
                         showUnit.transform.SetParent(_handItems[i].transform);
                     });
-
 
                     SaveHandItemAction?.Invoke(_handItems[i].DefenceUnitType);
 

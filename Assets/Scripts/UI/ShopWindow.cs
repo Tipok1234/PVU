@@ -34,7 +34,6 @@ namespace Assets.Scripts.UIManager
 
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
-        [SerializeField] private SelectHandWindow _selectHandWindow;
         private DataManager _dataManager;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
@@ -57,11 +56,20 @@ namespace Assets.Scripts.UIManager
                 shopUI.SelectUnitAction += OnUnitSelected;
 
 
+                shopUI.Setup(unitDataSo[i]);
 
                 if (unitDataSo[i].IsOpen)
                 {
-                    var upgradeData = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
-                    shopUI.UpdatePriceText(upgradeData.UpgradeCost, CurrencyType.SoftCurrency);
+                    if (_defenceUnitsUpgradeConfig.IsMaxUnitLevel(unitDataSo[i].DefencUnitType, unitDataSo[i].Level))
+                    {
+                        shopUI.DisablePrices();
+                    }
+                    else
+                    {
+
+                        var upgradeData = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
+                        shopUI.UpdatePriceText(upgradeData.UpgradeCost, CurrencyType.SoftCurrency);
+                    }
                 }
                 else
                 {
@@ -69,12 +77,9 @@ namespace Assets.Scripts.UIManager
                     shopUI.UpdatePriceText(unlockPrice, CurrencyType.HardCurrency);
                 }
 
-                shopUI.Setup(unitDataSo[i]);
                 _shopUnitUIItems.Add(shopUI);
 
             }
-            _selectHandWindow.Setup(unitDataSo);
-
 
             UpdateCurrency();
 
@@ -139,8 +144,6 @@ namespace Assets.Scripts.UIManager
         {
             if (_selectedUnitUIItem == null)
                 return;
-
-          //  AudioManager.Instance.LevelUpSound();
 
             BuyUnitAction?.Invoke(_selectedUnitUIItem.DefenceUnitType);
         }

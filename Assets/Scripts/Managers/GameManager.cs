@@ -46,7 +46,7 @@ namespace Assets.Scripts.Managers
             _grid.Setup(_width, _length);
             _enemyManager.Setup(_grid.EnemySpawnPoints, _levelManager.GetLevelByIndex(_dataManager.LevelIndex));
 
-            _gameUIController.Setup(_unitDataSo); //, _dataManager);
+            _gameUIController.Setup(_unitDataSo, _dataManager);
 
             _gameUIController.UpdateSoftCurrency(_softCurrency);
             _gameUIController.UpdateGameCurrency(_currentGunpowder);
