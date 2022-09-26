@@ -9,6 +9,8 @@ namespace Assets.Scripts.Models
         [SerializeField] private Bullet _bullet;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
+        [SerializeField] private ParticleSystem _shootParticle;
+        [SerializeField] private ParticleSystem _deathParticle;
 
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _reloadTimeBullet;
@@ -37,11 +39,13 @@ namespace Assets.Scripts.Models
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
                             _animationModel.PlayAnimation();
+                            ShootParticle();
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right);
 
                             yield return new WaitForSeconds(_reloadTimeBullet);
 
                             _animationModel.PlayAnimation();
+                            ShootParticle();
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right);
 
                             _currentReloadTime = 0;
@@ -52,6 +56,11 @@ namespace Assets.Scripts.Models
             }             
         }
 
+
+        private void ShootParticle()
+        {
+            Instantiate(_shootParticle, _spawnBullet);
+        }
         public override void TakeDamage(float damage)
         {
             _currentHP -= damage;
@@ -59,6 +68,9 @@ namespace Assets.Scripts.Models
             if (_currentHP <= 0)
             {
                 Death();
+                _deathParticle.transform.position = gameObject.transform.position;
+                var particleSystem = Instantiate(_deathParticle);
+                Destroy(particleSystem, 2f);
             }
         }
 

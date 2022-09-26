@@ -52,6 +52,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _animationMane: {fileID: 905847372520764895}
+  _particleSystem: {fileID: 2449818170915842330, guid: bb464284dfa874c4aba37834629a0388,
+    type: 3}
   _damage: 400
   _timeDamage: 5
 --- !u!114 &905847372520764895

@@ -9,6 +9,7 @@ namespace Assets.Scripts.Models
     {
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private AnimationMine _animationMane;
+        [SerializeField] private ParticleSystem _particleSystem;
         [SerializeField] private int _damage;
         [SerializeField] private float _timeDamage;
 
@@ -53,6 +54,7 @@ namespace Assets.Scripts.Models
                 yield return new WaitForFixedUpdate();
             }
         }
+
         public override void TakeDamage(float damage)
         {
             _currentHP -= damage;
@@ -67,6 +69,9 @@ namespace Assets.Scripts.Models
         {
             StopCoroutine(LogicMineCoroutine());
             base.Death(deathTime);
+            _particleSystem.transform.position = gameObject.transform.position;
+            var particleSystem = Instantiate(_particleSystem);
+            Destroy(particleSystem, 2f);
         }
     }
 }

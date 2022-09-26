@@ -10,6 +10,8 @@ namespace Assets.Scripts.Models
         [SerializeField] private Bullet _bullet;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
+        [SerializeField] private ParticleSystem _shootParticle;
+        [SerializeField] private ParticleSystem _deathParticle;
 
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _damageUnit = 10;
@@ -64,6 +66,7 @@ namespace Assets.Scripts.Models
                                 _attackUnit = enemy;
 
                                 _animationModel.PlayAnimation();
+                                ShootParticle();
                                 Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
                                 _currentReloadTime = 0;
                             }
@@ -77,6 +80,11 @@ namespace Assets.Scripts.Models
         {
             Vector3 lookRotation = (_attackUnit.transform.position - _gunModel.transform.position);
             _gunModel.transform.rotation = Quaternion.LookRotation(lookRotation);
+        }
+
+        private void ShootParticle()
+        {
+            Instantiate(_shootParticle, _spawnBullet);
         }
 
         //void OnDrawGizmosSelected()
@@ -97,6 +105,10 @@ namespace Assets.Scripts.Models
             if (_currentHP <= 0)
             {
                 Death();
+                Death();
+                _deathParticle.transform.position = gameObject.transform.position;
+                var particleSystem = Instantiate(_deathParticle);
+                Destroy(particleSystem, 2f);
             }
         }
     }

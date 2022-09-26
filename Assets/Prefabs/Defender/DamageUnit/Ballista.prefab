@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189221741882675652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.091}
+  m_LocalPosition: {x: -0, y: 0, z: 0.205}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6035524150485161770}
@@ -150,11 +150,16 @@ MonoBehaviour:
   _hp: 60
   _colliderUnit: {fileID: 1784406203126154136}
   _unitDefenceType: 5
-  _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
+  _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092,
+    type: 3}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _spawnBullet: {fileID: 8978292076249076703}
+  _shootParticle: {fileID: 3775946356171156253, guid: 67f2a9421a64848c2bef46ef4b68cc1b,
+    type: 3}
+  _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
+    type: 3}
   _reloadTime: 3
   _damageUnit: 10
   _gunModel: {fileID: 5201270580683582257}

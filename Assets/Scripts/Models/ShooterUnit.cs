@@ -8,6 +8,8 @@ namespace Assets.Scripts.Models
         [SerializeField] private Bullet _bullet;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
+        [SerializeField] private ParticleSystem _shootParticle;
+        [SerializeField] private ParticleSystem _deathParticle;
 
         [SerializeField] private float _reloadTime;
         [SerializeField] private float _damageUnit = 10;
@@ -33,6 +35,7 @@ namespace Assets.Scripts.Models
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit,-transform.right);
+                            ShootParticle();
                             _animationModel.PlayAnimation();
                             _currentReloadTime = 0;
                         }
@@ -46,6 +49,10 @@ namespace Assets.Scripts.Models
             base.Create();
         }
 
+        private void ShootParticle()
+        {
+            Instantiate(_shootParticle, _spawnBullet);
+        }
         public void CreateShooter()
         {
 
@@ -57,6 +64,9 @@ namespace Assets.Scripts.Models
             if(_currentHP <= 0)
             {
                 Death();
+                _deathParticle.transform.position = gameObject.transform.position;
+                var particleSystem = Instantiate(_deathParticle);
+                Destroy(particleSystem, 2f);
             }
         }
     }

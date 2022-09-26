@@ -36,6 +36,7 @@ namespace Assets.Scripts.Models
                 _currentTimeBullet += Time.deltaTime;
             }
         }
+
         private void ResetBullet()
         {
             _isActive = false;

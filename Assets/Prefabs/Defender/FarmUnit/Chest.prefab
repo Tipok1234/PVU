@@ -65,9 +65,12 @@ MonoBehaviour:
   _unitDefenceType: 8
   _softIncomeAmount: 5
   _softIncomeCooldown: 5
-  _gunPowderPrefab: {fileID: 8918352237793816498, guid: 19519880c80bd29408c0a4c3b55c7d69, type: 3}
+  _gunPowderPrefab: {fileID: 8918352237793816498, guid: 19519880c80bd29408c0a4c3b55c7d69,
+    type: 3}
   _spawnDimond: {fileID: 2824842118159924429}
   _animationModel: {fileID: -202475004028840523}
+  _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
+    type: 3}
   _currencyType: 1
 --- !u!114 &-202475004028840523
 MonoBehaviour:
@@ -188,11 +191,13 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: f1aa9cb361cc87e4c988163a8de50413, type: 3}
 --- !u!4 &1079073521703285170 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: f1aa9cb361cc87e4c988163a8de50413, type: 3}
+  m_CorrespondingSourceObject: {fileID: 400000, guid: f1aa9cb361cc87e4c988163a8de50413,
+    type: 3}
   m_PrefabInstance: {fileID: 1079073521702890290}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1079073521703285174 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: f1aa9cb361cc87e4c988163a8de50413, type: 3}
+  m_CorrespondingSourceObject: {fileID: 400004, guid: f1aa9cb361cc87e4c988163a8de50413,
+    type: 3}
   m_PrefabInstance: {fileID: 1079073521702890290}
   m_PrefabAsset: {fileID: 0}

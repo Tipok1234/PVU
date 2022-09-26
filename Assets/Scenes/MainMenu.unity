@@ -2557,7 +2557,6 @@ MonoBehaviour:
   _currentLevelText: {fileID: 1413647459}
   _defenceUnitsUpgradeConfig: {fileID: 11400000, guid: d2f5ea483266a8a4581b351df3b6dee8,
     type: 2}
-  _selectHandWindow: {fileID: 1388014750}
 --- !u!224 &913767000 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3301286278784627115, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
@@ -3622,6 +3621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de356ea9ac1cd4681dc089c36e9d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectHandManager: {fileID: 223326355}
   _shopWindow: {fileID: 895898607}
   _unitDataSO:
   - {fileID: 11400000, guid: bf65df82402650d42a7e8a27bcf77250, type: 2}

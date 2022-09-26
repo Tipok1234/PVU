@@ -115,9 +115,12 @@ MonoBehaviour:
   _unitDefenceType: 0
   _softIncomeAmount: 25
   _softIncomeCooldown: 7
-  _gunPowderPrefab: {fileID: 4809060521006752121, guid: 7f8700aa7b84a09458be09fe1aa253ca, type: 3}
+  _gunPowderPrefab: {fileID: 4809060521006752121, guid: 7f8700aa7b84a09458be09fe1aa253ca,
+    type: 3}
   _spawnDimond: {fileID: 7071430838357703759}
   _animationModel: {fileID: 4453292606612044507}
+  _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
+    type: 3}
   _currencyType: 0
 --- !u!114 &4453292606612044507
 MonoBehaviour:

@@ -11,6 +11,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private int _damage;
         [SerializeField] private float _explosionTime;
         [SerializeField] private AnimationModel _animationModel;
+        [SerializeField] private ParticleSystem _particleSystem;
 
         private void FixedUpdate()
         {
@@ -26,11 +27,11 @@ namespace Assets.Scripts.Models
 
         private IEnumerator LogicSuisideCoroutine()
         {
-
             _animationModel.PlayAnimation();
+
+            _particleSystem.transform.position = gameObject.transform.position;
+            var particleSystem = Instantiate(_particleSystem);
             yield return new WaitForSeconds(0.2f);
-
-
 
             var ray = new Ray(transform.position + transform.right * (-10f), transform.right * (20f));
 
@@ -50,12 +51,8 @@ namespace Assets.Scripts.Models
             }
             yield return new WaitForSeconds(0.5f);
             Death();
+            Destroy(particleSystem, 2f);
         }
-
-        //private void OnDrawGizmos()
-        //{
-        //    Debug.DrawRay(transform.position + transform.right * (-10f), transform.right * (20f), Color.red, Time.deltaTime);
-        //}
 
         public override void Death(float deathTime = 0)
         {

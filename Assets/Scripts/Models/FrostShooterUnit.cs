@@ -15,6 +15,8 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _damageUnit = 10;
 
         [SerializeField] private AnimationModel _animationModel;
+        [SerializeField] private ParticleSystem _shootParticle;
+        [SerializeField] private ParticleSystem _deathParticle;
 
         private float _currentReloadTime = 0;
 
@@ -36,6 +38,7 @@ namespace Assets.Scripts.Models
                         {
                             FrostDebuff frostDebuff = new FrostDebuff(0.5f,1.5f);
                             Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right, frostDebuff);
+                            ShootParticle();
                             _animationModel.PlayAnimation();
                             _currentReloadTime = 0;
                         }
@@ -45,6 +48,10 @@ namespace Assets.Scripts.Models
 
         }
 
+        private void ShootParticle()
+        {
+            Instantiate(_shootParticle, _spawnBullet);
+        }
         public override void Create()
         {
             base.Create();
@@ -61,6 +68,9 @@ namespace Assets.Scripts.Models
             if (_currentHP <= 0)
             {
                 Death();
+                _deathParticle.transform.position = gameObject.transform.position;
+                var particleSystem = Instantiate(_deathParticle);
+                Destroy(particleSystem, 2f);
             }
         }
     }

@@ -63,11 +63,16 @@ MonoBehaviour:
   _hp: 30
   _colliderUnit: {fileID: 7866299058566753960}
   _unitDefenceType: 2
-  _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
+  _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092,
+    type: 3}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _spawnBullet: {fileID: 6119335189591730166}
+  _shootParticle: {fileID: 3775946356171156253, guid: 67f2a9421a64848c2bef46ef4b68cc1b,
+    type: 3}
+  _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
+    type: 3}
   _reloadTime: 1.5
   _reloadTimeBullet: 0.1
   _damageUnit: 10
