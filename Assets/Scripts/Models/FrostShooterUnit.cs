@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
+using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.Models
 {
@@ -15,8 +17,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _damageUnit = 10;
 
         [SerializeField] private AnimationModel _animationModel;
-        [SerializeField] private ParticleSystem _shootParticle;
-        [SerializeField] private ParticleSystem _deathParticle;
+        [SerializeField] private ParticleType _particleType;
 
         private float _currentReloadTime = 0;
 
@@ -50,7 +51,7 @@ namespace Assets.Scripts.Models
 
         private void ShootParticle()
         {
-            Instantiate(_shootParticle, _spawnBullet);
+            PoolManager.Instance.GetParticleByType(_particleType, _spawnBullet);
         }
         public override void Create()
         {
@@ -67,10 +68,8 @@ namespace Assets.Scripts.Models
 
             if (_currentHP <= 0)
             {
+                PoolManager.Instance.GetParticleByType(ParticleType.Death_Type, gameObject.transform);
                 Death();
-                _deathParticle.transform.position = gameObject.transform.position;
-                var particleSystem = Instantiate(_deathParticle);
-                Destroy(particleSystem, 2f);
             }
         }
     }

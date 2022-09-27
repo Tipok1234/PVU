@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.AnimationsModel;
+using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 namespace Assets.Scripts.Models
@@ -9,7 +11,7 @@ namespace Assets.Scripts.Models
     {
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private AnimationMine _animationMane;
-        [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private ParticleType _particleType;
         [SerializeField] private int _damage;
         [SerializeField] private float _timeDamage;
 
@@ -48,6 +50,7 @@ namespace Assets.Scripts.Models
                                 e.TakeDamage(_damage);                
                             }
                         }
+                        PoolManager.Instance.GetParticleByType(_particleType, gameObject.transform);
                         Death();
                     }
                 }
@@ -68,10 +71,7 @@ namespace Assets.Scripts.Models
         public override void Death(float deathTime = 0)
         {
             StopCoroutine(LogicMineCoroutine());
-            base.Death(deathTime);
-            _particleSystem.transform.position = gameObject.transform.position;
-            var particleSystem = Instantiate(_particleSystem);
-            Destroy(particleSystem, 2f);
+            base.Death(deathTime);         
         }
     }
 }

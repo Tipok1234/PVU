@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Enums;
 using UnityEngine;
+using Assets.Scripts.Managers;
 using Assets.Scripts.Grids;
 
 namespace Assets.Scripts.Models
@@ -16,9 +17,7 @@ namespace Assets.Scripts.Models
             if (_currentHP <= 0)
             {
                 Death();
-                _deathParticle.transform.position = gameObject.transform.position;
-                var particleSystem = Instantiate(_deathParticle);
-                Destroy(particleSystem, 2f);
+                PoolManager.Instance.GetParticleByType(ParticleType.Death_Type, gameObject.transform);
             }
         }
     }

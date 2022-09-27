@@ -66,9 +66,7 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  _particleSystem: {fileID: 8054388694797530728, guid: 333cb407bd051464898c89b94fff814d,
-    type: 3}
-  _spawnParticle: {fileID: 4825843780821340785}
+  _particleType: 2
   _damage: 300
   _explosionTime: 2
   _animationModel: {fileID: -5567827661617469981}

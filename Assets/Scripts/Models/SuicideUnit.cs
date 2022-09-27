@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
+using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.Models
 {
@@ -11,13 +13,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private int _damage;
         [SerializeField] private float _explosionTime;
         [SerializeField] private AnimationModel _animationModel;
-        [SerializeField] private ParticleSystem _particleSystem;
-
-        private void FixedUpdate()
-        {
-            if (_isDead)
-                return;
-        }
+        [SerializeField] private ParticleType _particleType;
 
         public override void Create()
         {
@@ -29,8 +25,18 @@ namespace Assets.Scripts.Models
         {
             _animationModel.PlayAnimation();
 
-            _particleSystem.transform.position = gameObject.transform.position;
-            var particleSystem = Instantiate(_particleSystem);
+            var p1 = PoolManager.Instance.GetParticleByType(_particleType, transform.GetChild(0));
+            var p2 = PoolManager.Instance.GetParticleByType(_particleType, transform.GetChild(1));
+
+            p1.SetParent(transform.GetChild(0));
+            p2.SetParent(transform.GetChild(1));
+
+            p1.position = gameObject.transform.position;
+            p2.position = gameObject.transform.position;
+
+            //var particleSystem = Instantiate(_particleSystem, transform.GetChild(0));
+            //var particleSystem_1 = Instantiate(_particleSystem, transform.GetChild(1));
+
             yield return new WaitForSeconds(0.2f);
 
             var ray = new Ray(transform.position + transform.right * (-10f), transform.right * (20f));
@@ -50,8 +56,13 @@ namespace Assets.Scripts.Models
                 }
             }
             yield return new WaitForSeconds(0.5f);
+
+            PoolManager.Instance.ReturnToPool(p1);
+            PoolManager.Instance.ReturnToPool(p2);
+
             Death();
-            Destroy(particleSystem, 2f);
+            //Destroy(particleSystem, 2f);
+            //Destroy(particleSystem_1, 2f);
         }
 
         public override void Death(float deathTime = 0)
@@ -59,9 +70,6 @@ namespace Assets.Scripts.Models
             StopCoroutine(LogicSuisideCoroutine());
             base.Death(deathTime);
         }
-
-
     }
-
 }
 

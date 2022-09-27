@@ -1909,8 +1909,7 @@ MonoBehaviour:
   _damage: 500
   _explosionTime: 0.5
   _animationModel: {fileID: 213775514221183675}
-  _particleSystem: {fileID: 341854761562431906, guid: e7266ee4a4c4b487fb36016f7031634b,
-    type: 3}
+  _particleType: 4
 --- !u!1 &8592339083854468835
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
+using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.Models
 {
     public class BombUnit : DefenceUnit
     {
         [SerializeField] private LayerMask _enemyLayer;
-        [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private ParticleType _particleType;
         [SerializeField] private int _damage;
         [SerializeField] private float _explosionTime;
         [SerializeField] private AnimationModel _animationModel;
@@ -46,10 +48,12 @@ namespace Assets.Scripts.Models
         public override void Death(float deathTime = 0)
         {
             StopCoroutine(LogicBombCoroutine());
+            PoolManager.Instance.GetParticleByType(_particleType, gameObject.transform);
             base.Death(deathTime);
-            _particleSystem.transform.position = gameObject.transform.position;
-            var particleSystem = Instantiate(_particleSystem);
-            Destroy(particleSystem,2f);
+
+            //_particleSystem.transform.position = gameObject.transform.position;
+            //var particleSystem = Instantiate(_particleSystem);
+            //Destroy(particleSystem,2f);
         }
     }
 }

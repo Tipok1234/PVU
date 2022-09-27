@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
 using Assets.Scripts.Enums;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.Models
 {
@@ -12,7 +13,6 @@ namespace Assets.Scripts.Models
         [SerializeField] private ResourceModel _gunPowderPrefab;
         [SerializeField] private Transform _spawnDimond;
         [SerializeField] private AnimationModel _animationModel;
-        [SerializeField] private ParticleSystem _deathParticle;
         [SerializeField] private CurrencyType _currencyType;
 
         private float _currentSoftIncomeTimer = 0;
@@ -36,10 +36,8 @@ namespace Assets.Scripts.Models
 
             if (_currentHP <= 0)
             {
+                PoolManager.Instance.GetParticleByType(ParticleType.Death_Type, gameObject.transform);
                 Death();
-                _deathParticle.transform.position = gameObject.transform.position;
-                var particleSystem = Instantiate(_deathParticle);
-                Destroy(particleSystem, 2f);
             }
         }
         public override void Death(float deathTime = 0)
