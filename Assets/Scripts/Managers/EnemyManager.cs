@@ -12,7 +12,7 @@ namespace Assets.Scripts.Managers
     public class EnemyManager : MonoBehaviour
     {
         public event Action LevelCompletedAction;
-        [SerializeField] private AttackUnit[] _unitPrefabs;   
+        [SerializeField] private AttackUnit[] _unitPrefabs;
 
         private float _spawnUnitTime = 0;
 
@@ -36,11 +36,11 @@ namespace Assets.Scripts.Managers
 
             while (true)
             {
-                if(waveIndex >= _levelDataSo.Waves.Length)
+                if (waveIndex >= _levelDataSo.Waves.Length)
                 {
                     yield break;
                 }
-                        
+
 
                 if (_spawnUnitTime < _levelDataSo.Waves[waveIndex].DelayBetweenUnits)
                 {
@@ -68,7 +68,7 @@ namespace Assets.Scripts.Managers
                             Instantiate(unitPrefab, _spawnPositions[randomPos]).UnitDeadAction += OnUnitDead;
 
                             yield return new WaitForSeconds(_levelDataSo.Waves[waveIndex].DelayBetweenUnits);
-                        }            
+                        }
                     }
 
                     waveIndex++;
@@ -80,7 +80,7 @@ namespace Assets.Scripts.Managers
         {
             _enemyCountInLevel--;
 
-            if(_enemyCountInLevel == 0)
+            if (_enemyCountInLevel == 0)
             {
                 LevelCompletedAction?.Invoke();
                 Debug.LogError("Level Win");

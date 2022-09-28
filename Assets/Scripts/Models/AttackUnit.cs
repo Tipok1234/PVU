@@ -98,8 +98,6 @@ namespace Assets.Scripts.Models
                     break;
             }
 
-
-
             _hp -= damage;
         }
     }

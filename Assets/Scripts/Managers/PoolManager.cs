@@ -49,9 +49,19 @@ namespace Assets.Scripts.Managers
                         list[i].transform.position = placeTransofrm.position;
                         list[i].gameObject.SetActive(true);
                         return list[i].transform;
+                    }                  
+                }
+
+                for (int i = 0; i < _createParticles.Count; i++)
+                {
+                    if (_createParticles[i].ParticleType == particleType)
+                    {
+                        list.Add(Instantiate(_createParticles[i].ParticleSystem,_particlesParent));
+                        return list[list.Count - 1].transform;
                     }
                 }
             }
+
             return null;
         }
 
