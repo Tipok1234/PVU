@@ -39,11 +39,12 @@ namespace Assets.Scripts.Models
 
         public virtual void Death(float deathTime = 0)
         {
-            UnitDeadAction?.Invoke();
+           // UnitDeadAction?.Invoke();
             _isDead = true;
             _isActive = false;
             _colliderUnit.enabled = false;
-            Destroy(gameObject,deathTime);
+             Destroy(gameObject,deathTime);
+            //gameObject.SetActive(true);
         }
     }
 }

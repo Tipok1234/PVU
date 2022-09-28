@@ -1,10 +1,14 @@
 using UnityEngine;
+using System.Collections;
 using Assets.Scripts.Enums;
+using System;
 
 namespace Assets.Scripts.Models
 {
     public class AttackUnit : BaseUnit
     {
+
+        public event Action<AttackUnit> UnitDeadAction;
         public AttackUnitType AttackUnitType => _attackUnitType;
 
         [SerializeField] private AttackUnitType _attackUnitType;
@@ -26,7 +30,6 @@ namespace Assets.Scripts.Models
         {
             if (_isDead)
                 return;
-
 
             var ray = new Ray(transform.position, transform.forward * (0.5f));
 
@@ -62,9 +65,22 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Attack", true);
         }
 
+        public override void Create()
+        {
+            _isDead = false;
+            _isActive = true;
+            base.Create();
+            Debug.LogError("BOOL" + _isDead);
+        }
+        private IEnumerator LogicEnemyCoroutine()
+        {
+            yield return new WaitForSeconds(3f);
+
+            UnitDeadAction?.Invoke(this);
+            gameObject.SetActive(false);
+        }
         private void DeathUnit()
         {
-
             _isDead = true;
             _animator.SetTrigger("Death");
             _isWalk = false;
@@ -72,14 +88,20 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", false);
             _colliderUnit.enabled = false;
-            base.Death(3.0f);
+
+            StartCoroutine(LogicEnemyCoroutine());
+            //UnitDeadAction?.Invoke();
+            //_isDead = true;
+            //_isActive = false;
+            //gameObject.SetActive(true);
+            // base.Death(3.0f);
         }
 
         public override void TakeDamage(float damage)
         {
-            _hp -= damage;
+            _currentHP -= damage;
 
-            if (_hp <= 0)
+            if (_currentHP <= 0)
             {
                 DeathUnit();
             }
@@ -98,7 +120,7 @@ namespace Assets.Scripts.Models
                     break;
             }
 
-            _hp -= damage;
+            _currentHP -= damage;
         }
     }
 }

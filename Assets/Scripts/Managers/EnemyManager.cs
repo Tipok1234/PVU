@@ -52,20 +52,23 @@ namespace Assets.Scripts.Managers
                     for (int i = 0; i < _levelDataSo.Waves[waveIndex].WavesData.Length; i++)
                     {
                         var attackUnitType = _levelDataSo.Waves[waveIndex].WavesData[i].AttackUnit;
-                        AttackUnit unitPrefab = null;
+                        //AttackUnit unitPrefab = null;
 
-                        for (int k = 0; k < _unitPrefabs.Length; k++)
-                        {
-                            if (_unitPrefabs[k].AttackUnitType == attackUnitType)
-                            {
-                                unitPrefab = _unitPrefabs[k];
-                            }
-                        }
+                        //for (int k = 0; k < _unitPrefabs.Length; k++)
+                        //{
+                        //    if (_unitPrefabs[k].AttackUnitType == attackUnitType)
+                        //    {
+                        //        unitPrefab = _unitPrefabs[k];
+                        //    }
+                        //}
 
                         for (int j = 0; j < _levelDataSo.Waves[waveIndex].WavesData[i].CountInWave; j++)
                         {
                             var randomPos = UnityEngine.Random.Range(0, _spawnPositions.Count);
-                            Instantiate(unitPrefab, _spawnPositions[randomPos]).UnitDeadAction += OnUnitDead;
+                            //Instantiate(unitPrefab, _spawnPositions[randomPos]).UnitDeadAction += OnUnitDead;
+                            var enemy = PoolManager.Instance.GetEnemyUnitByType(attackUnitType, _spawnPositions[randomPos]);
+                            enemy.UnitDeadAction += OnUnitDead;
+                            enemy.Create();
 
                             yield return new WaitForSeconds(_levelDataSo.Waves[waveIndex].DelayBetweenUnits);
                         }
@@ -76,8 +79,9 @@ namespace Assets.Scripts.Managers
                 }
             }
         }
-        private void OnUnitDead()
+        private void OnUnitDead(AttackUnit attackUnit)
         {
+            attackUnit.UnitDeadAction -= OnUnitDead;
             _enemyCountInLevel--;
 
             if (_enemyCountInLevel == 0)

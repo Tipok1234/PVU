@@ -1391,8 +1391,13 @@ MonoBehaviour:
   - _particleType: 4
     _particleSystem: {fileID: 341854761562431906, guid: e7266ee4a4c4b487fb36016f7031634b,
       type: 3}
+  _attackEnemyUnits:
+  - {fileID: 2709370302170473475, guid: 162f08b0c25c87f4d84a397790bc31d7, type: 3}
+  - {fileID: -6875736990001651829, guid: f42c1878d1bb1f241ba423122f08b30e, type: 3}
+  - {fileID: 8057199378778418158, guid: 587c8be7a759b784c9c8099bbaa04556, type: 3}
   _countType: 5
   _particlesParent: {fileID: 481401438}
+  _enemyParent: {fileID: 1051026534}
 --- !u!4 &477763868
 Transform:
   m_ObjectHideFlags: 0
@@ -1405,6 +1410,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 481401438}
+  - {fileID: 1051026534}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2201,6 +2207,36 @@ MonoBehaviour:
   _grid: {fileID: 22512616}
   _gameCurrencyText: {fileID: 1188777648}
   _softCurrencyText: {fileID: 112439929}
+--- !u!1 &1051026533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051026534}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1051026534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051026533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 477763868}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1083087478
 GameObject:
   m_ObjectHideFlags: 0
