@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
 using Assets.Scripts.Enums;
@@ -11,7 +10,6 @@ namespace Assets.Scripts.Models
     {
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private int _damage;
-        [SerializeField] private float _explosionTime;
         [SerializeField] private AnimationModel _animationModel;
         [SerializeField] private ParticleType _particleType;
 
@@ -34,35 +32,25 @@ namespace Assets.Scripts.Models
             p1.position = gameObject.transform.position;
             p2.position = gameObject.transform.position;
 
-            //var particleSystem = Instantiate(_particleSystem, transform.GetChild(0));
-            //var particleSystem_1 = Instantiate(_particleSystem, transform.GetChild(1));
+            //yield return new WaitForSeconds(0.2f);
 
-            yield return new WaitForSeconds(0.2f);
 
-            var ray = new Ray(transform.position + transform.right * (-10f), transform.right * (20f));
+            var rayCast = Physics.RaycastAll(transform.position + transform.right * (-10f), transform.right * (20f), _enemyLayer);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 20f, _enemyLayer))
+            for (int i = 0; i < rayCast.Length; i++)
             {
-                var rayCast = Physics.RaycastAll(transform.position + transform.right * (-10f), transform.right * (20f), _enemyLayer);
-
-                for (int i = 0; i < rayCast.Length; i++)
+                if (rayCast[i].transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                 {
-
-                    if (rayCast[i].transform.TryGetComponent<AttackUnit>(out AttackUnit enem))
-                    {
-                        enem.TakeDamage(_damage);
-
-                    }
+                    enemy.TakeDamage(_damage);
                 }
             }
-            yield return new WaitForSeconds(0.5f);
+
+            yield return new WaitForSeconds(0.7f);
 
             PoolManager.Instance.ReturnToPool(p1);
             PoolManager.Instance.ReturnToPool(p2);
 
             Death();
-            //Destroy(particleSystem, 2f);
-            //Destroy(particleSystem_1, 2f);
         }
 
         //protected override void ResetUnit()
@@ -75,7 +63,7 @@ namespace Assets.Scripts.Models
         {
             StopCoroutine(LogicSuisideCoroutine());
             base.Death(deathTime);
-          //  ResetUnit();
+            //  ResetUnit();
         }
     }
 }

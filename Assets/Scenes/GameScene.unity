@@ -155,7 +155,7 @@ MonoBehaviour:
   _gridCellLayer:
     serializedVersion: 2
     m_Bits: 512
-  _cartObject: {fileID: 3781274957288637933, guid: 81553576d1b428c4a96e2fec0fa69763,
+  _cartObject: {fileID: 4899220406243256041, guid: ad133912f4013814d857e6c6347a3caa,
     type: 3}
   _gridCellPrefab: {fileID: 5986193329487211045, guid: 6c9ec134eb070c84bb9a1168abd5dc9f,
     type: 3}
@@ -1408,6 +1408,9 @@ MonoBehaviour:
   - _particleType: 4
     _particleSystem: {fileID: 341854761562431906, guid: e7266ee4a4c4b487fb36016f7031634b,
       type: 3}
+  - _particleType: 5
+    _particleSystem: {fileID: 4773094107113168402, guid: 8e349848f13f648df8b267f140fafdc7,
+      type: 3}
   _attackEnemyUnits:
   - {fileID: 2709370302170473475, guid: 162f08b0c25c87f4d84a397790bc31d7, type: 3}
   - {fileID: -6875736990001651829, guid: f42c1878d1bb1f241ba423122f08b30e, type: 3}
@@ -1432,7 +1435,7 @@ MonoBehaviour:
   _resourceModel:
   - {fileID: 4809060521006752121, guid: 7f8700aa7b84a09458be09fe1aa253ca, type: 3}
   - {fileID: 8918352237793816498, guid: 19519880c80bd29408c0a4c3b55c7d69, type: 3}
-  _countType: 5
+  _countType: 6
   _particlesParent: {fileID: 481401438}
   _enemyParent: {fileID: 1051026534}
   _bulletParent: {fileID: 33939991}

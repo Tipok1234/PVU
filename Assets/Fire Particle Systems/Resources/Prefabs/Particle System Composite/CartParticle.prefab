@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4773094107113168402}
   - component: {fileID: 8125128263080591003}
   m_Layer: 0
-  m_Name: DeathParticle_2
+  m_Name: CartParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4837,7 +4837,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3cd423cca9a6c47ceb2f768bbbe890da, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4894,6 +4893,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ParticleSystem_Sparks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622929213867377808, guid: 381e02f47a2a047219b58d999746659b,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6741410043067831774, guid: 381e02f47a2a047219b58d999746659b,
         type: 3}

@@ -6,6 +6,7 @@ namespace Assets.Scripts.Enums
         Death_Type,
         Bomb_Type,
         Mine_Type,
-        Suicide_Type
+        Suicide_Type,
+        Cart_Type
     }
 }

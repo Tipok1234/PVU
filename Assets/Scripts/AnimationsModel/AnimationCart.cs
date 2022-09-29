@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 namespace Assets.Scripts.AnimationsModel
 {
@@ -13,8 +14,28 @@ namespace Assets.Scripts.AnimationsModel
         {
             _cartModel.DOMoveX(_xStartPos, _animationTime).OnComplete(CallBack);
         }
+
+        public override void PlayAnimation(Action callback)
+        {
+            //void action()
+            //{
+            //    callback?.Invoke();
+            //    CallBack(); 
+            //}
+
+            //_cartModel.DOMoveX(_xStartPos, _animationTime).OnComplete(action);
+
+            _cartModel.DOMoveX(_xStartPos, _animationTime).OnComplete(() =>
+            {
+                callback?.Invoke();
+                CallBack();
+            });
+        }
+
         private void CallBack()
         {
+            Debug.LogError("C");
+
             Destroy(gameObject);
         }
     }

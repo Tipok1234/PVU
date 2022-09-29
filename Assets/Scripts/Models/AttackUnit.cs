@@ -87,7 +87,7 @@ namespace Assets.Scripts.Models
 
         //    
         //}
-        private void DeathUnit()
+        public void DeathUnit()
         {
             _isDead = true;
             _animator.SetTrigger("Death");
