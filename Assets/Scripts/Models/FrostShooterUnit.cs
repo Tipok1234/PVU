@@ -14,7 +14,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private Transform _spawnBullet;
 
         [SerializeField] private float _reloadTime;
-        [SerializeField] private float _damageUnit = 10;
+        [SerializeField] private float _damageUnit;
 
         [SerializeField] private AnimationModel _animationModel;
         [SerializeField] private ParticleType _particleType;
@@ -38,8 +38,11 @@ namespace Assets.Scripts.Models
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
                             FrostDebuff frostDebuff = new FrostDebuff(0.5f,1.5f);
-                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right, frostDebuff);
+
+                            PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right,frostDebuff);
+                            // Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right, frostDebuff);
                             ShootParticle();
+                           // enemy.TakeDamage(_damageUnit);
                             _animationModel.PlayAnimation();
                             _currentReloadTime = 0;
                         }

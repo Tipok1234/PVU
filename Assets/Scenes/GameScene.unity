@@ -1395,9 +1395,14 @@ MonoBehaviour:
   - {fileID: 2709370302170473475, guid: 162f08b0c25c87f4d84a397790bc31d7, type: 3}
   - {fileID: -6875736990001651829, guid: f42c1878d1bb1f241ba423122f08b30e, type: 3}
   - {fileID: 8057199378778418158, guid: 587c8be7a759b784c9c8099bbaa04556, type: 3}
+  _bullets:
+  - {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
+  - {fileID: -6558009673131223252, guid: 71a32ec5f3767044dbe7d71d02da098b, type: 3}
+  - {fileID: -1905679882517749866, guid: 62e57f033821d4a44ba964a67f5932f6, type: 3}
   _countType: 5
   _particlesParent: {fileID: 481401438}
   _enemyParent: {fileID: 1051026534}
+  _bulletParent: {fileID: 1179717575}
 --- !u!4 &477763868
 Transform:
   m_ObjectHideFlags: 0
@@ -1411,6 +1416,7 @@ Transform:
   m_Children:
   - {fileID: 481401438}
   - {fileID: 1051026534}
+  - {fileID: 1179717575}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2379,6 +2385,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148342404}
   m_CullTransparentMesh: 1
+--- !u!1 &1179717574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1179717575}
+  m_Layer: 0
+  m_Name: Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1179717575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179717574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 477763868}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1188777646
 GameObject:
   m_ObjectHideFlags: 0

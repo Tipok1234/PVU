@@ -13,13 +13,17 @@ namespace Assets.Scripts.Managers
 
         [SerializeField] private List<CreateParticle> _createParticles;
         [SerializeField] private List<AttackUnit> _attackEnemyUnits;
+        [SerializeField] private List<Bullet> _bullets;
+
 
         private Dictionary<ParticleType, List<ParticleSystem>> _particleDictionary;
         private Dictionary<AttackUnitType, List<AttackUnit>> _enemyUnitsDictionary;
+        private Dictionary<BulletType, List<Bullet>> _bulletDictionary;
 
         [SerializeField] private int _countType;
         [SerializeField] private Transform _particlesParent;
         [SerializeField] private Transform _enemyParent;
+        [SerializeField] private Transform _bulletParent;
 
         private Transform _playerTransf;
         private static PoolManager instance;
@@ -31,6 +35,7 @@ namespace Assets.Scripts.Managers
 
             _particleDictionary = new Dictionary<ParticleType, List<ParticleSystem>>();
             _enemyUnitsDictionary = new Dictionary<AttackUnitType, List<AttackUnit>>();
+            _bulletDictionary = new Dictionary<BulletType, List<Bullet>>();
 
             for (int i = 0; i < _createParticles.Count; i++)
             {
@@ -53,6 +58,17 @@ namespace Assets.Scripts.Managers
                 }
 
                 _enemyUnitsDictionary.Add(_attackEnemyUnits[i].AttackUnitType, enemyUnits);
+            }
+
+            for (int i = 0; i < _bullets.Count; i++)
+            {
+                var bullet = new List<Bullet>();
+
+                for (int j = 0; j < _countType; j++)
+                {
+                    bullet.Add(Instantiate(_bullets[i], _bulletParent));
+                }
+                _bulletDictionary.Add(_bullets[i].BulletType, bullet);
             }
         }
 
@@ -92,7 +108,6 @@ namespace Assets.Scripts.Managers
                     {
                         attackUnits[i].transform.position = attackUnit.position;
                         attackUnits[i].gameObject.SetActive(true);
-                        Debug.LogError(attackUnits[i].HP);
                         return attackUnits[i];
                     }
                 }
@@ -103,8 +118,36 @@ namespace Assets.Scripts.Managers
                     {
                         attackUnits[i].transform.position = attackUnit.position;
                         attackUnits[i].gameObject.SetActive(true);
-                        attackUnits.Add(Instantiate(_attackEnemyUnits[i], _particlesParent));
+                        attackUnits.Add(Instantiate(_attackEnemyUnits[i], _enemyParent));
                         return attackUnits[attackUnits.Count - 1];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public Bullet GetBulletByType(BulletType bulletType, Transform bulletSpawn)
+        {
+            if (_bulletDictionary.TryGetValue(bulletType, out var bullets))
+            {
+                for (int i = 0; i < bullets.Count; i++)
+                {
+                    if (bullets[i].gameObject.activeSelf == false)
+                    {
+                        bullets[i].transform.position = bulletSpawn.position;
+                        bullets[i].gameObject.SetActive(true);
+                        return bullets[i];
+                    }
+                }
+
+                for (int i = 0; i < _bullets.Count; i++)
+                {
+                    if (bullets[i].BulletType == bulletType)
+                    {
+                        bullets[i].transform.position = bulletSpawn.position;
+                        bullets[i].gameObject.SetActive(true);
+                        bullets.Add(Instantiate(_bullets[i], _bulletParent));
+                        return bullets[bullets.Count - 1];
                     }
                 }
             }

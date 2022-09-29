@@ -5,10 +5,14 @@ namespace Assets.Scripts.Models
 {
     public class Bullet : MonoBehaviour
     {
+        public BulletType BulletType => _bulletType;
+
         [SerializeField] protected float _speedBullet;
         [SerializeField] protected float _bulletLifeTime;
         [SerializeField] protected LayerMask _enemyLayer;
         [SerializeField] protected LayerMask _destoryBullet;
+
+        [SerializeField] protected BulletType _bulletType;
 
         protected float _currentTimeBullet = 0;
         protected float _damage;

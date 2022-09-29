@@ -68,7 +68,8 @@ namespace Assets.Scripts.Models
 
                                 _animationModel.PlayAnimation();
                                 ShootParticle();
-                                Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
+                                PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
+                                //Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
                                 _currentReloadTime = 0;
                             }
                         }

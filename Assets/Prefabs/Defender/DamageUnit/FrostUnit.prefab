@@ -118,10 +118,7 @@ MonoBehaviour:
   _reloadTime: 4
   _damageUnit: 10
   _animationModel: {fileID: 3426732073982361285}
-  _shootParticle: {fileID: 3775946356171156253, guid: 67f2a9421a64848c2bef46ef4b68cc1b,
-    type: 3}
-  _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
-    type: 3}
+  _particleType: 0
 --- !u!1001 &5688674656224171409
 PrefabInstance:
   m_ObjectHideFlags: 0

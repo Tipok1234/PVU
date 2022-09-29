@@ -36,7 +36,8 @@ namespace Assets.Scripts.Models
                     {
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
-                            Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit,-transform.right);
+                            PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right);
+                            //Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit,-transform.right);
                             ShootParticle();
                             _animationModel.PlayAnimation();
                             _currentReloadTime = 0;

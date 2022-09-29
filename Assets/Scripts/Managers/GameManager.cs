@@ -55,8 +55,8 @@ namespace Assets.Scripts.Managers
 
         public void OnLevelCompleted()
         {
-            _levelComplete.ShowWindow();
             _dataManager.UpdateLevel();
+            _levelComplete.ShowWindow();
         }
         private void OnUnitSold(DefenceUnitType unitType)
         {
