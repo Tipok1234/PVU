@@ -1,12 +1,13 @@
 using UnityEngine;
 using System;
+using System.Collections;
 using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {
     public class BaseUnit : MonoBehaviour
     {
-        public event Action UnitDeadAction;
+        public event Action<BaseUnit> UnitDeadAction;
         public float HP => _hp;
         public float CurrentHP => _currentHP;
         public bool IsDead => _isDead;
@@ -27,6 +28,7 @@ namespace Assets.Scripts.Models
 
         public virtual void Create()
         {
+            _isDead = false;
             _isActive = true;
             _colliderUnit.enabled = true;
             _currentHP = _hp;
@@ -37,14 +39,27 @@ namespace Assets.Scripts.Models
             _currentHP = _hp;
         }
 
-        public virtual void Death(float deathTime = 0)
+        public virtual void Death(float deathTime = 0.5f)
         {
-           // UnitDeadAction?.Invoke();
             _isDead = true;
             _isActive = false;
             _colliderUnit.enabled = false;
-             Destroy(gameObject,deathTime);
-            //gameObject.SetActive(true);
+            StartCoroutine(DeathUnitCoroutine(deathTime));
+          //  gameObject.SetActive(true);
+        }
+
+        protected virtual IEnumerator DeathUnitCoroutine(float deathTime = 0.5f)
+        {
+            yield return new WaitForSeconds(deathTime);
+
+            UnitDeadAction?.Invoke(this);
+            gameObject.SetActive(false);
+            ResetUnit();
+        }
+
+        protected virtual void ResetUnit()
+        {
+
         }
     }
 }

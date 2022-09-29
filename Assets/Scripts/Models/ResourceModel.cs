@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.Scripts.Enums;
+using System.Collections;
 
 namespace Assets.Scripts.Models
 {
@@ -9,13 +10,21 @@ namespace Assets.Scripts.Models
         public CurrencyType CurrencyType => _currencyType;
 
         private int _currencyAmount;
-        private CurrencyType _currencyType;
+
+        [SerializeField] private CurrencyType _currencyType;
 
         public void Setup(int currency, CurrencyType currencyType)
         {
             _currencyType = currencyType;
             _currencyAmount = currency;
-            Destroy(gameObject, 3.0f);       
+            StartCoroutine(ResourceCoroutine());
+           // gameObject.SetActive(false);     
+        }
+
+        private IEnumerator ResourceCoroutine()
+        {
+            yield return new WaitForSeconds(2f);
+            gameObject.SetActive(false);
         }
     }
 }

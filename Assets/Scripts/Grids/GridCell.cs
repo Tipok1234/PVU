@@ -45,7 +45,7 @@ namespace Assets.Scripts.Grids
         {
             _isBusy = false;
         }
-        private void OnUnitDead()
+        private void OnUnitDead(BaseUnit baseUnit)
         {
             _baseUnit.UnitDeadAction -= OnUnitDead;
             SetEmpty();

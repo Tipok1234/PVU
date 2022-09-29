@@ -13,7 +13,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private ResourceModel _gunPowderPrefab;
         [SerializeField] private Transform _spawnDimond;
         [SerializeField] private AnimationModel _animationModel;
-        [SerializeField] private CurrencyType _currencyType;
+      //  [SerializeField] private CurrencyType _currencyType;
 
         private float _currentSoftIncomeTimer = 0;
 
@@ -53,7 +53,8 @@ namespace Assets.Scripts.Models
                 if (_currentSoftIncomeTimer >= _softIncomeCooldown)
                 {
                     _animationModel.PlayAnimation();
-                    Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity).Setup(_softIncomeAmount, _currencyType);
+                    PoolManager.Instance.GetResourceModelByType(_gunPowderPrefab.CurrencyType, _spawnDimond.transform).Setup(_softIncomeAmount, _gunPowderPrefab.CurrencyType);
+                    // Instantiate(_gunPowderPrefab, _spawnDimond.transform.position, Quaternion.identity).Setup(_softIncomeAmount, _currencyType);
                     _currentSoftIncomeTimer = 0;
                 }
 

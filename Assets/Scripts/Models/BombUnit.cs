@@ -50,10 +50,16 @@ namespace Assets.Scripts.Models
             StopCoroutine(LogicBombCoroutine());
             PoolManager.Instance.GetParticleByType(_particleType, gameObject.transform);
             base.Death(deathTime);
-
+           // ResetUnit();
             //_particleSystem.transform.position = gameObject.transform.position;
             //var particleSystem = Instantiate(_particleSystem);
             //Destroy(particleSystem,2f);
         }
+
+        //protected override void ResetUnit()
+        //{
+        //    base.ResetUnit();
+        //    gameObject.transform.parent.parent.localScale = new Vector3(0.1f,0.1f,0.1f);
+        //}
     }
 }

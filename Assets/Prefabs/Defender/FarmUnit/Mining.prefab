@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4083487280795186
 Transform:
   m_ObjectHideFlags: 0
@@ -119,8 +119,6 @@ MonoBehaviour:
     type: 3}
   _spawnDimond: {fileID: 7071430838357703759}
   _animationModel: {fileID: 4453292606612044507}
-  _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
-    type: 3}
   _currencyType: 0
 --- !u!114 &4453292606612044507
 MonoBehaviour:

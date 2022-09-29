@@ -8,5 +8,10 @@ namespace Assets.Scripts.AnimationsModel
         {
             
         }
+
+        public virtual void ResetAnimation()
+        {
+
+        }
     }
 }

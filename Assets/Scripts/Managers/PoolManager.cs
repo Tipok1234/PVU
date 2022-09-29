@@ -14,16 +14,22 @@ namespace Assets.Scripts.Managers
         [SerializeField] private List<CreateParticle> _createParticles;
         [SerializeField] private List<AttackUnit> _attackEnemyUnits;
         [SerializeField] private List<Bullet> _bullets;
+        [SerializeField] private List<DefenceUnit> _defenceUnits;
+        [SerializeField] private List<ResourceModel> _resourceModel;
 
 
         private Dictionary<ParticleType, List<ParticleSystem>> _particleDictionary;
         private Dictionary<AttackUnitType, List<AttackUnit>> _enemyUnitsDictionary;
         private Dictionary<BulletType, List<Bullet>> _bulletDictionary;
+        private Dictionary<DefenceUnitType, List<DefenceUnit>> _defenceUnitsDictionary;
+        private Dictionary<CurrencyType, List<ResourceModel>> _resourceModelDictionary;
 
         [SerializeField] private int _countType;
         [SerializeField] private Transform _particlesParent;
         [SerializeField] private Transform _enemyParent;
         [SerializeField] private Transform _bulletParent;
+        [SerializeField] private Transform _defenceUnitParent;
+        [SerializeField] private Transform _resourceParent;
 
         private Transform _playerTransf;
         private static PoolManager instance;
@@ -36,6 +42,8 @@ namespace Assets.Scripts.Managers
             _particleDictionary = new Dictionary<ParticleType, List<ParticleSystem>>();
             _enemyUnitsDictionary = new Dictionary<AttackUnitType, List<AttackUnit>>();
             _bulletDictionary = new Dictionary<BulletType, List<Bullet>>();
+            _defenceUnitsDictionary = new Dictionary<DefenceUnitType, List<DefenceUnit>>();
+            _resourceModelDictionary = new Dictionary<CurrencyType, List<ResourceModel>>();
 
             for (int i = 0; i < _createParticles.Count; i++)
             {
@@ -69,6 +77,28 @@ namespace Assets.Scripts.Managers
                     bullet.Add(Instantiate(_bullets[i], _bulletParent));
                 }
                 _bulletDictionary.Add(_bullets[i].BulletType, bullet);
+            }
+
+            for (int i = 0; i < _defenceUnits.Count; i++)
+            {
+                var defenceUnit = new List<DefenceUnit>();
+
+                for (int j = 0; j < _countType; j++)
+                {
+                    defenceUnit.Add(Instantiate(_defenceUnits[i], _defenceUnitParent));
+                }
+                _defenceUnitsDictionary.Add(_defenceUnits[i].DefencUnitType, defenceUnit);
+            }
+
+            for (int i = 0; i < _resourceModel.Count; i++)
+            {
+                var resource = new List<ResourceModel>();
+
+                for (int j = 0; j < _countType; j++)
+                {
+                    resource.Add(Instantiate(_resourceModel[i], _resourceParent));
+                }
+                _resourceModelDictionary.Add(_resourceModel[i].CurrencyType, resource);
             }
         }
 
@@ -148,6 +178,62 @@ namespace Assets.Scripts.Managers
                         bullets[i].gameObject.SetActive(true);
                         bullets.Add(Instantiate(_bullets[i], _bulletParent));
                         return bullets[bullets.Count - 1];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public DefenceUnit GetDefenceUnitsByType(DefenceUnitType defenceUnitType, Transform defenceTransform)
+        {
+            if (_defenceUnitsDictionary.TryGetValue(defenceUnitType, out var defenceUnits))
+            {
+                for (int i = 0; i < defenceUnits.Count; i++)
+                {
+                    if (defenceUnits[i].gameObject.activeSelf == false)
+                    {
+                        defenceUnits[i].transform.position = _defenceUnitParent.position;
+                        defenceUnits[i].gameObject.SetActive(true);
+                        return defenceUnits[i];
+                    }
+                }
+
+                for (int i = 0; i < defenceUnits.Count; i++)
+                {
+                    if (defenceUnits[i].DefencUnitType == defenceUnitType)
+                    {
+                        defenceUnits[i].transform.position = _defenceUnitParent.position;
+                        defenceUnits[i].gameObject.SetActive(true);
+                        defenceUnits.Add(Instantiate(_defenceUnits[i], _defenceUnitParent));
+                        return defenceUnits[defenceUnits.Count - 1];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public ResourceModel GetResourceModelByType(CurrencyType currencyType, Transform resourceTransform)
+        {
+            if (_resourceModelDictionary.TryGetValue(currencyType, out var resources))
+            {
+                for (int i = 0; i < resources.Count; i++)
+                {
+                    if (resources[i].gameObject.activeSelf == false)
+                    {
+                        resources[i].transform.position = resourceTransform.position;
+                        resources[i].gameObject.SetActive(true);
+                        return resources[i];
+                    }
+                }
+
+                for (int i = 0; i < resources.Count; i++)
+                {
+                    if (resources[i].CurrencyType == currencyType)
+                    {
+                        resources[i].transform.position = resourceTransform.position;
+                        resources[i].gameObject.SetActive(true);
+                        resources.Add(Instantiate(_resourceModel[i], resourceTransform));
+                        return resources[resources.Count - 1];
                     }
                 }
             }

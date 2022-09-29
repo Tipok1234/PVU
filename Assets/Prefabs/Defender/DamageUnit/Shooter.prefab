@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6960314791875191536
 Transform:
   m_ObjectHideFlags: 0
@@ -132,10 +132,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _spawnBullet: {fileID: 5156615679410924299}
-  _shootParticle: {fileID: 3775946356171156253, guid: 67f2a9421a64848c2bef46ef4b68cc1b,
-    type: 3}
-  _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
-    type: 3}
+  _particleType: 0
   _reloadTime: 1.5
   _damageUnit: 10
   _animationModel: {fileID: 628777901238319005}

@@ -65,10 +65,17 @@ namespace Assets.Scripts.Models
             //Destroy(particleSystem_1, 2f);
         }
 
+        //protected override void ResetUnit()
+        //{
+        //    transform.GetChild(0).position = new Vector3(0f,0.2f,0f);
+        //    transform.GetChild(1).position = new Vector3(0f, 0.2f, 0f);
+        //}
+
         public override void Death(float deathTime = 0)
         {
             StopCoroutine(LogicSuisideCoroutine());
             base.Death(deathTime);
+          //  ResetUnit();
         }
     }
 }

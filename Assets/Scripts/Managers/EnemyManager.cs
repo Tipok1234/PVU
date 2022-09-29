@@ -87,7 +87,6 @@ namespace Assets.Scripts.Managers
             if (_enemyCountInLevel == 0)
             {
                 LevelCompletedAction?.Invoke();
-                Debug.LogError("Level Win");
             }
         }
     }

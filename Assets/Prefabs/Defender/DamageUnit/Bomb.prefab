@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7457272792178322268
 Transform:
   m_ObjectHideFlags: 0
@@ -124,6 +124,10 @@ PrefabInstance:
     - target: {fileID: 1217217020379394, guid: d7a9f7470cb880a43b7357937d08ff30, type: 3}
       propertyPath: m_Name
       value: Bomb_Unit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217217020379394, guid: d7a9f7470cb880a43b7357937d08ff30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4548619321821652, guid: d7a9f7470cb880a43b7357937d08ff30, type: 3}
       propertyPath: m_RootOrder

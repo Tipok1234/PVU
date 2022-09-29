@@ -7,8 +7,7 @@ namespace Assets.Scripts.Models
 {
     public class AttackUnit : BaseUnit
     {
-
-        public event Action<AttackUnit> UnitDeadAction;
+        new public event Action<AttackUnit> UnitDeadAction;
         public AttackUnitType AttackUnitType => _attackUnitType;
 
         [SerializeField] private AttackUnitType _attackUnitType;
@@ -70,15 +69,24 @@ namespace Assets.Scripts.Models
             _isDead = false;
             _isActive = true;
             base.Create();
-            Debug.LogError("BOOL" + _isDead);
         }
-        private IEnumerator LogicEnemyCoroutine()
-        {
-            yield return new WaitForSeconds(3f);
 
+        protected override IEnumerator DeathUnitCoroutine(float deathTime = 0.5f)
+        {
+            Debug.LogError("1");
+            //yield return new WaitForSeconds(3f);
             UnitDeadAction?.Invoke(this);
-            gameObject.SetActive(false);
+            yield return base.DeathUnitCoroutine(deathTime);
+            Debug.LogError("2");
+
+            //gameObject.SetActive(false);
         }
+        //private IEnumerator LogicEnemyCoroutine()
+        //{
+        // gameObject.SetActive(false);
+
+        //    
+        //}
         private void DeathUnit()
         {
             _isDead = true;
@@ -89,7 +97,10 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Attack", false);
             _colliderUnit.enabled = false;
 
-            StartCoroutine(LogicEnemyCoroutine());
+            //StartCoroutine(DeathUnitCoroutine(3f));
+
+
+            base.Death(3f);
             //UnitDeadAction?.Invoke();
             //_isDead = true;
             //_isActive = false;
