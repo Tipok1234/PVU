@@ -1259,7 +1259,7 @@ MonoBehaviour:
   _colliderUnit: {fileID: 8714114488558234744}
   _attackUnitType: 0
   _selfTransform: {fileID: 4730071277584034}
-  _moveSpeed: 1.2
+  _moveSpeed: 0.5
   _reloadTime: 3.4
   _damage: 10
   _animator: {fileID: 95579080373870624}

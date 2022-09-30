@@ -155,8 +155,6 @@ MonoBehaviour:
   _gridCellLayer:
     serializedVersion: 2
     m_Bits: 512
-  _cartObject: {fileID: 4899220406243256041, guid: ad133912f4013814d857e6c6347a3caa,
-    type: 3}
   _gridCellPrefab: {fileID: 5986193329487211045, guid: 6c9ec134eb070c84bb9a1168abd5dc9f,
     type: 3}
   _gameUIController: {fileID: 990946825}
@@ -1465,8 +1463,9 @@ MonoBehaviour:
   _resourceModel:
   - {fileID: 4809060521006752121, guid: 7f8700aa7b84a09458be09fe1aa253ca, type: 3}
   - {fileID: 8918352237793816498, guid: 19519880c80bd29408c0a4c3b55c7d69, type: 3}
-  _cartsList:
-  - {fileID: 4899220406243256041, guid: ad133912f4013814d857e6c6347a3caa, type: 3}
+  _cartPrefab: {fileID: 4449836425994410813, guid: ad133912f4013814d857e6c6347a3caa,
+    type: 3}
+  _cartsCount: 6
   _countType: 6
   _particlesParent: {fileID: 481401438}
   _enemyParent: {fileID: 1051026534}
