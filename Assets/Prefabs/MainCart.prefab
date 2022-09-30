@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4801097461937766998
 Transform:
   m_ObjectHideFlags: 0
@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ed957a51a92484a8f2b256f620ea5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cartModel: {fileID: 4801097461937766998}
   _animationModel: {fileID: -4617329831723762684}
   _particleType: 4
   _enemyLayer:

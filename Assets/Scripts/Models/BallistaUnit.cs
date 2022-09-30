@@ -69,7 +69,6 @@ namespace Assets.Scripts.Models
                                 _animationModel.PlayAnimation();
                                 ShootParticle();
                                 PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
-                                //Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
                                 _currentReloadTime = 0;
                             }
                         }
@@ -88,13 +87,6 @@ namespace Assets.Scripts.Models
         {
             PoolManager.Instance.GetParticleByType(_particleType, _spawnBullet);
         }
-
-        //void OnDrawGizmosSelected()
-        //{
-        //    // Draw a yellow sphere at the transform's position
-        //    Gizmos.color = Color.yellow;
-        //    Gizmos.DrawSphere(transform.position, 12f);
-        //}
 
         public override void Create()
         {

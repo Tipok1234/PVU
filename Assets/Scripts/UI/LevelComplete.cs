@@ -8,7 +8,6 @@ public class LevelComplete: MonoBehaviour
 {
     [SerializeField] private Button _nextLevelButton;
     [SerializeField] private Canvas _nextGameCanvas;
-   // [SerializeField] private Canvas _gameCanvas;
 
     private void Awake()
     {
@@ -18,8 +17,6 @@ public class LevelComplete: MonoBehaviour
     public void ShowWindow()
     {
         _nextGameCanvas.enabled = !_nextGameCanvas.enabled;
-
-     //   _gameCanvas.enabled = true;
     }    
     public void NextLevelOnClick()
     {

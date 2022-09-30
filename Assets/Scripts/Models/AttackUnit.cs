@@ -73,20 +73,11 @@ namespace Assets.Scripts.Models
 
         protected override IEnumerator DeathUnitCoroutine(float deathTime = 0.5f)
         {
-            Debug.LogError("1");
-            //yield return new WaitForSeconds(3f);
             UnitDeadAction?.Invoke(this);
             yield return base.DeathUnitCoroutine(deathTime);
-            Debug.LogError("2");
 
-            //gameObject.SetActive(false);
         }
-        //private IEnumerator LogicEnemyCoroutine()
-        //{
-        // gameObject.SetActive(false);
 
-        //    
-        //}
         public void DeathUnit()
         {
             _isDead = true;
@@ -97,15 +88,7 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Attack", false);
             _colliderUnit.enabled = false;
 
-            //StartCoroutine(DeathUnitCoroutine(3f));
-
-
             base.Death(3f);
-            //UnitDeadAction?.Invoke();
-            //_isDead = true;
-            //_isActive = false;
-            //gameObject.SetActive(true);
-            // base.Death(3.0f);
         }
 
         public override void TakeDamage(float damage)

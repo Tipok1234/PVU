@@ -32,9 +32,6 @@ namespace Assets.Scripts.Models
             p1.position = gameObject.transform.position;
             p2.position = gameObject.transform.position;
 
-            //yield return new WaitForSeconds(0.2f);
-
-
             var rayCast = Physics.RaycastAll(transform.position + transform.right * (-10f), transform.right * (20f), _enemyLayer);
 
             for (int i = 0; i < rayCast.Length; i++)
@@ -52,18 +49,10 @@ namespace Assets.Scripts.Models
 
             Death();
         }
-
-        //protected override void ResetUnit()
-        //{
-        //    transform.GetChild(0).position = new Vector3(0f,0.2f,0f);
-        //    transform.GetChild(1).position = new Vector3(0f, 0.2f, 0f);
-        //}
-
         public override void Death(float deathTime = 0)
         {
             StopCoroutine(LogicSuisideCoroutine());
             base.Death(deathTime);
-            //  ResetUnit();
         }
     }
 }

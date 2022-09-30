@@ -42,14 +42,12 @@ namespace Assets.Scripts.Models
                             _animationModel.PlayAnimation();
                             ShootParticle();
                             PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right);
-                          //  Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right);
 
                             yield return new WaitForSeconds(_reloadTimeBullet);
 
                             _animationModel.PlayAnimation();
                             ShootParticle();
                             PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right);
-                           // Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right);
 
                             _currentReloadTime = 0;
                         }

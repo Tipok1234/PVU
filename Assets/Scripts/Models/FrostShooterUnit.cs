@@ -40,7 +40,6 @@ namespace Assets.Scripts.Models
                             FrostDebuff frostDebuff = new FrostDebuff(0.5f,1.5f);
 
                             PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right,frostDebuff);
-                            // Instantiate(_bullet, _spawnBullet.transform.position, _bullet.transform.rotation).Setup(_damageUnit, -transform.right, frostDebuff);
                             ShootParticle();
                            // enemy.TakeDamage(_damageUnit);
                             _animationModel.PlayAnimation();
@@ -49,7 +48,6 @@ namespace Assets.Scripts.Models
                     }
                 }
             }
-
         }
 
         private void ShootParticle()

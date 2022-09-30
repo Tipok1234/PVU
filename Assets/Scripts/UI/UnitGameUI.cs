@@ -30,16 +30,6 @@ namespace Assets.Scripts.UIManager
         {
             _buyButton.onClick.AddListener(BuyButton);
         }
-
-        //public void Setup(DataManager dataManager)
-        //{
-        //    _placeCooldown = ((float)CharacteristicUnitType.Recharge);
-        //    _unitPrice = ((int)CharacteristicUnitType.Price);
-        //    _priceText.text = CharacteristicUnitType.Price.ToString();
-        //    _unitImage.sprite =
-        //    _unitType = unitDataSo.DefencUnitType;
-        //}
-
         public void Setup(UnitDataSo unitDataSo)
         {
             _placeCooldown = unitDataSo.PlaceCooldown;

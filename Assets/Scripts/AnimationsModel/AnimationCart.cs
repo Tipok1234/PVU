@@ -10,11 +10,6 @@ namespace Assets.Scripts.AnimationsModel
         [SerializeField] private float _xStartPos;
         [SerializeField] private float _animationTime;
 
-        public override void PlayAnimation()
-        {
-            _cartModel.DOMoveX(_xStartPos, _animationTime).OnComplete(CallBack);
-        }
-
         public override void PlayAnimation(Action callback)
         {
             //void action()
@@ -28,15 +23,7 @@ namespace Assets.Scripts.AnimationsModel
             _cartModel.DOMoveX(_xStartPos, _animationTime).OnComplete(() =>
             {
                 callback?.Invoke();
-                CallBack();
             });
-        }
-
-        private void CallBack()
-        {
-            Debug.LogError("C");
-
-            Destroy(gameObject);
         }
     }
 }

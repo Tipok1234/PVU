@@ -17,8 +17,7 @@ namespace Assets.Scripts.Models
         {
             _currencyType = currencyType;
             _currencyAmount = currency;
-            StartCoroutine(ResourceCoroutine());
-           // gameObject.SetActive(false);     
+            StartCoroutine(ResourceCoroutine()); 
         }
 
         private IEnumerator ResourceCoroutine()

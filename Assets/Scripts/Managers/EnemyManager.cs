@@ -51,21 +51,11 @@ namespace Assets.Scripts.Managers
                 {
                     for (int i = 0; i < _levelDataSo.Waves[waveIndex].WavesData.Length; i++)
                     {
-                        var attackUnitType = _levelDataSo.Waves[waveIndex].WavesData[i].AttackUnit;
-                        //AttackUnit unitPrefab = null;
-
-                        //for (int k = 0; k < _unitPrefabs.Length; k++)
-                        //{
-                        //    if (_unitPrefabs[k].AttackUnitType == attackUnitType)
-                        //    {
-                        //        unitPrefab = _unitPrefabs[k];
-                        //    }
-                        //}
+                        var attackUnitType = _levelDataSo.Waves[waveIndex].WavesData[i].AttackUnit;            
 
                         for (int j = 0; j < _levelDataSo.Waves[waveIndex].WavesData[i].CountInWave; j++)
                         {
                             var randomPos = UnityEngine.Random.Range(0, _spawnPositions.Count);
-                            //Instantiate(unitPrefab, _spawnPositions[randomPos]).UnitDeadAction += OnUnitDead;
                             var enemy = PoolManager.Instance.GetEnemyUnitByType(attackUnitType, _spawnPositions[randomPos]);
                             enemy.UnitDeadAction += OnUnitDead;
                             enemy.Create();

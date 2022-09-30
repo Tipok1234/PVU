@@ -45,7 +45,6 @@ namespace Assets.Scripts.Models
             _isActive = false;
             _colliderUnit.enabled = false;
             StartCoroutine(DeathUnitCoroutine(deathTime));
-          //  gameObject.SetActive(true);
         }
 
         protected virtual IEnumerator DeathUnitCoroutine(float deathTime = 0.5f)

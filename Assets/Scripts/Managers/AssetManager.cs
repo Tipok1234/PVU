@@ -27,7 +27,6 @@ namespace Assets.Scripts.Managers
                 _instance = this;
         }
 
-
         public Sprite GetCharacteristicSprite(CharacteristicUnitType characteristicUnitType)
         {
             for (int i = 0; i < _spriteUnitCharacteristicDatas.Length; i++)
@@ -50,7 +49,6 @@ namespace Assets.Scripts.Managers
     {
         public CharacteristicUnitType CharacteristicUnitType => _characteristicUnitType;
         public Sprite UnitCharacteristicSprite => _unitSprite;
-
 
         [SerializeField] private CharacteristicUnitType _characteristicUnitType;
         [SerializeField] private Sprite _unitSprite;

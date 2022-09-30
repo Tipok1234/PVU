@@ -16,10 +16,8 @@ namespace Assets.Scripts.Grids
         public event Action<int,CurrencyType> CurrencyCollectedAction;
 
         [SerializeField] private LayerMask _gridCellLayer;
-        [SerializeField] private GameObject _cartObject;
 
         [SerializeField] private GridCell _gridCellPrefab;
-      //  [SerializeField] private DefenceUnit[] _defenceUnits;
         [SerializeField] private GameUIController _gameUIController;
 
         private List<Transform> _enemySpawnPoints = new List<Transform>();
@@ -68,7 +66,6 @@ namespace Assets.Scripts.Grids
                                 gridCell.RegenurationUnit();
                                 UnitCreateAction?.Invoke(_gameUnit.DefencUnitType);
 
-                                // Destroy(_gameUnit.gameObject);
                                 _gameUnit.gameObject.SetActive(false);
                                 _gameUnit = null;
                             }
@@ -89,7 +86,6 @@ namespace Assets.Scripts.Grids
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    // Destroy(_gameUnit.gameObject);
                     _gameUnit.gameObject.SetActive(false);
                     _gameUnit = null;
                 }
@@ -151,7 +147,8 @@ namespace Assets.Scripts.Grids
             for (int i = 0; i < w; i++)
             {
                 Vector3 cartPos = new Vector3(-1, 0.25f, i);
-                Instantiate(_cartObject, cartPos, _cartObject.transform.rotation,transform);               
+
+                PoolManager.Instance.GetCart(cartPos);             
 
                 Vector3 enemyPos = new Vector3(l + 1, 0,i);
                 Transform enemyPoint = new GameObject("SpawnPosition_" + i).transform;
@@ -176,16 +173,6 @@ namespace Assets.Scripts.Grids
 
 
             _gameUnit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);
-
-            //for (int i = 0; i < _defenceUnits.Length; i++)
-            //{
-            //    if (unitType == _defenceUnits[i].DefencUnitType)
-            //    {
-            //        _gameUnit = Instantiate(_defenceUnits[i]);
-            //        _gameUnit.gameObject.SetActive(true);
-            //        break;
-            //    }
-            //}
         }
     }
     public class FieldBounes

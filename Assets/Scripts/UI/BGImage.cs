@@ -8,16 +8,12 @@ using System;
 
 public class BGImage : MonoBehaviour
 {
-   // public event Action<BGImage> SelectHandUnitAction;
-
     public DefenceUnitType DefenceUnitType => _defenceUnitType;
     public Sprite UnitImage => _unitImage.sprite;
 
     [SerializeField] private Image _unitImage;
 
     private DefenceUnitType _defenceUnitType;
-
-
     public void Setup(Sprite sprite, DefenceUnitType defenceUnitType)
     {
         _defenceUnitType = defenceUnitType;

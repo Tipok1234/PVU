@@ -17,7 +17,6 @@ namespace Assets.Scripts.Models
                 {
                     if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                     {
-                        // ResetBullet();
                         enemy.TakeDamage(_damage);
 
                         if (_currentTimeBullet >= _bulletLifeTime)

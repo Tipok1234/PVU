@@ -16,6 +16,7 @@ namespace Assets.Scripts.Managers
         [SerializeField] private List<Bullet> _bullets;
         [SerializeField] private List<DefenceUnit> _defenceUnits;
         [SerializeField] private List<ResourceModel> _resourceModel;
+        [SerializeField] private Cart _cartPrefab;
 
 
         private Dictionary<ParticleType, List<ParticleSystem>> _particleDictionary;
@@ -24,12 +25,17 @@ namespace Assets.Scripts.Managers
         private Dictionary<DefenceUnitType, List<DefenceUnit>> _defenceUnitsDictionary;
         private Dictionary<CurrencyType, List<ResourceModel>> _resourceModelDictionary;
 
+        private List<Cart> _cartList;
+
+
+        [SerializeField] private int _cartsCount = 6;
         [SerializeField] private int _countType;
         [SerializeField] private Transform _particlesParent;
         [SerializeField] private Transform _enemyParent;
         [SerializeField] private Transform _bulletParent;
         [SerializeField] private Transform _defenceUnitParent;
         [SerializeField] private Transform _resourceParent;
+        [SerializeField] private Transform _cartParent;
 
         private Transform _playerTransf;
         private static PoolManager instance;
@@ -45,6 +51,8 @@ namespace Assets.Scripts.Managers
             _defenceUnitsDictionary = new Dictionary<DefenceUnitType, List<DefenceUnit>>();
             _resourceModelDictionary = new Dictionary<CurrencyType, List<ResourceModel>>();
 
+            _cartList = new List<Cart>();
+
             for (int i = 0; i < _createParticles.Count; i++)
             {
                 var particleSystems = new List<ParticleSystem>();
@@ -52,8 +60,8 @@ namespace Assets.Scripts.Managers
                 for (int j = 0; j < _countType; j++)
                 {
                     particleSystems.Add(Instantiate(_createParticles[i].ParticleSystem, _particlesParent));
-                }      
-                _particleDictionary.Add(_createParticles[i].ParticleType,particleSystems);
+                }
+                _particleDictionary.Add(_createParticles[i].ParticleType, particleSystems);
             }
 
             for (int i = 0; i < _attackEnemyUnits.Count; i++)
@@ -100,6 +108,11 @@ namespace Assets.Scripts.Managers
                 }
                 _resourceModelDictionary.Add(_resourceModel[i].CurrencyType, resource);
             }
+
+            for (int i = 0; i < _cartsCount; i++)
+            {
+                _cartList.Add(Instantiate(_cartPrefab, _cartParent));
+            }
         }
 
         public Transform GetParticleByType(ParticleType particleType, Transform placeTransofrm)
@@ -113,14 +126,14 @@ namespace Assets.Scripts.Managers
                         list[i].transform.position = placeTransofrm.position;
                         list[i].gameObject.SetActive(true);
                         return list[i].transform;
-                    }                  
+                    }
                 }
 
                 for (int i = 0; i < _createParticles.Count; i++)
                 {
                     if (_createParticles[i].ParticleType == particleType)
                     {
-                        list.Add(Instantiate(_createParticles[i].ParticleSystem,_particlesParent));
+                        list.Add(Instantiate(_createParticles[i].ParticleSystem, _particlesParent));
                         return list[list.Count - 1].transform;
                     }
                 }
@@ -130,7 +143,7 @@ namespace Assets.Scripts.Managers
 
         public AttackUnit GetEnemyUnitByType(AttackUnitType attackUnitType, Transform attackUnit)
         {
-            if(_enemyUnitsDictionary.TryGetValue(attackUnitType, out var attackUnits))
+            if (_enemyUnitsDictionary.TryGetValue(attackUnitType, out var attackUnits))
             {
                 for (int i = 0; i < attackUnits.Count; i++)
                 {
@@ -240,7 +253,26 @@ namespace Assets.Scripts.Managers
             return null;
         }
 
-        public void ReturnToPool (Transform objectTransform)
+        public Transform GetCart(Vector3 cartPos)
+        {
+            for (int i = 0; i < _cartList.Count; i++)
+            {
+                if (_cartList[i].gameObject.activeSelf == false)
+                {
+                    _cartList[i].transform.position = cartPos;
+                    _cartList[i].gameObject.SetActive(true);
+                    return _cartList[i].transform;
+                }
+            }
+
+            var newCart = Instantiate(_cartPrefab, _cartParent);
+            newCart.gameObject.SetActive(true);
+            _cartList.Add(newCart);
+
+            return _cartList[_cartList.Count - 1].transform;
+        }
+
+        public void ReturnToPool(Transform objectTransform)
         {
             objectTransform.SetParent(_particlesParent);
         }

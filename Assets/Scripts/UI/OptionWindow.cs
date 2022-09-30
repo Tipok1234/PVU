@@ -24,10 +24,10 @@ namespace Assets.Scripts.UIManager
         private string _musicToggleKey = "MusicKey";
         private string _soundToggleKey = "SoundKey";
 
-        private string _mixerMusicKey = "MusicMixer";           //aud Manager
+        private string _mixerMusicKey = "MusicMixer";        
         private string _mixerSoundKey = "SoundMixer";
 
-        private float _music;                               //aud Manager
+        private float _music;                               
         private float _sound;
 
         private int value;
@@ -183,9 +183,5 @@ namespace Assets.Scripts.UIManager
             PlayerPrefs.SetFloat(_mixerSoundKey, volume);
             PlayerPrefs.Save();
         }
-        //private void Sound()
-        //{
-        //    AudioListener.pause = !AudioListener.pause;
-        //}
     }
 }

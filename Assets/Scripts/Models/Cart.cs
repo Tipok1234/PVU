@@ -46,6 +46,9 @@ namespace Assets.Scripts.Models
         {
             if (_particleTransform != null)
                 PoolManager.Instance.ReturnToPool(_particleTransform);
+
+            gameObject.SetActive(false);
+            _isActive = false;
         }
     }
 }

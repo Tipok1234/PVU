@@ -8,8 +8,6 @@ namespace Assets.Scripts.Managers
 {
     public class AudioManager : MonoBehaviour
     {
-        //public float Music => _music;
-        //public float Sound => _sound;
         public static AudioManager Instance => _instance;
         public AudioSource MainSound => _mainSound;
         public AudioMixer AudioMixer => _audioMixer;
@@ -26,12 +24,6 @@ namespace Assets.Scripts.Managers
 
         private static AudioManager _instance;
 
-        //private string _mixerMusicKey = "MusicMixer";
-        //private string _mixerSoundKey = "SoundMixer";
-
-        //private float _music;
-        //private float _sound;
-
         private void Awake()
         {
             if (_instance != null && _instance != this)
@@ -44,18 +36,6 @@ namespace Assets.Scripts.Managers
                 DontDestroyOnLoad(gameObject);
             }
             _mainSound.Play();
-        }
-
-        private void Start()
-        {
-            //_music = PlayerPrefs.GetFloat(_mixerMusicKey, 0.5f);
-            //_sound = PlayerPrefs.GetFloat(_mixerSoundKey, 0.5f);
-
-            //Debug.LogError("MUSIC : " + _music);
-            //Debug.LogError("SOUND : " + _sound);
-
-            //SetVolumeMainSound(_music);
-            //SetVolumeSound(_sound);
         }
 
         public void ClickSound()
@@ -89,21 +69,5 @@ namespace Assets.Scripts.Managers
             _openWindowSound.volume = 1;
             _clickSound.volume = 1;
         }
-
-        //public void SetVolumeMainSound(float volume)
-        //{
-        //    _audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
-        //    _audioMixer.SetFloat(_mixerMusicKey,volume);
-        //    PlayerPrefs.SetFloat(_mixerMusicKey, volume);
-        //    PlayerPrefs.Save();
-        //}
-
-        //public void SetVolumeSound(float volume)
-        //{
-        //    _audioMixerSound.SetFloat("volume", Mathf.Log10(volume) * 20);
-        //    _audioMixerSound.SetFloat(_mixerSoundKey, volume);
-        //    PlayerPrefs.SetFloat(_mixerSoundKey, volume);
-        //    PlayerPrefs.Save();
-        //}
     }
 }
