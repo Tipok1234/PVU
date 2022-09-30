@@ -57,6 +57,7 @@ namespace Assets.Scripts.Managers
                         {
                             var randomPos = UnityEngine.Random.Range(0, _spawnPositions.Count);
                             var enemy = PoolManager.Instance.GetEnemyUnitByType(attackUnitType, _spawnPositions[randomPos]);
+
                             enemy.UnitDeadAction += OnUnitDead;
                             enemy.Create();
 
