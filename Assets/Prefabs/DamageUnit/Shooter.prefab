@@ -126,15 +126,13 @@ MonoBehaviour:
   _hp: 30
   _colliderUnit: {fileID: 3658771024515912081}
   _unitDefenceType: 1
-  _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092,
-    type: 3}
+  _unitData: {fileID: 11400000, guid: 528ff0a17cdba2442851124425771e48, type: 2}
+  _bulletType: 0
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _spawnBullet: {fileID: 5156615679410924299}
   _particleType: 0
-  _reloadTime: 1.5
-  _damageUnit: 10
   _animationModel: {fileID: 628777901238319005}
 --- !u!114 &628777901238319005
 MonoBehaviour:

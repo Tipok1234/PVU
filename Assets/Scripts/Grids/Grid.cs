@@ -164,15 +164,14 @@ namespace Assets.Scripts.Grids
             return _fieldBounes.GetXZFieldRandomVector();
         }
 
-        public void StartPlaceUnit(DefenceUnitType unitType)
+        public void StartPlaceUnit(DefenceUnit defenceUnit)
         {
             if (_gameUnit != null)
             {
                 _gameUnit.gameObject.SetActive(false);
             }
 
-
-            _gameUnit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);
+            _gameUnit = defenceUnit;
         }
     }
     public class FieldBounes

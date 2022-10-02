@@ -30,6 +30,7 @@ namespace Assets.Scripts.UIManager
                 {
                     _unitDataSO[i].OpenUnit();
                     _unitDataSO[i].SetLevel(level);
+                    _unitDataSO[i].SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(_unitDataSO[i].DefencUnitType, level).UnitCharacteristicDatas);
                 }
                 else
                 {
@@ -72,6 +73,7 @@ namespace Assets.Scripts.UIManager
                             unitDataSo.OpenUnit();
                             unitDataSo.SetLevel(unitDataSo.Level);
 
+                            unitDataSo.SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);
 
                             int upgradeCost = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
 
@@ -115,6 +117,9 @@ namespace Assets.Scripts.UIManager
 
                         _dataManager.LevelUpUnit(defenceUnitType);
                         unitDataSo.LevelUpUnit();
+
+                        unitDataSo.SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);
+
 
                         int upgradeCost = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
                         _shopWindow.UpgradeUnit(upgradeCost, CurrencyType.SoftCurrency);

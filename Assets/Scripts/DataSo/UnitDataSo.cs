@@ -8,17 +8,14 @@ namespace Assets.Scripts.DataSo
     {
         public bool IsOpen => _isOpen;
         public int Price => _price;
-        public int HP => _hp;
         public int Level => _level;
         public float PlaceCooldown => _placeCooldown;
         public Sprite UnitSprite => _unitSprite;
         public DefenceUnitType DefencUnitType => _defenceUnitType;
-        public UnitCharacteristicData[] UnitCharacteristicDatas => _unitCharacteristicDatas;
 
         [Header("View")]
         [SerializeField] private Sprite _unitSprite;
         [SerializeField] private int _price;
-        [SerializeField] private int _hp;
         [SerializeField] private float _placeCooldown;
         [SerializeField] private DefenceUnitType _defenceUnitType;
         [SerializeField] private UnitCharacteristicData[] _unitCharacteristicDatas;
@@ -26,6 +23,25 @@ namespace Assets.Scripts.DataSo
         [SerializeField] private int _level;
 
         [SerializeField] private bool _isOpen;
+
+        public void SetCharacteristicData(UnitCharacteristicData[] data)
+        {
+            _unitCharacteristicDatas = data;
+        }
+
+        public float GetCharacteristicData(CharacteristicUnitType type)
+        {
+            for (int i = 0; i < _unitCharacteristicDatas.Length; i++)
+            {
+                if (_unitCharacteristicDatas[i].CharacteristicUnitType == type)
+                {
+                    return _unitCharacteristicDatas[i].Value;
+                }
+            }
+
+            Debug.LogError("GetCharacteristicData: " + type + " NOT FOUND");
+            return 0;
+        }
 
         public void SetLevel(int level)
         {
@@ -36,10 +52,12 @@ namespace Assets.Scripts.DataSo
         {
             _level++;
         }
+
         public void OpenUnit()
         {
             _isOpen = true;
         }
+
         public void ResetData()
         {
             _isOpen = false;

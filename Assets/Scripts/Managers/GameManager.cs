@@ -4,6 +4,7 @@ using Assets.Scripts.Enums;
 using Assets.Scripts.Models;
 using Assets.Scripts.UIManager;
 using Assets.Scripts.DataSo;
+using Assets.Scripts.AnimationsModel;
 
 namespace Assets.Scripts.Managers
 {
@@ -21,6 +22,8 @@ namespace Assets.Scripts.Managers
 
         [SerializeField] private LevelComplete _levelComplete;
         [SerializeField] private UnitDataSo[] _unitDataSo;
+
+        [SerializeField] private AnimationModel _animationModel; 
 
         private DataManager _dataManager;
 
@@ -56,6 +59,7 @@ namespace Assets.Scripts.Managers
         public void OnLevelCompleted()
         {
             _dataManager.UpdateLevel();
+            _animationModel.PlayAnimation();
             _levelComplete.ShowWindow();
         }
         private void OnUnitSold(DefenceUnitType unitType)
@@ -102,7 +106,9 @@ namespace Assets.Scripts.Managers
                 {
                     if (_currentGunpowder >= _unitDataSo[i].Price)
                     {
-                        _grid.StartPlaceUnit(unitType);
+                        var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);
+
+                        _grid.StartPlaceUnit(unit);
                         break;
                     }
                 }
@@ -124,6 +130,7 @@ namespace Assets.Scripts.Managers
         }
         private void RestartGame()
         {
+            _animationModel.PlayAnimation();
             _gameOverWindow.RestartGameUI();
         }
     }

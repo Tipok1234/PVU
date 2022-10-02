@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 namespace Assets.Scripts.Models
 {
@@ -7,8 +8,19 @@ namespace Assets.Scripts.Models
     {
         public event Action RestartGameAction;
         [SerializeField] protected LayerMask _enemyLayer;
+
+        private bool _isGameOver = false;
+
+        public void ResetGameOver()
+        {
+            _isGameOver = true;
+        }
+
         private void FixedUpdate()
         {
+            if (_isGameOver)
+                return;
+
             var ray = new Ray(transform.position, transform.right * (6.5f));
 
             Debug.DrawRay(transform.position, transform.right * (6.5f), Color.red, Time.deltaTime);
@@ -17,9 +29,16 @@ namespace Assets.Scripts.Models
             {
                 if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                 {
+                    StartCoroutine(GameOverCoroutine());
                     RestartGameAction?.Invoke();
+                    _isGameOver = true;
                 }
             }
+        }
+
+        private IEnumerator GameOverCoroutine()
+        {
+            yield return new WaitForSeconds(2.0f);
         }
     }
 }

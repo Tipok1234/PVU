@@ -77,8 +77,15 @@ namespace Assets.Scripts.Managers
 
             if (_enemyCountInLevel == 0)
             {
-                LevelCompletedAction?.Invoke();
+                StartCoroutine(LevelEndDelay());
             }
+        }
+
+        private IEnumerator LevelEndDelay()
+        {
+            yield return new WaitForSeconds(2.0f);
+
+            LevelCompletedAction?.Invoke();
         }
     }
 }
