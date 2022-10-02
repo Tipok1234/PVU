@@ -150,15 +150,13 @@ MonoBehaviour:
   _hp: 60
   _colliderUnit: {fileID: 1784406203126154136}
   _unitDefenceType: 5
-  _bullet: {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092,
-    type: 3}
+  _unitData: {fileID: 11400000, guid: 22c060d78cba8084c9407f7e10e99e65, type: 2}
+  _bulletType: 0
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _spawnBullet: {fileID: 8978292076249076703}
   _particleType: 0
-  _reloadTime: 3
-  _damageUnit: 10
   _gunModel: {fileID: 5201270580683582257}
   _animationModel: {fileID: 645350657130804099}
   _sphereRadius: 12

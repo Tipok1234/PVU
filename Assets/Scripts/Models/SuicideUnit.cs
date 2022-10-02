@@ -9,13 +9,17 @@ namespace Assets.Scripts.Models
     public class SuicideUnit : DefenceUnit
     {
         [SerializeField] private LayerMask _enemyLayer;
-        [SerializeField] private int _damage;
         [SerializeField] private AnimationModel _animationModel;
         [SerializeField] private ParticleType _particleType;
+
+        private float _damage;
 
         public override void Create()
         {
             base.Create();
+
+            _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
+
             StartCoroutine(LogicSuisideCoroutine());
         }
 

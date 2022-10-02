@@ -12,8 +12,9 @@ namespace Assets.Scripts.Models
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private AnimationMine _animationMane;
         [SerializeField] private ParticleType _particleType;
-        [SerializeField] private int _damage;
-        [SerializeField] private float _timeDamage;
+
+        private float _damage;
+        private float _timeDamage;
 
         private void FixedUpdate()
         {
@@ -24,6 +25,10 @@ namespace Assets.Scripts.Models
         public override void Create()
         {
             base.Create();
+
+            _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
+            _timeDamage = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
+
             StartCoroutine(LogicMineCoroutine());
         }
         private IEnumerator LogicMineCoroutine()

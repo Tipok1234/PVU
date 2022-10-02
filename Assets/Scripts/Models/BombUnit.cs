@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.Scripts.AnimationsModel;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
+using Assets.Scripts.DataSo;
 
 namespace Assets.Scripts.Models
 {
@@ -11,13 +12,20 @@ namespace Assets.Scripts.Models
     {
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private ParticleType _particleType;
-        [SerializeField] private int _damage;
         [SerializeField] private float _explosionTime;
         [SerializeField] private AnimationModel _animationModel;
+
+        private float _damage = 0;
+
         public override void Create()
         {
-            base.Create();
+            base.Create();      
+
+            _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
+            _explosionTime = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
+
             StartCoroutine(LogicBombCoroutine());
+
         }
 
         private IEnumerator LogicBombCoroutine()

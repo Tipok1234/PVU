@@ -7,7 +7,7 @@ namespace Assets.Scripts.DataSo
     public class UnitDataSo : ScriptableObject
     {
         public bool IsOpen => _isOpen;
-        public int Price => _price;
+      //  public int Price => _price;
         public int Level => _level;
         public float PlaceCooldown => _placeCooldown;
         public Sprite UnitSprite => _unitSprite;
@@ -15,7 +15,7 @@ namespace Assets.Scripts.DataSo
 
         [Header("View")]
         [SerializeField] private Sprite _unitSprite;
-        [SerializeField] private int _price;
+       // [SerializeField] private int _price;
         [SerializeField] private float _placeCooldown;
         [SerializeField] private DefenceUnitType _defenceUnitType;
         [SerializeField] private UnitCharacteristicData[] _unitCharacteristicDatas;

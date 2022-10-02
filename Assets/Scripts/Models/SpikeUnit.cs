@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {
     public class SpikeUnit : DefenceUnit
     {
         [SerializeField] private LayerMask _enemyLayer;
-        [SerializeField] private int _damage;
-        [SerializeField] private float _reloadTimeDamage;
         [SerializeField] private AnimationModel _animationModel;
+
+        private float _damage;
+        private float _reloadTimeDamage;
 
         public override void Create()
         {
             base.Create();
+
+            _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
+            _reloadTimeDamage = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
+
             StartCoroutine(LogicSpikeCoroutine());
         }
 

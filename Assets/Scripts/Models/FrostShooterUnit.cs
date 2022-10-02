@@ -9,12 +9,12 @@ namespace Assets.Scripts.Models
 {
     public class FrostShooterUnit : DefenceUnit
     {
-        [SerializeField] private Bullet _bullet;
+        [SerializeField] private BulletType _bulletType;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
 
-        [SerializeField] private float _reloadTime;
-        [SerializeField] private float _damageUnit;
+        private float _reloadTime = 0;
+        private float _damage = 0;
 
         [SerializeField] private AnimationModel _animationModel;
         [SerializeField] private ParticleType _particleType;
@@ -39,9 +39,9 @@ namespace Assets.Scripts.Models
                         {
                             FrostDebuff frostDebuff = new FrostDebuff(0.5f,1.5f);
 
-                            PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right,frostDebuff);
+                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right,frostDebuff);
                             ShootParticle();
-                           // enemy.TakeDamage(_damageUnit);
+                            enemy.TakeDamage(_damage);
                             _animationModel.PlayAnimation();
                             _currentReloadTime = 0;
                         }
@@ -57,12 +57,12 @@ namespace Assets.Scripts.Models
         public override void Create()
         {
             base.Create();
+
+            _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
+            _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
+            _reloadTime = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
         }
 
-        public void CreateShooter()
-        {
-
-        }
         public override void TakeDamage(float damage)
         {
             _currentHP -= damage;

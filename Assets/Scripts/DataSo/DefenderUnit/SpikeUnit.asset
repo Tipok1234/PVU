@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef369c3e061315945ac980de834ce7a5, type: 3}
-  m_Name: UnitData 11
+  m_Name: SpikeUnit
   m_EditorClassIdentifier: 
-  _unitSprite: {fileID: 21300000, guid: acf24f91ea86d2140b7efa39f2011f06, type: 3}
-  _price: 135
-  _hp: 0
-  _placeCooldown: 3
-  _defenceUnitType: 11
+  _unitSprite: {fileID: 21300000, guid: 108ca3e7dda90d945b0914bf9259ec94, type: 3}
+  _price: 100
+  _hp: 20
+  _placeCooldown: 5
+  _defenceUnitType: 6
   _unitCharacteristicDatas:
-  - _value: 135
+  - _value: 150
     _characteristicUnitType: 0
-  - _value: 500
+  - _value: 12
     _characteristicUnitType: 1
-  - _value: 2
+  - _value: 8
     _characteristicUnitType: 3
-  - _value: 14
+  - _value: 12
     _characteristicUnitType: 4
   _level: 0
   _isOpen: 0

@@ -37,31 +37,38 @@ namespace Assets.Scripts.Controller
         {
             _sellButton.onClick.AddListener(SellButton);
             _optionButton.onClick.AddListener(OpenOptionCanvas);
-            _exitOptionButton.onClick.AddListener(OpenOptionCanvas);
+            _exitOptionButton.onClick.AddListener(ExitOptionCanvas);
         }
 
         public void OpenOptionCanvas()
         {
             AudioManager.Instance.ClickSound();
             _optionCanvas.enabled = !_optionCanvas.enabled;
+            Time.timeScale = 0f;
         }
-        public void Setup(UnitDataSo[] unitDataSo) //, DataManager dataManager)
+
+        public void ExitOptionCanvas()
+        {
+            _optionCanvas.enabled = !_optionCanvas.enabled;
+            Time.timeScale = 1f;
+        }
+        public void Setup(UnitDataSo[] unitDataSo, DataManager dataManager)
         {
             ResetUI();
 
             for (int i = 0; i < unitDataSo.Length; i++)
             {
-              //  if(dataManager.UnitHandItems.Contains(unitDataSo[i].DefencUnitType))
-              //  {
+                if(dataManager.UnitHandItems.Contains(unitDataSo[i].DefencUnitType))
+                {
                     UnitGameUI unitUI = Instantiate(_unitGameUIPrefab, _spawnParent);
                     unitUI.Setup(unitDataSo[i]);
                     unitUI.BuyUnitAction += OnBuyUnit;
                     _unitGameUIList.Add(unitUI);
-              //  }
+                  }
             }
         }
 
-        public void UpdateUnitGameUIItems(int gunPowder)
+        public void UpdateUnitGameUIItems(float gunPowder)
         {
             for (int i = 0; i < _unitGameUIList.Count; i++)
             {
@@ -79,7 +86,6 @@ namespace Assets.Scripts.Controller
         }
         private void OnBuyUnit(DefenceUnitType unitType)
         {
-
             UnitSelectedAction?.Invoke(unitType);
         }
 
@@ -98,12 +104,12 @@ namespace Assets.Scripts.Controller
         {
             SellButtonAction?.Invoke();
         }
-        public void UpdateGameCurrency(int gameCurrencyAmount)
+        public void UpdateGameCurrency(float gameCurrencyAmount)
         {
             _gameCurrencyText.text = gameCurrencyAmount.ToString();
         }
 
-        public void UpdateSoftCurrency(int softCurrencyAmount)
+        public void UpdateSoftCurrency(float softCurrencyAmount)
         {
             _softCurrencyText.text = softCurrencyAmount.ToString();
         }

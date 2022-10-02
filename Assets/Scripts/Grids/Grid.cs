@@ -13,7 +13,7 @@ namespace Assets.Scripts.Grids
         public IReadOnlyList<Transform> EnemySpawnPoints => _enemySpawnPoints;
         public event Action<DefenceUnitType> UnitCreateAction;
         public event Action<DefenceUnitType> UnitSoldAction;
-        public event Action<int,CurrencyType> CurrencyCollectedAction;
+        public event Action<float,CurrencyType> CurrencyCollectedAction;
 
         [SerializeField] private LayerMask _gridCellLayer;
 

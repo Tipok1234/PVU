@@ -1903,11 +1903,11 @@ MonoBehaviour:
   _hp: 0
   _colliderUnit: {fileID: 3203147683657469462}
   _unitDefenceType: 11
+  _unitData: {fileID: 11400000, guid: b382e930ee45ef54398797a8c4c8b3d7, type: 2}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _damage: 500
-  _explosionTime: 0.5
   _animationModel: {fileID: 213775514221183675}
   _particleType: 4
 --- !u!1 &8592339083854468835

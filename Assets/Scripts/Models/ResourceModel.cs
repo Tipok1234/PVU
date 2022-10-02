@@ -6,14 +6,14 @@ namespace Assets.Scripts.Models
 {
     public class ResourceModel : MonoBehaviour
     {
-        public int CurrencyAmount => _currencyAmount;
+        public float CurrencyAmount => _currencyAmount;
         public CurrencyType CurrencyType => _currencyType;
 
-        private int _currencyAmount;
+        private float _currencyAmount;
 
         [SerializeField] private CurrencyType _currencyType;
 
-        public void Setup(int currency, CurrencyType currencyType)
+        public void Setup(float currency, CurrencyType currencyType)
         {
             _currencyType = currencyType;
             _currencyAmount = currency;

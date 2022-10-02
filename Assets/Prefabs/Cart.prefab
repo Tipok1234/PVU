@@ -112,6 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationModel: {fileID: -3468596134309797413}
+  _particleType: 0
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!54 &3761005351719239378
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -109,6 +109,7 @@ MonoBehaviour:
   _hp: 50
   _colliderUnit: {fileID: 6446618824455355835}
   _unitDefenceType: 9
+  _unitData: {fileID: 11400000, guid: e5399d37dc4d33b4ea33b289b40ef567, type: 2}
   _bullet: {fileID: -6558009673131223252, guid: 71a32ec5f3767044dbe7d71d02da098b,
     type: 3}
   _enemyLayer:

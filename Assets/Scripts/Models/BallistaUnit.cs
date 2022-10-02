@@ -9,18 +9,17 @@ namespace Assets.Scripts.Models
 {
     public class BallistaUnit : DefenceUnit
     {
-        [SerializeField] private Bullet _bullet;
+        [SerializeField] private BulletType _bulletType;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
         [SerializeField] private ParticleType _particleType;
 
-        [SerializeField] private float _reloadTime;
-        [SerializeField] private float _damageUnit = 10;
-
         [SerializeField] private GameObject _gunModel;
         [SerializeField] private AnimationModel _animationModel;
-
         [SerializeField] private float _sphereRadius;
+
+        private float _reloadTime = 0;
+        private float _damage = 0;
         private float _currentReloadTime = 0;
         private AttackUnit _attackUnit;
 
@@ -68,7 +67,7 @@ namespace Assets.Scripts.Models
 
                                 _animationModel.PlayAnimation();
                                 ShootParticle();
-                                PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, _attackUnit.transform.position - _gunModel.transform.position);
+                                PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, _attackUnit.transform.position - _gunModel.transform.position);
                                 _currentReloadTime = 0;
                             }
                         }
@@ -91,6 +90,10 @@ namespace Assets.Scripts.Models
         public override void Create()
         {
             base.Create();
+
+            _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
+            _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
+            _reloadTime = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
         }
         public override void TakeDamage(float damage)
         {

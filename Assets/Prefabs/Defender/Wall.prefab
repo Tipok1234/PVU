@@ -111,5 +111,6 @@ MonoBehaviour:
   _hp: 100
   _colliderUnit: {fileID: 8015350958617988695}
   _unitDefenceType: 7
+  _unitData: {fileID: 11400000, guid: 6f60ddb7f8b9624409eeda350605438e, type: 2}
   _deathParticle: {fileID: 5342057730135514390, guid: 75e54243e6d204bf7a1c6910b40e77f2,
     type: 3}

@@ -144,6 +144,7 @@ MonoBehaviour:
   _hp: 20
   _colliderUnit: {fileID: 4402148397890880571}
   _unitDefenceType: 4
+  _unitData: {fileID: 11400000, guid: 1ff9df3e6372c2542bc79a116144c6da, type: 2}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128

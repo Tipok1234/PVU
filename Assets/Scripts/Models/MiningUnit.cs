@@ -8,22 +8,27 @@ namespace Assets.Scripts.Models
 {
     public class MiningUnit : DefenceUnit
     {
-        [SerializeField] private int _softIncomeAmount;
-        [SerializeField] private float _softIncomeCooldown;
+        private float _softIncomeAmount;
+        private float _softIncomeCooldown;
+
         [SerializeField] private ResourceModel _gunPowderPrefab;
         [SerializeField] private Transform _spawnDimond;
         [SerializeField] private AnimationModel _animationModel;
 
-        private float _currentSoftIncomeTimer = 0;
+        private int _currentSoftIncomeTimer = 0;
 
-        private void Start()
-        {
-            StartCoroutine(IncomeCoroutine());
-            _currentSoftIncomeTimer = 0;
-        }
+        //private void Start()
+        //{
+        //    StartCoroutine(IncomeCoroutine());
+        //    _currentSoftIncomeTimer = 0;
+        //}
         public override void Create()
         {
             base.Create();
+
+            _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
+            _softIncomeAmount = _unitData.GetCharacteristicData(CharacteristicUnitType.Mining);
+            _softIncomeCooldown = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
 
             _currentSoftIncomeTimer = 0;
             StartCoroutine(IncomeCoroutine());

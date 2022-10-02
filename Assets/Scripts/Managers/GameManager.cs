@@ -23,12 +23,12 @@ namespace Assets.Scripts.Managers
         [SerializeField] private LevelComplete _levelComplete;
         [SerializeField] private UnitDataSo[] _unitDataSo;
 
-        [SerializeField] private AnimationModel _animationModel; 
+        [SerializeField] private AnimationModel _animationModel;
 
         private DataManager _dataManager;
 
-        private int _softCurrency = 0;
-        private int _currentGunpowder = 1000;
+        private float _softCurrency = 0;
+        private float _currentGunpowder = 1000;
 
         private void Awake()
         {
@@ -38,18 +38,17 @@ namespace Assets.Scripts.Managers
             _gameUIController.UnitSelectedAction += OnUnitSelect;
             _gameOver.RestartGameAction += RestartGame;
             _enemyManager.LevelCompletedAction += OnLevelCompleted;
-
         }
         private void Start()
         {
             _dataManager = FindObjectOfType<DataManager>();
-            //_dataManager.LoadData();
+            _dataManager.LoadData();
             _softCurrency = _dataManager.SoftCurrency;
 
             _grid.Setup(_width, _length);
             _enemyManager.Setup(_grid.EnemySpawnPoints, _levelManager.GetLevelByIndex(_dataManager.LevelIndex));
 
-            _gameUIController.Setup(_unitDataSo); //, _dataManager);
+            _gameUIController.Setup(_unitDataSo, _dataManager);
 
             _gameUIController.UpdateSoftCurrency(_softCurrency);
             _gameUIController.UpdateGameCurrency(_currentGunpowder);
@@ -70,7 +69,7 @@ namespace Assets.Scripts.Managers
             {
                 if (_unitDataSo[i].DefencUnitType == unitType)
                 {
-                    soldValue = (int)(_unitDataSo[i].Price * 0.5f);
+                    soldValue = (int)(_unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price) * 0.5f);
                     break;
                 }
             }
@@ -79,7 +78,7 @@ namespace Assets.Scripts.Managers
             _gameUIController.UpdateGameCurrency(_currentGunpowder);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
         }
-        private void OnCurrencyCollected(int currencyAmount,CurrencyType currencyType)
+        private void OnCurrencyCollected(float currencyAmount,CurrencyType currencyType)
         {
             switch(currencyType)
             {
@@ -99,15 +98,14 @@ namespace Assets.Scripts.Managers
 
         public void OnUnitSelect(DefenceUnitType unitType)
         {
-
             for (int i = 0; i < _unitDataSo.Length; i++)
             {
                 if (_unitDataSo[i].DefencUnitType == unitType)
                 {
-                    if (_currentGunpowder >= _unitDataSo[i].Price)
+                    if (_currentGunpowder >= _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price))
                     {
                         var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);
-
+                      
                         _grid.StartPlaceUnit(unit);
                         break;
                     }
@@ -120,7 +118,8 @@ namespace Assets.Scripts.Managers
             {
                 if (_unitDataSo[i].DefencUnitType == defenceUnit)
                 {
-                    _currentGunpowder -= _unitDataSo[i].Price;
+                    Debug.LogError( " PRICE: " + _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price));
+                    _currentGunpowder -= _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price);
                     _gameUIController.UpdateGameCurrency(_currentGunpowder);
                     _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
                     _gameUIController.RechargePlaceCooldown(defenceUnit);
@@ -131,7 +130,7 @@ namespace Assets.Scripts.Managers
         private void RestartGame()
         {
             _animationModel.PlayAnimation();
-            _gameOverWindow.RestartGameUI();
+            _gameOverWindow.RestartGameUI();           
         }
     }
 }

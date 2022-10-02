@@ -24,6 +24,7 @@ namespace Assets.Scripts.Models
         private bool _isWalk = true;
         private bool _isAttack = true;
         private bool _isTarget = true;
+        private bool _isStop = false;
 
         private void FixedUpdate()
         {
@@ -56,7 +57,6 @@ namespace Assets.Scripts.Models
             _selfTransform.transform.position += Vector3.right * (-1f) * _moveSpeed * Time.deltaTime;
             _animator.SetBool("Walk", true);
             _animator.SetBool("Attack", false);
-
         }
         private void AttackerUnit()
         {
@@ -75,7 +75,6 @@ namespace Assets.Scripts.Models
         {
             UnitDeadAction?.Invoke(this);
             yield return base.DeathUnitCoroutine(deathTime);
-
         }
 
         public void DeathUnit()

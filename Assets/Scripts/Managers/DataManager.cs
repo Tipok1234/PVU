@@ -12,12 +12,12 @@ namespace Assets.Scripts.Managers
 
         public List<DefenceUnitType> UnitHandItems => _unitHandItems;
         public int LevelIndex => _levelIndex;
-        public int SoftCurrency => _softCurrency;
-        public int HardCurrency => _hardCurrency;
+        public float SoftCurrency => _softCurrency;
+        public float HardCurrency => _hardCurrency;
 
         private int _levelIndex;
-        private int _softCurrency;
-        private int _hardCurrency;
+        private float _softCurrency;
+        private float _hardCurrency;
 
         private string _levelKey = "Level";
         private string _softCurrencyKey = "SoftCurrency";
@@ -51,8 +51,8 @@ namespace Assets.Scripts.Managers
             if (_isDataLoaded)
                 return;
 
-            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 1000);
-            _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 15);
+            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 10000);
+            _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 1500);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
@@ -97,13 +97,13 @@ namespace Assets.Scripts.Managers
                 case CurrencyType.SoftCurrency:
 
                     _softCurrency -= currencyAmount;
-                    PlayerPrefs.SetInt(_softCurrencyKey, _softCurrency);
+                    PlayerPrefs.SetFloat(_softCurrencyKey, _softCurrency);
 
                     break;
                 case CurrencyType.HardCurrency:
 
                     _hardCurrency -= currencyAmount;
-                    PlayerPrefs.SetInt(_hardCurrencyKey, _hardCurrency);
+                    PlayerPrefs.SetFloat(_hardCurrencyKey, _hardCurrency);
                     break;
             }
         }
@@ -113,17 +113,17 @@ namespace Assets.Scripts.Managers
             PlayerPrefs.SetInt(_levelKey, _levelIndex);
         }
 
-        public void AddCurrency(int currencyAmount, CurrencyType currencyType)
+        public void AddCurrency(float currencyAmount, CurrencyType currencyType)
         {
             switch (currencyType)
             {
                 case CurrencyType.SoftCurrency:
                     _softCurrency += currencyAmount;
-                    PlayerPrefs.SetInt(_softCurrencyKey, _softCurrency);
+                    PlayerPrefs.SetFloat(_softCurrencyKey, _softCurrency);
                     break;
                 case CurrencyType.HardCurrency:
                     _hardCurrency += currencyAmount;
-                    PlayerPrefs.SetInt(_hardCurrencyKey, _hardCurrency);
+                    PlayerPrefs.SetFloat(_hardCurrencyKey, _hardCurrency);
                     break;
             }
 

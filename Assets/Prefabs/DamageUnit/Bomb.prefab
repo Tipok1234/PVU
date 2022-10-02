@@ -63,11 +63,11 @@ MonoBehaviour:
   _hp: 10
   _colliderUnit: {fileID: 5828321613153820599}
   _unitDefenceType: 10
+  _unitData: {fileID: 11400000, guid: 452143def9520594b807bb2f018ad3b8, type: 2}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _particleType: 2
-  _damage: 300
   _explosionTime: 2
   _animationModel: {fileID: -5567827661617469981}
 --- !u!114 &-5567827661617469981

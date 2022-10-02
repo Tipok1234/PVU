@@ -15,6 +15,7 @@ namespace Assets.Scripts.UIManager
 
         void Start()
         {
+            Time.timeScale = 1f;
             _restartGameButton.onClick.AddListener(RestartGame);
             _mainMenuButton.onClick.AddListener(MainMenuScene);
         }
@@ -29,6 +30,7 @@ namespace Assets.Scripts.UIManager
         public void RestartGameUI()
         {
             _restartGameCanvas.enabled = true;
+            Time.timeScale = 0f;
         }
         public void MainMenuScene()
         {

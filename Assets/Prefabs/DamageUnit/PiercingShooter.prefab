@@ -49,15 +49,13 @@ MonoBehaviour:
   _hp: 20
   _colliderUnit: {fileID: 7650478941099878869}
   _unitDefenceType: 3
-  _bullet: {fileID: -1905679882517749866, guid: 62e57f033821d4a44ba964a67f5932f6,
-    type: 3}
+  _unitData: {fileID: 11400000, guid: 7de4884729dff024ab311fc26dbeb0ff, type: 2}
+  _bulletType: 2
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _spawnBullet: {fileID: 1875370327986419658}
   _particleType: 0
-  _reloadTime: 2.5
-  _damageUnit: 10
   _animationModel: {fileID: 7678373207486177393}
 --- !u!65 &7650478941099878869
 BoxCollider:

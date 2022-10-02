@@ -63,13 +63,13 @@ MonoBehaviour:
   _hp: 30
   _colliderUnit: {fileID: 6395837285194248909}
   _unitDefenceType: 8
+  _unitData: {fileID: 11400000, guid: a49668ca67857074486b0f1b29b04e52, type: 2}
   _softIncomeAmount: 5
   _softIncomeCooldown: 5
   _gunPowderPrefab: {fileID: 8918352237793816498, guid: 19519880c80bd29408c0a4c3b55c7d69,
     type: 3}
   _spawnDimond: {fileID: 2824842118159924429}
   _animationModel: {fileID: -202475004028840523}
-  _currencyType: 1
 --- !u!114 &-202475004028840523
 MonoBehaviour:
   m_ObjectHideFlags: 0

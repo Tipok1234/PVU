@@ -10,6 +10,13 @@ namespace Assets.Scripts.Models
     public class WallUnit : DefenceUnit
     {
         [SerializeField] private ParticleSystem _deathParticle;
+
+        public override void Create()
+        {
+            base.Create();
+
+            _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
+        }
         public override void TakeDamage(float damage)
         {
             _currentHP -= damage;

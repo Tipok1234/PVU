@@ -12,6 +12,7 @@ namespace Assets.Scripts.Managers
     public class EnemyManager : MonoBehaviour
     {
         public event Action LevelCompletedAction;
+
         [SerializeField] private AttackUnit[] _unitPrefabs;
 
         private float _spawnUnitTime = 0;

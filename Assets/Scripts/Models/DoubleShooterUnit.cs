@@ -8,22 +8,26 @@ namespace Assets.Scripts.Models
 {
     public class DoubleShooterUnit : DefenceUnit
     {
-        [SerializeField] private Bullet _bullet;
+        [SerializeField] private BulletType _bulletType;
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
         [SerializeField] private ParticleType _particleType;
 
-        [SerializeField] private float _reloadTime;
         [SerializeField] private float _reloadTimeBullet;
-        [SerializeField] private float _damageUnit = 10;
         [SerializeField] private AnimationModel _animationModel;
 
         private float _currentReloadTime = 0;
+        private float _reloadTime = 0;
+        private float _damage = 0;
 
         public override void Create()
         {
             base.Create();
             StartCoroutine(LogicCoroutine());
+
+            _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
+            _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
+            _reloadTime = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
         }
         private IEnumerator LogicCoroutine()
         {
@@ -41,13 +45,13 @@ namespace Assets.Scripts.Models
                         {
                             _animationModel.PlayAnimation();
                             ShootParticle();
-                            PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right);
+                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);
 
                             yield return new WaitForSeconds(_reloadTimeBullet);
 
                             _animationModel.PlayAnimation();
                             ShootParticle();
-                            PoolManager.Instance.GetBulletByType(_bullet.BulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right);
+                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);
 
                             _currentReloadTime = 0;
                         }

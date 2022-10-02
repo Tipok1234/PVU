@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using Assets.Scripts.Managers;
 using DG.Tweening;
 
 namespace Assets.Scripts.UIManager
@@ -24,19 +23,25 @@ namespace Assets.Scripts.UIManager
         public event Action<DefenceUnitType> BuyUnitAction;
 
         private DefenceUnitType _unitType;
-        private int _unitPrice;
-        private float _placeCooldown;
+
+        private int _unitPrice = 0;
+        private float _placeCooldown = 0;
         private void Awake()
         {
             _buyButton.onClick.AddListener(BuyButton);
         }
         public void Setup(UnitDataSo unitDataSo)
         {
-            _placeCooldown = unitDataSo.PlaceCooldown;
-            _unitPrice = unitDataSo.Price;
-            _priceText.text = unitDataSo.Price.ToString();
+            _unitPrice = (int)unitDataSo.GetCharacteristicData(CharacteristicUnitType.Price);
+            _placeCooldown = unitDataSo.GetCharacteristicData(CharacteristicUnitType.Recharge);
+
+
+            _priceText.text = _unitPrice.ToString();
             _unitImage.sprite = unitDataSo.UnitSprite;
             _unitType = unitDataSo.DefencUnitType;
+
+            Debug.LogError($"NAME: {_unitType}, PRICE: {_unitPrice}");
+
         }
 
         public void HightLight(bool hightlight)
