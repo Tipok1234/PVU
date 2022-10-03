@@ -4,8 +4,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using Assets.Scripts.DataSo;
 using System;
-using Assets.Scripts.Grids;
-using Assets.Scripts.UIManager;
 
 namespace Assets.Scripts.Managers
 {

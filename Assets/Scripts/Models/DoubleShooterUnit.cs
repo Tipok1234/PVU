@@ -13,7 +13,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private Transform _spawnBullet;
         [SerializeField] private ParticleType _particleType;
 
-        [SerializeField] private float _reloadTimeBullet;
+        [SerializeField] private float _timeBetweenBullets = 0.2f;
         [SerializeField] private AnimationModel _animationModel;
 
         private float _currentReloadTime = 0;
@@ -39,26 +39,25 @@ namespace Assets.Scripts.Models
                 {
                     var ray = new Ray(transform.position, transform.right * (-10));
 
-                    if (Physics.Raycast(ray, out RaycastHit hit, 150f, _enemyLayer))
+                    if (Physics.Raycast(ray, 150f, _enemyLayer))
                     {
-                        if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
-                        {
-                            _animationModel.PlayAnimation();
-                            ShootParticle();
-                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);
 
-                            yield return new WaitForSeconds(_reloadTimeBullet);
+                        _animationModel.PlayAnimation();
+                        ShootParticle();
+                        PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);
 
-                            _animationModel.PlayAnimation();
-                            ShootParticle();
-                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);
+                        yield return new WaitForSeconds(_timeBetweenBullets);
 
-                            _currentReloadTime = 0;
-                        }
+                        _animationModel.PlayAnimation();
+                        ShootParticle();
+                        PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);
+
+                        _currentReloadTime = 0;
+
                     }
                 }
                 yield return null;
-            }             
+            }
         }
 
 
@@ -81,7 +80,7 @@ namespace Assets.Scripts.Models
         {
             StopCoroutine(LogicCoroutine());
             base.Death(deathTime);
-           
+
         }
     }
 

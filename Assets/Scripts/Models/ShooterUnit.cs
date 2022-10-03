@@ -42,17 +42,8 @@ namespace Assets.Scripts.Models
                         _animationModel.PlayAnimation();
                         _currentReloadTime = 0;
                     }
-
-                    //if (Physics.Raycast(ray, out RaycastHit hit, 150f, _enemyLayer))
-                    //{
-                    //    PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damageUnit, -transform.right);
-                    //    ShootParticle();
-                    //    _animationModel.PlayAnimation();
-                    //    _currentReloadTime = 0;
-                    //}
                 }
             }
-
         }
         public override void Create()
         {

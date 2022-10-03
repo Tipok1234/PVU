@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
 using Assets.Scripts.Enums;
@@ -13,13 +11,13 @@ namespace Assets.Scripts.Models
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
 
-        private float _reloadTime = 0;
-        private float _damage = 0;
 
         [SerializeField] private AnimationModel _animationModel;
         [SerializeField] private ParticleType _particleType;
 
         private float _currentReloadTime = 0;
+        private float _reloadTime = 0;
+        private float _damage = 0;
 
         private void FixedUpdate()
         {

@@ -118,7 +118,6 @@ namespace Assets.Scripts.Managers
             {
                 if (_unitDataSo[i].DefencUnitType == defenceUnit)
                 {
-                    Debug.LogError( " PRICE: " + _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price));
                     _currentGunpowder -= _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price);
                     _gameUIController.UpdateGameCurrency(_currentGunpowder);
                     _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);

@@ -34,14 +34,9 @@ namespace Assets.Scripts.UIManager
         {
             _unitPrice = (int)unitDataSo.GetCharacteristicData(CharacteristicUnitType.Price);
             _placeCooldown = unitDataSo.GetCharacteristicData(CharacteristicUnitType.Recharge);
-
-
             _priceText.text = _unitPrice.ToString();
             _unitImage.sprite = unitDataSo.UnitSprite;
             _unitType = unitDataSo.DefencUnitType;
-
-            Debug.LogError($"NAME: {_unitType}, PRICE: {_unitPrice}");
-
         }
 
         public void HightLight(bool hightlight)
