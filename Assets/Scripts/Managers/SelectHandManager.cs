@@ -9,12 +9,13 @@ namespace Assets.Scripts.Managers
 {
     public class SelectHandManager : MonoBehaviour
     {
+        public SelectHandWindow SelectHandWindow => _selectHandWindow;
+
         [SerializeField] private SelectHandWindow _selectHandWindow;
         private DataManager _dataManager;
 
         private void Awake()
         {
-
             _selectHandWindow.SaveHandItemAction += OnSaveHandItem;
             _selectHandWindow.RemoveHandItemAction += OnRemoveHandItem;
         }

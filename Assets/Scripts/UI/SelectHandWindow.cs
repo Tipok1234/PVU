@@ -39,7 +39,6 @@ namespace Assets.Scripts.UIManager
         {
             for (int i = 0; i < unitDataSO.Length; i++)
             {
-
                 if (_countHandItem < 8)
                 {
                     HandItem handItem = Instantiate(_handItem, _spawnHandUnitUI);
@@ -81,6 +80,28 @@ namespace Assets.Scripts.UIManager
                 _countHandItem++;
             }
         }
+
+        //public void RefreshSelectHandWindow(UnitDataSo[] unitDataSO)
+        //{
+        //    for (int i = 0; i < unitDataSO.Length; i++)
+        //    {
+        //        if (unitDataSO[i].IsOpen)
+        //        {
+        //            _showUnitUIItems[i].transform.SetAsFirstSibling();
+        //        }
+        //    }
+        //}
+
+        //public void RemoveShowUnit(UnitDataSo[] unitDataSo)
+        //{
+        //    for (int i = 0; i < unitDataSo.Length; i++)
+        //    {
+        //        if (unitDataSo[i].DefencUnitType == _showUnitUIItem.DefenceUnitType)
+        //        {
+        //            _showUnitUIItems.Remove(_showUnitUIItem);
+        //        }
+        //    }       
+        //}
 
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {

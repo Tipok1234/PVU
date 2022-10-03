@@ -16,10 +16,11 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Button _exitButton;
         [SerializeField] private Button _exitOptionButton;
         [SerializeField] private Button _handButton;
+        [SerializeField] private Button _exitHandButton;
 
         [SerializeField] private Canvas _shopCanvas;
         [SerializeField] private Canvas _loadingScene;
-        [SerializeField] private Canvas _gameCanvas;
+        [SerializeField] private Canvas _mainCanvas;
         [SerializeField] private Canvas _handCanvas;
         [SerializeField] private Canvas _optionCanvas;
         void Start()
@@ -31,18 +32,22 @@ namespace Assets.Scripts.UIManager
             _exitOptionButton.onClick.AddListener(OpenOptionCanvas);
             _shopButton.onClick.AddListener(OpenShopCanvas);
             _exitButton.onClick.AddListener(OpenShopCanvas);
-
+            _exitHandButton.onClick.AddListener(ExitHandCanvas);
         }
 
         private void StartGame()
         {
             _handCanvas.enabled = !_handCanvas.enabled;
         }
-
+        private void ExitHandCanvas()
+        {
+            _handCanvas.enabled = !_handCanvas.enabled;
+            _mainCanvas.enabled = true;
+        }
         private void FightGame()
         {
             SceneManager.LoadScene("GameScene");
-            _gameCanvas.enabled = !_gameCanvas.enabled;
+            _mainCanvas.enabled = !_mainCanvas.enabled;
             _loadingScene.enabled = true;
             AudioManager.Instance.OpenWindowSound();
         }
@@ -50,12 +55,14 @@ namespace Assets.Scripts.UIManager
         {
             AudioManager.Instance.OpenWindowSound();
             _shopCanvas.enabled = !_shopCanvas.enabled;
+            _mainCanvas.enabled = !_mainCanvas.enabled;
         }
 
         private void OpenHandCanvas()
         {
             AudioManager.Instance.OpenWindowSound();
             _handCanvas.enabled = !_handCanvas.enabled;
+            _mainCanvas.enabled = !_mainCanvas.enabled;
         }
         private void OpenOptionCanvas()
         {

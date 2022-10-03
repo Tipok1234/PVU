@@ -43,7 +43,7 @@ namespace Assets.Scripts.UIManager
             _shopWindow.SelectUnitAction += OnSelectedAction;
 
             _shopWindow.Setup(_unitDataSO);
-            _selectHandManager.Setup(_unitDataSO,_dataManager);
+            _selectHandManager.Setup(_unitDataSO, _dataManager);
         }
 
         private void OnBuyUnit(DefenceUnitType defenceUnitType)
@@ -78,6 +78,11 @@ namespace Assets.Scripts.UIManager
                             int upgradeCost = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
 
                             _shopWindow.BuyUnit(upgradeCost, CurrencyType.SoftCurrency);
+
+                          //  _selectHandManager.SelectHandWindow.RemoveShowUnit(_unitDataSO);
+                           // _selectHandManager.Setup(_unitDataSO, _dataManager);
+
+
                             break;
                         }
                     }
@@ -118,8 +123,7 @@ namespace Assets.Scripts.UIManager
                         _dataManager.LevelUpUnit(defenceUnitType);
                         unitDataSo.LevelUpUnit();
 
-                        unitDataSo.SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);
-
+                        unitDataSo.SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);                      
 
                         int upgradeCost = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
                         _shopWindow.UpgradeUnit(upgradeCost, CurrencyType.SoftCurrency);
@@ -147,7 +151,7 @@ namespace Assets.Scripts.UIManager
                     {
                         if (!_defenceUnitsUpgradeConfig.IsMaxUnitLevel(defenceUnitType, _unitDataSO[i].Level))
                         {
-                            d2 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, _unitDataSO[i].Level+1);
+                            d2 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, _unitDataSO[i].Level + 1);
                         }
                         else
                         {

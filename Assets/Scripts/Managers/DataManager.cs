@@ -151,7 +151,6 @@ namespace Assets.Scripts.Managers
             Save(_unitHandItemsKey, _unitHandItems);
 
             Debug.LogError("SAVE " + _unitHandItems.Count);
-
         }
 
         public void RemoveHandItem(DefenceUnitType defenceUnitType)
