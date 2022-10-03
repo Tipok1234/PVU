@@ -12,19 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef369c3e061315945ac980de834ce7a5, type: 3}
   m_Name: SuicideUnit
   m_EditorClassIdentifier: 
-  _unitSprite: {fileID: 21300000, guid: acf24f91ea86d2140b7efa39f2011f06, type: 3}
-  _price: 135
-  _hp: 0
-  _placeCooldown: 3
+  _unitSprite: {fileID: 21300000, guid: 742a29dcfbc66be46a524d6a84bb9c0b, type: 3}
   _defenceUnitType: 11
-  _unitCharacteristicDatas:
-  - _value: 135
-    _characteristicUnitType: 0
-  - _value: 500
-    _characteristicUnitType: 1
-  - _value: 2
-    _characteristicUnitType: 3
-  - _value: 14
-    _characteristicUnitType: 4
   _level: 0
   _isOpen: 0

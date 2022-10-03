@@ -9,7 +9,6 @@ namespace Assets.Scripts.UIManager
 {
     public class MainMenuUI : MonoBehaviour
     {
-
         [SerializeField] private Button _startGameButton;
         [SerializeField] private Button _goFightButton;
         [SerializeField] private Button _optionButton;

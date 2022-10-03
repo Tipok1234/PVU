@@ -1907,7 +1907,6 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  _damage: 500
   _animationModel: {fileID: 213775514221183675}
   _particleType: 4
 --- !u!1 &8592339083854468835

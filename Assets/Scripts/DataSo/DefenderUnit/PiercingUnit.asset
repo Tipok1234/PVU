@@ -12,21 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef369c3e061315945ac980de834ce7a5, type: 3}
   m_Name: PiercingUnit
   m_EditorClassIdentifier: 
-  _unitSprite: {fileID: 21300000, guid: 2253957a96e31944db86d6a681e72123, type: 3}
-  _price: 150
-  _hp: 20
-  _placeCooldown: 3
+  _unitSprite: {fileID: 21300000, guid: 5f0f6f6d1f16eaf4eacce007f89dbe30, type: 3}
   _defenceUnitType: 3
-  _unitCharacteristicDatas:
-  - _value: 175
-    _characteristicUnitType: 0
-  - _value: 12
-    _characteristicUnitType: 1
-  - _value: 50
-    _characteristicUnitType: 2
-  - _value: 6
-    _characteristicUnitType: 3
-  - _value: 9
-    _characteristicUnitType: 4
   _level: 0
   _isOpen: 0

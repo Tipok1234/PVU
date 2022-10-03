@@ -12,21 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef369c3e061315945ac980de834ce7a5, type: 3}
   m_Name: BallistaUnit
   m_EditorClassIdentifier: 
-  _unitSprite: {fileID: 21300000, guid: c51afa706b02a044694b30f33f81d239, type: 3}
-  _price: 100
-  _hp: 60
-  _placeCooldown: 2
+  _unitSprite: {fileID: 21300000, guid: c1e91f50e6575e4459be0a8381631a70, type: 3}
   _defenceUnitType: 5
-  _unitCharacteristicDatas:
-  - _value: 300
-    _characteristicUnitType: 0
-  - _value: 14
-    _characteristicUnitType: 1
-  - _value: 50
-    _characteristicUnitType: 2
-  - _value: 7
-    _characteristicUnitType: 3
-  - _value: 10
-    _characteristicUnitType: 4
   _level: 0
   _isOpen: 0

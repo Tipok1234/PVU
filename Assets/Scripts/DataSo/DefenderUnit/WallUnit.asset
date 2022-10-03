@@ -12,17 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef369c3e061315945ac980de834ce7a5, type: 3}
   m_Name: WallUnit
   m_EditorClassIdentifier: 
-  _unitSprite: {fileID: 21300000, guid: 1d48643c81fea214887f74ef68bebddd, type: 3}
-  _price: 200
-  _hp: 25
-  _placeCooldown: 5
+  _unitSprite: {fileID: 21300000, guid: 5a92e950954e80348b6b3adfb6ae45ee, type: 3}
   _defenceUnitType: 7
-  _unitCharacteristicDatas:
-  - _value: 500
-    _characteristicUnitType: 2
-  - _value: 5
-    _characteristicUnitType: 4
-  - _value: 200
-    _characteristicUnitType: 0
   _level: 0
   _isOpen: 0

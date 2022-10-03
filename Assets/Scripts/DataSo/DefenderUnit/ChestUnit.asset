@@ -12,21 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef369c3e061315945ac980de834ce7a5, type: 3}
   m_Name: ChestUnit
   m_EditorClassIdentifier: 
-  _unitSprite: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51, type: 3}
-  _price: 200
-  _hp: 30
-  _placeCooldown: 5
+  _unitSprite: {fileID: 21300000, guid: f223b5d6d518b124380ee7c76465632e, type: 3}
   _defenceUnitType: 8
-  _unitCharacteristicDatas:
-  - _value: 200
-    _characteristicUnitType: 0
-  - _value: 25
-    _characteristicUnitType: 2
-  - _value: 15
-    _characteristicUnitType: 3
-  - _value: 25
-    _characteristicUnitType: 4
-  - _value: 20
-    _characteristicUnitType: 5
   _level: 0
   _isOpen: 0
