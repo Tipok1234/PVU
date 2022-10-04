@@ -3359,38 +3359,9 @@ MonoBehaviour:
   _rewardUIPrefab: {fileID: 936979920379656492, guid: 0548d132f44a0ca40b18dc67a9fa6bc0,
     type: 3}
   _spawnRewardPrefabUI: {fileID: 1789864026}
-  _rewardDailySOs:
-  - {fileID: 11400000, guid: c227a5c0db1c6a942b09c90215752e8f, type: 2}
-  - {fileID: 11400000, guid: e7dc6598546a5ab469bdf575f54f9a5e, type: 2}
-  - {fileID: 11400000, guid: 5a7c59e3bd5a6e948954f5617ea9338b, type: 2}
-  - {fileID: 11400000, guid: 10922e0b81da4514bb2cef374616e90c, type: 2}
-  - {fileID: 11400000, guid: 480ef21f66e49ad43af279f8c98c85ed, type: 2}
-  - {fileID: 11400000, guid: bb3ffced937aec54784bdf0fc8d3e2ba, type: 2}
-  - {fileID: 11400000, guid: ca257db60ca20e3499f4e838a8628009, type: 2}
-  - {fileID: 11400000, guid: ed4a29268dd477d488393d0319844a3a, type: 2}
-  - {fileID: 11400000, guid: 9726d517a9243ec4796994c380e587f0, type: 2}
-  - {fileID: 11400000, guid: b478714afd98d13429381f79252aeed6, type: 2}
-  - {fileID: 11400000, guid: d5abf143220549f4abc3abc8de5f0ca7, type: 2}
-  - {fileID: 11400000, guid: 44161e4504112334bbc19eff48b86f47, type: 2}
-  - {fileID: 11400000, guid: ca8c3a748431f7047bd227a5bf570ff7, type: 2}
-  - {fileID: 11400000, guid: 77df08e014fce7943a740b00be94adec, type: 2}
-  - {fileID: 11400000, guid: 86f17d2f53c6eab4695d2cee94beaaff, type: 2}
-  - {fileID: 11400000, guid: ba04a4058b45a9246bd3b1a5995565e4, type: 2}
-  - {fileID: 11400000, guid: 8e1a1c911d68f5240b596f5d229b92d2, type: 2}
-  - {fileID: 11400000, guid: ae21f07acdad1ea439749311fcd51b6d, type: 2}
-  - {fileID: 11400000, guid: 0cbadddf3b0cb2646b61325891af7f55, type: 2}
-  - {fileID: 11400000, guid: c5b61ad048a0f2b4b9e84fc395a6ff89, type: 2}
-  - {fileID: 11400000, guid: 6b329fd6b9c65d04997c230a10f2158a, type: 2}
-  - {fileID: 11400000, guid: 45f42ebd0e5c9fe4e8ba25bd797fe25c, type: 2}
-  - {fileID: 11400000, guid: b3538205617d491438c79ec65b2de60b, type: 2}
-  - {fileID: 11400000, guid: 402f2a31cac45df43816f3a35073adff, type: 2}
-  - {fileID: 11400000, guid: 06096db135fd91d4f81ba5d711fa4404, type: 2}
-  - {fileID: 11400000, guid: 8430746e26bde5b43a01ec550995fb91, type: 2}
-  - {fileID: 11400000, guid: 6bcda3f5a1ab14245a6889b3ba5c06ee, type: 2}
-  - {fileID: 11400000, guid: 0611340b02d999348bda02f0ce4bb7e1, type: 2}
-  - {fileID: 11400000, guid: e45e8241719e48d418ca46a656e7cbee, type: 2}
-  - {fileID: 11400000, guid: e7868f044b724f3439a504788ca2fc8c, type: 2}
-  - {fileID: 11400000, guid: 5b622bd9234fb2c4ea6748179fdbe59f, type: 2}
+  _rewardDailyCanvas: {fileID: 941922360}
+  _rewardDailySOs: {fileID: 11400000, guid: 4de0b9fca3fa87a4e9cf27ea5a378355, type: 2}
+  _shopWindow: {fileID: 895898607}
 --- !u!1 &942730598
 GameObject:
   m_ObjectHideFlags: 0

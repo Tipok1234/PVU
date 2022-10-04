@@ -51,8 +51,8 @@ namespace Assets.Scripts.Managers
             if (_isDataLoaded)
                 return;
 
-            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 10000);
-            _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 1500);
+            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 1000);
+            _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 10);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
@@ -123,6 +123,7 @@ namespace Assets.Scripts.Managers
                     break;
                 case CurrencyType.HardCurrency:
                     _hardCurrency += currencyAmount;
+                    Debug.LogError("ADD CURRENCY: " + currencyAmount);
                     PlayerPrefs.SetFloat(_hardCurrencyKey, _hardCurrency);
                     break;
             }

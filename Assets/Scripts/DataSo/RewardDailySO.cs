@@ -16,10 +16,10 @@ namespace Assets.Scripts.DataSo
     [System.Serializable]
     public class RewardDaily
     {
-        public float[] CurrenctCurrencyDaily => _currentCurrencyDaily;
-        public CurrencyType[] CurrencyType => _currencyType;
+        public float CurrenctCurrencyDaily => _currentCurrencyDaily;
+        public CurrencyType CurrencyType => _currencyType;
 
-        [SerializeField] private float[] _currentCurrencyDaily;
-        [SerializeField] private CurrencyType[] _currencyType;
+        [SerializeField] private float _currentCurrencyDaily;
+        [SerializeField] private CurrencyType _currencyType;
     }
 }

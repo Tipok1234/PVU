@@ -38,6 +38,7 @@ namespace Assets.Scripts.UIManager
                 }
             }
 
+            //_shopWindow.UpdateCurrency();
             _shopWindow.BuyUnitAction += OnBuyUnit;
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
             _shopWindow.SelectUnitAction += OnSelectedAction;

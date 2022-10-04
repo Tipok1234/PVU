@@ -44,7 +44,7 @@ namespace Assets.Scripts.UIManager
         {
             _buyButton.onClick.AddListener(BuyUnitGame);
             _upgradeButton.onClick.AddListener(UpgradeUnitButton);
-        }
+        }     
 
         public void Setup(UnitDataSo[] unitDataSo)
         {

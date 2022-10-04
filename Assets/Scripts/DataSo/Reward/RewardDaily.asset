@@ -12,5 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6169f5e650bf5cc4fa3030091bc0ba44, type: 3}
   m_Name: RewardDaily
   m_EditorClassIdentifier: 
-  _currentCurrencyDaily: 10
-  _currencyType: 1
+  _rewardDailies:
+  - _currentCurrencyDaily: 5
+    _currencyType: 2
+  - _currentCurrencyDaily: 7
+    _currencyType: 2
+  - _currentCurrencyDaily: 9
+    _currencyType: 2
+  - _currentCurrencyDaily: 11
+    _currencyType: 2
+  - _currentCurrencyDaily: 13
+    _currencyType: 2
+  - _currentCurrencyDaily: 15
+    _currencyType: 2
+  - _currentCurrencyDaily: 17
+    _currencyType: 2
+  - _currentCurrencyDaily: 19
+    _currencyType: 2
+  - _currentCurrencyDaily: 21
+    _currencyType: 2
+  - _currentCurrencyDaily: 25
+    _currencyType: 2
+  - _currentCurrencyDaily: 27
+    _currencyType: 2
+  - _currentCurrencyDaily: 29
+    _currencyType: 2
+  - _currentCurrencyDaily: 31
+    _currencyType: 2
+  - _currentCurrencyDaily: 33
+    _currencyType: 2
+  - _currentCurrencyDaily: 35
+    _currencyType: 2
+  - _currentCurrencyDaily: 37
+    _currencyType: 2
+  - _currentCurrencyDaily: 39
+    _currencyType: 2
+  - _currentCurrencyDaily: 41
+    _currencyType: 2
+  - _currentCurrencyDaily: 43
+    _currencyType: 2
+  - _currentCurrencyDaily: 45
+    _currencyType: 2
+  - _currentCurrencyDaily: 47
+    _currencyType: 2
+  - _currentCurrencyDaily: 49
+    _currencyType: 2
+  - _currentCurrencyDaily: 51
+    _currencyType: 2
+  - _currentCurrencyDaily: 53
+    _currencyType: 2
+  - _currentCurrencyDaily: 55
+    _currencyType: 2
+  - _currentCurrencyDaily: 57
+    _currencyType: 2
+  - _currentCurrencyDaily: 59
+    _currencyType: 2
+  - _currentCurrencyDaily: 61
+    _currencyType: 2
+  - _currentCurrencyDaily: 63
+    _currencyType: 2
+  - _currentCurrencyDaily: 70
+    _currencyType: 2
