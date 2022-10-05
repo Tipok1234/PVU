@@ -11,6 +11,8 @@ namespace Assets.Scripts.Managers
     {
         public IReadOnlyDictionary<DefenceUnitType, int> UnitsDictionary => _unitsDictionary;
 
+
+        public event Action<float, CurrencyType> AddCurrencyAction;
         public List<DefenceUnitType> UnitHandItems => _unitHandItems;
         public int LevelIndex => _levelIndex;
         public float SoftCurrency => _softCurrency;
@@ -126,14 +128,15 @@ namespace Assets.Scripts.Managers
                 case CurrencyType.SoftCurrency:
                     _softCurrency += currencyAmount;
                     PlayerPrefs.SetFloat(_softCurrencyKey, _softCurrency);
+                    AddCurrencyAction?.Invoke(_softCurrency, currencyType);
                     break;
                 case CurrencyType.HardCurrency:
                     _hardCurrency += currencyAmount;
                     Debug.LogError("ADD CURRENCY: " + currencyAmount);
                     PlayerPrefs.SetFloat(_hardCurrencyKey, _hardCurrency);
+                    AddCurrencyAction?.Invoke(_hardCurrency, currencyType);
                     break;
-            }
-
+            }          
         }
 
         public void BuyUnit(DefenceUnitType defenceUnitType)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Managers;
+using Assets.Scripts.Enums;
 using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UIManager
@@ -41,32 +42,37 @@ namespace Assets.Scripts.UIManager
         }
         private void ExitHandCanvas()
         {
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
             _handCanvas.enabled = !_handCanvas.enabled;
             _mainCanvas.enabled = true;
         }
         private void FightGame()
         {
             SceneManager.LoadScene("GameScene");
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
             _mainCanvas.enabled = !_mainCanvas.enabled;
             _loadingScene.enabled = true;
-            AudioManager.Instance.OpenWindowSound();
+          //  AudioManager.Instance.OpenWindowSound();
         }
         private void OpenShopCanvas()
         {
-            AudioManager.Instance.OpenWindowSound();
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
+            //  AudioManager.Instance.OpenWindowSound();
             _shopCanvas.enabled = !_shopCanvas.enabled;
             _mainCanvas.enabled = !_mainCanvas.enabled;
         }
 
         private void OpenHandCanvas()
         {
-            AudioManager.Instance.OpenWindowSound();
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
+            //  AudioManager.Instance.OpenWindowSound();
             _handCanvas.enabled = !_handCanvas.enabled;
             _mainCanvas.enabled = !_mainCanvas.enabled;
         }
         private void OpenOptionCanvas()
         {
-            AudioManager.Instance.OpenWindowSound();
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
+            // AudioManager.Instance.OpenWindowSound();
             _optionCanvas.enabled = !_optionCanvas.enabled;
         }
     }

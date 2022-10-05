@@ -42,7 +42,7 @@ namespace Assets.Scripts.Controller
 
         public void OpenOptionCanvas()
         {
-            AudioManager.Instance.ClickSound();
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.ClickSound);
             _optionCanvas.enabled = !_optionCanvas.enabled;
             Time.timeScale = 0f;
         }

@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.UIManager
@@ -103,7 +104,7 @@ namespace Assets.Scripts.UIManager
 
         private void LanguageToggle(bool state)
         {
-            AudioManager.Instance.ClickSound();
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.ClickSound);
 
             value = _isText ? 1 : 0;
 
@@ -122,7 +123,7 @@ namespace Assets.Scripts.UIManager
 
         private void TurnMusic(bool state)
         {
-            AudioManager.Instance.ClickSound();
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.ClickSound);
 
             if (_musicToggle.isOn == true)
             {
@@ -141,7 +142,7 @@ namespace Assets.Scripts.UIManager
 
         private void TurnSound(bool state)
         {
-            AudioManager.Instance.ClickSound();
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.ClickSound);
 
             value = _isSound ? 1 : 0;
 

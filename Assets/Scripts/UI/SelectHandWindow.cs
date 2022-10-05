@@ -130,7 +130,7 @@ namespace Assets.Scripts.UIManager
 
                     _handItems[i].SetBusy(true, showUnitUIItem.DefenceUnitType, showUnit.transform);
 
-                    AudioManager.Instance.ClickSound();
+                    AudioManager.Instance.PlaySoundGame(AudioSoundType.NoMoneySound);
 
                     showUnit.transform.DOMove(_handItems[i].transform.position, 0.7f).OnComplete(() =>
                     {

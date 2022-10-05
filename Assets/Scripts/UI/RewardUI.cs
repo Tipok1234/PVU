@@ -13,8 +13,6 @@ namespace Assets.Scripts.UI
     public class RewardUI : MonoBehaviour
     {
         public event Action<float, RewardUI> CollectRewardAction;
-
-        public RewardType RewardType => _rewardType;
         public Image LockReward => _lockReward;
         public Image Received => _received;
 
@@ -29,6 +27,7 @@ namespace Assets.Scripts.UI
 
 
         private RewardType _rewardType;
+
         private float _currentCurrency;
 
         private void Awake()

@@ -5,6 +5,7 @@ using Assets.Scripts.UI;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.UIManager;
 using Assets.Scripts.Enums;
+using TMPro;
 using System;
 
 namespace Assets.Scripts.Managers
@@ -26,11 +27,14 @@ namespace Assets.Scripts.Managers
 
         private bool _isReward = false;
 
+        private float _currency;
+        private CurrencyType _currencyType;
+
         private void Start()
         {
-            _rewardDailyCanvas.enabled = false;
+            //_rewardDailyCanvas.enabled = false;
 
-            _dataManager = FindObjectOfType<DataManager>();
+            _dataManager = FindObjectOfType<DataManager>();           
 
             int rewardIndex = PlayerPrefs.GetInt("CalendarIndex", 0);
 
@@ -94,9 +98,12 @@ namespace Assets.Scripts.Managers
             if (_isReward == true)
             {
                 _rewardDailyCanvas.enabled = false;
+                _currency = currency;
+                _currencyType = CurrencyType.HardCurrency;
+                // _dataManager.AddCurrency(currency, CurrencyType.HardCurrency);
 
-                _dataManager.AddCurrency(currency, CurrencyType.HardCurrency);
-
+                //OnAddCurency(currency, CurrencyType.HardCurrency);
+        
                 _shopWindow.UpdateCurrency();
 
                 var dateTime = DateTime.UtcNow;
@@ -110,6 +117,17 @@ namespace Assets.Scripts.Managers
             {
                 Debug.LogError("WRONG");
             }
+
+            _dataManager.AddCurrencyAction += OnAddCurency;
+            Debug.LogError("VALUE!!!!!!!!!: " + _currency + "TYPE!!!!!!: " + _currencyType);
+        }
+
+        public void OnAddCurency(float currency, CurrencyType currencyType)
+        {
+            _currency = currency;
+            _currencyType = currencyType;
+
+            Debug.LogError("VALUE: " + currency + "TYPE: " + currencyType);
         }
     }
 }
