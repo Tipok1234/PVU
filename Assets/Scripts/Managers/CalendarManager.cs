@@ -4,11 +4,12 @@ using UnityEngine;
 using Assets.Scripts.UI;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.UIManager;
+using Assets.Scripts.Enums;
 using System;
 
 namespace Assets.Scripts.Managers
 {
-    public class RewardManager : MonoBehaviour
+    public class CalendarManager : MonoBehaviour
     {
         [SerializeField] private RewardUI _rewardUIPrefab;
         [SerializeField] private Transform _spawnRewardPrefabUI;
@@ -21,15 +22,17 @@ namespace Assets.Scripts.Managers
         private int _index = 1;
         private DataManager _dataManager;
 
-        private List<RewardUI> _rewardUIPrefabs = new List<RewardUI>();
-
-        private int _isCountStreak = 30;
+        private List<RewardUI> _rewardUIItems = new List<RewardUI>();
 
         private bool _isReward = false;
 
         private void Start()
         {
+            _rewardDailyCanvas.enabled = false;
+
             _dataManager = FindObjectOfType<DataManager>();
+
+            int rewardIndex = PlayerPrefs.GetInt("CalendarIndex", 0);
 
             for (int i = 0; i < _rewardDailySOs.RewardDailies.Length; i++)
             {
@@ -39,63 +42,74 @@ namespace Assets.Scripts.Managers
 
                 rewardUI.CollectRewardAction += OnCollectReward;
 
-                _rewardUIPrefabs.Add(rewardUI);
+                _rewardUIItems.Add(rewardUI);
+
+                if (i < rewardIndex)
+                {
+                    _rewardUIItems[i].ReceivedReward();
+                }
+                else if (i == rewardIndex)
+                {
+                    _rewardUIItems[i].OpenReward();
+                }
+                else
+                {
+                    _rewardUIItems[i].LockkReward();
+                }
             }
 
-
-
-            // for (int i = 0; i < _rewardUIPrefabs.Count; i++)
-            //  {
             var dateString = PlayerPrefs.GetString("Reward");
 
             if (string.IsNullOrEmpty(dateString))
             {
                 _isReward = true;
-                Debug.LogError("TRUE");
-                _rewardUIPrefabs[0].OpenReward(Enums.RewardType.Open_Type);
-                _rewardUIPrefabs[1].ReceivedReward(Enums.RewardType.Received_Type);
-                _rewardUIPrefabs[2].LockkReward(Enums.RewardType.Lock_Type);
             }
             else
             {
-                _rewardUIPrefabs[0].Received.enabled = true;
-                _rewardUIPrefabs[0].LockReward.enabled = false;
                 TimeSpan diff = DateTime.UtcNow - DateTime.Parse(dateString);
-                Debug.LogError("FALSE");
-                //_rewardUIPrefabs[i].LockReward.enabled = true;
-                //Debug.LogError($"UTC NOW: {DateTime.UtcNow} - {DateTime.Parse(dateString)} = {diff.ToString()}");
 
                 if (diff.TotalSeconds > 30)
                 {
+                    _rewardDailyCanvas.enabled = true;
                     _isReward = true;
                 }
             }
-            //  }
         }
 
-        public void OnCollectReward(float currency)
+        public void OnCollectReward(float currency, RewardUI rewardUI)
         {
+            int index = _rewardUIItems.IndexOf(rewardUI);
+
+            if (index == -1)
+            {
+                Debug.LogError("INDEX EXEPTION");
+                return;
+            }
+
+
+            Debug.LogError("OnCollectReward: " + index);
+
+            index++;
+
             if (_isReward == true)
             {
                 _rewardDailyCanvas.enabled = false;
 
-                _dataManager.AddCurrency(currency, Enums.CurrencyType.HardCurrency);
+                _dataManager.AddCurrency(currency, CurrencyType.HardCurrency);
 
                 _shopWindow.UpdateCurrency();
 
-
                 var dateTime = DateTime.UtcNow;
 
-                // Debug.LogError(" TO UNIVERSAL TIME : " + dateTime.ToUniversalTime().ToString());
-
                 PlayerPrefs.SetString("Reward", dateTime.ToString());
+                PlayerPrefs.SetInt("CalendarIndex", index);
 
+                rewardUI.ReceivedReward();
             }
             else
             {
                 Debug.LogError("WRONG");
             }
-
         }
     }
 }

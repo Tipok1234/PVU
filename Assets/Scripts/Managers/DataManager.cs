@@ -3,6 +3,7 @@ using Assets.Scripts.Enums;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.Managers
 {
@@ -24,10 +25,13 @@ namespace Assets.Scripts.Managers
         private string _hardCurrencyKey = "HardCurrency";
         private string _defencesUnitsUpgradeKey = "DefencesUnitsUpgradeKey";
         private string _unitHandItemsKey = "UnitHandItemsKey";
+       // private string _rewardItemsKey = "RewardKey";
 
         private static DataManager instance;
 
         private List<DefenceUnitType> _unitHandItems;
+
+       // private Dictionary<RewardType, RewardUI> _rewardDictionary;
 
         private Dictionary<DefenceUnitType, int> _unitsDictionary;
 
@@ -58,11 +62,13 @@ namespace Assets.Scripts.Managers
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
             _unitHandItems = Load<List<DefenceUnitType>>(_unitHandItemsKey);
 
-            Debug.LogError("LOAD " + _unitHandItems.Count);
+          //  _rewardDictionary = Load<Dictionary<RewardType,RewardUI>>(_rewardItemsKey);
+
+          //  Debug.LogError("LOAD " + _unitHandItems.Count);
 
             if (_unitsDictionary.Count == 0)
             {
-                Debug.LogError("LoadData ");
+               // Debug.LogError("LoadData ");
                 _unitsDictionary = new Dictionary<DefenceUnitType, int>();
                 _unitsDictionary.Add(DefenceUnitType.Mining_Unit, 0);
                 _unitsDictionary.Add(DefenceUnitType.Shooter_Unit, 0);
@@ -142,6 +148,18 @@ namespace Assets.Scripts.Managers
 
         }
 
+        //public void RewardSave(RewardType rewardType, RewardUI rewardUI)
+        //{
+        //    if (_rewardDictionary.ContainsKey(rewardType))
+        //    {
+        //        _rewardDictionary.Add(rewardType, rewardUI);
+
+        //        Save(_rewardItemsKey, _rewardDictionary);
+
+        //        Debug.LogError("Reward Save " + _rewardDictionary.Count);
+        //    }
+        //}
+
         public void SaveHandItem(DefenceUnitType defenceUnitType)
         {
             if (_unitHandItems.Contains(defenceUnitType))
@@ -151,7 +169,7 @@ namespace Assets.Scripts.Managers
 
             Save(_unitHandItemsKey, _unitHandItems);
 
-            Debug.LogError("SAVE " + _unitHandItems.Count);
+           // Debug.LogError("SAVE " + _unitHandItems.Count);
         }
 
         public void RemoveHandItem(DefenceUnitType defenceUnitType)
@@ -163,7 +181,7 @@ namespace Assets.Scripts.Managers
                 Save(_unitHandItemsKey, _unitHandItems);
             }
 
-            Debug.LogError("REMOVE " + _unitHandItems.Count);
+           // Debug.LogError("REMOVE " + _unitHandItems.Count);
         }
 
         public void LevelUpUnit(DefenceUnitType defenceUnitType)

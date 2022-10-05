@@ -12,8 +12,9 @@ namespace Assets.Scripts.UI
 {
     public class RewardUI : MonoBehaviour
     {
-        public event Action<float> CollectRewardAction;
+        public event Action<float, RewardUI> CollectRewardAction;
 
+        public RewardType RewardType => _rewardType;
         public Image LockReward => _lockReward;
         public Image Received => _received;
 
@@ -41,37 +42,32 @@ namespace Assets.Scripts.UI
             _dayText.text = "DAY " + dayIndex.ToString();
         }
 
-        public void OpenReward(RewardType rewardType)
+        public void OpenReward()
         {
-            if(rewardType == RewardType.Open_Type)
-            {
-                _lockReward.enabled = false;
-                _received.enabled = false;
-            }
+            _lockReward.enabled = false;
+            _received.enabled = false;
+            _rewardType = RewardType.Open_Type;
         }
 
-        public void ReceivedReward(RewardType rewardType)
+        public void ReceivedReward()
         {
-            if(rewardType == RewardType.Received_Type)
-            {
-                Debug.LogError("Received");
-                _lockReward.enabled = false;
-                _received.enabled = true;
-            }
+            _clickButton.enabled = false;
+            _lockReward.enabled = false;
+            _received.enabled = true;
+            _rewardType = RewardType.Received_Type;
         }
 
-        public void LockkReward(RewardType rewardType)
+        public void LockkReward()
         {
-            if(rewardType == RewardType.Lock_Type)
-            {
-                _lockReward.enabled = true;
-                _received.enabled = false;
-            }
+            _clickButton.enabled = false;
+            _lockReward.enabled = true;
+            _received.enabled = false;
+            _rewardType = RewardType.Lock_Type;
         }
 
         public void CollectRewardOnClick()
         {
-            CollectRewardAction?.Invoke(_currentCurrency);
+            CollectRewardAction?.Invoke(_currentCurrency, this);
         }
     }
 }
