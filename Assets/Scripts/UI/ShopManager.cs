@@ -38,6 +38,8 @@ namespace Assets.Scripts.UIManager
                 }
             }
 
+            _dataManager.UpdateCurrencyAction += OnUpdateCurrency;
+
             //_shopWindow.UpdateCurrency();
             _shopWindow.BuyUnitAction += OnBuyUnit;
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
@@ -45,6 +47,11 @@ namespace Assets.Scripts.UIManager
 
             _shopWindow.Setup(_unitDataSO);
             _selectHandManager.Setup(_unitDataSO, _dataManager);
+        }
+
+        private void OnUpdateCurrency(float amount, CurrencyType type)
+        {
+            _shopWindow.UpdateCurrency(amount,type);
         }
 
         private void OnBuyUnit(DefenceUnitType defenceUnitType)

@@ -34,7 +34,6 @@ namespace Assets.Scripts.UIManager
 
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
-        private DataManager _dataManager;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
 
@@ -48,7 +47,6 @@ namespace Assets.Scripts.UIManager
 
         public void Setup(UnitDataSo[] unitDataSo)
         {
-            _dataManager = FindObjectOfType<DataManager>();
 
             for (int i = 0; i < unitDataSo.Length; i++)
             {
@@ -80,8 +78,6 @@ namespace Assets.Scripts.UIManager
                 _shopUnitUIItems.Add(shopUI);
 
             }
-
-            UpdateCurrency();
 
             OnUnitSelected(unitDataSo[0].DefencUnitType);
         }
@@ -134,10 +130,18 @@ namespace Assets.Scripts.UIManager
             _unitName.text = _selectedUnitUIItem.DefenceUnitType.ToString();
         }
 
-        public void UpdateCurrency()
+        public void UpdateCurrency(float amount, CurrencyType currencyType)
         {
-            _softCurrencyText.text = _dataManager.SoftCurrency.ToString();
-            _hardCurrencyText.text = _dataManager.HardCurrency.ToString();
+            switch(currencyType)
+            {
+                case CurrencyType.SoftCurrency:
+                    _softCurrencyText.text = amount.ToString();
+                    break;
+
+                case CurrencyType.HardCurrency:
+                    _hardCurrencyText.text = amount.ToString();
+                    break;
+            }
         }
 
         private void BuyUnitGame()
@@ -150,8 +154,6 @@ namespace Assets.Scripts.UIManager
 
         public void BuyUnit(int upgradeCost, CurrencyType currencyType)
         {
-            _hardCurrencyText.text = _dataManager.HardCurrency.ToString();
-
             _selectedUnitUIItem.OpenUnit();
 
             _buyButton.gameObject.SetActive(false);
@@ -171,8 +173,7 @@ namespace Assets.Scripts.UIManager
         }
         public void UpgradeUnit(int upgradeCost, CurrencyType currencyType)
         {
-            _softCurrencyText.text = _dataManager.SoftCurrency.ToString();
-
+            
             OnUnitSelected(_selectedUnitUIItem.DefenceUnitType);
 
             _selectedUnitUIItem.UpdatePriceText(upgradeCost, currencyType);

@@ -16,18 +16,10 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private TMP_Text _musicText;
         [SerializeField] private TMP_Text _languegeText;
 
-        [SerializeField] private Slider _sliderMusic;
-        [SerializeField] private Slider _sliderSound;
 
         private string _langueageToggleKey = "LanguageKey";
         private string _musicToggleKey = "MusicKey";
         private string _soundToggleKey = "SoundKey";
-
-        private string _mixerMusicKey = "MusicMixer";        
-        private string _mixerSoundKey = "SoundMixer";
-
-        private float _music;                               
-        private float _sound;
 
         private int value;
         private bool _isText;
@@ -39,14 +31,7 @@ namespace Assets.Scripts.UIManager
             _musicToggle.onValueChanged.AddListener(TurnMusic);
             _soundToggle.onValueChanged.AddListener(TurnSound);
 
-
-            _music = PlayerPrefs.GetFloat(_mixerMusicKey, 0.5f);
-            _sound = PlayerPrefs.GetFloat(_mixerSoundKey, 0.5f);
-
-            GetSliderValue();
-
-            SetVolumeMainSound(_music);
-            SetVolumeSound(_sound);
+           // GetSliderValue();
 
 
             if (PlayerPrefs.HasKey(_musicToggleKey))
@@ -56,13 +41,13 @@ namespace Assets.Scripts.UIManager
                 if (value == 1)
                 {
                     _musicToggle.isOn = true;
-                    AudioManager.Instance.MainSound.volume = 1;
+                    AudioManager.Instance.TurnOnMainMusic();
                     _musicText.text = "ON";
                 }
                 else
                 {
                     _musicToggle.isOn = false;
-                    AudioManager.Instance.MainSound.volume = 0;
+                    AudioManager.Instance.TurnOffMainMusic();
                     _musicText.text = "OFF";
                 }
             }
@@ -127,13 +112,13 @@ namespace Assets.Scripts.UIManager
 
             if (_musicToggle.isOn == true)
             {
-                AudioManager.Instance.MainSound.volume = 1;
+                AudioManager.Instance.TurnOnMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 1);
                 _musicText.text = "ON";
             }
             else
             {
-                AudioManager.Instance.MainSound.volume = 0;
+                AudioManager.Instance.TurnOffMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 0);
                 _musicText.text = "OFF";
             }
@@ -158,28 +143,6 @@ namespace Assets.Scripts.UIManager
                 AudioManager.Instance.TurnOffAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 0);
             }
-            PlayerPrefs.Save();
-        }
-
-        public void GetSliderValue()
-        {
-            _sliderMusic.value = _music;
-            _sliderSound.value = _sound;
-        }
-
-        public void SetVolumeMainSound(float volume)
-        {
-            AudioManager.Instance.AudioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
-            AudioManager.Instance.AudioMixer.SetFloat(_mixerMusicKey, volume);
-            PlayerPrefs.SetFloat(_mixerMusicKey, volume);
-            PlayerPrefs.Save();
-        }
-
-        public void SetVolumeSound(float volume)
-        {
-            AudioManager.Instance.AudioMixerSound.SetFloat("volume", Mathf.Log10(volume) * 20);
-            AudioManager.Instance.AudioMixerSound.SetFloat(_mixerSoundKey, volume);
-            PlayerPrefs.SetFloat(_mixerSoundKey, volume);
             PlayerPrefs.Save();
         }
     }

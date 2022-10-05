@@ -3,7 +3,6 @@ using Assets.Scripts.Enums;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Assets.Scripts.UI;
 
 namespace Assets.Scripts.Managers
 {
@@ -12,7 +11,7 @@ namespace Assets.Scripts.Managers
         public IReadOnlyDictionary<DefenceUnitType, int> UnitsDictionary => _unitsDictionary;
 
 
-        public event Action<float, CurrencyType> AddCurrencyAction;
+        public event Action<float, CurrencyType> UpdateCurrencyAction;
         public List<DefenceUnitType> UnitHandItems => _unitHandItems;
         public int LevelIndex => _levelIndex;
         public float SoftCurrency => _softCurrency;
@@ -33,7 +32,6 @@ namespace Assets.Scripts.Managers
 
         private List<DefenceUnitType> _unitHandItems;
 
-       // private Dictionary<RewardType, RewardUI> _rewardDictionary;
 
         private Dictionary<DefenceUnitType, int> _unitsDictionary;
 
@@ -57,16 +55,14 @@ namespace Assets.Scripts.Managers
             if (_isDataLoaded)
                 return;
 
-            _softCurrency = PlayerPrefs.GetInt(_softCurrencyKey, 1000);
-            _hardCurrency = PlayerPrefs.GetInt(_hardCurrencyKey, 10);
+            _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 1000);
+            _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 10);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
             _unitHandItems = Load<List<DefenceUnitType>>(_unitHandItemsKey);
 
           //  _rewardDictionary = Load<Dictionary<RewardType,RewardUI>>(_rewardItemsKey);
-
-          //  Debug.LogError("LOAD " + _unitHandItems.Count);
 
             if (_unitsDictionary.Count == 0)
             {
@@ -76,6 +72,9 @@ namespace Assets.Scripts.Managers
                 _unitsDictionary.Add(DefenceUnitType.Shooter_Unit, 0);
                 _unitsDictionary.Add(DefenceUnitType.Mine_Unit, 0);
             }
+
+            UpdateCurrencyAction?.Invoke(_softCurrency, CurrencyType.SoftCurrency);
+            UpdateCurrencyAction?.Invoke(_hardCurrency, CurrencyType.HardCurrency);
 
             _isDataLoaded = true;
         }
@@ -103,15 +102,14 @@ namespace Assets.Scripts.Managers
             switch (currencyType)
             {
                 case CurrencyType.SoftCurrency:
-
                     _softCurrency -= currencyAmount;
                     PlayerPrefs.SetFloat(_softCurrencyKey, _softCurrency);
-
+                    UpdateCurrencyAction?.Invoke(_softCurrency, currencyType);
                     break;
                 case CurrencyType.HardCurrency:
-
                     _hardCurrency -= currencyAmount;
                     PlayerPrefs.SetFloat(_hardCurrencyKey, _hardCurrency);
+                    UpdateCurrencyAction?.Invoke(_hardCurrency, currencyType);
                     break;
             }
         }
@@ -128,13 +126,13 @@ namespace Assets.Scripts.Managers
                 case CurrencyType.SoftCurrency:
                     _softCurrency += currencyAmount;
                     PlayerPrefs.SetFloat(_softCurrencyKey, _softCurrency);
-                    AddCurrencyAction?.Invoke(_softCurrency, currencyType);
+                    UpdateCurrencyAction?.Invoke(_softCurrency, currencyType);
                     break;
                 case CurrencyType.HardCurrency:
                     _hardCurrency += currencyAmount;
-                    Debug.LogError("ADD CURRENCY: " + currencyAmount);
                     PlayerPrefs.SetFloat(_hardCurrencyKey, _hardCurrency);
-                    AddCurrencyAction?.Invoke(_hardCurrency, currencyType);
+                    Debug.LogError("ADD CURRENCY: " + currencyAmount + "TOTAL: " + _hardCurrency);
+                    UpdateCurrencyAction?.Invoke(_hardCurrency, currencyType);
                     break;
             }          
         }
@@ -150,18 +148,6 @@ namespace Assets.Scripts.Managers
             Save(_defencesUnitsUpgradeKey, _unitsDictionary);
 
         }
-
-        //public void RewardSave(RewardType rewardType, RewardUI rewardUI)
-        //{
-        //    if (_rewardDictionary.ContainsKey(rewardType))
-        //    {
-        //        _rewardDictionary.Add(rewardType, rewardUI);
-
-        //        Save(_rewardItemsKey, _rewardDictionary);
-
-        //        Debug.LogError("Reward Save " + _rewardDictionary.Count);
-        //    }
-        //}
 
         public void SaveHandItem(DefenceUnitType defenceUnitType)
         {

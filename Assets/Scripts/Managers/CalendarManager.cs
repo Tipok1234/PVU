@@ -18,7 +18,6 @@ namespace Assets.Scripts.Managers
         [SerializeField] private Canvas _rewardDailyCanvas;
 
         [SerializeField] private RewardDailySO _rewardDailySOs;
-        [SerializeField] private ShopWindow _shopWindow;
 
         private int _index = 1;
         private DataManager _dataManager;
@@ -26,9 +25,6 @@ namespace Assets.Scripts.Managers
         private List<RewardUI> _rewardUIItems = new List<RewardUI>();
 
         private bool _isReward = false;
-
-        private float _currency;
-        private CurrencyType _currencyType;
 
         private void Start()
         {
@@ -72,7 +68,7 @@ namespace Assets.Scripts.Managers
             {
                 TimeSpan diff = DateTime.UtcNow - DateTime.Parse(dateString);
 
-                if (diff.TotalSeconds > 30)
+                if (diff.TotalSeconds > 5)
                 {
                     _rewardDailyCanvas.enabled = true;
                     _isReward = true;
@@ -98,13 +94,8 @@ namespace Assets.Scripts.Managers
             if (_isReward == true)
             {
                 _rewardDailyCanvas.enabled = false;
-                _currency = currency;
-                _currencyType = CurrencyType.HardCurrency;
-                // _dataManager.AddCurrency(currency, CurrencyType.HardCurrency);
 
-                //OnAddCurency(currency, CurrencyType.HardCurrency);
-        
-                _shopWindow.UpdateCurrency();
+                 _dataManager.AddCurrency(currency, CurrencyType.HardCurrency);
 
                 var dateTime = DateTime.UtcNow;
 
@@ -117,17 +108,6 @@ namespace Assets.Scripts.Managers
             {
                 Debug.LogError("WRONG");
             }
-
-            _dataManager.AddCurrencyAction += OnAddCurency;
-            Debug.LogError("VALUE!!!!!!!!!: " + _currency + "TYPE!!!!!!: " + _currencyType);
-        }
-
-        public void OnAddCurency(float currency, CurrencyType currencyType)
-        {
-            _currency = currency;
-            _currencyType = currencyType;
-
-            Debug.LogError("VALUE: " + currency + "TYPE: " + currencyType);
         }
     }
 }

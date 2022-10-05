@@ -244,6 +244,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5940936}
   m_CullTransparentMesh: 1
+--- !u!114 &23649653 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2478018164964792990, guid: 34e719854f4e4ce428c2558c28ebdc22,
+    type: 3}
+  m_PrefabInstance: {fileID: 2478018165048382449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d5767dfb8fa4c4ca5bdfc7577f26ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &27794795
 GameObject:
   m_ObjectHideFlags: 0
@@ -8102,6 +8114,11 @@ PrefabInstance:
       objectReference: {fileID: 64635069}
     - target: {fileID: 2478018164964792990, guid: 34e719854f4e4ce428c2558c28ebdc22,
         type: 3}
+      propertyPath: _optionWindow
+      value: 
+      objectReference: {fileID: 1960144714}
+    - target: {fileID: 2478018164964792990, guid: 34e719854f4e4ce428c2558c28ebdc22,
+        type: 3}
       propertyPath: _audioType.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -8178,7 +8195,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1960144714}
+      objectReference: {fileID: 23649653}
     - target: {fileID: 3301286278536276935, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -8187,12 +8204,17 @@ PrefabInstance:
     - target: {fileID: 3301286278536276935, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Assets.Scripts.UIManager.OptionWindow, Assembly-CSharp
+      value: Assets.Scripts.Managers.AudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3301286278784627108, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_Name
       value: OptionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301286278784627112, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3301286278784627112, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
@@ -8328,7 +8350,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1960144714}
+      objectReference: {fileID: 23649653}
     - target: {fileID: 3301286279907453119, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -8337,7 +8359,7 @@ PrefabInstance:
     - target: {fileID: 3301286279907453119, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Assets.Scripts.UIManager.OptionWindow, Assembly-CSharp
+      value: Assets.Scripts.Managers.AudioManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08ebfa38d5673cb40a7ab6a632e7c46c, type: 3}
