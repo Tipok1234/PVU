@@ -34,6 +34,12 @@ namespace Assets.Scripts.Managers
 
             int rewardIndex = PlayerPrefs.GetInt("CalendarIndex", 0);
 
+            if (rewardIndex >= _rewardDailySOs.RewardDailies.Length)
+            {
+                rewardIndex = 0;
+            }
+
+
             for (int i = 0; i < _rewardDailySOs.RewardDailies.Length; i++)
             {
                 RewardUI rewardUI = Instantiate(_rewardUIPrefab, _spawnRewardPrefabUI);
@@ -68,7 +74,9 @@ namespace Assets.Scripts.Managers
             {
                 TimeSpan diff = DateTime.UtcNow - DateTime.Parse(dateString);
 
-                if (diff.TotalSeconds > 5)
+                _rewardDailyCanvas.enabled = false;
+
+                if (diff.TotalHours > _rewardDailySOs.TimeReward)
                 {
                     _rewardDailyCanvas.enabled = true;
                     _isReward = true;

@@ -21,6 +21,7 @@ namespace Assets.Scripts.UIManager
         private void Start()
         {
             _dataManager = FindObjectOfType<DataManager>();
+            _dataManager.UpdateCurrencyAction += OnUpdateCurrency;
 
             _dataManager.LoadData();
 
@@ -38,9 +39,6 @@ namespace Assets.Scripts.UIManager
                 }
             }
 
-            _dataManager.UpdateCurrencyAction += OnUpdateCurrency;
-
-            //_shopWindow.UpdateCurrency();
             _shopWindow.BuyUnitAction += OnBuyUnit;
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
             _shopWindow.SelectUnitAction += OnSelectedAction;
@@ -51,6 +49,8 @@ namespace Assets.Scripts.UIManager
 
         private void OnUpdateCurrency(float amount, CurrencyType type)
         {
+            Debug.LogError("AMOUNT HARD CURRENCY: " + amount);
+
             _shopWindow.UpdateCurrency(amount,type);
         }
 

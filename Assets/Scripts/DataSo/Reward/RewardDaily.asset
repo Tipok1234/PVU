@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6169f5e650bf5cc4fa3030091bc0ba44, type: 3}
   m_Name: RewardDaily
   m_EditorClassIdentifier: 
+  _timeReward: 24
   _rewardDailies:
   - _currentCurrencyDaily: 5
     _currencyType: 2

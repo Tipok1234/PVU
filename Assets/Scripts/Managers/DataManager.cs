@@ -52,11 +52,11 @@ namespace Assets.Scripts.Managers
 
         public void LoadData()
         {
-            if (_isDataLoaded)
-                return;
+            //if (_isDataLoaded)
+            //    return;
 
-            _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 1000);
-            _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 10);
+            _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 250);
+            _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 25);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);

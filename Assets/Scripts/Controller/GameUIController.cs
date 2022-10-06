@@ -29,6 +29,8 @@ namespace Assets.Scripts.Controller
         [SerializeField] private TMP_Text _gameCurrencyText;
         [SerializeField] private TMP_Text _softCurrencyText;
 
+        private TMP_Text _hardCurrencyText;
+
         public event Action<DefenceUnitType> UnitSelectedAction;
 
         private List<UnitGameUI> _unitGameUIList = new List<UnitGameUI>();
@@ -104,14 +106,21 @@ namespace Assets.Scripts.Controller
         {
             SellButtonAction?.Invoke();
         }
-        public void UpdateGameCurrency(float gameCurrencyAmount)
+        public void UpdateCurrency(float CurrencyAmount, CurrencyType currencyType)
         {
-            _gameCurrencyText.text = gameCurrencyAmount.ToString();
-        }
+            switch(currencyType)
+            {
+                case CurrencyType.GameCurrency:
+                    _gameCurrencyText.text = CurrencyAmount.ToString();
+                    break;
+                case CurrencyType.SoftCurrency:
+                    _softCurrencyText.text = CurrencyAmount.ToString();
+                    break;
+                case CurrencyType.HardCurrency:
+                    _hardCurrencyText.text = CurrencyAmount.ToString();
+                    break;
+            }
 
-        public void UpdateSoftCurrency(float softCurrencyAmount)
-        {
-            _softCurrencyText.text = softCurrencyAmount.ToString();
         }
     }
 }

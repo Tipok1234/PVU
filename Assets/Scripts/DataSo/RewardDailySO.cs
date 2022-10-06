@@ -9,7 +9,9 @@ namespace Assets.Scripts.DataSo
     public class RewardDailySO : ScriptableObject
     {
         public RewardDaily[] RewardDailies => _rewardDailies;
+        public float TimeReward => _timeReward;
 
+        [SerializeField] private float _timeReward;
         [SerializeField] private RewardDaily[] _rewardDailies;
     }
 

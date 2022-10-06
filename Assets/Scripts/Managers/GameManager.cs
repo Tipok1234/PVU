@@ -27,7 +27,6 @@ namespace Assets.Scripts.Managers
 
         private DataManager _dataManager;
 
-        private float _softCurrency = 0;
         private float _currentGunpowder = 1000;
 
         private void Awake()
@@ -42,17 +41,19 @@ namespace Assets.Scripts.Managers
         private void Start()
         {
             _dataManager = FindObjectOfType<DataManager>();
-            _dataManager.LoadData();
-            _softCurrency = _dataManager.SoftCurrency;
+            _dataManager.UpdateCurrencyAction += OnUpdatedCurrency;
+            //_dataManager.LoadData();
+
 
             _grid.Setup(_width, _length);
             _enemyManager.Setup(_grid.EnemySpawnPoints, _levelManager.GetLevelByIndex(_dataManager.LevelIndex));
 
             _gameUIController.Setup(_unitDataSo, _dataManager);
 
-            _gameUIController.UpdateSoftCurrency(_softCurrency);
-            _gameUIController.UpdateGameCurrency(_currentGunpowder);
+            _gameUIController.UpdateCurrency(_currentGunpowder,CurrencyType.GameCurrency);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
+
+
         }
 
         public void OnLevelCompleted()
@@ -75,7 +76,7 @@ namespace Assets.Scripts.Managers
             }
 
             _currentGunpowder += soldValue;
-            _gameUIController.UpdateGameCurrency(_currentGunpowder);
+            _gameUIController.UpdateCurrency(_currentGunpowder,CurrencyType.GameCurrency);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
         }
         private void OnCurrencyCollected(float currencyAmount,CurrencyType currencyType)
@@ -84,15 +85,27 @@ namespace Assets.Scripts.Managers
             {
                 case CurrencyType.GameCurrency:
                     _currentGunpowder += currencyAmount;
-                    _gameUIController.UpdateGameCurrency(_currentGunpowder);
+                    _gameUIController.UpdateCurrency(_currentGunpowder,currencyType);
                     _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
                     break;
                 case CurrencyType.SoftCurrency:
-                    _softCurrency += currencyAmount;
-                    _gameUIController.UpdateSoftCurrency(_softCurrency);
                     _dataManager.AddCurrency(currencyAmount, currencyType);
                     break;
 
+            }
+        }
+
+        private void OnUpdatedCurrency(float currencyAmount, CurrencyType currencyType)
+        {
+            switch(currencyType)
+            {
+                case CurrencyType.HardCurrency:
+                    _currentGunpowder += currencyAmount;
+                    _gameUIController.UpdateCurrency(currencyAmount, currencyType);
+                    break;
+                case CurrencyType.SoftCurrency:
+                    _gameUIController.UpdateCurrency(currencyAmount, currencyType);
+                    break;
             }
         }
 
@@ -104,8 +117,7 @@ namespace Assets.Scripts.Managers
                 {
                     if (_currentGunpowder >= _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price))
                     {
-                        var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);
-                      
+                        var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);                    
                         _grid.StartPlaceUnit(unit);
                         break;
                     }
@@ -119,7 +131,7 @@ namespace Assets.Scripts.Managers
                 if (_unitDataSo[i].DefencUnitType == defenceUnit)
                 {
                     _currentGunpowder -= _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price);
-                    _gameUIController.UpdateGameCurrency(_currentGunpowder);
+                    _gameUIController.UpdateCurrency(_currentGunpowder,CurrencyType.GameCurrency);
                     _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
                     _gameUIController.RechargePlaceCooldown(defenceUnit);
                     break;
