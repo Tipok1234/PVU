@@ -42,6 +42,8 @@ namespace Assets.Scripts.Models
                 if (_currentReloadTime >= _reloadTime && hit.transform.TryGetComponent<DefenceUnit>(out DefenceUnit ally))
                 {
                     ally.TakeDamage(_damage);
+                    Debug.LogError(ally.name);
+                    Debug.LogError(_damage);
                     _currentReloadTime = 0;
                 }
             }

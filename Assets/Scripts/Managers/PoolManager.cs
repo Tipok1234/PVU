@@ -276,6 +276,11 @@ namespace Assets.Scripts.Managers
         {
             objectTransform.SetParent(_particlesParent);
         }
+
+        public void ReturnUnitToPool(Transform unitTransform)
+        {
+            unitTransform.SetParent(_defenceUnitParent);
+        }
     }
 
     [System.Serializable]

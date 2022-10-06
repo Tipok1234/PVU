@@ -49,15 +49,25 @@ namespace Assets.Scripts.Grids
                     int x = Mathf.RoundToInt(worldPos.x);
                     int z = Mathf.RoundToInt(worldPos.z);
 
+                    if(x <= _fieldBounes.MaxX && x>= _fieldBounes.MinX  && z <= _fieldBounes.MaxY && z >= _fieldBounes.MinY)
+                    {
+                        _gameUnit.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        _gameUnit.gameObject.SetActive(false);
+                    }
+
                     _gameUnit.transform.position = new Vector3(x, 0.25f, z);
                 }
 
                 if (Input.GetMouseButtonDown(0))
-                {
+                {                 
                     if (Physics.Raycast(ray, out RaycastHit hitInfo, _gridCellLayer))
                     {
                         if (hitInfo.transform.TryGetComponent<GridCell>(out GridCell gridCell))
                         {
+
                             if (gridCell.IsBusy && gridCell.BaseUnit.CurrentHP <= 20)
                             {
                                 if (_gameUnit.DefencUnitType != gridCell.BaseUnit.DefencUnitType)
@@ -87,6 +97,7 @@ namespace Assets.Scripts.Grids
                 if (Input.GetMouseButtonDown(1))
                 {
                     _gameUnit.gameObject.SetActive(false);
+                    PoolManager.Instance.ReturnUnitToPool(_gameUnit.transform);
                     _gameUnit = null;
                 }
             }
@@ -156,7 +167,7 @@ namespace Assets.Scripts.Grids
                 enemyPoint.SetParent(transform);
                 _enemySpawnPoints.Add(enemyPoint);
             }
-            _fieldBounes = new FieldBounes(0, w, 0, l);
+            _fieldBounes = new FieldBounes(0, l, 0, w);
         }
 
         static public Vector3 GetXZFieldRandomVector()
@@ -166,11 +177,6 @@ namespace Assets.Scripts.Grids
 
         public void StartPlaceUnit(DefenceUnit defenceUnit)
         {
-            if (_gameUnit != null)
-            {
-                _gameUnit.gameObject.SetActive(false);
-            }
-
             _gameUnit = defenceUnit;
         }
     }

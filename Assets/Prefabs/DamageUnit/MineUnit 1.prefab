@@ -54,8 +54,6 @@ MonoBehaviour:
     m_Bits: 128
   _animationMane: {fileID: 905847372520764895}
   _particleType: 3
-  _damage: 400
-  _timeDamage: 5
 --- !u!114 &905847372520764895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,27 +108,42 @@ PrefabInstance:
     - target: {fileID: 4402148397890880571, guid: e429a3ae703c9904a95a63737b9999d1,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.47432595
+      value: 0.4210494
       objectReference: {fileID: 0}
     - target: {fileID: 4402148397890880571, guid: e429a3ae703c9904a95a63737b9999d1,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.15265878
+      value: 0.1768726
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402148397890880571, guid: e429a3ae703c9904a95a63737b9999d1,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.45329207
       objectReference: {fileID: 0}
     - target: {fileID: 4402148397890880571, guid: e429a3ae703c9904a95a63737b9999d1,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.020823926
+      value: -0.042101577
       objectReference: {fileID: 0}
     - target: {fileID: 4402148397890880571, guid: e429a3ae703c9904a95a63737b9999d1,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.022335738
+      value: 0.034442596
+      objectReference: {fileID: 0}
+    - target: {fileID: 4402148397890880571, guid: e429a3ae703c9904a95a63737b9999d1,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.011654727
       objectReference: {fileID: 0}
     - target: {fileID: 4941392766808259601, guid: e429a3ae703c9904a95a63737b9999d1,
         type: 3}
       propertyPath: m_Name
       value: Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941392766808259601, guid: e429a3ae703c9904a95a63737b9999d1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4941392766808259601, guid: e429a3ae703c9904a95a63737b9999d1,
         type: 3}

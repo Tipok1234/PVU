@@ -49,8 +49,6 @@ namespace Assets.Scripts.UIManager
 
         private void OnUpdateCurrency(float amount, CurrencyType type)
         {
-            Debug.LogError("AMOUNT HARD CURRENCY: " + amount);
-
             _shopWindow.UpdateCurrency(amount,type);
         }
 

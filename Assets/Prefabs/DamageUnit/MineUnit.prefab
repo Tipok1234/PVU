@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4402148397890880571}
   - component: {fileID: -6233844092014410740}
   - component: {fileID: 4860875106493943540}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MineUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,8 +150,6 @@ MonoBehaviour:
     m_Bits: 128
   _animationMane: {fileID: 4860875106493943540}
   _particleType: 3
-  _damage: 100
-  _timeDamage: 5
 --- !u!114 &4860875106493943540
 MonoBehaviour:
   m_ObjectHideFlags: 0

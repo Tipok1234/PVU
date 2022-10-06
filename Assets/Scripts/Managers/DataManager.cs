@@ -131,7 +131,6 @@ namespace Assets.Scripts.Managers
                 case CurrencyType.HardCurrency:
                     _hardCurrency += currencyAmount;
                     PlayerPrefs.SetFloat(_hardCurrencyKey, _hardCurrency);
-                    Debug.LogError("ADD CURRENCY: " + currencyAmount + "TOTAL: " + _hardCurrency);
                     UpdateCurrencyAction?.Invoke(_hardCurrency, currencyType);
                     break;
             }          

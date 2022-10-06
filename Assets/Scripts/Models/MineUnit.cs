@@ -28,6 +28,7 @@ namespace Assets.Scripts.Models
 
             _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
             _timeDamage = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
+            _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
 
             StartCoroutine(LogicMineCoroutine());
         }
@@ -38,14 +39,14 @@ namespace Assets.Scripts.Models
 
             while(true)
             {
-                var ray = new Ray(transform.position, transform.right * (0.3f));
+                var ray = new Ray(transform.position, transform.right * (0.6f));
 
-                if (Physics.Raycast(ray, out RaycastHit hit, 0.3f, _enemyLayer))
+                Debug.DrawRay(transform.position, transform.right * (0.6f), Color.red, Time.deltaTime);
+
+                if (Physics.Raycast(ray, out RaycastHit hit, 0.6f, _enemyLayer))
                 {                    
                     if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                     {
-                        Debug.DrawRay(transform.position, transform.right * (1f), Color.red, Time.deltaTime);
-
                         var rayCast = Physics.RaycastAll(transform.position, transform.right, 1f, _enemyLayer);
 
                         for (int i = 0; i < rayCast.Length; i++)
@@ -69,6 +70,7 @@ namespace Assets.Scripts.Models
 
             if (_currentHP <= 0)
             {
+                PoolManager.Instance.GetParticleByType(ParticleType.Death_Type, gameObject.transform);
                 Death();
             }
         }

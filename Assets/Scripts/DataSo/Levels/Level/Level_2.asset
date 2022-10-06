@@ -15,4 +15,4 @@ MonoBehaviour:
   _waves:
   - {fileID: 11400000, guid: 1189fcebfa3d2bd43a1b286d4ae7c23e, type: 2}
   - {fileID: 11400000, guid: c98b6e37c1802944ba54042c0199022e, type: 2}
-  _delayBeforeStartWaves: 2
+  _delayBeforeStartWaves: 10

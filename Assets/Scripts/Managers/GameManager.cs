@@ -117,7 +117,7 @@ namespace Assets.Scripts.Managers
                 {
                     if (_currentGunpowder >= _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price))
                     {
-                        var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);                    
+                        var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);
                         _grid.StartPlaceUnit(unit);
                         break;
                     }

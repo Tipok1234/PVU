@@ -116,9 +116,9 @@ namespace Assets.Scripts.Controller
                 case CurrencyType.SoftCurrency:
                     _softCurrencyText.text = CurrencyAmount.ToString();
                     break;
-                case CurrencyType.HardCurrency:
-                    _hardCurrencyText.text = CurrencyAmount.ToString();
-                    break;
+                //case CurrencyType.HardCurrency:
+                //    _hardCurrencyText.text = CurrencyAmount.ToString();`
+                //    break;
             }
 
         }
