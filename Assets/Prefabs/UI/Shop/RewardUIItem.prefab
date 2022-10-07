@@ -528,6 +528,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4502256089728384192}
   - component: {fileID: 936979920379656492}
+  - component: {fileID: 3409271656407117445}
   m_Layer: 5
   m_Name: RewardUIItem
   m_TagString: Untagged
@@ -578,6 +579,21 @@ MonoBehaviour:
   _currentDayCurrency: {fileID: 1729193956385451394}
   _lockReward: {fileID: 1652205895196182704}
   _received: {fileID: 6350362787266853633}
+  _animationsModel: {fileID: 3409271656407117445}
+--- !u!114 &3409271656407117445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4502256089728384207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922ac13f0f2a151429312532cc94ca70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewardModel: {fileID: 4502256089728384192}
+  _animationTime: 0.2
 --- !u!1 &5637472525625127712
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
+using Assets.Scripts.AnimationsModel;
 using TMPro;
 using System;
 
@@ -24,6 +25,7 @@ namespace Assets.Scripts.UI
 
         [SerializeField] private Image _lockReward;
         [SerializeField] private Image _received;
+        [SerializeField] private AnimationModel _animationsModel;
 
 
         private RewardType _rewardType;
@@ -43,6 +45,7 @@ namespace Assets.Scripts.UI
 
         public void OpenReward()
         {
+            _animationsModel.PlayAnimation();
             _lockReward.enabled = false;
             _received.enabled = false;
             _rewardType = RewardType.Open_Type;
@@ -66,6 +69,7 @@ namespace Assets.Scripts.UI
 
         public void CollectRewardOnClick()
         {
+            _animationsModel.ResetAnimation();
             CollectRewardAction?.Invoke(_currentCurrency, this);
         }
     }

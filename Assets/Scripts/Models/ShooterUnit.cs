@@ -53,7 +53,7 @@ namespace Assets.Scripts.Models
             _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
             _reloadTime = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
 
-            //Debug.LogError($"Type: {_unitDefenceType}, HP: {_currentHP}, DAMAGE: {_damage}, RELOAD: {_reloadTime}");
+           // Debug.LogError($"Type: {_unitDefenceType}, HP: {_currentHP}, DAMAGE: {_damage}, RELOAD: {_reloadTime}");
         }
 
         private void ShootParticle()
