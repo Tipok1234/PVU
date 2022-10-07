@@ -182,7 +182,7 @@ MonoBehaviour:
         _characteristicUnitType: 0
       - _value: 15
         _characteristicUnitType: 4
-      - _value: 10
+      - _value: 15
         _characteristicUnitType: 2
       - _value: 400
         _characteristicUnitType: 1
@@ -194,7 +194,7 @@ MonoBehaviour:
         _characteristicUnitType: 0
       - _value: 12
         _characteristicUnitType: 3
-      - _value: 10
+      - _value: 20
         _characteristicUnitType: 2
       - _value: 600
         _characteristicUnitType: 1
@@ -206,7 +206,7 @@ MonoBehaviour:
         _characteristicUnitType: 0
       - _value: 8
         _characteristicUnitType: 4
-      - _value: 15
+      - _value: 25
         _characteristicUnitType: 2
       - _value: 800
         _characteristicUnitType: 1

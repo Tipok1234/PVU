@@ -76,7 +76,7 @@ namespace Assets.Scripts.Managers
 
                 _rewardDailyCanvas.enabled = false;
 
-                if (diff.TotalSeconds > _rewardDailySOs.TimeReward)
+                if (diff.TotalHours > _rewardDailySOs.TimeReward)
                 {
                     _rewardDailyCanvas.enabled = true;
                     _isReward = true;

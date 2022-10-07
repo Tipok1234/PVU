@@ -91,8 +91,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5753500423738238635}
   - component: {fileID: 4402148397890880571}
-  - component: {fileID: -6233844092014410740}
-  - component: {fileID: 4860875106493943540}
   m_Layer: 8
   m_Name: MineUnit
   m_TagString: Untagged
@@ -129,41 +127,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.49501145, y: 0.14490172, z: 0.41878545}
   m_Center: {x: -0.031166673, y: 0.04689975, z: 0.005352199}
---- !u!114 &-6233844092014410740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4941392766808259601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09effbc8d8bcfe4ab736354e22bebc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 20
-  _colliderUnit: {fileID: 4402148397890880571}
-  _unitDefenceType: 4
-  _unitData: {fileID: 11400000, guid: 1ff9df3e6372c2542bc79a116144c6da, type: 2}
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _animationMane: {fileID: 4860875106493943540}
-  _particleType: 3
---- !u!114 &4860875106493943540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4941392766808259601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 763bfea35bace4145907f8d0d1598813, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mineModel: {fileID: 5753500423738238635}
-  _animationTime: 0.5
 --- !u!1 &8857200317537472320
 GameObject:
   m_ObjectHideFlags: 0
