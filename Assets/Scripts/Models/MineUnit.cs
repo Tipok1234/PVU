@@ -30,8 +30,6 @@ namespace Assets.Scripts.Models
             _timeDamage = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
             _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
 
-            Debug.LogError($"Type: {_unitDefenceType}, HP: {_currentHP}, DAMAGE: {_damage}, RELOAD: {_timeDamage}");
-
             StartCoroutine(LogicMineCoroutine());
         }
         private IEnumerator LogicMineCoroutine()

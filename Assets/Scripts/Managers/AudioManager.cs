@@ -66,7 +66,6 @@ namespace Assets.Scripts.Managers
                 if (_audioType[i] == audioType)
                 {
                     _allSoundsGames[i].Play();
-                    break;
                 }          
             }
         }
