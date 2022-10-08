@@ -5,6 +5,8 @@ namespace Assets.Scripts.Enums
         LevelUpSound,
         NoMoneySound,
         OpenWindowSound,
-        ClickSound
+        ClickSound,
+        ShootSound,
+        CartSound
     }
 }

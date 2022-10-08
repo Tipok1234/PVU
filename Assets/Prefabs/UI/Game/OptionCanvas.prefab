@@ -944,7 +944,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &3301286278784627113
 MonoBehaviour:
@@ -1004,8 +1004,6 @@ MonoBehaviour:
   _soundText: {fileID: 3301286279197711448}
   _musicText: {fileID: 3301286280145841741}
   _languegeText: {fileID: 3301286279193498732}
-  _sliderMusic: {fileID: 3301286279907453119}
-  _sliderSound: {fileID: 3301286278536276935}
 --- !u!1 &3301286278811924630
 GameObject:
   m_ObjectHideFlags: 0

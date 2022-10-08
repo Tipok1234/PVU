@@ -46,7 +46,6 @@ namespace Assets.Scripts.UIManager
                     handItem.DeleteUnitHandActioon += OnDeleteUnitHndAction;
                 }
 
-
                 if (unitHandItems.Contains(unitDataSO[i].DefencUnitType))
                 {
                     HandItem hand = _handItems.FirstOrDefault(h => !h.IsBusy);

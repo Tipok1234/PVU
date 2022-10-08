@@ -24,6 +24,7 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private Canvas _mainCanvas;
         [SerializeField] private Canvas _handCanvas;
         [SerializeField] private Canvas _optionCanvas;
+
         void Start()
         {
             _startGameButton.onClick.AddListener(StartGame);

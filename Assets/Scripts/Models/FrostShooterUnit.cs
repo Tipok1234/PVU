@@ -50,6 +50,7 @@ namespace Assets.Scripts.Models
 
         private void ShootParticle()
         {
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.ShootSound);
             PoolManager.Instance.GetParticleByType(_particleType, _spawnBullet);
         }
         public override void Create()

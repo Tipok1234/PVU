@@ -29,6 +29,8 @@ namespace Assets.Scripts.Models
                     if (_isActive)
                         return;
 
+                    AudioManager.Instance.PlaySoundGame(AudioSoundType.CartSound);
+
                     _particleTransform = PoolManager.Instance.GetParticleByType(_particleType, transform);
 
                     _particleTransform.SetParent(transform);

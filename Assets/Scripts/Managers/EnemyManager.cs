@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using Assets.Scripts.DataSo;
+using Assets.Scripts.AnimationsModel;
 using System;
 
 namespace Assets.Scripts.Managers
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Managers
         public event Action LevelCompletedAction;
 
         [SerializeField] private AttackUnit[] _unitPrefabs;
+        [SerializeField] private AnimationModel _shipAnimation;
 
         private float _spawnUnitTime = 0;
 
@@ -19,13 +21,24 @@ namespace Assets.Scripts.Managers
 
         private LevelDataSO _levelDataSo;
         private int _enemyCountInLevel;
+
+        private void Awake()
+        {
+            
+        }
         public void Setup(IReadOnlyList<Transform> enemyPoints, LevelDataSO levelDataSo)
         {
             _levelDataSo = levelDataSo;
             _spawnPositions = enemyPoints;
             _enemyCountInLevel = levelDataSo.GetEnemy();
+            _shipAnimation.PlayAnimation(ShipAnimationCallBack);
+        }
+
+        private void ShipAnimationCallBack()
+        {
             StartCoroutine(StartLevelCoroutine());
         }
+
         private IEnumerator StartLevelCoroutine()
         {
             yield return new WaitForSeconds(_levelDataSo.DelayBeforeStartWaves);
