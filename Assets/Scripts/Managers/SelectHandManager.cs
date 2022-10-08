@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Enums;
 using Assets.Scripts.UIManager;
+using Assets.Scripts.UI;
 using Assets.Scripts.DataSo;
 
 namespace Assets.Scripts.Managers
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Managers
         public SelectHandWindow SelectHandWindow => _selectHandWindow;
 
         [SerializeField] private SelectHandWindow _selectHandWindow;
+
         private DataManager _dataManager;
 
         private void Awake()

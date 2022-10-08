@@ -27,7 +27,6 @@ namespace Assets.Scripts.Managers
 
         private List<Cart> _cartList;
 
-
         [SerializeField] private int _cartsCount = 6;
         [SerializeField] private int _countType;
         [SerializeField] private Transform _particlesParent;

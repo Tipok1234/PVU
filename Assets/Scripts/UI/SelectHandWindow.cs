@@ -8,12 +8,12 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using Assets.Scripts.Managers;
-using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 using System.Linq;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
-    public class SelectHandWindow : MonoBehaviour
+    public class SelectHandWindow : BaseWindow
     {
         public event Action<DefenceUnitType> SaveHandItemAction;
         public event Action<DefenceUnitType> RemoveHandItemAction;
@@ -26,6 +26,8 @@ namespace Assets.Scripts.UIManager
         [SerializeField] private TMP_Text _nameUnitText;
         [SerializeField] private TMP_Text _lockText;
 
+        [SerializeField] private Button _fightButton;
+        [SerializeField] private WrongWindow _wrongCanvas;
         [SerializeField] private HandItem _handItem;
         [SerializeField] private ShowUnitUIItem _showUnitUIItem;
         [SerializeField] private BGImage _bgImage;
@@ -35,7 +37,13 @@ namespace Assets.Scripts.UIManager
         private List<HandItem> _handItems = new List<HandItem>();
         private List<ShowUnitUIItem> _showUnitUIItems = new List<ShowUnitUIItem>();
 
-        public void Setup(UnitDataSo[] unitDataSO,List<DefenceUnitType> unitHandItems)
+        private void Awake()
+        {
+            _fightButton.onClick.AddListener(CheckHandItems);
+            _closeWindowButton.onClick.AddListener(CloseWindow);
+        }
+
+        public void Setup(UnitDataSo[] unitDataSO, List<DefenceUnitType> unitHandItems)
         {
             for (int i = 0; i < unitDataSO.Length; i++)
             {
@@ -77,6 +85,19 @@ namespace Assets.Scripts.UIManager
                 _mainImage.sprite = unitDataSO[1].UnitSprite;
 
                 _countHandItem++;
+            }
+        }
+
+        public void CheckHandItems()
+        {
+            if (!_handItems[0].IsBusy)
+            {
+                _wrongCanvas.OpenWindow();
+            }
+            else
+            {
+                SceneManager.LoadScene("GameScene");
+                OpenWindow();
             }
         }
 

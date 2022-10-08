@@ -1,80 +1,114 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.Managers;
 using Assets.Scripts.Enums;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.UI;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.UIManager
 {
     public class MainMenuUI : MonoBehaviour
     {
         [SerializeField] private Button _startGameButton;
-        [SerializeField] private Button _goFightButton;
         [SerializeField] private Button _optionButton;
         [SerializeField] private Button _shopButton;
-        [SerializeField] private Button _exitButton;
-        [SerializeField] private Button _exitOptionButton;
+        [SerializeField] private Button _openCalendarButton;
         [SerializeField] private Button _handButton;
-        [SerializeField] private Button _exitHandButton;
 
-        [SerializeField] private Canvas _shopCanvas;
         [SerializeField] private Canvas _loadingScene;
         [SerializeField] private Canvas _mainCanvas;
-        [SerializeField] private Canvas _handCanvas;
-        [SerializeField] private Canvas _optionCanvas;
 
-        void Start()
+
+        [SerializeField] private BaseWindow[] _baseWindows;
+
+        private Dictionary<WindowType, BaseWindow> _baseWindowsDict = new Dictionary<WindowType, BaseWindow>();
+
+        private void Awake()
         {
+            for (int i = 0; i < _baseWindows.Length; i++)
+            {
+                _baseWindowsDict.Add(_baseWindows[i].WindowType, _baseWindows[i]);
+            }
+        }
+
+        private void Start()
+        {
+            for (int i = 0; i < _baseWindows.Length; i++)
+            {
+                _baseWindows[i].CloseWindowAction += OnOpenWindow;
+                _baseWindows[i].CloseWindowAction += OnCloseWindow;
+            }
+
             _startGameButton.onClick.AddListener(StartGame);
-            _goFightButton.onClick.AddListener(FightGame);
-            _optionButton.onClick.AddListener(OpenOptionCanvas);
-            _handButton.onClick.AddListener(OpenHandCanvas);
-            _exitOptionButton.onClick.AddListener(OpenOptionCanvas);
-            _shopButton.onClick.AddListener(OpenShopCanvas);
-            _exitButton.onClick.AddListener(OpenShopCanvas);
-            _exitHandButton.onClick.AddListener(ExitHandCanvas);
+            _optionButton.onClick.AddListener(OpenOptionsWindow);
+            _handButton.onClick.AddListener(OpenHandWindow);
+            _shopButton.onClick.AddListener(OpenShopWindow);
+            _openCalendarButton.onClick.AddListener(OpenCalendarWindow);
+        }
+
+        private void OnDestroy()
+        {
+            for (int i = 0; i < _baseWindows.Length; i++)
+            {
+                _baseWindows[i].CloseWindowAction -= OnOpenWindow;
+                _baseWindows[i].CloseWindowAction -= OnCloseWindow;
+            }
+        }
+
+        private void OnOpenWindow(BaseWindow baseWindow)
+        {
+           // _mainCanvas.enabled = false;
+        }
+        private void OnCloseWindow(BaseWindow baseWindow)
+        {
+           // _mainCanvas.enabled = true;
+        }
+
+        private void OpenCalendarWindow()
+        {
+            OpenWindowByType(WindowType.Calendar);
         }
 
         private void StartGame()
         {
-            _handCanvas.enabled = !_handCanvas.enabled;
-        }
-        private void ExitHandCanvas()
-        {
-            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
-            _handCanvas.enabled = !_handCanvas.enabled;
-            _mainCanvas.enabled = true;
-        }
-        private void FightGame()
-        {
-            SceneManager.LoadScene("GameScene");
-            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
-            _mainCanvas.enabled = !_mainCanvas.enabled;
-            _loadingScene.enabled = true;
-          //  AudioManager.Instance.OpenWindowSound();
-        }
-        private void OpenShopCanvas()
-        {
-            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
-            //  AudioManager.Instance.OpenWindowSound();
-            _shopCanvas.enabled = !_shopCanvas.enabled;
-            _mainCanvas.enabled = !_mainCanvas.enabled;
+            if (DataManager.Instance.UnitHandItems.Count == 0)
+            {
+                OpenHandWindow();
+            }
+            else
+            {
+                SceneManager.LoadScene("GameScene");
+                _mainCanvas.enabled = !_mainCanvas.enabled;
+                _loadingScene.enabled = true;
+            }
         }
 
-        private void OpenHandCanvas()
+        private void OpenShopWindow()
         {
-            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
-            //  AudioManager.Instance.OpenWindowSound();
-            _handCanvas.enabled = !_handCanvas.enabled;
-            _mainCanvas.enabled = !_mainCanvas.enabled;
+            OpenWindowByType(WindowType.Shop);
         }
-        private void OpenOptionCanvas()
+
+        private void OpenHandWindow()
         {
-            AudioManager.Instance.PlaySoundGame(AudioSoundType.OpenWindowSound);
-            // AudioManager.Instance.OpenWindowSound();
-            _optionCanvas.enabled = !_optionCanvas.enabled;
+            OpenWindowByType(WindowType.Hand);
+        }
+
+        private void OpenOptionsWindow()
+        {
+            OpenWindowByType(WindowType.Options);
+        }
+
+        private void OpenWindowByType(WindowType windowType)
+        {
+            if (_baseWindowsDict.TryGetValue(windowType, out var window))
+            {
+                window.OpenWindow();
+            }
+            else
+            {
+                Debug.LogError("OpenHandCanvas Key Null");
+            }
         }
     }
 }

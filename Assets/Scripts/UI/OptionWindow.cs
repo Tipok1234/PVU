@@ -3,10 +3,11 @@ using UnityEngine;
 using TMPro;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
+using Assets.Scripts.UI;
 
 namespace Assets.Scripts.UIManager
 {
-    public class OptionWindow : MonoBehaviour
+    public class OptionWindow : BaseWindow
     {
         [SerializeField] private Toggle _languageToggle;
         [SerializeField] private Toggle _musicToggle;
@@ -31,6 +32,7 @@ namespace Assets.Scripts.UIManager
             _musicToggle.onValueChanged.AddListener(TurnMusic);
             _soundToggle.onValueChanged.AddListener(TurnSound);
 
+            _closeWindowButton.onClick.AddListener(CloseWindow);
            // GetSliderValue();
 
 

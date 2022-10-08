@@ -10,7 +10,7 @@ using System;
 
 namespace Assets.Scripts.Managers
 {
-    public class CalendarManager : MonoBehaviour
+    public class CalendarManager : BaseWindow
     {
         [SerializeField] private RewardUI _rewardUIPrefab;
         [SerializeField] private Transform _spawnRewardPrefabUI;
@@ -68,6 +68,7 @@ namespace Assets.Scripts.Managers
 
             if (string.IsNullOrEmpty(dateString))
             {
+                _rewardDailyCanvas.enabled = true;
                 _isReward = true;
             }
             else
@@ -93,7 +94,6 @@ namespace Assets.Scripts.Managers
                 Debug.LogError("INDEX EXEPTION");
                 return;
             }
-
 
             Debug.LogError("OnCollectReward: " + index);
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using Assets.Scripts.Managers;
+using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,7 +10,7 @@ using System;
 
 namespace Assets.Scripts.UIManager
 {
-    public class ShopWindow : MonoBehaviour
+    public class ShopWindow : BaseWindow
     {
         public event Action<DefenceUnitType> BuyUnitAction;
         public event Action<DefenceUnitType> UpgradeUnitAction;
@@ -43,6 +43,7 @@ namespace Assets.Scripts.UIManager
         {
             _buyButton.onClick.AddListener(BuyUnitGame);
             _upgradeButton.onClick.AddListener(UpgradeUnitButton);
+            _closeWindowButton.onClick.AddListener(CloseWindow);
         }     
 
         public void Setup(UnitDataSo[] unitDataSo)

@@ -16,6 +16,7 @@ namespace Assets.Scripts.Managers
         public int LevelIndex => _levelIndex;
         public float SoftCurrency => _softCurrency;
         public float HardCurrency => _hardCurrency;
+        public static DataManager Instance => _instance;
 
         private int _levelIndex;
         private float _softCurrency;
@@ -28,7 +29,7 @@ namespace Assets.Scripts.Managers
         private string _unitHandItemsKey = "UnitHandItemsKey";
        // private string _rewardItemsKey = "RewardKey";
 
-        private static DataManager instance;
+        private static DataManager _instance;
 
         private List<DefenceUnitType> _unitHandItems;
 
@@ -39,13 +40,13 @@ namespace Assets.Scripts.Managers
 
         private void Awake()
         {
-            if (instance != null && instance != this)
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
             }
             else
             {
-                instance = this;
+                _instance = this;
                 DontDestroyOnLoad(gameObject);
             }
         }
@@ -78,7 +79,6 @@ namespace Assets.Scripts.Managers
 
             _isDataLoaded = true;
         }
-
 
         public bool CheckCurrency(int currencyAmount, CurrencyType currencyType)
         {
