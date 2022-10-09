@@ -30,7 +30,7 @@ namespace Assets.Scripts.Managers
         {
             //_rewardDailyCanvas.enabled = false;
 
-            _dataManager = FindObjectOfType<DataManager>();           
+            _dataManager = FindObjectOfType<DataManager>();
 
             int rewardIndex = PlayerPrefs.GetInt("CalendarIndex", 0);
 
@@ -56,7 +56,37 @@ namespace Assets.Scripts.Managers
                 }
                 else if (i == rewardIndex)
                 {
-                    _rewardUIItems[i].OpenReward();
+
+                    var dateString = PlayerPrefs.GetString("Reward");
+
+                    if (string.IsNullOrEmpty(dateString))
+                    {
+                        _rewardDailyCanvas.enabled = true;
+                        _isReward = true;
+                    }
+                    else
+                    {
+                        TimeSpan diff = DateTime.UtcNow - DateTime.Parse(dateString);
+
+                        _rewardDailyCanvas.enabled = false;
+
+                        if (diff.TotalHours > _rewardDailySOs.TimeReward)
+                        {
+                            _rewardDailyCanvas.enabled = true;
+                            _isReward = true;
+
+                        }
+                    }
+
+                    if (_isReward)
+                    {
+                        _rewardUIItems[i].OpenReward();
+                    }
+                    else
+                    {
+                        _rewardUIItems[i].LockkReward();
+                    }
+
                 }
                 else
                 {
@@ -64,25 +94,7 @@ namespace Assets.Scripts.Managers
                 }
             }
 
-            var dateString = PlayerPrefs.GetString("Reward");
 
-            if (string.IsNullOrEmpty(dateString))
-            {
-                _rewardDailyCanvas.enabled = true;
-                _isReward = true;
-            }
-            else
-            {
-                TimeSpan diff = DateTime.UtcNow - DateTime.Parse(dateString);
-
-                _rewardDailyCanvas.enabled = false;
-
-                if (diff.TotalHours > _rewardDailySOs.TimeReward)
-                {
-                    _rewardDailyCanvas.enabled = true;
-                    _isReward = true;
-                }
-            }
         }
 
         public void OnCollectReward(float currency, RewardUI rewardUI)
@@ -103,7 +115,7 @@ namespace Assets.Scripts.Managers
             {
                 _rewardDailyCanvas.enabled = false;
 
-                 _dataManager.AddCurrency(currency, CurrencyType.HardCurrency);
+                _dataManager.AddCurrency(currency, CurrencyType.HardCurrency);
 
                 var dateTime = DateTime.UtcNow;
 

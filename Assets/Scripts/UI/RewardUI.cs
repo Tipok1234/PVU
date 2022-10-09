@@ -27,7 +27,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private Image _received;
         [SerializeField] private AnimationModel _animationsModel;
 
-
         private RewardType _rewardType;
 
         private float _currentCurrency;
