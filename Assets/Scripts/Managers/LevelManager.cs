@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.Scripts.DataSo;
+using TMPro;
 
 namespace Assets.Scripts.Managers
 {
@@ -9,7 +10,7 @@ namespace Assets.Scripts.Managers
         public LevelDataSO[] Levels => _levels;
 
         [SerializeField] private LevelDataSO[] _levels;
-
+        [SerializeField] private TMP_Text _levelText;
         public LevelDataSO GetLevelByIndex(int index)
         {
             Debug.LogError("LEVEL: " + index);
@@ -21,6 +22,13 @@ namespace Assets.Scripts.Managers
             }
 
             return _levels[index];
+        }
+
+        public void UpdateLevel(int indexLevel)
+        {
+            indexLevel++;
+
+            _levelText.text = "Level " + indexLevel.ToString();
         }
     }
 }
