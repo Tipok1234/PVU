@@ -11,6 +11,7 @@ namespace Assets.Scripts.Managers
     public class EnemyManager : MonoBehaviour
     {
         public event Action LevelCompletedAction;
+        public event Action<int,int> ProgresSliderAction;
 
         [SerializeField] private AttackUnit[] _unitPrefabs;
         [SerializeField] private AnimationModel _shipAnimation;
@@ -20,10 +21,16 @@ namespace Assets.Scripts.Managers
         private IReadOnlyList<Transform> _spawnPositions;
 
         private LevelDataSO _levelDataSo;
+        private int _deadEnemiesCount;
         private int _enemyCountInLevel;
+        private int _currentSpawnUnit;
 
         public void Setup(IReadOnlyList<Transform> enemyPoints, LevelDataSO levelDataSo)
         {
+            _deadEnemiesCount = 0;
+            _currentSpawnUnit = 0;
+            _enemyCountInLevel = 0;
+
             _levelDataSo = levelDataSo;
             _spawnPositions = enemyPoints;
             _enemyCountInLevel = levelDataSo.GetEnemy();
@@ -69,6 +76,10 @@ namespace Assets.Scripts.Managers
                             enemy.UnitDeadAction += OnUnitDead;
                             enemy.Create();
 
+                            _currentSpawnUnit++;
+
+                            ProgresSliderAction?.Invoke(_currentSpawnUnit, _enemyCountInLevel);
+
                             yield return new WaitForSeconds(_levelDataSo.Waves[waveIndex].DelayBetweenUnits);
                         }
                     }
@@ -81,9 +92,9 @@ namespace Assets.Scripts.Managers
         private void OnUnitDead(AttackUnit attackUnit)
         {
             attackUnit.UnitDeadAction -= OnUnitDead;
-            _enemyCountInLevel--;
+            _deadEnemiesCount++;
 
-            if (_enemyCountInLevel == 0)
+            if (_enemyCountInLevel == _deadEnemiesCount)
             {
                 StartCoroutine(LevelEndDelay());
             }
