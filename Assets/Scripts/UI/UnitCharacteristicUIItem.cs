@@ -4,7 +4,7 @@ using Assets.Scripts.Managers;
 using UnityEngine.UI;
 using Assets.Scripts.DataSo;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class UnitCharacteristicUIItem : MonoBehaviour
     {

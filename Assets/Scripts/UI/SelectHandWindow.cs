@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.DataSo;
@@ -27,7 +26,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _lockText;
 
         [SerializeField] private Button _fightButton;
-        [SerializeField] private WrongWindow _wrongCanvas;
+        [SerializeField] private PopUp _popUpCanvas;
         [SerializeField] private HandItem _handItem;
         [SerializeField] private ShowUnitUIItem _showUnitUIItem;
         [SerializeField] private BGImage _bgImage;
@@ -92,7 +91,7 @@ namespace Assets.Scripts.UI
         {
             if (!_handItems[0].IsBusy)
             {
-                _wrongCanvas.OpenWindow();
+                _popUpCanvas.OpenWindow();
             }
             else
             {

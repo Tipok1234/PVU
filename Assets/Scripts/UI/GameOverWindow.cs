@@ -2,12 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class GameOverWindow : MonoBehaviour
     {
-        public Canvas RestartGameCanvas => _restartGameCanvas;
-
         [SerializeField] private Canvas _restartGameCanvas;
         [SerializeField] private Canvas _loadingScene;
         [SerializeField] private Button _restartGameButton;

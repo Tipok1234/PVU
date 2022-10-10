@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using Assets.Scripts.Managers;
 using Assets.Scripts.AnimationsModel;
 using TMPro;
 using System;

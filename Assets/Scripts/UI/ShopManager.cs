@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Managers;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using System;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class ShopManager : MonoBehaviour
     {
@@ -85,10 +82,6 @@ namespace Assets.Scripts.UIManager
 
                             _shopWindow.BuyUnit(upgradeCost, CurrencyType.SoftCurrency);
 
-                          //  _selectHandManager.SelectHandWindow.RemoveShowUnit(_unitDataSO);
-                           // _selectHandManager.Setup(_unitDataSO, _dataManager);
-
-
                             break;
                         }
                     }
@@ -115,16 +108,12 @@ namespace Assets.Scripts.UIManager
                         return;
                     }
 
-                    Debug.LogError(unitDataSo.Level);
-
                     DefenceUnitUpgradeDataModel unitUpgrade = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, unitDataSo.Level);
 
                     if (_dataManager.CheckCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency))
                     {
                         AudioManager.Instance.PlaySoundGame(AudioSoundType.LevelUpSound);
                         _dataManager.RemoveCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency);
-
-                        Debug.LogError(unitUpgrade.UpgradeCost);
 
                         _dataManager.LevelUpUnit(defenceUnitType);
                         unitDataSo.LevelUpUnit();

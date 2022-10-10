@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Managers
 {
@@ -17,7 +13,6 @@ namespace Assets.Scripts.Managers
                 return _instance;
             }
         }
-
 
         private static AssetManager _instance;
 

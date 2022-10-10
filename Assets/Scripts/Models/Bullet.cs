@@ -67,8 +67,7 @@ namespace Assets.Scripts.Models
             _direction = direction.normalized;
             _direction.y = 0;
             _damage = damage;
-            _isActive = true;
-            
+            _isActive = true;           
         }
 
         public void Setup(float damage, Vector3 direction, BaseDebuff baseDebuff)
@@ -78,7 +77,6 @@ namespace Assets.Scripts.Models
             _direction.y = 0;
             _damage = damage;
             _isActive = true;
-
         }
 
 

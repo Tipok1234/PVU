@@ -2,7 +2,6 @@ using UnityEngine;
 using Assets.Scripts.AnimationsModel;
 using Assets.Scripts.Managers;
 using Assets.Scripts.Enums;
-using Assets.Scripts.DataSo;
 
 namespace Assets.Scripts.Models
 {
@@ -52,8 +51,6 @@ namespace Assets.Scripts.Models
             _currentHP = _unitData.GetCharacteristicData(CharacteristicUnitType.HP);
             _damage = _unitData.GetCharacteristicData(CharacteristicUnitType.Damage);
             _reloadTime = _unitData.GetCharacteristicData(CharacteristicUnitType.AbilityCooldown);
-
-           // Debug.LogError($"Type: {_unitDefenceType}, HP: {_currentHP}, DAMAGE: {_damage}, RELOAD: {_reloadTime}");
         }
 
         private void ShootParticle()

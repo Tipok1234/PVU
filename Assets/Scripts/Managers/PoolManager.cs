@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Enums;
@@ -42,7 +41,6 @@ namespace Assets.Scripts.Managers
         {
             if (instance == null)
                 instance = this;
-
 
             _particleDictionary = new Dictionary<ParticleType, List<ParticleSystem>>();
             _enemyUnitsDictionary = new Dictionary<AttackUnitType, List<AttackUnit>>();

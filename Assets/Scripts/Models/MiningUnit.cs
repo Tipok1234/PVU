@@ -17,11 +17,6 @@ namespace Assets.Scripts.Models
 
         private int _currentSoftIncomeTimer = 0;
 
-        //private void Start()
-        //{
-        //    StartCoroutine(IncomeCoroutine());
-        //    _currentSoftIncomeTimer = 0;
-        //}
         public override void Create()
         {
             base.Create();

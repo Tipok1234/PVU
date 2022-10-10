@@ -10,7 +10,6 @@ namespace Assets.Scripts.Managers
     {
         public IReadOnlyDictionary<DefenceUnitType, int> UnitsDictionary => _unitsDictionary;
 
-
         public event Action<float, CurrencyType> UpdateCurrencyAction;
         public List<DefenceUnitType> UnitHandItems => _unitHandItems;
         public int LevelIndex => _levelIndex;
@@ -27,7 +26,6 @@ namespace Assets.Scripts.Managers
         private string _hardCurrencyKey = "HardCurrency";
         private string _defencesUnitsUpgradeKey = "DefencesUnitsUpgradeKey";
         private string _unitHandItemsKey = "UnitHandItemsKey";
-       // private string _rewardItemsKey = "RewardKey";
 
         private static DataManager _instance;
 
@@ -36,7 +34,6 @@ namespace Assets.Scripts.Managers
 
         private Dictionary<DefenceUnitType, int> _unitsDictionary;
 
-        private bool _isDataLoaded;
 
         private void Awake()
         {
@@ -53,9 +50,6 @@ namespace Assets.Scripts.Managers
 
         public void LoadData()
         {
-            //if (_isDataLoaded)
-            //    return;
-
             _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 250);
             _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 25);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
@@ -63,11 +57,8 @@ namespace Assets.Scripts.Managers
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
             _unitHandItems = Load<List<DefenceUnitType>>(_unitHandItemsKey);
 
-          //  _rewardDictionary = Load<Dictionary<RewardType,RewardUI>>(_rewardItemsKey);
-
             if (_unitsDictionary.Count == 0)
             {
-               // Debug.LogError("LoadData ");
                 _unitsDictionary = new Dictionary<DefenceUnitType, int>();
                 _unitsDictionary.Add(DefenceUnitType.Mining_Unit, 0);
                 _unitsDictionary.Add(DefenceUnitType.Shooter_Unit, 0);
@@ -76,8 +67,6 @@ namespace Assets.Scripts.Managers
 
             UpdateCurrencyAction?.Invoke(_softCurrency, CurrencyType.SoftCurrency);
             UpdateCurrencyAction?.Invoke(_hardCurrency, CurrencyType.HardCurrency);
-
-            _isDataLoaded = true;
         }
 
         public bool CheckCurrency(int currencyAmount, CurrencyType currencyType)
@@ -156,8 +145,6 @@ namespace Assets.Scripts.Managers
             _unitHandItems.Add(defenceUnitType);
 
             Save(_unitHandItemsKey, _unitHandItems);
-
-           // Debug.LogError("SAVE " + _unitHandItems.Count);
         }
 
         public void RemoveHandItem(DefenceUnitType defenceUnitType)
@@ -168,8 +155,6 @@ namespace Assets.Scripts.Managers
 
                 Save(_unitHandItemsKey, _unitHandItems);
             }
-
-           // Debug.LogError("REMOVE " + _unitHandItems.Count);
         }
 
         public void LevelUpUnit(DefenceUnitType defenceUnitType)

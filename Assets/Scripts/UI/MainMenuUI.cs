@@ -3,10 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Enums;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.UI;
 using Assets.Scripts.Managers;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class MainMenuUI : MonoBehaviour
     {

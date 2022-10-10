@@ -60,7 +60,6 @@ namespace Assets.Scripts.Models
             }
         }
 
-
         private void ShootParticle()
         {
             AudioManager.Instance.PlaySoundGame(AudioSoundType.ShootSound);
@@ -81,7 +80,6 @@ namespace Assets.Scripts.Models
         {
             StopCoroutine(LogicCoroutine());
             base.Death(deathTime);
-
         }
     }
 

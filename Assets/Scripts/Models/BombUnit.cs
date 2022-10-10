@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.AnimationsModel;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
-using Assets.Scripts.DataSo;
 
 namespace Assets.Scripts.Models
 {

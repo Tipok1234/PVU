@@ -2,7 +2,7 @@ using UnityEngine;
 using Assets.Scripts.Controller;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Models;
-using Assets.Scripts.UIManager;
+using Assets.Scripts.UI;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.AnimationsModel;
 
@@ -42,8 +42,6 @@ namespace Assets.Scripts.Managers
         {
             _dataManager = FindObjectOfType<DataManager>();
             _dataManager.UpdateCurrencyAction += OnUpdatedCurrency;
-            //_dataManager.LoadData();
-
 
             _grid.Setup(_width, _length);
             _enemyManager.Setup(_grid.EnemySpawnPoints, _levelManager.GetLevelByIndex(_dataManager.LevelIndex));
@@ -52,8 +50,6 @@ namespace Assets.Scripts.Managers
 
             _gameUIController.UpdateCurrency(_currentGunpowder,CurrencyType.GameCurrency);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
-
-
         }
 
         public void OnLevelCompleted()

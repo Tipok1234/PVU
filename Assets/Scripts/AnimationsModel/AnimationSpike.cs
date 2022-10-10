@@ -11,8 +11,6 @@ namespace Assets.Scripts.AnimationsModel
         [SerializeField] private float _animationTime;
         public override void PlayAnimation()
         {
-            //_spikeModel.DOMoveY(0.2f, _animationTime).SetEase(Ease.OutElastic);
-
             Sequence mySequence = DOTween.Sequence();
             mySequence.Prepend(_spikeModel.DOMoveY(0.07f, _animationTime).SetEase(Ease.InElastic));
             mySequence.AppendInterval(_animationTime);

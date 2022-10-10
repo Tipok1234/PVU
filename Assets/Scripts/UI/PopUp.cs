@@ -1,6 +1,6 @@
 namespace Assets.Scripts.UI
 {
-    public class WrongWindow : BaseWindow // PopUp
+    public class PopUp : BaseWindow 
     {
         private void Awake()
         {

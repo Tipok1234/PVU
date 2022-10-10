@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.UIManager;
 using UnityEngine.Audio;
 using Assets.Scripts.Enums;
 
@@ -11,8 +8,6 @@ namespace Assets.Scripts.Managers
     public class AudioManager : MonoBehaviour
     {
         public static AudioManager Instance => _instance;
-        public AudioSource MainSound => _mainSound;
-        public AudioMixer AudioMixerSound => _audioMixerSound;
 
         [SerializeField] private AudioSource[] _allSoundsGames;
 
@@ -97,7 +92,6 @@ namespace Assets.Scripts.Managers
         {
             _audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
             _audioMixer.SetFloat(_mixerMusicKey, volume);
-            Debug.LogError(_mainSound.volume);
             PlayerPrefs.SetFloat(_mixerMusicKey, volume);
             PlayerPrefs.Save();
         }

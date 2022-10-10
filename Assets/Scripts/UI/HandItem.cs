@@ -1,46 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
 using Assets.Scripts.Enums;
 
-public class HandItem : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    public event Action<DefenceUnitType> DeleteUnitHandActioon;
-
-    public DefenceUnitType DefenceUnitType => _defenceUnitType;
-
-    [SerializeField] private Button _deleteUnitHandButton;
-    public bool IsBusy => _isBusy;
-    private bool _isBusy;
-    private DefenceUnitType _defenceUnitType;
-    private Transform _tranform;
-
-    private void Awake()
+    public class HandItem : MonoBehaviour
     {
-        _deleteUnitHandButton.onClick.AddListener(DeleteUnit);
-    }
+        public event Action<DefenceUnitType> DeleteUnitHandActioon;
 
-    public void SetBusy(bool isBusy,DefenceUnitType defenceUnitType = default, Transform parent = null)
-    {
-        _isBusy = isBusy;
-        _tranform = parent;
-        _defenceUnitType = defenceUnitType;
-    }
+        public DefenceUnitType DefenceUnitType => _defenceUnitType;
 
-    public void SetBool(bool isBusy)
-    {
-        _isBusy = isBusy;
-    }
-    public void DeleteUnit()
-    {
-        if (_isBusy == true)
+        [SerializeField] private Button _deleteUnitHandButton;
+        public bool IsBusy => _isBusy;
+        private bool _isBusy;
+        private DefenceUnitType _defenceUnitType;
+        private Transform _tranform;
+
+        private void Awake()
         {
-            _isBusy = false;
-            Destroy(_tranform.gameObject);
+            _deleteUnitHandButton.onClick.AddListener(DeleteUnit);
         }
 
-        DeleteUnitHandActioon?.Invoke(_defenceUnitType);
+        public void SetBusy(bool isBusy, DefenceUnitType defenceUnitType = default, Transform parent = null)
+        {
+            _isBusy = isBusy;
+            _tranform = parent;
+            _defenceUnitType = defenceUnitType;
+        }
+
+        public void SetBool(bool isBusy)
+        {
+            _isBusy = isBusy;
+        }
+        public void DeleteUnit()
+        {
+            if (_isBusy == true)
+            {
+                _isBusy = false;
+                Destroy(_tranform.gameObject);
+            }
+
+            DeleteUnitHandActioon?.Invoke(_defenceUnitType);
+        }
     }
 }

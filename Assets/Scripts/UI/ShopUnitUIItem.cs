@@ -6,7 +6,7 @@ using Assets.Scripts.Enums;
 using Assets.Scripts.DataSo;
 
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class ShopUnitUIItem : MonoBehaviour
     {
@@ -45,7 +45,6 @@ namespace Assets.Scripts.UIManager
             {
                 CloseUnit();
             }
-
         }
 
         public void UpdatePriceText(int price, CurrencyType currencyType)

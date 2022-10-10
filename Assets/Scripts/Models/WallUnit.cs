@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.Enums;
 using UnityEngine;
 using Assets.Scripts.Managers;
-using Assets.Scripts.Grids;
 
 namespace Assets.Scripts.Models
 {

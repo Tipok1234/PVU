@@ -22,10 +22,6 @@ namespace Assets.Scripts.Managers
         private LevelDataSO _levelDataSo;
         private int _enemyCountInLevel;
 
-        private void Awake()
-        {
-            
-        }
         public void Setup(IReadOnlyList<Transform> enemyPoints, LevelDataSO levelDataSo)
         {
             _levelDataSo = levelDataSo;

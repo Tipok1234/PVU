@@ -20,7 +20,6 @@ namespace Assets.Scripts.Models
 
         private float _currentReloadTime = 0;
 
-
         private bool _isWalk = true;
         private bool _isAttack = true;
         private bool _isTarget = true;

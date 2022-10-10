@@ -3,9 +3,8 @@ using UnityEngine;
 using TMPro;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
-using Assets.Scripts.UI;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class OptionWindow : BaseWindow
     {
@@ -33,7 +32,6 @@ namespace Assets.Scripts.UIManager
             _soundToggle.onValueChanged.AddListener(TurnSound);
 
             _closeWindowButton.onClick.AddListener(CloseWindow);
-           // GetSliderValue();
 
 
             if (PlayerPrefs.HasKey(_musicToggleKey))

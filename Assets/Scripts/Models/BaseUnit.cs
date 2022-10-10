@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using System.Collections;
-using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {

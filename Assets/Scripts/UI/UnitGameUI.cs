@@ -6,7 +6,7 @@ using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
 using DG.Tweening;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class UnitGameUI : MonoBehaviour
     {
@@ -54,6 +54,5 @@ namespace Assets.Scripts.UIManager
             _fillImage.fillAmount = 1;
             _fillImage.DOFillAmount(0f, _placeCooldown).SetEase(Ease.Linear).OnComplete(()=> _buyButton.enabled = true);
         }
-
     }
 }

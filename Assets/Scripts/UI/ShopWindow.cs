@@ -1,14 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
 
-namespace Assets.Scripts.UIManager
+namespace Assets.Scripts.UI
 {
     public class ShopWindow : BaseWindow
     {

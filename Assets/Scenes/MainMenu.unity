@@ -1207,7 +1207,7 @@ GameObject:
   - component: {fileID: 346971917}
   - component: {fileID: 346971920}
   m_Layer: 0
-  m_Name: WrongCanvas
+  m_Name: PopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5872,7 +5872,7 @@ MonoBehaviour:
   _nameUnitText: {fileID: 640329876}
   _lockText: {fileID: 1262212855}
   _fightButton: {fileID: 512296718}
-  _wrongCanvas: {fileID: 346971920}
+  _popUpCanvas: {fileID: 346971920}
   _handItem: {fileID: 6720021038920123027, guid: 2590575e04d8b104baf18d3a9ffb46b9,
     type: 3}
   _showUnitUIItem: {fileID: -4098994028663124891, guid: 1571c1179e6b46b4d95fae8caf010b47,

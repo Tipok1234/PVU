@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.UI;
 using Assets.Scripts.DataSo;
-using Assets.Scripts.UIManager;
 using Assets.Scripts.Enums;
-using TMPro;
 using System;
 
 namespace Assets.Scripts.Managers
@@ -28,8 +25,6 @@ namespace Assets.Scripts.Managers
 
         private void Start()
         {
-            //_rewardDailyCanvas.enabled = false;
-
             _dataManager = FindObjectOfType<DataManager>();
 
             int rewardIndex = PlayerPrefs.GetInt("CalendarIndex", 0);
@@ -106,8 +101,6 @@ namespace Assets.Scripts.Managers
                 Debug.LogError("INDEX EXEPTION");
                 return;
             }
-
-            Debug.LogError("OnCollectReward: " + index);
 
             index++;
 

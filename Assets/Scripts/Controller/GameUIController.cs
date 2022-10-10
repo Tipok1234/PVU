@@ -1,9 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Assets.Scripts.DataSo;
-using Assets.Scripts.UIManager;
+using Assets.Scripts.UI;
 using Assets.Scripts.Managers;
 using Assets.Scripts.Enums;
 using UnityEngine.UI;
@@ -13,8 +12,6 @@ namespace Assets.Scripts.Controller
 {
     public class GameUIController : MonoBehaviour
     {
-        public TMP_Text SoftCurrency;
-
         public event Action SellButtonAction;
 
         [SerializeField] private UnitGameUI _unitGameUIPrefab;
@@ -29,7 +26,7 @@ namespace Assets.Scripts.Controller
         [SerializeField] private TMP_Text _gameCurrencyText;
         [SerializeField] private TMP_Text _softCurrencyText;
 
-        private TMP_Text _hardCurrencyText;
+        //[SerializeField] private TMP_Text _hardCurrencyText;
 
         public event Action<DefenceUnitType> UnitSelectedAction;
 

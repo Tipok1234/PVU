@@ -1,26 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LevelComplete: MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    [SerializeField] private Button _nextLevelButton;
-    [SerializeField] private Canvas _nextGameCanvas;
-
-    private void Awake()
+    public class LevelComplete : MonoBehaviour
     {
-        _nextLevelButton.onClick.AddListener(NextLevelOnClick);
+        [SerializeField] private Button _nextLevelButton;
+        [SerializeField] private Canvas _nextGameCanvas;
+
+        private void Awake()
+        {
+            _nextLevelButton.onClick.AddListener(NextLevelOnClick);
+        }
+
+        public void ShowWindow()
+        {
+            _nextGameCanvas.enabled = !_nextGameCanvas.enabled;
+        }
+        public void NextLevelOnClick()
+        {
+            SceneManager.LoadScene("GameScene");
+        }
     }
-
-    public void ShowWindow()
-    {
-        _nextGameCanvas.enabled = !_nextGameCanvas.enabled;
-    }    
-    public void NextLevelOnClick()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
-
 }
