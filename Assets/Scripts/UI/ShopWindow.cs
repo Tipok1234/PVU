@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Assets.SimpleLocalization;
 
 namespace Assets.Scripts.UI
 {
@@ -29,6 +30,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _softCurrencyText;
         [SerializeField] private TMP_Text _hardCurrencyText;
         [SerializeField] private TMP_Text _currentLevelText;
+        [SerializeField] private TMP_Text _descriptionUnitText;
 
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
@@ -126,7 +128,10 @@ namespace Assets.Scripts.UI
 
             _currentLevelText.text = (level + 1).ToString();
             _imageUnit.sprite = _selectedUnitUIItem.UnitSprite;
-            _unitName.text = _selectedUnitUIItem.DefenceUnitType.ToString();
+
+            _unitName.text = LocalizationManager.Localize("DefenceUnits." + _selectedUnitUIItem.DefenceUnitType);
+            _descriptionUnitText.text = LocalizationManager.Localize("DefenceUnits.Description." + _selectedUnitUIItem.DefenceUnitType);
+            //_unitName.text = _selectedUnitUIItem.DefenceUnitType.ToString();
         }
 
         public void UpdateCurrency(float amount, CurrencyType currencyType)

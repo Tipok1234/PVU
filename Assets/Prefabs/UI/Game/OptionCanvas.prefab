@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 3301286278737102649}
   - component: {fileID: 3301286278737102655}
   - component: {fileID: 3301286278737102648}
+  - component: {fileID: 875687981}
   m_Layer: 0
   m_Name: SoundText
   m_TagString: Untagged
@@ -885,6 +886,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &875687981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301286278737102650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Options.Sound
 --- !u!1 &3301286278784627108
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +946,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3301286278784627108}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1000,6 +1014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selfCanvas: {fileID: 3301286278784627112}
   _closeWindowButton: {fileID: 3301286279989107234}
+  _windowType: 0
   _languageToggle: {fileID: 3301286279014766120}
   _musicToggle: {fileID: 3301286278811924628}
   _soundToggle: {fileID: 3301286280148711148}
@@ -1415,6 +1430,7 @@ GameObject:
   - component: {fileID: 3301286279082024749}
   - component: {fileID: 3301286279082024723}
   - component: {fileID: 3301286279082024748}
+  - component: {fileID: 766133303}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1540,6 +1556,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &766133303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301286279082024750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Options.Options
 --- !u!1 &3301286279193498734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2153,7 @@ GameObject:
   - component: {fileID: 3301286279527056045}
   - component: {fileID: 3301286279527056019}
   - component: {fileID: 3301286279527056044}
+  - component: {fileID: 600806537}
   m_Layer: 0
   m_Name: MusicText
   m_TagString: Untagged
@@ -2247,6 +2277,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &600806537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301286279527056046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Options.Music
 --- !u!1 &3301286279546306250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2513,7 @@ GameObject:
   - component: {fileID: 3301286279957460581}
   - component: {fileID: 3301286279957460587}
   - component: {fileID: 3301286279957460580}
+  - component: {fileID: 1856286408}
   m_Layer: 0
   m_Name: LanguageSelectionText
   m_TagString: Untagged
@@ -2593,6 +2637,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1856286408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301286279957460582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Options.Language
 --- !u!1 &3301286279989107260
 GameObject:
   m_ObjectHideFlags: 0

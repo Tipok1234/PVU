@@ -4,6 +4,7 @@ using Assets.Scripts.Enums;
 using Assets.Scripts.AnimationsModel;
 using TMPro;
 using System;
+using Assets.SimpleLocalization;
 
 namespace Assets.Scripts.UI
 {
@@ -35,7 +36,7 @@ namespace Assets.Scripts.UI
         {
             _currentCurrency = currentCurrency;
             _currentDayCurrency.text = currentCurrency.ToString();
-            _dayText.text = "DAY " + dayIndex.ToString();
+          //  _dayText.text = LocalizationManager.Localize("Reward.Day" + dayIndex);
         }
 
         public void OpenReward()

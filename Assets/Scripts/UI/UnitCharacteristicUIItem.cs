@@ -3,6 +3,7 @@ using TMPro;
 using Assets.Scripts.Managers;
 using UnityEngine.UI;
 using Assets.Scripts.DataSo;
+using Assets.SimpleLocalization;
 
 namespace Assets.Scripts.UI
 {
@@ -18,7 +19,7 @@ namespace Assets.Scripts.UI
 
         public void Setup(UnitCharacteristicData current, UnitCharacteristicData next)
         {
-            _typeText.text = current.CharacteristicUnitType.ToString();
+            _typeText.text = LocalizationManager.Localize("Shop.Characteristic." + current.CharacteristicUnitType);
 
             if (current.Value == next.Value)
             {

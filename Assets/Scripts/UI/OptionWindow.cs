@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
+using Assets.SimpleLocalization;
 
 namespace Assets.Scripts.UI
 {
@@ -15,7 +16,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _soundText;
         [SerializeField] private TMP_Text _musicText;
         [SerializeField] private TMP_Text _languegeText;
-
 
         private string _langueageToggleKey = "LanguageKey";
         private string _musicToggleKey = "MusicKey";
@@ -42,13 +42,15 @@ namespace Assets.Scripts.UI
                 {
                     _musicToggle.isOn = true;
                     AudioManager.Instance.TurnOnMainMusic();
-                    _musicText.text = "ON";
+                  //  _musicText.text = LocalizationManager.Localize("Options.On");
+                    //_musicText.text = "ON";
                 }
                 else
                 {
                     _musicToggle.isOn = false;
                     AudioManager.Instance.TurnOffMainMusic();
-                    _musicText.text = "OFF";
+                    //_musicText.text = LocalizationManager.Localize("Options.Off");
+                   // _musicText.text = "OFF";
                 }
             }
 
@@ -76,13 +78,15 @@ namespace Assets.Scripts.UI
                 {
                     _soundToggle.isOn = true;
                     AudioManager.Instance.TurnOnAllSound();
-                    _soundText.text = "ON";
+                  //  _soundText.text = LocalizationManager.Localize("Options.On");
+                    //_soundText.text = "ON";
                 }
                 else
                 {
                     _soundToggle.isOn = false;
                     AudioManager.Instance.TurnOffAllSound();
-                    _soundText.text = "OFF";
+                   // _soundText.text = LocalizationManager.Localize("Options.Off");
+                    //_soundText.text = "OFF";
                 }
             }
         }
@@ -96,11 +100,13 @@ namespace Assets.Scripts.UI
             if(_languageToggle.isOn)
             {
                 _languegeText.text = "EN";
+                LocalizationManager.SetLanguage(LocalizationManager.LanguageEnum.English);
                 PlayerPrefs.SetInt(_langueageToggleKey, 1);
             }
             else
             {
                 _languegeText.text = "RUS";
+                LocalizationManager.SetLanguage(LocalizationManager.LanguageEnum.Russian);
                 PlayerPrefs.SetInt(_langueageToggleKey, 0);
             }
             PlayerPrefs.Save();
@@ -114,13 +120,15 @@ namespace Assets.Scripts.UI
             {
                 AudioManager.Instance.TurnOnMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 1);
-                _musicText.text = "ON";
+                _musicText.text = LocalizationManager.Localize("Options.On");
+               // _musicText.text = "ON";
             }
             else
             {
                 AudioManager.Instance.TurnOffMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 0);
-                _musicText.text = "OFF";
+                _musicText.text = LocalizationManager.Localize("Options.Off");
+             //   _musicText.text = "OFF";
             }
             PlayerPrefs.Save();
         }
@@ -135,11 +143,13 @@ namespace Assets.Scripts.UI
             {
                 AudioManager.Instance.TurnOnAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 1);
-                _soundText.text = "ON";
+                _soundText.text = LocalizationManager.Localize("Options.On");
+               // _soundText.text = "ON";
             }
             else
             {
-                _soundText.text = "OFF";
+               // _soundText.text = "OFF";
+                _soundText.text = LocalizationManager.Localize("Options.Off");
                 AudioManager.Instance.TurnOffAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 0);
             }

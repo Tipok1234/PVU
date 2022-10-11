@@ -8,6 +8,7 @@ using System;
 using TMPro;
 using Assets.Scripts.Managers;
 using UnityEngine.SceneManagement;
+using Assets.SimpleLocalization;
 using System.Linq;
 
 namespace Assets.Scripts.UI
@@ -80,7 +81,8 @@ namespace Assets.Scripts.UI
 
                 _showUnitUIItems.Add(showUnit);
 
-                _nameUnitText.text = unitDataSO[1].DefencUnitType.ToString();
+                _nameUnitText.text = LocalizationManager.Localize("DefenceUnits." + unitDataSO[1].DefencUnitType);
+                //_nameUnitText.text = unitDataSO[1].DefencUnitType.ToString();
                 _mainImage.sprite = unitDataSO[1].UnitSprite;
 
                 _countHandItem++;
@@ -124,7 +126,8 @@ namespace Assets.Scripts.UI
 
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {
-            _nameUnitText.text = showUnitUIItem.DefenceUnitType.ToString();
+            _nameUnitText.text = LocalizationManager.Localize("DefenceUnits." + showUnitUIItem.DefenceUnitType);
+            //_nameUnitText.text = showUnitUIItem.DefenceUnitType.ToString();
             _mainImage.sprite = showUnitUIItem.UnitShowImage;
 
             if (showUnitUIItem.IsOpenImage)

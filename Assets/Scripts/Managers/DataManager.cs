@@ -50,7 +50,7 @@ namespace Assets.Scripts.Managers
 
         public void LoadData()
         {
-            _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 250);
+            _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 2500);
             _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 25);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
@@ -60,9 +60,9 @@ namespace Assets.Scripts.Managers
             if (_unitsDictionary.Count == 0)
             {
                 _unitsDictionary = new Dictionary<DefenceUnitType, int>();
-                _unitsDictionary.Add(DefenceUnitType.Mining_Unit, 0);
-                _unitsDictionary.Add(DefenceUnitType.Shooter_Unit, 0);
-                _unitsDictionary.Add(DefenceUnitType.Mine_Unit, 0);
+                _unitsDictionary.Add(DefenceUnitType.Mining, 0);
+                _unitsDictionary.Add(DefenceUnitType.Shooter, 0);
+                _unitsDictionary.Add(DefenceUnitType.Mine, 0);
             }
 
             UpdateCurrencyAction?.Invoke(_softCurrency, CurrencyType.SoftCurrency);

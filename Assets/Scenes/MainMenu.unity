@@ -364,6 +364,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &79205175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79205177}
+  - component: {fileID: 79205176}
+  m_Layer: 0
+  m_Name: LocalizationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &79205176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79205175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cf2546973275f4caa0511552ee3aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TableId: 1lvhFNvmNTQsgnQeBUZLoaLZizwAdbd5NqJABs3ClrGI
+  Sheets:
+  - Name: MainMenu
+    Id: 0
+  - Name: DefenceUnits
+    Id: 826172962
+  - Name: Reward
+    Id: 1085613313
+  - Name: GameMenu
+    Id: 1551808987
+  - Name: PopUp
+    Id: 1018954718
+  - Name: Options
+    Id: 728869122
+  - Name: Shop
+    Id: 251163750
+  - Name: Hand
+    Id: 391209605
+  SaveFolder: {fileID: 102900000, guid: c392831e85f928548b8494fefd912562, type: 3}
+--- !u!4 &79205177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79205175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96608172
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +530,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300078, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -495,6 +557,7 @@ GameObject:
   - component: {fileID: 111497168}
   - component: {fileID: 111497170}
   - component: {fileID: 111497169}
+  - component: {fileID: 111497171}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -541,7 +604,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OPTION
+  m_text: OPTIONS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -618,6 +681,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111497167}
   m_CullTransparentMesh: 1
+--- !u!114 &111497171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111497167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: MainMenu.Options
 --- !u!1 &158397104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This unit is used for the extraction of game currency.
+  m_text: " \u043F\u0438\u043F\u0438\u043F\u043D\u0438\u043F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2328,8 +2404,9 @@ GameObject:
   - component: {fileID: 696302253}
   - component: {fileID: 696302255}
   - component: {fileID: 696302254}
+  - component: {fileID: 696302256}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: CalendatText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2451,6 +2528,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696302252}
   m_CullTransparentMesh: 1
+--- !u!114 &696302256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696302252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Reward.Reward
 --- !u!1 &712632692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2552,7 @@ GameObject:
   - component: {fileID: 712632693}
   - component: {fileID: 712632695}
   - component: {fileID: 712632694}
+  - component: {fileID: 712632696}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2587,6 +2678,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 712632692}
   m_CullTransparentMesh: 1
+--- !u!114 &712632696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712632692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Shop.Upgrade
 --- !u!1 &734519920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2822,7 @@ GameObject:
   - component: {fileID: 739400887}
   - component: {fileID: 739400889}
   - component: {fileID: 739400888}
+  - component: {fileID: 739400890}
   m_Layer: 0
   m_Name: AllUnitsText
   m_TagString: Untagged
@@ -2843,6 +2948,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739400886}
   m_CullTransparentMesh: 1
+--- !u!114 &739400890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739400886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Hand.AllUnits
 --- !u!1 &750507427
 GameObject:
   m_ObjectHideFlags: 0
@@ -3239,6 +3357,7 @@ MonoBehaviour:
   _softCurrencyText: {fileID: 1469559783}
   _hardCurrencyText: {fileID: 1933432372}
   _currentLevelText: {fileID: 1413647459}
+  _descriptionUnitText: {fileID: 544361021}
   _defenceUnitsUpgradeConfig: {fileID: 11400000, guid: d2f5ea483266a8a4581b351df3b6dee8,
     type: 2}
 --- !u!224 &913767000 stripped
@@ -4418,6 +4537,7 @@ GameObject:
   - component: {fileID: 1156682252}
   - component: {fileID: 1156682254}
   - component: {fileID: 1156682253}
+  - component: {fileID: 1156682255}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4541,6 +4661,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156682251}
   m_CullTransparentMesh: 1
+--- !u!114 &1156682255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156682251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: MainMenu.Start
 --- !u!1 &1208145849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4612,6 +4745,7 @@ GameObject:
   - component: {fileID: 1219223490}
   - component: {fileID: 1219223492}
   - component: {fileID: 1219223491}
+  - component: {fileID: 1219223493}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4735,6 +4869,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219223489}
   m_CullTransparentMesh: 1
+--- !u!114 &1219223493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219223489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Hand.WIN
 --- !u!1 &1229209746
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,6 +5106,7 @@ GameObject:
   - component: {fileID: 1262212854}
   - component: {fileID: 1262212856}
   - component: {fileID: 1262212855}
+  - component: {fileID: 1262212857}
   m_Layer: 0
   m_Name: LockText
   m_TagString: Untagged
@@ -5082,6 +5230,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262212853}
   m_CullTransparentMesh: 1
+--- !u!114 &1262212857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262212853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Hand.Lock
 --- !u!1 &1267971796
 GameObject:
   m_ObjectHideFlags: 0
@@ -6292,6 +6453,7 @@ GameObject:
   - component: {fileID: 1413647461}
   - component: {fileID: 1413647460}
   - component: {fileID: 1413647459}
+  - component: {fileID: 1413647462}
   m_Layer: 0
   m_Name: CurrentLevel
   m_TagString: Untagged
@@ -6415,6 +6577,19 @@ RectTransform:
   m_AnchoredPosition: {x: 72.718, y: 0}
   m_SizeDelta: {x: -145.436, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1413647462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413647458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Shop.Level
 --- !u!1 &1415861316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6828,6 +7003,7 @@ GameObject:
   - component: {fileID: 1460484075}
   - component: {fileID: 1460484077}
   - component: {fileID: 1460484076}
+  - component: {fileID: 1460484078}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6953,6 +7129,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460484074}
   m_CullTransparentMesh: 1
+--- !u!114 &1460484078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460484074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: Shop.Buy
 --- !u!1 &1467559918
 GameObject:
   m_ObjectHideFlags: 0
@@ -7132,7 +7321,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300088, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7723,6 +7912,7 @@ GameObject:
   - component: {fileID: 1703916153}
   - component: {fileID: 1703916155}
   - component: {fileID: 1703916154}
+  - component: {fileID: 1703916156}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7846,6 +8036,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703916152}
   m_CullTransparentMesh: 1
+--- !u!114 &1703916156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703916152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2404a37f3bd75444aa4ad05d0f228347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: PopUp.Words
 --- !u!1 &1750077973
 GameObject:
   m_ObjectHideFlags: 0
@@ -8146,7 +8349,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300110, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -9666,6 +9869,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OptionCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301286278784627112, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3301286278784627115, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}

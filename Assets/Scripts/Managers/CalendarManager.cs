@@ -4,6 +4,8 @@ using Assets.Scripts.UI;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
 using System;
+using TMPro;
+using Assets.SimpleLocalization;
 
 namespace Assets.Scripts.Managers
 {
@@ -13,6 +15,7 @@ namespace Assets.Scripts.Managers
         [SerializeField] private Transform _spawnRewardPrefabUI;
 
         [SerializeField] private Canvas _rewardDailyCanvas;
+        //[SerializeField] private TMP_Text _calendarText;
 
         [SerializeField] private RewardDailySO _rewardDailySOs;
 
@@ -26,6 +29,7 @@ namespace Assets.Scripts.Managers
         private void Start()
         {
             _dataManager = FindObjectOfType<DataManager>();
+         //   _calendarText.text = LocalizationManager.Localize("Reward.Reward");
 
             int rewardIndex = PlayerPrefs.GetInt("CalendarIndex", 0);
 
