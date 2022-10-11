@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.Scripts.DataSo;
+using Assets.SimpleLocalization;
 using TMPro;
 
 namespace Assets.Scripts.Managers
@@ -28,7 +29,8 @@ namespace Assets.Scripts.Managers
         {
             indexLevel++;
 
-            _levelText.text = "Level " + indexLevel.ToString();
+            _levelText.text = LocalizationManager.Localize("GameMenu.Level", indexLevel);
+           // _levelText.text = "Level " + indexLevel.ToString();
         }
     }
 }

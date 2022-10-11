@@ -2,6 +2,6 @@ Key,English,Russian
 GameMenu.Resume,RESUME,Продолжить
 GameMenu.MainMenu,Main Menu,Главное Меню
 GameMenu.NextGame,Next Game,Следующая игра
-GameMenu.Level,Level,Уровень
+GameMenu.Level,Level {0},Уровень {0}
 GameMenu.GameOver,Game Over,Конец игры
 GameMenu.YouWin,You WIN,Вы выиграли

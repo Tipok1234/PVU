@@ -27,16 +27,19 @@ namespace Assets.Scripts.UI
         private RewardType _rewardType;
 
         private float _currentCurrency;
+        private int _dayIndex;
 
         private void Awake()
         {
             _clickButton.onClick.AddListener(CollectRewardOnClick);
+            LocalizationManager.LocalizationChanged += OnLanguageChanged;
         }
         public void Setup(float currentCurrency, int dayIndex)
         {
             _currentCurrency = currentCurrency;
             _currentDayCurrency.text = currentCurrency.ToString();
-          //  _dayText.text = LocalizationManager.Localize("Reward.Day" + dayIndex);
+            _dayIndex = dayIndex;
+            _dayText.text = LocalizationManager.Localize("Calendar.Day", _dayIndex);
         }
 
         public void OpenReward()
@@ -63,10 +66,14 @@ namespace Assets.Scripts.UI
             _rewardType = RewardType.Lock_Type;
         }
 
-        public void CollectRewardOnClick()
+        private void CollectRewardOnClick()
         {
             _animationsModel.ResetAnimation();
             CollectRewardAction?.Invoke(_currentCurrency, this);
+        }
+        private void OnLanguageChanged()
+        {
+            _dayText.text = LocalizationManager.Localize("Calendar.Day", _dayIndex);
         }
     }
 }

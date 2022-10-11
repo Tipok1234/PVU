@@ -7,4 +7,4 @@ Shop.Characteristic.Damage,Damage,Урон
 Shop.Characteristic.Mining,Mining,Добыча
 Shop.Upgrade,Upgrade,Улучшить
 Shop.Buy,Buy,Купить
-Shop.Level,Level,Уровень
+Shop.Level,Level {0},Уровень {0}

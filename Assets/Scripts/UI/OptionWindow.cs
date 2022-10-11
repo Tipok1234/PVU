@@ -24,6 +24,12 @@ namespace Assets.Scripts.UI
         private int value;
         private bool _isText;
         private bool _isSound;
+        private bool _isMusic;
+
+        private void Awake()
+        {
+            LocalizationManager.LocalizationChanged += OnMusicChanged;
+        }
 
         private void Start()
         {
@@ -42,19 +48,19 @@ namespace Assets.Scripts.UI
                 {
                     _musicToggle.isOn = true;
                     AudioManager.Instance.TurnOnMainMusic();
-                  //  _musicText.text = LocalizationManager.Localize("Options.On");
+                    _musicText.text = LocalizationManager.Localize("Options.On");
                     //_musicText.text = "ON";
                 }
                 else
                 {
                     _musicToggle.isOn = false;
                     AudioManager.Instance.TurnOffMainMusic();
-                    //_musicText.text = LocalizationManager.Localize("Options.Off");
-                   // _musicText.text = "OFF";
+                    _musicText.text = LocalizationManager.Localize("Options.Off");
+                    // _musicText.text = "OFF";
                 }
             }
 
-            if(PlayerPrefs.HasKey(_langueageToggleKey))
+            if (PlayerPrefs.HasKey(_langueageToggleKey))
             {
                 value = PlayerPrefs.GetInt(_langueageToggleKey);
 
@@ -70,7 +76,7 @@ namespace Assets.Scripts.UI
                 }
             }
 
-            if(PlayerPrefs.HasKey(_soundToggleKey))
+            if (PlayerPrefs.HasKey(_soundToggleKey))
             {
                 value = PlayerPrefs.GetInt(_soundToggleKey);
 
@@ -78,14 +84,14 @@ namespace Assets.Scripts.UI
                 {
                     _soundToggle.isOn = true;
                     AudioManager.Instance.TurnOnAllSound();
-                  //  _soundText.text = LocalizationManager.Localize("Options.On");
+                    _soundText.text = LocalizationManager.Localize("Options.On");
                     //_soundText.text = "ON";
                 }
                 else
                 {
                     _soundToggle.isOn = false;
                     AudioManager.Instance.TurnOffAllSound();
-                   // _soundText.text = LocalizationManager.Localize("Options.Off");
+                    _soundText.text = LocalizationManager.Localize("Options.Off");
                     //_soundText.text = "OFF";
                 }
             }
@@ -97,7 +103,7 @@ namespace Assets.Scripts.UI
 
             value = _isText ? 1 : 0;
 
-            if(_languageToggle.isOn)
+            if (_languageToggle.isOn)
             {
                 _languegeText.text = "EN";
                 LocalizationManager.SetLanguage(LocalizationManager.LanguageEnum.English);
@@ -116,19 +122,21 @@ namespace Assets.Scripts.UI
         {
             AudioManager.Instance.PlaySoundGame(AudioSoundType.ClickSound);
 
+            value = _isMusic ? 1 : 0;
+
             if (_musicToggle.isOn == true)
             {
+                _musicText.text = LocalizationManager.Localize("Options.On");
                 AudioManager.Instance.TurnOnMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 1);
-                _musicText.text = LocalizationManager.Localize("Options.On");
-               // _musicText.text = "ON";
+                // _musicText.text = "ON";
             }
             else
             {
+                _musicText.text = LocalizationManager.Localize("Options.Off");
                 AudioManager.Instance.TurnOffMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 0);
-                _musicText.text = LocalizationManager.Localize("Options.Off");
-             //   _musicText.text = "OFF";
+                //   _musicText.text = "OFF";
             }
             PlayerPrefs.Save();
         }
@@ -144,16 +152,48 @@ namespace Assets.Scripts.UI
                 AudioManager.Instance.TurnOnAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 1);
                 _soundText.text = LocalizationManager.Localize("Options.On");
-               // _soundText.text = "ON";
+                // _soundText.text = "ON";
             }
             else
             {
-               // _soundText.text = "OFF";
+                // _soundText.text = "OFF";
                 _soundText.text = LocalizationManager.Localize("Options.Off");
                 AudioManager.Instance.TurnOffAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 0);
             }
             PlayerPrefs.Save();
+        }
+
+        private void OnMusicChanged()
+        {
+            //if (_musicToggle.isOn == true)
+            //{
+            //    _musicText.text = LocalizationManager.Localize("Options.On");
+            //}
+            //else if (_soundToggle.isOn == true)
+            //{
+            //    _soundText.text = LocalizationManager.Localize("Options.On");
+            //}
+            //else if(_musicToggle.isOn == true && _soundToggle.isOn == false)
+            //{
+            //    _musicText.text = LocalizationManager.Localize("Options.On");
+            //    _soundText.text = LocalizationManager.Localize("Options.Off");
+            //}
+            //else if(_musicToggle.isOn == false && _soundToggle.isOn == true)
+            //{
+            //    _soundText.text = LocalizationManager.Localize("Options.On");
+            //    _musicText.text = LocalizationManager.Localize("Options.Off");
+            //}
+
+            if (_musicToggle.isOn)
+                _musicText.text = LocalizationManager.Localize("Options.On");
+            else
+                _musicText.text = LocalizationManager.Localize("Options.Off");
+
+            if (_soundToggle.isOn)
+                _soundText.text = LocalizationManager.Localize("Options.On");
+            else
+                _soundText.text = LocalizationManager.Localize("Options.Off");
         }
     }
 }
