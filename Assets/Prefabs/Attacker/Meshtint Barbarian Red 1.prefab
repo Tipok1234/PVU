@@ -515,6 +515,7 @@ MonoBehaviour:
   _allyLayer:
     serializedVersion: 2
     m_Bits: 256
+  _myMaterial: {fileID: 2100000, guid: 16aa8a696c9979b4fa8e3954d4af1ba8, type: 2}
 --- !u!136 &7656252503877831175
 CapsuleCollider:
   m_ObjectHideFlags: 0

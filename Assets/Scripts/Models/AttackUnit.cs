@@ -17,6 +17,8 @@ namespace Assets.Scripts.Models
         [SerializeField] private float _damage;
         [SerializeField] private Animator _animator;
         [SerializeField] private LayerMask _allyLayer;
+        [SerializeField] private SkinnedMeshRenderer _renderer;
+        [SerializeField] private Material _myMaterial;
 
         private float _currentReloadTime = 0;
 
@@ -85,6 +87,7 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Walk", false);
             _animator.SetBool("Attack", false);
             _colliderUnit.enabled = false;
+            ResetBuffUnit();
 
             base.Death(3f);
         }
@@ -113,6 +116,36 @@ namespace Assets.Scripts.Models
             }
 
             _currentHP -= damage;
+        }
+
+        public void BuffUnit(DebuffType debuffType)
+        {      
+            switch(debuffType)
+            {
+                case DebuffType.Frost_Debuff:
+                    {
+                        var propBlock = new MaterialPropertyBlock();
+                        _renderer.GetPropertyBlock(propBlock);
+                        propBlock.SetColor("_Color", Color.blue);
+                        _renderer.SetPropertyBlock(propBlock);
+                        _moveSpeed = 0.2f;
+                        //_myMaterial.color = Color.blue;
+                        break;
+                    }
+                case DebuffType.Poison_Debuff:
+                    _myMaterial.color = Color.green;
+                    break;
+            }
+        }
+
+        private void ResetBuffUnit()
+        {
+            var propBlock = new MaterialPropertyBlock();
+            _renderer.GetPropertyBlock(propBlock);
+
+            propBlock.SetColor("_Color", Color.white);
+
+            _renderer.SetPropertyBlock(propBlock);
         }
     }
 }

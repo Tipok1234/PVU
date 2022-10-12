@@ -37,9 +37,11 @@ namespace Assets.Scripts.Models
                         {
                             FrostDebuff frostDebuff = new FrostDebuff(0.5f,1.5f);
 
-                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right,frostDebuff);
+                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);//,frostDebuff);
+
+                            enemy.BuffUnit(DebuffType.Frost_Debuff);
                             ShootParticle();
-                            enemy.TakeDamage(_damage);
+
                             _animationModel.PlayAnimation();
                             _currentReloadTime = 0;
                         }

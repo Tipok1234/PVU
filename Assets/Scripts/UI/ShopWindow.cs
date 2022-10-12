@@ -24,7 +24,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _buyButton;
         [SerializeField] private Button _upgradeButton;
 
-
         [SerializeField] private Image _imageUnit;
         [SerializeField] private TMP_Text _unitName;
         [SerializeField] private TMP_Text _softCurrencyText;
@@ -182,6 +181,20 @@ namespace Assets.Scripts.UI
             OnUnitSelected(_selectedUnitUIItem.DefenceUnitType);
 
             _selectedUnitUIItem.UpdatePriceText(upgradeCost, currencyType);
+        }
+
+        public override void OpenWindow()
+        {
+            //_currentLevelText.text = LocalizationManager.Localize("Shop.Level", level + 1);
+            _unitName.text = LocalizationManager.Localize("DefenceUnits." + _selectedUnitUIItem.DefenceUnitType);
+            _descriptionUnitText.text = LocalizationManager.Localize("DefenceUnits.Description." + _selectedUnitUIItem.DefenceUnitType);
+            base.OpenWindow();
+        }
+
+        public override void CloseWindow()
+        {
+
+            base.CloseWindow();
         }
     }
 }

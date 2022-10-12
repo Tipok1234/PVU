@@ -9601,21 +9601,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1341511414}
     m_Modifications:
-    - target: {fileID: 3301286278150407910, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301286278150407910, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301286278150407910, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3301286278536276935, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9731,21 +9716,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3301286279480550995, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301286279480550995, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301286279480550995, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3301286279907453119, guid: 08ebfa38d5673cb40a7ab6a632e7c46c,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9760,12 +9730,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1341511414}
     m_Modifications:
-    - target: {fileID: 7428435813783340006, guid: 3bf4c7fb26dcce642bd2aeffdc5ca33b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300022, guid: 1eaee135ce037439d925cee5e41ce026,
-        type: 3}
     - target: {fileID: 7428435814100535132, guid: 3bf4c7fb26dcce642bd2aeffdc5ca33b,
         type: 3}
       propertyPath: m_Name

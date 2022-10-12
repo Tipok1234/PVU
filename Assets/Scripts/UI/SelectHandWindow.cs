@@ -41,8 +41,9 @@ namespace Assets.Scripts.UI
         {
             _fightButton.onClick.AddListener(CheckHandItems);
             _closeWindowButton.onClick.AddListener(CloseWindow);
-        }
 
+            //LocalizationManager.LocalizationChanged += OnLangueageChanged;
+        }
         public void Setup(UnitDataSo[] unitDataSO, List<DefenceUnitType> unitHandItems)
         {
             for (int i = 0; i < unitDataSO.Length; i++)
@@ -173,6 +174,10 @@ namespace Assets.Scripts.UI
         {
             RemoveHandItemAction?.Invoke(defenceUnitType);
         }
+        //public void OnLangueageChanged()
+        //{
+        //    _nameUnitText.text = LocalizationManager.Localize("DefenceUnits." + _showUnitUIItem.DefenceUnitType);
+        //}
     }
 }
 

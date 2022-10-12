@@ -166,25 +166,6 @@ namespace Assets.Scripts.UI
 
         private void OnMusicChanged()
         {
-            //if (_musicToggle.isOn == true)
-            //{
-            //    _musicText.text = LocalizationManager.Localize("Options.On");
-            //}
-            //else if (_soundToggle.isOn == true)
-            //{
-            //    _soundText.text = LocalizationManager.Localize("Options.On");
-            //}
-            //else if(_musicToggle.isOn == true && _soundToggle.isOn == false)
-            //{
-            //    _musicText.text = LocalizationManager.Localize("Options.On");
-            //    _soundText.text = LocalizationManager.Localize("Options.Off");
-            //}
-            //else if(_musicToggle.isOn == false && _soundToggle.isOn == true)
-            //{
-            //    _soundText.text = LocalizationManager.Localize("Options.On");
-            //    _musicText.text = LocalizationManager.Localize("Options.Off");
-            //}
-
             if (_musicToggle.isOn)
                 _musicText.text = LocalizationManager.Localize("Options.On");
             else

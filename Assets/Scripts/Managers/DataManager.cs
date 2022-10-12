@@ -51,7 +51,7 @@ namespace Assets.Scripts.Managers
         public void LoadData()
         {
             _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 2500);
-            _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 25);
+            _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 250);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
             _unitsDictionary = Load<Dictionary<DefenceUnitType, int>>(_defencesUnitsUpgradeKey);
