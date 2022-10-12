@@ -7,7 +7,6 @@ namespace Assets.Scripts.Models
     public class BaseUnit : MonoBehaviour
     {
         public event Action<BaseUnit> UnitDeadAction;
-        public float HP => _hp;
         public float CurrentHP => _currentHP;
         public bool IsDead => _isDead;
         public Collider ColliderUnit => _colliderUnit;

@@ -11,7 +11,7 @@ DefenceUnits.Chest,Chest,Сундук
 DefenceUnits.Wall,Wall,Стена 
 DefenceUnits.Ballista,Ballista,Баллиста 
 DefenceUnits.Spike,Spike,Шипы
-,,
+DefenceUnits.Poison,Poison,Ядовитый
 ,,
 DefenceUnits.Description.Frost,Frosty unit shoots single bullets and slows down the opponent.,Морозный юнит стреляет одиночными пулями и замедляет противника.
 DefenceUnits.Description.Shooter,The shooter shoots simple bullets and clearly hits the target.,Стрелок стреляет простыми пулями и четко попадает в цель.
@@ -25,3 +25,4 @@ DefenceUnits.Description.Chest,The chest produces currency that improves your de
 DefenceUnits.Description.Wall,The wall protects your team from the barbarians.,Стена защищает вашу команду от варваров.
 DefenceUnits.Description.Ballista,"This shooter has perfect vision and accuracy. Shoots at any enemy, wherever he is.","Этот стрелок обладает идеальным зрением и точностью. Стреляет в любого врага, где бы он ни находился."
 DefenceUnits.Description.Spike,This unit cannot be destroyed.He inflicts injuries to all enemies who are above him.,"Это устройство не может быть уничтожено.Он наносит увечья всем врагам, которые находятся выше него."
+DefenceUnits.Description.Poison,This unit infects the enemy with poison and very slowly kills him from the inside.,Этот юнит заражает врага ядом и очень медленно убивает его изнутри.

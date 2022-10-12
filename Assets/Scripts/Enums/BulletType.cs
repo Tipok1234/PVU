@@ -4,6 +4,7 @@ namespace Assets.Scripts.Enums
     {
         Default_Bullet,
         Frost_Bullet,
+        Poison_Bullet,
         Piercing_Bullet
     }
 }

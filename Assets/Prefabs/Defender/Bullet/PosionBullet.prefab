@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5170337987686233526}
   - component: {fileID: 3862700946415529006}
   - component: {fileID: 6553604464509671716}
-  - component: {fileID: -1905679882517749866}
+  - component: {fileID: -6558009673131223252}
   m_Layer: 0
-  m_Name: PiercingBullet
+  m_Name: PosionBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 985811621415799716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.19999996, y: 0.2, z: 0.19999996}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a3bb3666ef21cc41a9c70278d645c4e, type: 2}
+  - {fileID: 2100000, guid: e42d3f1ba67ea374189a8947558eaa5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1905679882517749866
+--- !u!114 &-6558009673131223252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 985811621415799716}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43393b76a07a4f479baafb94f519c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: d3b45bbbb894f084e8078bc420b69f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speedBullet: 6.5
@@ -116,4 +116,4 @@ MonoBehaviour:
   _destoryBullet:
     serializedVersion: 2
     m_Bits: 1024
-  _bulletType: 3
+  _bulletType: 2

@@ -13,6 +13,7 @@ namespace Assets.Scripts.Enums
         Chest,
         Frost,
         Bomb,
-        Suicide
+        Suicide,
+        Poison
     }
 }

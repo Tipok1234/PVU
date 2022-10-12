@@ -133,8 +133,13 @@ namespace Assets.Scripts.Models
                         break;
                     }
                 case DebuffType.Poison_Debuff:
-                    _myMaterial.color = Color.green;
-                    break;
+                    {
+                        var propBlock = new MaterialPropertyBlock();
+                        _renderer.GetPropertyBlock(propBlock);
+                        propBlock.SetColor("_Color", Color.green);
+                        _renderer.SetPropertyBlock(propBlock);
+                        break;
+                    }
             }
         }
 

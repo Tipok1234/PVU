@@ -92,6 +92,9 @@ namespace Assets.Scripts.Managers
                 {
                     defenceUnit.Add(Instantiate(_defenceUnits[i], _defenceUnitParent));
                 }
+
+                Debug.LogError(_defenceUnits[i].name + " - " + _defenceUnits[i].DefencUnitType);
+
                 _defenceUnitsDictionary.Add(_defenceUnits[i].DefencUnitType, defenceUnit);
             }
 
