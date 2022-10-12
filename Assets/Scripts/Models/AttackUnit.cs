@@ -18,7 +18,6 @@ namespace Assets.Scripts.Models
         [SerializeField] private Animator _animator;
         [SerializeField] private LayerMask _allyLayer;
         [SerializeField] private SkinnedMeshRenderer _renderer;
-        [SerializeField] private Material _myMaterial;
 
         private float _currentReloadTime = 0;
 
@@ -120,27 +119,27 @@ namespace Assets.Scripts.Models
 
         public void BuffUnit(DebuffType debuffType)
         {      
-            switch(debuffType)
-            {
-                case DebuffType.Frost_Debuff:
-                    {
-                        var propBlock = new MaterialPropertyBlock();
-                        _renderer.GetPropertyBlock(propBlock);
-                        propBlock.SetColor("_Color", Color.blue);
-                        _renderer.SetPropertyBlock(propBlock);
-                        _moveSpeed = 0.2f;
-                        //_myMaterial.color = Color.blue;
-                        break;
-                    }
-                case DebuffType.Poison_Debuff:
-                    {
-                        var propBlock = new MaterialPropertyBlock();
-                        _renderer.GetPropertyBlock(propBlock);
-                        propBlock.SetColor("_Color", Color.green);
-                        _renderer.SetPropertyBlock(propBlock);
-                        break;
-                    }
-            }
+            //switch(debuffType)
+            //{
+            //    case DebuffType.Frost_Debuff:
+            //        {
+            //            var propBlock = new MaterialPropertyBlock();
+            //            _renderer.GetPropertyBlock(propBlock);
+            //            propBlock.SetColor("_Color", Color.blue);
+            //            _renderer.SetPropertyBlock(propBlock);
+            //            _moveSpeed = 0.2f;
+            //            //_myMaterial.color = Color.blue;
+            //            break;
+            //        }
+            //    case DebuffType.Poison_Debuff:
+            //        {
+            //            var propBlock = new MaterialPropertyBlock();
+            //            _renderer.GetPropertyBlock(propBlock);
+            //            propBlock.SetColor("_Color", Color.green);
+            //            _renderer.SetPropertyBlock(propBlock);
+            //            break;
+            //        }
+            //}
         }
 
         private void ResetBuffUnit()

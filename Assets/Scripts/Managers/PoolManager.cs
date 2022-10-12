@@ -70,6 +70,8 @@ namespace Assets.Scripts.Managers
                     enemyUnits.Add(Instantiate(_attackEnemyUnits[i], _enemyParent));
                 }
 
+                Debug.LogError(_attackEnemyUnits[i].name + " - " + _attackEnemyUnits[i].AttackUnitType);
+
                 _enemyUnitsDictionary.Add(_attackEnemyUnits[i].AttackUnitType, enemyUnits);
             }
 
@@ -92,9 +94,6 @@ namespace Assets.Scripts.Managers
                 {
                     defenceUnit.Add(Instantiate(_defenceUnits[i], _defenceUnitParent));
                 }
-
-                Debug.LogError(_defenceUnits[i].name + " - " + _defenceUnits[i].DefencUnitType);
-
                 _defenceUnitsDictionary.Add(_defenceUnits[i].DefencUnitType, defenceUnit);
             }
 

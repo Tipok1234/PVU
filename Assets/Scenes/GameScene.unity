@@ -1280,6 +1280,7 @@ MonoBehaviour:
   - {fileID: -6875736990001651829, guid: f42c1878d1bb1f241ba423122f08b30e, type: 3}
   - {fileID: 8057199378778418158, guid: 587c8be7a759b784c9c8099bbaa04556, type: 3}
   - {fileID: 5760997634906304487, guid: 3b5ce69ca595d0e43b225208db2c9f62, type: 3}
+  - {fileID: 9074415748662932409, guid: 3ffe8ac9f1ef9984a9428440d1c31b9f, type: 3}
   _shipAnimation: {fileID: 1995461749}
 --- !u!4 &351281422
 Transform:
@@ -1752,6 +1753,7 @@ MonoBehaviour:
   - {fileID: 2709370302170473475, guid: 162f08b0c25c87f4d84a397790bc31d7, type: 3}
   - {fileID: -6875736990001651829, guid: f42c1878d1bb1f241ba423122f08b30e, type: 3}
   - {fileID: 8057199378778418158, guid: 587c8be7a759b784c9c8099bbaa04556, type: 3}
+  - {fileID: 9074415748662932409, guid: 3ffe8ac9f1ef9984a9428440d1c31b9f, type: 3}
   _bullets:
   - {fileID: -6558009673131223252, guid: b272ae00d2ff30d41bf5dd60f2706092, type: 3}
   - {fileID: -6558009673131223252, guid: 71a32ec5f3767044dbe7d71d02da098b, type: 3}
@@ -1763,7 +1765,7 @@ MonoBehaviour:
   - {fileID: -5891056907343366438, guid: 0e41d70452b33cc41a5600bfe9483078, type: 3}
   - {fileID: 7615148551584226960, guid: 38d33b5a7dfc478449c0ba2c33070e02, type: 3}
   - {fileID: 712218674437889956, guid: 62883bf0c78fb3b469eb90d8125b0eba, type: 3}
-  - {fileID: 3544502435480587867, guid: 7c8439dd0c18ad6489abf8c88b48a87b, type: 3}
+  - {fileID: 3574135496353858174, guid: 8d10e15bc29f6914a8d32ad8e75b973c, type: 3}
   - {fileID: 4452293035230770176, guid: 3ff01997ab641b24d84ae49d7d953782, type: 3}
   - {fileID: 6047368056997125172, guid: 67a93ca1f3ecc964da800e601eef4777, type: 3}
   - {fileID: -1962755522481879464, guid: aa13d37dd338b024689251d74bd5ff35, type: 3}
@@ -3703,6 +3705,7 @@ MonoBehaviour:
   _levels:
   - {fileID: 11400000, guid: 89ce62134df12bc499d7e8276e4ce9ee, type: 2}
   - {fileID: 11400000, guid: 7d09f4ae952c052428b1957ee6c1d992, type: 2}
+  - {fileID: 11400000, guid: a3b163ce7f196f2479019f42815e516c, type: 2}
   _levelText: {fileID: 618355337}
 --- !u!4 &1418450339
 Transform:

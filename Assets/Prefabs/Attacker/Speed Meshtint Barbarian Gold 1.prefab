@@ -1424,7 +1424,7 @@ MonoBehaviour:
   _allyLayer:
     serializedVersion: 2
     m_Bits: 256
-  _myMaterial: {fileID: 2100000, guid: 1cc3e026954f4434e9ee78b3a0f47d78, type: 2}
+  _renderer: {fileID: 137711014044923380}
 --- !u!136 &3208904601820001377
 CapsuleCollider:
   m_ObjectHideFlags: 0
