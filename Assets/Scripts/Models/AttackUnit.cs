@@ -25,6 +25,9 @@ namespace Assets.Scripts.Models
         private bool _isAttack = true;
         private bool _isTarget = true;
         private bool _isStop = false;
+        [SerializeField] private bool _isBuff;
+
+        private DefenceUnit _target;
 
         private void FixedUpdate()
         {
@@ -37,11 +40,12 @@ namespace Assets.Scripts.Models
 
             if (Physics.Raycast(ray, out RaycastHit hit, 0.5f, _allyLayer))
             {
-                AttackerUnit();
+                //AttackerUnit();
 
                 if (_currentReloadTime >= _reloadTime && hit.transform.TryGetComponent<DefenceUnit>(out DefenceUnit ally))
                 {
-                    ally.TakeDamage(_damage);
+                    _target = ally;
+                    AttackerUnit();
                     _currentReloadTime = 0;
                 }
             }
@@ -64,6 +68,14 @@ namespace Assets.Scripts.Models
             _animator.SetBool("Attack", true);
         }
 
+        private void AttackAnimationCallback()
+        {
+            if(_target != null)
+            {
+                _target.TakeDamage(_damage);
+            }
+        }
+
         public override void Create()
         {
             _isDead = false;
@@ -80,6 +92,7 @@ namespace Assets.Scripts.Models
         public void DeathUnit()
         {
             _isDead = true;
+            _target = null;
             _animator.SetTrigger("Death");
             _isWalk = false;
             _isAttack = false;
@@ -118,28 +131,30 @@ namespace Assets.Scripts.Models
         }
 
         public void BuffUnit(DebuffType debuffType)
-        {      
-            //switch(debuffType)
-            //{
-            //    case DebuffType.Frost_Debuff:
-            //        {
-            //            var propBlock = new MaterialPropertyBlock();
-            //            _renderer.GetPropertyBlock(propBlock);
-            //            propBlock.SetColor("_Color", Color.blue);
-            //            _renderer.SetPropertyBlock(propBlock);
-            //            _moveSpeed = 0.2f;
-            //            //_myMaterial.color = Color.blue;
-            //            break;
-            //        }
-            //    case DebuffType.Poison_Debuff:
-            //        {
-            //            var propBlock = new MaterialPropertyBlock();
-            //            _renderer.GetPropertyBlock(propBlock);
-            //            propBlock.SetColor("_Color", Color.green);
-            //            _renderer.SetPropertyBlock(propBlock);
-            //            break;
-            //        }
-            //}
+        {
+            if (_isBuff)
+                return;
+
+            switch (debuffType)
+            {
+                case DebuffType.Frost_Debuff:
+                    {
+                        var propBlock = new MaterialPropertyBlock();
+                        _renderer.GetPropertyBlock(propBlock);
+                        propBlock.SetColor("_Color", Color.blue);
+                        _renderer.SetPropertyBlock(propBlock);
+                        _moveSpeed = 0.4f;
+                        break;
+                    }
+                case DebuffType.Poison_Debuff:
+                    {
+                        var propBlock = new MaterialPropertyBlock();
+                        _renderer.GetPropertyBlock(propBlock);
+                        propBlock.SetColor("_Color", Color.green);
+                        _renderer.SetPropertyBlock(propBlock);
+                        break;
+                    }
+            }
         }
 
         private void ResetBuffUnit()

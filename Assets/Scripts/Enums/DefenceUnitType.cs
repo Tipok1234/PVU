@@ -14,6 +14,7 @@ namespace Assets.Scripts.Enums
         Frost,
         Bomb,
         Suicide,
-        Poison
+        Poison,
+        ExplodingWall
     }
 }

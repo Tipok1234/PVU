@@ -1773,6 +1773,7 @@ MonoBehaviour:
   - {fileID: 4440519693163276381, guid: 7b64e58612762d040a84a9953281b080, type: 3}
   - {fileID: -3386280723998905399, guid: af64c31ac6018b1438f7511aea29e55c, type: 3}
   - {fileID: 3544502435480587867, guid: 7b68c36b32a78a34abe1cdddb1ae3bab, type: 3}
+  - {fileID: 6779042561704895662, guid: e312f213abcf24a418068cdc9412e451, type: 3}
   _resourceModel:
   - {fileID: 4809060521006752121, guid: 7f8700aa7b84a09458be09fe1aa253ca, type: 3}
   - {fileID: 8918352237793816498, guid: 19519880c80bd29408c0a4c3b55c7d69, type: 3}
@@ -3139,6 +3140,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b382e930ee45ef54398797a8c4c8b3d7, type: 2}
   - {fileID: 11400000, guid: 1ff9df3e6372c2542bc79a116144c6da, type: 2}
   - {fileID: 11400000, guid: b9e6242076a5ff24ab9257b691aa50a2, type: 2}
+  - {fileID: 11400000, guid: 906839d91f71fd94d8323e7bb319d4b0, type: 2}
   _animationModel: {fileID: 297309856}
 --- !u!1 &1179717574
 GameObject:
