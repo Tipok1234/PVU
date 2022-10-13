@@ -17,6 +17,7 @@ namespace Assets.Scripts.AnimationsModel
             _sequence.Append(_shipModel.DOMove(new Vector3(13.68f, -1.2f, 2.41f), _animationTime).SetEase(Ease.Linear));
             _sequence.AppendInterval(0.5f);
             _sequence.Append(_floorModel.DOLocalMoveX(-2.75f, 1.5f).SetEase(Ease.OutCubic));
+            _sequence.Append(_floorModel.DORotate(new Vector3(0f,0f,4f), 1.5f).SetEase(Ease.OutCubic));
             _sequence.OnComplete(()=> { callback?.Invoke(); });
         }
     }

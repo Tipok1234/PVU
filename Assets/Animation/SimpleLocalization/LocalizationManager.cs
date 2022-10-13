@@ -11,7 +11,6 @@ namespace Assets.SimpleLocalization
 	/// </summary>
     public static class LocalizationManager
     {
-
         public enum LanguageEnum
         {
             English = 0,
@@ -24,7 +23,7 @@ namespace Assets.SimpleLocalization
 		/// </summary>
         public static event Action LocalizationChanged = () => { }; 
 
-        private static readonly Dictionary<string, Dictionary<string, string>> Dictionary = new Dictionary<string, Dictionary<string, string>>();
+        private static readonly Dictionary<string, Dictionary<string, string>> _languageDictionary = new Dictionary<string, Dictionary<string, string>>();
         private static string _language = "English";
 
 		/// <summary>
@@ -64,7 +63,7 @@ namespace Assets.SimpleLocalization
 		/// </summary>
 		public static void Read(string path = "Localization")
         {
-            if (Dictionary.Count > 0) return;
+            if (_languageDictionary.Count > 0) return;
 
             var textAssets = Resources.LoadAll<TextAsset>(path);
 
@@ -83,9 +82,9 @@ namespace Assets.SimpleLocalization
 
 				for (var i = 1; i < languages.Count; i++)
                 {
-                    if (!Dictionary.ContainsKey(languages[i]))
+                    if (!_languageDictionary.ContainsKey(languages[i]))
                     {
-                        Dictionary.Add(languages[i], new Dictionary<string, string>());
+                        _languageDictionary.Add(languages[i], new Dictionary<string, string>());
                     }
                 }
 				
@@ -99,7 +98,7 @@ namespace Assets.SimpleLocalization
 
                     for (var j = 1; j < languages.Count; j++)
                     {
-                        Dictionary[languages[j]].Add(key, columns[j]);
+                        _languageDictionary[languages[j]].Add(key, columns[j]);
                     }
                 }
             }
@@ -112,15 +111,15 @@ namespace Assets.SimpleLocalization
 		/// </summary>
         public static string Localize(string localizationKey)
         {
-            if (Dictionary.Count == 0)
+            if (_languageDictionary.Count == 0)
             {
                 Read();
             }
 
-            if (!Dictionary.ContainsKey(Language)) throw new KeyNotFoundException("Language not found: " + Language);
-            if (!Dictionary[Language].ContainsKey(localizationKey)) throw new KeyNotFoundException("Translation not found: " + localizationKey);
+            if (!_languageDictionary.ContainsKey(Language)) throw new KeyNotFoundException("Language not found: " + Language);
+            if (!_languageDictionary[Language].ContainsKey(localizationKey)) throw new KeyNotFoundException("Translation not found: " + localizationKey);
 
-            return Dictionary[Language][localizationKey];
+            return _languageDictionary[Language][localizationKey];
         }
 
 	    /// <summary>

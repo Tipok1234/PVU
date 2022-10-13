@@ -3582,6 +3582,10 @@ MonoBehaviour:
   _spawnRewardPrefabUI: {fileID: 1789864026}
   _rewardDailyCanvas: {fileID: 941922360}
   _rewardDailySOs: {fileID: 11400000, guid: 4de0b9fca3fa87a4e9cf27ea5a378355, type: 2}
+  _index: 1
+  _dataManager: {fileID: 0}
+  _rewardUIItems: []
+  _isReward: 0
 --- !u!1 &942730598
 GameObject:
   m_ObjectHideFlags: 0

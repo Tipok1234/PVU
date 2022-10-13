@@ -15,9 +15,12 @@ namespace Assets.Scripts.Managers
         public int LevelIndex => _levelIndex;
         public float SoftCurrency => _softCurrency;
         public float HardCurrency => _hardCurrency;
+        public int CalendarIndex => PlayerPrefs.GetInt(_calendarIndexKey, 0);
+        public string DateString => PlayerPrefs.GetString(_calendarRewardKey);
         public static DataManager Instance => _instance;
 
         private int _levelIndex;
+        private int _calendarIndex;
         private float _softCurrency;
         private float _hardCurrency;
 
@@ -26,6 +29,10 @@ namespace Assets.Scripts.Managers
         private string _hardCurrencyKey = "HardCurrency";
         private string _defencesUnitsUpgradeKey = "DefencesUnitsUpgradeKey";
         private string _unitHandItemsKey = "UnitHandItemsKey";
+        private string _calendarIndexKey = "CalendarIndex";
+        private string _calendarRewardKey = "CalendarReward";
+
+        private string _dateString;
 
         private static DataManager _instance;
 
@@ -46,8 +53,14 @@ namespace Assets.Scripts.Managers
                 _instance = this;
                 DontDestroyOnLoad(gameObject);
             }
+
+            //_calendarIndex = PlayerPrefs.GetInt(_calendarIndexKey, 0);
         }
 
+        //public void UpdateDateTime()
+        //{
+        //    _dateString = PlayerPrefs.GetString(_calendarRewardKey);
+        //}
         public void LoadData()
         {
             _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 2500);
@@ -169,6 +182,14 @@ namespace Assets.Scripts.Managers
             Save(_defencesUnitsUpgradeKey, _unitsDictionary);
         }
 
+        public void SaveDateTimeCalendarReward(DateTime dateTime)
+        {
+            PlayerPrefs.SetString(_calendarRewardKey, dateTime.ToString());
+        }
+        public void SaveCalendarIndex(int calendarIndex)
+        {
+            PlayerPrefs.SetInt(_calendarIndexKey, calendarIndex);
+        }
 
         private void Save<T>(string key, T saveData)
         {
