@@ -117,7 +117,6 @@ namespace Assets.Scripts.Controller
                 //    _hardCurrencyText.text = CurrencyAmount.ToString();`
                 //    break;
             }
-
         }
     }
 }
