@@ -7,6 +7,7 @@ namespace Assets.Scripts.Enums
         Bomb_Type,
         Mine_Type,
         Suicide_Type,
-        Cart_Type
+        Cart_Type,
+        RainSkill_Type
     }
 }

@@ -1,34 +1,50 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 namespace Assets.Scripts.AnimationsModel
 {
+    [ExecuteInEditMode]
     public class AnimationUI : AnimationModel
     {
         private float _fadeTime = 1f;
 
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private RectTransform _rectTransform;
-        [SerializeField] private RectTransform[] _softCurrencyTransoform;
-        [SerializeField] private Transform _targetTransform;
+
+
+        private Sequence _sequence;
+
         public override void PlayAnimation()
         {
             _canvasGroup.alpha = 0f;
-            _rectTransform.transform.localPosition = new Vector3(0f, -1000f, 0f);
-            _rectTransform.DOAnchorPos(new Vector2(0f, 0f), _fadeTime, false).SetEase(Ease.InOutQuint);
-            _canvasGroup.DOFade(1, _fadeTime);
+            _rectTransform.localScale = Vector2.zero;
 
-            StartCoroutine(MoveCurrency());
+            _sequence = DOTween.Sequence();
+            _sequence.Append(_rectTransform.DOScale(Vector2.one, _fadeTime).SetEase(Ease.InOutQuint));
+            _sequence.Join(_canvasGroup.DOFade(1, _fadeTime));
         }
 
-        private IEnumerator MoveCurrency()
+        //public override void PlayAnimationIngorTimeScale()
+        //{
+        //    _canvasGroup.alpha = 0f;
+        //    _rectTransform.localScale = Vector2.zero;
+
+        //    _sequence = DOTween.Sequence().SetUpdate(false);
+        //    _sequence.Append(_rectTransform.DOScale(Vector2.one, _fadeTime).SetEase(Ease.InOutQuint)).SetUpdate(false);
+        //    _sequence.Join(_canvasGroup.DOFade(1, _fadeTime).SetUpdate(false));
+        //}
+
+        public override void PlayAnimation(Action callback)
         {
-            for (int i = 0; i < _softCurrencyTransoform.Length; i++)
-            {
-                _softCurrencyTransoform[i].DOAnchorPos(new Vector3(-867.4f,509.1f,0f), 0.3f); //.OnComplete(()=> _softCurrencyTransoform[i].gameObject.SetActive(false));
-                yield return new WaitForSeconds(0.4f);
-            }
+            _canvasGroup.alpha = 0f;
+            _rectTransform.localScale = Vector2.zero;
+
+            _sequence = DOTween.Sequence();
+            _sequence.Append(_rectTransform.DOScale(Vector2.one, _fadeTime).SetEase(Ease.InOutQuint));
+            _sequence.Join(_canvasGroup.DOFade(1, _fadeTime));
+            _sequence.AppendCallback(() => { callback?.Invoke(); });
         }
     }
 }

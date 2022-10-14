@@ -25,8 +25,7 @@ namespace Assets.Scripts.Controller
         [SerializeField] private Grids.Grid _grid;
         [SerializeField] private TMP_Text _gameCurrencyText;
         [SerializeField] private TMP_Text _softCurrencyText;
-
-        //[SerializeField] private TMP_Text _hardCurrencyText;
+        [SerializeField] private TMP_Text _hardCurrencyText;
 
         public event Action<DefenceUnitType> UnitSelectedAction;
 
@@ -113,9 +112,9 @@ namespace Assets.Scripts.Controller
                 case CurrencyType.SoftCurrency:
                     _softCurrencyText.text = CurrencyAmount.ToString();
                     break;
-                //case CurrencyType.HardCurrency:
-                //    _hardCurrencyText.text = CurrencyAmount.ToString();`
-                //    break;
+                case CurrencyType.HardCurrency:
+                    _hardCurrencyText.text = CurrencyAmount.ToString();
+                    break;
             }
         }
     }

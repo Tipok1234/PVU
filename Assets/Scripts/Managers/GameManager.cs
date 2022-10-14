@@ -18,12 +18,10 @@ namespace Assets.Scripts.Managers
         [SerializeField] private GameUIController _gameUIController;
         [SerializeField] private GameOver _gameOver;
         [SerializeField] private GameOverWindow _gameOverWindow;
+        [SerializeField] private SkillRain _skillRain;
         [SerializeField] private LevelManager _levelManager;
-
         [SerializeField] private LevelComplete _levelComplete;
         [SerializeField] private UnitDataSo[] _unitDataSo;
-
-        [SerializeField] private AnimationModel _animationModel;
 
         private DataManager _dataManager;
 
@@ -37,6 +35,7 @@ namespace Assets.Scripts.Managers
             _gameUIController.UnitSelectedAction += OnUnitSelect;
             _gameOver.RestartGameAction += RestartGame;
             _enemyManager.LevelCompletedAction += OnLevelCompleted;
+            _skillRain.SkillAction += OnSkillAction;
         }
         private void Start()
         {
@@ -51,6 +50,7 @@ namespace Assets.Scripts.Managers
 
             _gameUIController.UpdateCurrency(_currentGunpowder,CurrencyType.GameCurrency);
             OnCurrencyCollected(0f, CurrencyType.SoftCurrency);
+            OnCurrencyCollected(0f, CurrencyType.HardCurrency);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
 
         }
@@ -58,7 +58,6 @@ namespace Assets.Scripts.Managers
         public void OnLevelCompleted()
         {
             _dataManager.UpdateLevel();
-            _animationModel.PlayAnimation();
             _levelComplete.ShowWindow();
             OnCurrencyCollected(100f,CurrencyType.SoftCurrency);
         }
@@ -89,6 +88,9 @@ namespace Assets.Scripts.Managers
                     _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
                     break;
                 case CurrencyType.SoftCurrency:
+                    _dataManager.AddCurrency(currencyAmount, currencyType);
+                    break;
+                case CurrencyType.HardCurrency:
                     _dataManager.AddCurrency(currencyAmount, currencyType);
                     break;
 
@@ -138,9 +140,20 @@ namespace Assets.Scripts.Managers
                 }
             }
         }
+
+        public void OnSkillAction(SkillType skillType,float price)
+        {
+            switch(skillType)
+            {
+                case SkillType.Rain:
+                    _gameUIController.UpdateCurrency(price, CurrencyType.HardCurrency);
+                    _dataManager.RemoveCurrency((int)price,CurrencyType.HardCurrency);
+                    Debug.LogError("CURRENCY: " + price);
+                    break;
+            }
+        }
         private void RestartGame()
         {
-            _animationModel.PlayAnimation();
             _gameOverWindow.RestartGameUI();           
         }
     }

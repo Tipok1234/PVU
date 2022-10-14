@@ -20,7 +20,6 @@ namespace Assets.Scripts.Managers
         public static DataManager Instance => _instance;
 
         private int _levelIndex;
-        private int _calendarIndex;
         private float _softCurrency;
         private float _hardCurrency;
 
@@ -32,15 +31,11 @@ namespace Assets.Scripts.Managers
         private string _calendarIndexKey = "CalendarIndex";
         private string _calendarRewardKey = "CalendarReward";
 
-        private string _dateString;
-
         private static DataManager _instance;
 
         private List<DefenceUnitType> _unitHandItems;
 
-
         private Dictionary<DefenceUnitType, int> _unitsDictionary;
-
 
         private void Awake()
         {

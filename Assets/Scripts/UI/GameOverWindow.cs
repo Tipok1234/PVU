@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using Assets.Scripts.AnimationsModel;
 
 namespace Assets.Scripts.UI
 {
@@ -10,6 +12,7 @@ namespace Assets.Scripts.UI
         [SerializeField] private Canvas _loadingScene;
         [SerializeField] private Button _restartGameButton;
         [SerializeField] private Button _mainMenuButton;
+        [SerializeField] private AnimationModel _animationModel;
 
         void Start()
         {
@@ -26,13 +29,22 @@ namespace Assets.Scripts.UI
         public void RestartGameUI()
         {
             _restartGameCanvas.enabled = true;
-            Time.timeScale = 0f;
+            _animationModel.PlayAnimation();
+
+            StartCoroutine(StopTime());
         }
         public void MainMenuScene()
         {
             SceneManager.LoadScene("MainMenu");
             _restartGameCanvas.enabled = !_restartGameButton.enabled;
             _loadingScene.enabled = true;
+        }
+
+        private IEnumerator StopTime()
+        {
+            yield return new WaitForSeconds(1f);
+
+            Time.timeScale = 0f;
         }
     }
 }
