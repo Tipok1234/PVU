@@ -50,7 +50,9 @@ namespace Assets.Scripts.Managers
             _gameUIController.Setup(_unitDataSo, _dataManager);
 
             _gameUIController.UpdateCurrency(_currentGunpowder,CurrencyType.GameCurrency);
+            OnCurrencyCollected(0f, CurrencyType.SoftCurrency);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
+
         }
 
         public void OnLevelCompleted()
@@ -58,6 +60,7 @@ namespace Assets.Scripts.Managers
             _dataManager.UpdateLevel();
             _animationModel.PlayAnimation();
             _levelComplete.ShowWindow();
+            OnCurrencyCollected(100f,CurrencyType.SoftCurrency);
         }
         private void OnUnitSold(DefenceUnitType unitType)
         {

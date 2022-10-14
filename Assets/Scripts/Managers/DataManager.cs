@@ -54,13 +54,8 @@ namespace Assets.Scripts.Managers
                 DontDestroyOnLoad(gameObject);
             }
 
-            //_calendarIndex = PlayerPrefs.GetInt(_calendarIndexKey, 0);
         }
 
-        //public void UpdateDateTime()
-        //{
-        //    _dateString = PlayerPrefs.GetString(_calendarRewardKey);
-        //}
         public void LoadData()
         {
             _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 2500);

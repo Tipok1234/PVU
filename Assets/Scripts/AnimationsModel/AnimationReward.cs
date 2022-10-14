@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
@@ -9,7 +7,6 @@ namespace Assets.Scripts.AnimationsModel
     {
         [SerializeField] private Transform _rewardModel;
         [SerializeField] private float _animationTime;
-
 
         private Sequence _animation;
         public override void PlayAnimation()

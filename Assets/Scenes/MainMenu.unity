@@ -3580,12 +3580,9 @@ MonoBehaviour:
   _rewardUIPrefab: {fileID: 936979920379656492, guid: 0548d132f44a0ca40b18dc67a9fa6bc0,
     type: 3}
   _spawnRewardPrefabUI: {fileID: 1789864026}
+  _timeText: {fileID: 1004070499}
   _rewardDailyCanvas: {fileID: 941922360}
   _rewardDailySOs: {fileID: 11400000, guid: 4de0b9fca3fa87a4e9cf27ea5a378355, type: 2}
-  _index: 1
-  _dataManager: {fileID: 0}
-  _rewardUIItems: []
-  _isReward: 0
 --- !u!1 &942730598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,7 +3769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -300, y: 85}
+  m_AnchoredPosition: {x: -300, y: 90}
   m_SizeDelta: {x: 250, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004070499
