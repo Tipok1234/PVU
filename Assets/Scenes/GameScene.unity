@@ -3616,6 +3616,7 @@ MonoBehaviour:
   _gameCurrencyText: {fileID: 1188777648}
   _softCurrencyText: {fileID: 112439929}
   _hardCurrencyText: {fileID: 112309262}
+  _skillRain: {fileID: 1916292688}
 --- !u!1 &1047507798
 GameObject:
   m_ObjectHideFlags: 0
@@ -3775,7 +3776,6 @@ MonoBehaviour:
   _gameUIController: {fileID: 990946825}
   _gameOver: {fileID: 1272634780}
   _gameOverWindow: {fileID: 55881374}
-  _skillRain: {fileID: 1916292688}
   _levelManager: {fileID: 1418450338}
   _levelComplete: {fileID: 297309855}
   _unitDataSo:

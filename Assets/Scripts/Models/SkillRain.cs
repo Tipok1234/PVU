@@ -1,4 +1,3 @@
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +10,7 @@ namespace Assets.Scripts.Models
 {
     public class SkillRain : MonoBehaviour
     {
-        public event Action<SkillType,float> SkillAction;
+        public event Action<SkillType, float> SkillSelectAction;
 
         [SerializeField] private Transform _skillPosition;
         [SerializeField] private Button _castSkillButton;
@@ -34,18 +33,16 @@ namespace Assets.Scripts.Models
         {
             _costSkill.text = _priceSkill.ToString();
         }
-        public void CastSkillOnClick()
+        private void CastSkillOnClick()
         {
-            StartCoroutine(SkillCoroutine());
+            SkillSelectAction?.Invoke(_skillType, _priceSkill);
         }
 
-        private IEnumerator SkillCoroutine()
+        public void UseSkill()
         {
-            yield return new WaitForSeconds(0.5f);
             RechargeTimeSkill();
-            SkillAction?.Invoke(_skillType, _priceSkill);
 
-            var rayCast = Physics.OverlapSphere(new Vector3(0,0,0), 14f, _enemyLayer);
+            var rayCast = Physics.OverlapSphere(new Vector3(0, 0, 0), 14f, _enemyLayer);
 
             for (int i = 0; i < rayCast.Length; i++)
             {
@@ -66,7 +63,7 @@ namespace Assets.Scripts.Models
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(new Vector3(0, 0, 0),14f);
+            Gizmos.DrawWireSphere(new Vector3(0, 0, 0), 14f);
         }
     }
 }

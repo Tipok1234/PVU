@@ -18,7 +18,6 @@ namespace Assets.Scripts.Managers
         [SerializeField] private GameUIController _gameUIController;
         [SerializeField] private GameOver _gameOver;
         [SerializeField] private GameOverWindow _gameOverWindow;
-        [SerializeField] private SkillRain _skillRain;
         [SerializeField] private LevelManager _levelManager;
         [SerializeField] private LevelComplete _levelComplete;
         [SerializeField] private UnitDataSo[] _unitDataSo;
@@ -35,7 +34,7 @@ namespace Assets.Scripts.Managers
             _gameUIController.UnitSelectedAction += OnUnitSelect;
             _gameOver.RestartGameAction += RestartGame;
             _enemyManager.LevelCompletedAction += OnLevelCompleted;
-            _skillRain.SkillAction += OnSkillAction;
+            _gameUIController.SkillSelectAction += OnSkillSelect;
         }
         private void Start()
         {
@@ -141,15 +140,19 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public void OnSkillAction(SkillType skillType,float price)
+        public void OnSkillSelect(SkillType skillType,float price)
         {
-            switch(skillType)
+            if (_dataManager.HardCurrency >= price)
             {
-                case SkillType.Rain:
-                    _gameUIController.UpdateCurrency(price, CurrencyType.HardCurrency);
-                    _dataManager.RemoveCurrency((int)price,CurrencyType.HardCurrency);
-                    Debug.LogError("CURRENCY: " + price);
-                    break;
+                switch (skillType)
+                {
+                    case SkillType.Rain:
+                        _gameUIController.UpdateCurrency(price, CurrencyType.HardCurrency);
+                        _dataManager.RemoveCurrency((int)price, CurrencyType.HardCurrency);
+                        Debug.LogError("CURRENCY: " + price);
+                        _gameUIController.UseSkill(skillType,price);
+                        break;
+                }
             }
         }
         private void RestartGame()

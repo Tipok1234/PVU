@@ -7,11 +7,13 @@ using Assets.Scripts.Managers;
 using Assets.Scripts.Enums;
 using UnityEngine.UI;
 using System;
+using Assets.Scripts.Models;
 
 namespace Assets.Scripts.Controller
 {
     public class GameUIController : MonoBehaviour
     {
+        public event Action<SkillType, float> SkillSelectAction;
         public event Action SellButtonAction;
 
         [SerializeField] private UnitGameUI _unitGameUIPrefab;
@@ -27,6 +29,8 @@ namespace Assets.Scripts.Controller
         [SerializeField] private TMP_Text _softCurrencyText;
         [SerializeField] private TMP_Text _hardCurrencyText;
 
+        [SerializeField] private SkillRain _skillRain;
+
         public event Action<DefenceUnitType> UnitSelectedAction;
 
         private List<UnitGameUI> _unitGameUIList = new List<UnitGameUI>();
@@ -36,6 +40,8 @@ namespace Assets.Scripts.Controller
             _sellButton.onClick.AddListener(SellButton);
             _optionButton.onClick.AddListener(OpenOptionCanvas);
             _exitOptionButton.onClick.AddListener(ExitOptionCanvas);
+
+            _skillRain.SkillSelectAction += OnSkillSelect;
         }
 
         public void OpenOptionCanvas()
@@ -56,13 +62,13 @@ namespace Assets.Scripts.Controller
 
             for (int i = 0; i < unitDataSo.Length; i++)
             {
-                if(dataManager.UnitHandItems.Contains(unitDataSo[i].DefencUnitType))
+                if (dataManager.UnitHandItems.Contains(unitDataSo[i].DefencUnitType))
                 {
                     UnitGameUI unitUI = Instantiate(_unitGameUIPrefab, _spawnParent);
                     unitUI.Setup(unitDataSo[i]);
                     unitUI.BuyUnitAction += OnBuyUnit;
                     _unitGameUIList.Add(unitUI);
-                  }
+                }
             }
         }
 
@@ -87,6 +93,11 @@ namespace Assets.Scripts.Controller
             UnitSelectedAction?.Invoke(unitType);
         }
 
+        private void OnSkillSelect(SkillType skillType, float price)
+        {
+            SkillSelectAction?.Invoke(skillType, price);
+        }
+
         public void RechargePlaceCooldown(DefenceUnitType unitType)
         {
             for (int i = 0; i < _unitGameUIList.Count; i++)
@@ -102,9 +113,14 @@ namespace Assets.Scripts.Controller
         {
             SellButtonAction?.Invoke();
         }
+
+        public void UseSkill(SkillType skillType, float price)
+        {
+            _skillRain.UseSkill();
+        }
         public void UpdateCurrency(float CurrencyAmount, CurrencyType currencyType)
         {
-            switch(currencyType)
+            switch (currencyType)
             {
                 case CurrencyType.GameCurrency:
                     _gameCurrencyText.text = CurrencyAmount.ToString();

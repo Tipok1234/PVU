@@ -5,14 +5,12 @@ using System;
 
 namespace Assets.Scripts.AnimationsModel
 {
-    [ExecuteInEditMode]
     public class AnimationUI : AnimationModel
     {
         private float _fadeTime = 1f;
 
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private RectTransform _rectTransform;
-
 
         private Sequence _sequence;
 
