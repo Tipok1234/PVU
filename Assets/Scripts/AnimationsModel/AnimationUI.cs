@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using System;
@@ -43,6 +42,11 @@ namespace Assets.Scripts.AnimationsModel
             _sequence.Append(_rectTransform.DOScale(Vector2.one, _fadeTime).SetEase(Ease.InOutQuint));
             _sequence.Join(_canvasGroup.DOFade(1, _fadeTime));
             _sequence.AppendCallback(() => { callback?.Invoke(); });
+        }
+
+        public override void OnDestroy()
+        {
+            _sequence?.Kill();
         }
     }
 }

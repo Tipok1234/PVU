@@ -1,6 +1,6 @@
 using UnityEngine;
-using Assets.Scripts.Enums;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Assets.Scripts.UI
 {
@@ -8,11 +8,22 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Image _unitImage;
 
-        private DefenceUnitType _defenceUnitType;
-        public void Setup(Sprite sprite, DefenceUnitType defenceUnitType)
+        private Sequence _sequence;
+        public void Setup(Sprite sprite)
         {
-            _defenceUnitType = defenceUnitType;
             _unitImage.sprite = sprite;
+        }
+
+        public void MoveAnimation(Transform newTransform)
+        {
+            _sequence = DOTween.Sequence();
+            _sequence.Append(transform.DOMove(newTransform.position, 0.7f));
+            _sequence.AppendCallback(()=>transform.SetParent(newTransform.transform));
+        }
+
+        private void OnDestroy()
+        {
+            _sequence?.Kill();
         }
     }
 }

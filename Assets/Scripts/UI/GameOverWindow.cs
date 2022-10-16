@@ -14,30 +14,31 @@ namespace Assets.Scripts.UI
         [SerializeField] private Button _mainMenuButton;
         [SerializeField] private AnimationModel _animationModel;
 
-        void Start()
+        private void Start()
         {
             Time.timeScale = 1f;
             _restartGameButton.onClick.AddListener(RestartGame);
             _mainMenuButton.onClick.AddListener(MainMenuScene);
         }
 
-        public void RestartGame()
+        private void RestartGame()
         {
             SceneManager.LoadScene("GameScene");
         }
 
         public void RestartGameUI()
         {
+            Debug.LogError("GAME OVER");
             _restartGameCanvas.enabled = true;
             _animationModel.PlayAnimation();
 
             StartCoroutine(StopTime());
         }
-        public void MainMenuScene()
+        private void MainMenuScene()
         {
-            SceneManager.LoadScene("MainMenu");
             _restartGameCanvas.enabled = !_restartGameButton.enabled;
             _loadingScene.enabled = true;
+            SceneManager.LoadScene("MainMenu");
         }
 
         private IEnumerator StopTime()

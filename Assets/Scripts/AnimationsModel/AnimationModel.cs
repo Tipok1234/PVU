@@ -24,5 +24,10 @@ namespace Assets.Scripts.AnimationsModel
         {
 
         }
+
+        public virtual void OnDestroy()
+        {
+            
+        }
     }
 }

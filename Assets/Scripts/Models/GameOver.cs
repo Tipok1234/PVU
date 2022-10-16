@@ -27,18 +27,16 @@ namespace Assets.Scripts.Models
 
             if (Physics.Raycast(ray, out RaycastHit hit, 10f, _enemyLayer))
             {
-                if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
-                {
-                    StartCoroutine(GameOverCoroutine());
-                    RestartGameAction?.Invoke();
-                    _isGameOver = true;
-                }
+                Debug.LogError("GAME OVER");
+                StartCoroutine(GameOverCoroutine());
+                _isGameOver = true;
             }
         }
 
         private IEnumerator GameOverCoroutine()
         {
             yield return new WaitForSeconds(2.0f);
+            RestartGameAction?.Invoke();
         }
     }
 }

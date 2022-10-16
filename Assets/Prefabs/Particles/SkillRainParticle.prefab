@@ -3816,7 +3816,7 @@ ParticleSystem:
     - {fileID: 0}
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 3554111474786944810}
@@ -4825,6 +4825,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2471960682647574073}
     m_Modifications:
+    - target: {fileID: 1377141245888852564, guid: 031946e78318d473a9817216c5a87afd,
+        type: 3}
+      propertyPath: stopAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2441998268904002269, guid: 031946e78318d473a9817216c5a87afd,
         type: 3}
       propertyPath: m_Materials.Array.size

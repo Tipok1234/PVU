@@ -29,7 +29,8 @@ namespace Assets.Scripts.Controller
         [SerializeField] private TMP_Text _softCurrencyText;
         [SerializeField] private TMP_Text _hardCurrencyText;
 
-        [SerializeField] private SkillRain _skillRain;
+        [SerializeField] private SkillGameUI _skillGameUI;
+        [SerializeField] private RainSkill _rainSkill;
 
         public event Action<DefenceUnitType> UnitSelectedAction;
 
@@ -41,7 +42,7 @@ namespace Assets.Scripts.Controller
             _optionButton.onClick.AddListener(OpenOptionCanvas);
             _exitOptionButton.onClick.AddListener(ExitOptionCanvas);
 
-            _skillRain.SkillSelectAction += OnSkillSelect;
+            _skillGameUI.SkillSelectAction += OnSkillSelect;
         }
 
         public void OpenOptionCanvas()
@@ -70,6 +71,11 @@ namespace Assets.Scripts.Controller
                     _unitGameUIList.Add(unitUI);
                 }
             }
+        }
+
+        public void UpdateHightLightSkillUI(float currency)
+        {
+            _skillGameUI.HightLightSkillUI(currency >= _skillGameUI.SkillDataSO.PriceSkill);
         }
 
         public void UpdateUnitGameUIItems(float gunPowder)
@@ -116,7 +122,7 @@ namespace Assets.Scripts.Controller
 
         public void UseSkill(SkillType skillType, float price)
         {
-            _skillRain.UseSkill();
+            _rainSkill.UseSkill();
         }
         public void UpdateCurrency(float CurrencyAmount, CurrencyType currencyType)
         {

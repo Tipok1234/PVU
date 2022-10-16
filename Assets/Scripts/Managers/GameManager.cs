@@ -51,6 +51,7 @@ namespace Assets.Scripts.Managers
             OnCurrencyCollected(0f, CurrencyType.SoftCurrency);
             OnCurrencyCollected(0f, CurrencyType.HardCurrency);
             _gameUIController.UpdateUnitGameUIItems(_currentGunpowder);
+            _gameUIController.UpdateHightLightSkillUI(_dataManager.HardCurrency);
 
         }
 
@@ -112,6 +113,8 @@ namespace Assets.Scripts.Managers
 
         public void OnUnitSelect(DefenceUnitType unitType)
         {
+            Debug.LogError("!!!!!");
+
             for (int i = 0; i < _unitDataSo.Length; i++)
             {
                 if (_unitDataSo[i].DefencUnitType == unitType)
@@ -142,17 +145,23 @@ namespace Assets.Scripts.Managers
 
         public void OnSkillSelect(SkillType skillType,float price)
         {
+
             if (_dataManager.HardCurrency >= price)
             {
+                _gameUIController.UpdateHightLightSkillUI(_dataManager.HardCurrency);
+
                 switch (skillType)
                 {
                     case SkillType.Rain:
                         _gameUIController.UpdateCurrency(price, CurrencyType.HardCurrency);
                         _dataManager.RemoveCurrency((int)price, CurrencyType.HardCurrency);
-                        Debug.LogError("CURRENCY: " + price);
                         _gameUIController.UseSkill(skillType,price);
                         break;
                 }
+            }
+            else
+            {
+                _gameUIController.UpdateHightLightSkillUI(_dataManager.HardCurrency);
             }
         }
         private void RestartGame()

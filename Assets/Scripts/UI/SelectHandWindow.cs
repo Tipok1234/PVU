@@ -63,7 +63,7 @@ namespace Assets.Scripts.UI
                     {
                         BGImage bgImage = Instantiate(_bgImage, hand.transform.position, Quaternion.identity, hand.transform);
 
-                        bgImage.Setup(unitDataSO[i].UnitSprite, unitDataSO[i].DefencUnitType);
+                        bgImage.Setup(unitDataSO[i].UnitSprite);
 
                         hand.SetBusy(true, unitDataSO[i].DefencUnitType, bgImage.transform);
                     }
@@ -146,19 +146,14 @@ namespace Assets.Scripts.UI
                     if (_handItems[i].IsBusy)
                         continue;
 
-
                     BGImage showUnit = Instantiate(_bgImage, showUnitUIItem.transform.position, Quaternion.identity, _spawnShowInit.parent.parent);
 
-                    showUnit.Setup(showUnitUIItem.UnitShowImage, showUnitUIItem.DefenceUnitType);
+                    showUnit.Setup(showUnitUIItem.UnitShowImage);
+                    showUnit.MoveAnimation(_handItems[i].transform);
 
                     _handItems[i].SetBusy(true, showUnitUIItem.DefenceUnitType, showUnit.transform);
 
                     AudioManager.Instance.PlaySoundGame(AudioSoundType.NoMoneySound);
-
-                    showUnit.transform.DOMove(_handItems[i].transform.position, 0.7f).OnComplete(() =>
-                    {
-                        showUnit.transform.SetParent(_handItems[i].transform);
-                    });
 
                     SaveHandItemAction?.Invoke(_handItems[i].DefenceUnitType);
 

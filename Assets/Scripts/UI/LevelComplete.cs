@@ -17,8 +17,8 @@ namespace Assets.Scripts.UI
         [SerializeField] private Canvas _loadingCanvas;
         [SerializeField] private TMP_Text _rewardLevelText;
         [SerializeField] private AnimationModel _animationModel;
-        [SerializeField] private RectTransform[] _softCurrencyTransoform;
-        [SerializeField] private RectTransform _targetTransform;
+        [SerializeField] private Image[] _softCurrencyTransoform;
+        [SerializeField] private Transform _targetTransform;
 
         private void Awake()
         {
@@ -28,19 +28,20 @@ namespace Assets.Scripts.UI
 
         public void ShowWindow()
         {
+            Debug.LogError("SHOW WINDOW");
             _rewardLevelText.text = LocalizationManager.Localize("GameMenu.LevelReward", 15);
             _nextGameCanvas.enabled = !_nextGameCanvas.enabled;
             _animationModel.PlayAnimation(AnimationCallback);
         }
-        public void NextLevelOnClick()
+        private void NextLevelOnClick()
         {
             SceneManager.LoadScene("GameScene");
         }
-        public void MainMenuOnClick()
+        private void MainMenuOnClick()
         {
-            SceneManager.LoadScene("MainMenu");
             _nextGameCanvas.enabled = !_nextGameCanvas.enabled;
             _loadingCanvas.enabled = true;
+            SceneManager.LoadScene("MainMenu");
         }
 
         private void AnimationCallback()
@@ -52,15 +53,11 @@ namespace Assets.Scripts.UI
         {
             for (int i = 0; i < _softCurrencyTransoform.Length; i++)
             {
-                _softCurrencyTransoform[i].gameObject.SetActive(true);
-                _softCurrencyTransoform[i].DOMove(_targetTransform.position, 0.3f).OnComplete(() => { CurrencyCallback(i); });
+                int index = i;
+                _softCurrencyTransoform[i].enabled = true;
+                _softCurrencyTransoform[i].transform.DOMove(_targetTransform.position, 0.3f).OnComplete(() => { _softCurrencyTransoform[index].enabled = false; });
                 yield return new WaitForSeconds(0.15f);
             }
-        }
-
-        private void CurrencyCallback(int index)
-        {
-            _softCurrencyTransoform[index].gameObject.SetActive(false);
         }
     }
 }

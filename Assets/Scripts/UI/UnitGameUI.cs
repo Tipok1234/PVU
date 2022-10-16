@@ -24,6 +24,7 @@ namespace Assets.Scripts.UI
 
         private DefenceUnitType _unitType;
 
+        private Sequence _sequence;
         private int _unitPrice = 0;
         private float _placeCooldown = 0;
         private void Awake()
@@ -50,9 +51,15 @@ namespace Assets.Scripts.UI
 
         public void RechargeTime()
         {
+            _sequence = DOTween.Sequence();
             _buyButton.enabled = false;
             _fillImage.fillAmount = 1;
-            _fillImage.DOFillAmount(0f, _placeCooldown).SetEase(Ease.Linear).OnComplete(()=> _buyButton.enabled = true);
+            _sequence.Append(_fillImage.DOFillAmount(0f, _placeCooldown).SetEase(Ease.Linear).OnComplete(() => _buyButton.enabled = true));
+        }
+
+        private void OnDestroy()
+        {
+            _sequence?.Kill();
         }
     }
 }
