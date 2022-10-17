@@ -29,8 +29,9 @@ namespace Assets.Scripts.Controller
         [SerializeField] private TMP_Text _softCurrencyText;
         [SerializeField] private TMP_Text _hardCurrencyText;
 
-        [SerializeField] private SkillGameUI _skillGameUI;
+        [SerializeField] private SkillGameUI[] _skillGameUI;
         [SerializeField] private RainSkill _rainSkill;
+        [SerializeField] private FrostSkill _frostSkill;
 
         public event Action<DefenceUnitType> UnitSelectedAction;
 
@@ -42,7 +43,10 @@ namespace Assets.Scripts.Controller
             _optionButton.onClick.AddListener(OpenOptionCanvas);
             _exitOptionButton.onClick.AddListener(ExitOptionCanvas);
 
-            _skillGameUI.SkillSelectAction += OnSkillSelect;
+            for (int i = 0; i < _skillGameUI.Length; i++)
+            {
+                _skillGameUI[i].SkillSelectAction += OnSkillSelect;
+            }
         }
 
         public void OpenOptionCanvas()
@@ -75,7 +79,10 @@ namespace Assets.Scripts.Controller
 
         public void UpdateHightLightSkillUI(float currency)
         {
-            _skillGameUI.HightLightSkillUI(currency >= _skillGameUI.SkillDataSO.PriceSkill);
+            for (int i = 0; i < _skillGameUI.Length; i++)
+            {
+                _skillGameUI[i].HightLightSkillUI(currency >= _skillGameUI[i].SkillDataSO.PriceSkill);
+            } 
         }
 
         public void UpdateUnitGameUIItems(float gunPowder)
@@ -122,7 +129,17 @@ namespace Assets.Scripts.Controller
 
         public void UseSkill(SkillType skillType, float price)
         {
-            _rainSkill.UseSkill();
+            switch(skillType)
+            {
+                case SkillType.Rain:
+                    _rainSkill.UseSkill();
+                    break;
+                case SkillType.Frost:
+                    _frostSkill.UseSkill();
+                    break;
+            }
+            //_rainSkill.UseSkill();
+            //_frostSkill.UseSkill();
         }
         public void UpdateCurrency(float CurrencyAmount, CurrencyType currencyType)
         {

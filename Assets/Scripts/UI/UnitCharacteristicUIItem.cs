@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI
 
         public void Setup(UnitCharacteristicData current, UnitCharacteristicData next)
         {
-            _typeText.text = LocalizationManager.Localize("Shop.Characteristic." + current.CharacteristicUnitType);
+            _typeText.text = LocalizationManager.Localize(LocalizationConst.Shop + "Characteristic." + current.CharacteristicUnitType);
 
             if (current.Value == next.Value)
             {

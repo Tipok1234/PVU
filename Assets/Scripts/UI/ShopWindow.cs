@@ -125,12 +125,12 @@ namespace Assets.Scripts.UI
                 unitUI.Setup(d1.UnitCharacteristicDatas[i], d2.UnitCharacteristicDatas[i]);
             }
 
-            _currentLevelText.text = LocalizationManager.Localize("Shop.Level", level +1);
+            _currentLevelText.text = LocalizationManager.Localize(LocalizationConst.Shop + "Level", level +1);
           //  _currentLevelText.text = (level + 1).ToString();
             _imageUnit.sprite = _selectedUnitUIItem.UnitSprite;
 
-            _unitName.text = LocalizationManager.Localize("DefenceUnits." + _selectedUnitUIItem.DefenceUnitType);
-            _descriptionUnitText.text = LocalizationManager.Localize("DefenceUnits.Description." + _selectedUnitUIItem.DefenceUnitType);
+            _unitName.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + _selectedUnitUIItem.DefenceUnitType);
+            _descriptionUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + "Description." + _selectedUnitUIItem.DefenceUnitType);
             //_unitName.text = _selectedUnitUIItem.DefenceUnitType.ToString();
         }
 
@@ -186,8 +186,8 @@ namespace Assets.Scripts.UI
         public override void OpenWindow()
         {
             //_currentLevelText.text = LocalizationManager.Localize("Shop.Level", level + 1);
-            _unitName.text = LocalizationManager.Localize("DefenceUnits." + _selectedUnitUIItem.DefenceUnitType);
-            _descriptionUnitText.text = LocalizationManager.Localize("DefenceUnits.Description." + _selectedUnitUIItem.DefenceUnitType);
+            _unitName.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + _selectedUnitUIItem.DefenceUnitType);
+            _descriptionUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + "Description." + _selectedUnitUIItem.DefenceUnitType);
             base.OpenWindow();
         }
 

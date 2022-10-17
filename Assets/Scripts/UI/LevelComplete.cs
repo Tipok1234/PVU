@@ -28,8 +28,7 @@ namespace Assets.Scripts.UI
 
         public void ShowWindow()
         {
-            Debug.LogError("SHOW WINDOW");
-            _rewardLevelText.text = LocalizationManager.Localize("GameMenu.LevelReward", 15);
+            _rewardLevelText.text = LocalizationManager.Localize(LocalizationConst.GameMenu + "LevelReward", 15);
             _nextGameCanvas.enabled = !_nextGameCanvas.enabled;
             _animationModel.PlayAnimation(AnimationCallback);
         }

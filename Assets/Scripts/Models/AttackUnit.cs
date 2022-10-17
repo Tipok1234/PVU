@@ -20,6 +20,7 @@ namespace Assets.Scripts.Models
         [SerializeField] private SkinnedMeshRenderer _renderer;
 
         private float _currentReloadTime = 0;
+        private float _speedUnit;
 
         private bool _isWalk = true;
         private bool _isAttack = true;
@@ -28,7 +29,10 @@ namespace Assets.Scripts.Models
         [SerializeField] private bool _isBuff;
 
         private DefenceUnit _target;
-
+        private void Start()
+        {
+            _speedUnit = _moveSpeed;
+        }
         private void FixedUpdate()
         {
             if (_isDead)
@@ -155,6 +159,23 @@ namespace Assets.Scripts.Models
                         break;
                     }
             }
+        }
+
+
+        public void TakeSkill()
+        {
+            var propBlock = new MaterialPropertyBlock();
+            _renderer.GetPropertyBlock(propBlock);
+            propBlock.SetColor("_Color", Color.blue);
+            _renderer.SetPropertyBlock(propBlock);
+            _moveSpeed = 0f;
+        }
+
+        public void ReturnToUnit()
+        {
+            ResetBuffUnit();
+            Debug.LogError("SPEED: " + _speedUnit);
+            _moveSpeed = _speedUnit;
         }
 
         private void ResetBuffUnit()

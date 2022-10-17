@@ -39,7 +39,7 @@ namespace Assets.Scripts.UI
             _currentCurrency = currentCurrency;
             _currentDayCurrency.text = currentCurrency.ToString();
             _dayIndex = dayIndex;
-            _dayText.text = LocalizationManager.Localize("Calendar.Day", _dayIndex);
+            _dayText.text = LocalizationManager.Localize(LocalizationConst.Calendar + "Day", _dayIndex);
         }
 
         public void OpenReward()
@@ -73,7 +73,7 @@ namespace Assets.Scripts.UI
         }
         private void OnLanguageChanged()
         {
-            _dayText.text = LocalizationManager.Localize("Calendar.Day", _dayIndex);
+            _dayText.text = LocalizationManager.Localize(LocalizationConst.Calendar + "Day", _dayIndex);
         }
     }
 }

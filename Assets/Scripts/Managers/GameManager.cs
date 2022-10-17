@@ -145,6 +145,7 @@ namespace Assets.Scripts.Managers
 
         public void OnSkillSelect(SkillType skillType,float price)
         {
+            Debug.LogError("SKILL FROST");
 
             if (_dataManager.HardCurrency >= price)
             {
@@ -156,6 +157,11 @@ namespace Assets.Scripts.Managers
                         _gameUIController.UpdateCurrency(price, CurrencyType.HardCurrency);
                         _dataManager.RemoveCurrency((int)price, CurrencyType.HardCurrency);
                         _gameUIController.UseSkill(skillType,price);
+                        break;
+                    case SkillType.Frost:
+                        _gameUIController.UpdateCurrency(price, CurrencyType.HardCurrency);
+                        _dataManager.RemoveCurrency((int)price, CurrencyType.HardCurrency);
+                        _gameUIController.UseSkill(skillType, price);
                         break;
                 }
             }

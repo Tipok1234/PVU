@@ -1,6 +1,7 @@
 using UnityEngine;
 using Assets.Scripts.DataSo;
 using Assets.SimpleLocalization;
+using Assets.Scripts.UI;
 using TMPro;
 
 namespace Assets.Scripts.Managers
@@ -14,8 +15,6 @@ namespace Assets.Scripts.Managers
         [SerializeField] private TMP_Text _levelText;
         public LevelDataSO GetLevelByIndex(int index)
         {
-            Debug.LogError("LEVEL: " + index);
-
             if (index >= _levels.Length)
             {
                 Debug.LogError("Wrong Level Index");
@@ -29,7 +28,7 @@ namespace Assets.Scripts.Managers
         {
             indexLevel++;
 
-            _levelText.text = LocalizationManager.Localize("GameMenu.Level", indexLevel);
+            _levelText.text = LocalizationManager.Localize(LocalizationConst.GameMenu + "Level", indexLevel);
            // _levelText.text = "Level " + indexLevel.ToString();
         }
     }

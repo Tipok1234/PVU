@@ -82,7 +82,7 @@ namespace Assets.Scripts.UI
 
                 _showUnitUIItems.Add(showUnit);
 
-                _nameUnitText.text = LocalizationManager.Localize("DefenceUnits." + unitDataSO[1].DefencUnitType);
+                _nameUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + unitDataSO[1].DefencUnitType);
                 //_nameUnitText.text = unitDataSO[1].DefencUnitType.ToString();
                 _mainImage.sprite = unitDataSO[1].UnitSprite;
 
@@ -127,7 +127,7 @@ namespace Assets.Scripts.UI
 
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {
-            _nameUnitText.text = LocalizationManager.Localize("DefenceUnits." + showUnitUIItem.DefenceUnitType);
+            _nameUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + showUnitUIItem.DefenceUnitType);
             //_nameUnitText.text = showUnitUIItem.DefenceUnitType.ToString();
             _mainImage.sprite = showUnitUIItem.UnitShowImage;
 
