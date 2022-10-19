@@ -70,7 +70,7 @@ namespace Assets.Scripts.Managers
                     enemyUnits.Add(Instantiate(_attackEnemyUnits[i], _enemyParent));
                 }
 
-                _enemyUnitsDictionary.Add(_attackEnemyUnits[i].AttackUnitType, enemyUnits);
+                _enemyUnitsDictionary.Add(_attackEnemyUnits[i].AttackUnitSO.AttackUnitType, enemyUnits);
             }
 
             for (int i = 0; i < _bullets.Count; i++)
@@ -154,7 +154,7 @@ namespace Assets.Scripts.Managers
 
                 for (int i = 0; i < _attackEnemyUnits.Count; i++)
                 {
-                    if (_attackEnemyUnits[i].AttackUnitType == attackUnitType)
+                    if (_attackEnemyUnits[i].AttackUnitSO.AttackUnitType == attackUnitType)
                     {
                         attackUnits[i].transform.position = attackUnit.position;
                         attackUnits[i].gameObject.SetActive(true);
@@ -182,11 +182,10 @@ namespace Assets.Scripts.Managers
 
                 for (int i = 0; i < _bullets.Count; i++)
                 {
-                    if (bullets[i].BulletType == bulletType)
+                    if (_bullets[i].BulletType == bulletType)
                     {
-                        bullets[i].transform.position = bulletSpawn.position;
-                        bullets[i].gameObject.SetActive(true);
                         bullets.Add(Instantiate(_bullets[i], _bulletParent));
+                        bullets[i].gameObject.SetActive(true);
                         return bullets[bullets.Count - 1];
                     }
                 }
@@ -194,7 +193,7 @@ namespace Assets.Scripts.Managers
             return null;
         }
 
-        public DefenceUnit GetDefenceUnitsByType(DefenceUnitType defenceUnitType, Transform defenceTransform)
+        public DefenceUnit GetDefenceUnitsByType(DefenceUnitType defenceUnitType)
         {
             if (_defenceUnitsDictionary.TryGetValue(defenceUnitType, out var defenceUnits))
             {
@@ -208,14 +207,16 @@ namespace Assets.Scripts.Managers
                     }
                 }
 
-                for (int i = 0; i < defenceUnits.Count; i++)
+                for (int i = 0; i < _defenceUnits.Count; i++)
                 {
-                    if (defenceUnits[i].DefencUnitType == defenceUnitType)
+                    if (_defenceUnits[i].DefencUnitType == defenceUnitType)
                     {
-                        defenceUnits[i].transform.position = _defenceUnitParent.position;
-                        defenceUnits[i].gameObject.SetActive(true);
                         defenceUnits.Add(Instantiate(_defenceUnits[i], _defenceUnitParent));
-                        return defenceUnits[defenceUnits.Count - 1];
+                        var defUnit = defenceUnits[defenceUnits.Count - 1];
+                        defUnit.transform.position = _defenceUnitParent.position;
+                        defUnit.gameObject.SetActive(true);
+
+                        return defUnit;
                     }
                 }
             }

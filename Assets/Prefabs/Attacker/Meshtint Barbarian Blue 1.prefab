@@ -1257,6 +1257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 50
   _colliderUnit: {fileID: 8714114488558234744}
+  _attackUnitSO: {fileID: 11400000, guid: a08db6f4113dff244bd675001b9f095f, type: 2}
   _attackUnitType: 0
   _selfTransform: {fileID: 4730071277584034}
   _moveSpeed: 0.5
@@ -1267,7 +1268,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _renderer: {fileID: 137742343076037192}
-  _isBuff: 0
+  _isImmunity: 0
 --- !u!136 &8714114488558234744
 CapsuleCollider:
   m_ObjectHideFlags: 0

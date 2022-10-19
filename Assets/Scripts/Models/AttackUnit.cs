@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Enums;
+using Assets.Scripts.DataSo;
 using System;
 
 namespace Assets.Scripts.Models
@@ -8,13 +9,12 @@ namespace Assets.Scripts.Models
     public class AttackUnit : BaseUnit
     {
         new public event Action<AttackUnit> UnitDeadAction;
-        public AttackUnitType AttackUnitType => _attackUnitType;
+        public AttackUnitSO AttackUnitSO => _attackUnitSO;
+
+        [SerializeField] private AttackUnitSO _attackUnitSO;
 
         [SerializeField] private AttackUnitType _attackUnitType;
         [SerializeField] private Transform _selfTransform;
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _reloadTime;
-        [SerializeField] private float _damage;
         [SerializeField] private Animator _animator;
         [SerializeField] private LayerMask _allyLayer;
         [SerializeField] private SkinnedMeshRenderer _renderer;
@@ -26,12 +26,15 @@ namespace Assets.Scripts.Models
         private bool _isAttack = true;
         private bool _isTarget = true;
         private bool _isStop = false;
-        [SerializeField] private bool _isBuff;
+
+        [SerializeField] private bool _isImmunity;
 
         private DefenceUnit _target;
         private void Start()
         {
-            _speedUnit = _moveSpeed;
+            _speedUnit = _attackUnitSO.MoveSpeed;
+            Debug.LogError(_speedUnit);
+            _currentHP = _attackUnitSO.HP;
         }
         private void FixedUpdate()
         {
@@ -46,7 +49,7 @@ namespace Assets.Scripts.Models
             {
                 //AttackerUnit();
 
-                if (_currentReloadTime >= _reloadTime && hit.transform.TryGetComponent<DefenceUnit>(out DefenceUnit ally))
+                if (_currentReloadTime >= _attackUnitSO.ReloadTimeAttack && hit.transform.TryGetComponent<DefenceUnit>(out DefenceUnit ally))
                 {
                     _target = ally;
                     AttackerUnit();
@@ -62,7 +65,7 @@ namespace Assets.Scripts.Models
         }
         public void WalkUnit()
         {
-            _selfTransform.transform.position += Vector3.right * (-1f) * _moveSpeed * Time.deltaTime;
+            _selfTransform.transform.position += Vector3.right * (-1f) * _speedUnit * Time.deltaTime;
             _animator.SetBool("Walk", true);
             _animator.SetBool("Attack", false);
         }
@@ -76,7 +79,7 @@ namespace Assets.Scripts.Models
         {
             if(_target != null)
             {
-                _target.TakeDamage(_damage);
+                _target.TakeDamage(_attackUnitSO.Damage);
             }
         }
 
@@ -136,7 +139,7 @@ namespace Assets.Scripts.Models
 
         public void BuffUnit(DebuffType debuffType)
         {
-            if (_isBuff)
+            if (_isImmunity)
                 return;
 
             switch (debuffType)
@@ -147,7 +150,7 @@ namespace Assets.Scripts.Models
                         _renderer.GetPropertyBlock(propBlock);
                         propBlock.SetColor("_Color", Color.blue);
                         _renderer.SetPropertyBlock(propBlock);
-                        _moveSpeed = 0.4f;
+                        _speedUnit = 0.4f;
                         break;
                     }
                 case DebuffType.Poison_Debuff:
@@ -168,14 +171,13 @@ namespace Assets.Scripts.Models
             _renderer.GetPropertyBlock(propBlock);
             propBlock.SetColor("_Color", Color.blue);
             _renderer.SetPropertyBlock(propBlock);
-            _moveSpeed = 0f;
+            _speedUnit = 0f;
         }
 
         public void ReturnToUnit()
         {
             ResetBuffUnit();
-            Debug.LogError("SPEED: " + _speedUnit);
-            _moveSpeed = _speedUnit;
+            _speedUnit = _attackUnitSO.MoveSpeed;
         }
 
         private void ResetBuffUnit()

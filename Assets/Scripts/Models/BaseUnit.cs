@@ -9,11 +9,10 @@ namespace Assets.Scripts.Models
         public event Action<BaseUnit> UnitDeadAction;
         public float CurrentHP => _currentHP;
         public bool IsDead => _isDead;
-        public Collider ColliderUnit => _colliderUnit;
 
-        [SerializeField] protected float _hp;
         [SerializeField] protected Collider _colliderUnit;
 
+        protected float _hp;
         protected float _currentHP;
 
         protected bool _isDead = false;

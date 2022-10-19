@@ -506,17 +506,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 50
   _colliderUnit: {fileID: 7656252503877831175}
+  _attackUnitSO: {fileID: 11400000, guid: f9d243ff5e86f8e478292624e4a0abe6, type: 2}
   _attackUnitType: 2
   _selfTransform: {fileID: 4400326549755546}
   _moveSpeed: 0.5
-  _reloadTime: 3.4
-  _damage: 10
   _animator: {fileID: 95804848747135216}
   _allyLayer:
     serializedVersion: 2
     m_Bits: 256
   _renderer: {fileID: 137081196724618660}
-  _isBuff: 0
+  _isImmunity: 0
 --- !u!136 &7656252503877831175
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -113,7 +113,6 @@ namespace Assets.Scripts.Managers
 
         public void OnUnitSelect(DefenceUnitType unitType)
         {
-            Debug.LogError("!!!!!");
 
             for (int i = 0; i < _unitDataSo.Length; i++)
             {
@@ -121,7 +120,7 @@ namespace Assets.Scripts.Managers
                 {
                     if (_currentGunpowder >= _unitDataSo[i].GetCharacteristicData(CharacteristicUnitType.Price))
                     {
-                        var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType, gameObject.transform);
+                        var unit = PoolManager.Instance.GetDefenceUnitsByType(unitType);
                         _grid.StartPlaceUnit(unit);
                         break;
                     }

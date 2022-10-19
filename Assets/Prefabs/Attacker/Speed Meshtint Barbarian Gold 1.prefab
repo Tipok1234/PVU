@@ -1415,16 +1415,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 30
   _colliderUnit: {fileID: 3208904601820001377}
+  _attackUnitSO: {fileID: 11400000, guid: 736f75b572a7e9d449de0891c69d3cd2, type: 2}
   _attackUnitType: 1
   _selfTransform: {fileID: 4749245984341470}
   _moveSpeed: 1.4
-  _reloadTime: 3.4
-  _damage: 30
   _animator: {fileID: 95785311282749608}
   _allyLayer:
     serializedVersion: 2
     m_Bits: 256
   _renderer: {fileID: 137711014044923380}
+  _isImmunity: 0
 --- !u!136 &3208904601820001377
 CapsuleCollider:
   m_ObjectHideFlags: 0
