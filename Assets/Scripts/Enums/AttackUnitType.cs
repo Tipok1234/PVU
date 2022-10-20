@@ -5,6 +5,7 @@ namespace Assets.Scripts.Enums
         Default_Unit,
         Fast_Unit,
         Armour_Unit,
-        ArmourOne_Unit
+        ArmourOne_Unit,
+        Aura_Unit
     }
 }

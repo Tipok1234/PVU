@@ -1387,18 +1387,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8773e3b64870f8419f1f4ddefa98cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 20
   _colliderUnit: {fileID: 2269211001847743166}
   _attackUnitSO: {fileID: 11400000, guid: 4c732d690d1b1b14790cd2a15e0a82a4, type: 2}
-  _attackUnitType: 3
   _selfTransform: {fileID: 491852}
-  _moveSpeed: 0.7
   _animator: {fileID: 9551244}
   _allyLayer:
     serializedVersion: 2
     m_Bits: 256
   _renderer: {fileID: 13720014}
+  _auraValue: 0.2
   _isImmunity: 0
+  _isAuraImmunity: 0
 --- !u!1 &158312
 GameObject:
   m_ObjectHideFlags: 0

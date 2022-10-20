@@ -10,17 +10,16 @@ namespace Assets.Scripts.Models
     {
         new public event Action<AttackUnit> UnitDeadAction;
         public AttackUnitSO AttackUnitSO => _attackUnitSO;
+        public bool IsAuraImmunity => _isAuraImmunity;
 
-        [SerializeField] private AttackUnitSO _attackUnitSO;
-
-        [SerializeField] private AttackUnitType _attackUnitType;
-        [SerializeField] private Transform _selfTransform;
+        [SerializeField] protected AttackUnitSO _attackUnitSO;
+        [SerializeField] protected Transform _selfTransform;
         [SerializeField] private Animator _animator;
         [SerializeField] private LayerMask _allyLayer;
         [SerializeField] private SkinnedMeshRenderer _renderer;
-
+        [SerializeField] private float _auraValue;
         private float _currentReloadTime = 0;
-        private float _speedUnit;
+        protected float _speedUnit;
 
         private bool _isWalk = true;
         private bool _isAttack = true;
@@ -28,15 +27,20 @@ namespace Assets.Scripts.Models
         private bool _isStop = false;
 
         [SerializeField] private bool _isImmunity;
+        [SerializeField] protected bool _isAuraImmunity;
 
         private DefenceUnit _target;
         private void Start()
         {
             _speedUnit = _attackUnitSO.MoveSpeed;
-            Debug.LogError(_speedUnit);
             _currentHP = _attackUnitSO.HP;
         }
-        private void FixedUpdate()
+        protected virtual void FixedUpdate()
+        {
+            MoveUnit();
+        }
+
+        protected virtual void MoveUnit()
         {
             if (_isDead)
                 return;
@@ -60,9 +64,9 @@ namespace Assets.Scripts.Models
             {
                 WalkUnit();
             }
-
             _currentReloadTime += Time.deltaTime;
         }
+
         public void WalkUnit()
         {
             _selfTransform.transform.position += Vector3.right * (-1f) * _speedUnit * Time.deltaTime;
@@ -188,6 +192,16 @@ namespace Assets.Scripts.Models
             propBlock.SetColor("_Color", Color.white);
 
             _renderer.SetPropertyBlock(propBlock);
+        }
+
+        public void AuraSpeed()
+        {
+            _speedUnit = 1; //_speedUnit * _auraValue + _speedUnit;
+        }
+
+        public virtual void RetrunSpeedUnit()
+        {
+            _speedUnit = _attackUnitSO.MoveSpeed;
         }
     }
 }

@@ -351,8 +351,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4221654534789252}
   - component: {fileID: 95833583461909682}
-  - component: {fileID: -6875736990001651829}
   - component: {fileID: 6531450229519688334}
+  - component: {fileID: -8574364232690917975}
   m_Layer: 7
   m_Name: Meshtint Barbarian Green 1
   m_TagString: Untagged
@@ -398,31 +398,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-6875736990001651829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423762985213010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8773e3b64870f8419f1f4ddefa98cc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hp: 50
-  _colliderUnit: {fileID: 6531450229519688334}
-  _attackUnitType: 1
-  _selfTransform: {fileID: 4221654534789252}
-  _moveSpeed: 0.5
-  _reloadTime: 3.4
-  _damage: 10
-  _animator: {fileID: 95833583461909682}
-  _allyLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  _renderer: {fileID: 137552248658659406}
-  _myMaterial: {fileID: 2100000, guid: 7771a6548ef6fe44b8f8fd058d8609e9, type: 2}
 --- !u!136 &6531450229519688334
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -437,6 +412,32 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-8574364232690917975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423762985213010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f17ca2a3acab540a8697e5ae80fdad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderUnit: {fileID: 6531450229519688334}
+  _attackUnitSO: {fileID: 11400000, guid: 9e1fb41793def8b4181bfc1b6d627a61, type: 2}
+  _selfTransform: {fileID: 4221654534789252}
+  _animator: {fileID: 95833583461909682}
+  _allyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _renderer: {fileID: 137552248658659406}
+  _auraValue: 0.2
+  _isImmunity: 0
+  _isAuraImmunity: 1
+  _auraLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1445803591102028
 GameObject:
   m_ObjectHideFlags: 0
