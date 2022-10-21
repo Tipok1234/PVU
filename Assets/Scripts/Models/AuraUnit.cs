@@ -11,13 +11,12 @@ namespace Assets.Scripts.Models
 
         private Collider[] _allyUnitsCollider;
         private List<AttackUnit> _affectedUnits = new List<AttackUnit>();
+
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
 
             _allyUnitsCollider = Physics.OverlapSphere(_selfTransform.position, 2f, _auraLayer);
-
-
 
             for (int i = 0; i < _allyUnitsCollider.Length; i++)
             {
@@ -31,22 +30,22 @@ namespace Assets.Scripts.Models
                 }
             }
 
-            if (_affectedUnits.Count > 0 && _allyUnitsCollider.Length != _affectedUnits.Count)
+            if (_affectedUnits.Count > 0 && _allyUnitsCollider.Length-1 != _affectedUnits.Count)
             {
-                for (int i = 0; i < _allyUnitsCollider.Length; i++)
+                Debug.LogError("fkahfjklahfjklsah");
+
+                for (int i = 0; i < _affectedUnits.Count; i++)
                 {
-                    if (_allyUnitsCollider[i].TryGetComponent<AttackUnit>(out AttackUnit e))
+                    if (_allyUnitsCollider[i].transform.TryGetComponent<AttackUnit>(out AttackUnit e))
                     {
-                        Debug.LogError("!!!!!!" + e.name);
-
-                        if (_affectedUnits.Contains(e))
-                            continue;
-
-                        Debug.LogError(e.name);
-                        e.RetrunSpeedUnit();
-                        _affectedUnits.Remove(e);
-
+                        if (_affectedUnits.Contains(e) == false)
+                        {
+                            _affectedUnits[i].RetrunSpeedUnit();
+                            _affectedUnits.RemoveAt(i);
+                            i = 0;
+                        }
                     }
+
                 }
             }
         }
