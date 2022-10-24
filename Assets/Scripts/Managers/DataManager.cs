@@ -108,6 +108,7 @@ namespace Assets.Scripts.Managers
         public void UpdateLevel()
         {
             _levelIndex++;
+            Debug.LogError(_levelIndex + " COUUUUUNTTTT");
             PlayerPrefs.SetInt(_levelKey, _levelIndex);
         }
 

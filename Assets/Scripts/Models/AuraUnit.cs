@@ -8,6 +8,7 @@ namespace Assets.Scripts.Models
     public class AuraUnit : AttackUnit
     {
         [SerializeField] private LayerMask _auraLayer;
+        [SerializeField] private float _auraValue;
 
         private Collider[] _allyUnitsCollider;
         private List<AttackUnit> _affectedUnits = new List<AttackUnit>();
@@ -26,14 +27,12 @@ namespace Assets.Scripts.Models
                         continue;
 
                     _affectedUnits.Add(e);
-                    e.AuraSpeed();
+                    e.AuraSpeed(_auraValue);
                 }
             }
 
             if (_affectedUnits.Count > 0 && _allyUnitsCollider.Length-1 != _affectedUnits.Count)
             {
-                Debug.LogError("fkahfjklahfjklsah");
-
                 for (int i = 0; i < _affectedUnits.Count; i++)
                 {
                     if (_allyUnitsCollider[i].transform.TryGetComponent<AttackUnit>(out AttackUnit e))

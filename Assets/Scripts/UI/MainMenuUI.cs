@@ -77,17 +77,28 @@ namespace Assets.Scripts.UI
             }
             else
             {
-                SceneManager.LoadScene("GameScene");
-                _mainCanvas.enabled = !_mainCanvas.enabled;
-                _loadingScene.enabled = true;
+                OpenMapWindow();
+                //SceneManager.LoadScene("GameScene");
+                //_mainCanvas.enabled = !_mainCanvas.enabled;
+                //_loadingScene.enabled = true;
             }
         }
 
+        public void FightGame()
+        {
+            SceneManager.LoadScene("GameScene");
+            _mainCanvas.enabled = !_mainCanvas.enabled;
+            _loadingScene.enabled = true;
+        }
         private void OpenShopWindow()
         {
             OpenWindowByType(WindowType.Shop);
         }
 
+        private void OpenMapWindow()
+        {
+            OpenWindowByType(WindowType.Map);
+        }
         private void OpenHandWindow()
         {
             OpenWindowByType(WindowType.Hand);
@@ -98,7 +109,7 @@ namespace Assets.Scripts.UI
             OpenWindowByType(WindowType.Options);
         }
 
-        private void OpenWindowByType(WindowType windowType)
+        public void OpenWindowByType(WindowType windowType)
         {
             if (_baseWindowsDict.TryGetValue(windowType, out var window))
             {

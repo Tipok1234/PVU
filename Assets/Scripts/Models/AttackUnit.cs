@@ -17,7 +17,6 @@ namespace Assets.Scripts.Models
         [SerializeField] private Animator _animator;
         [SerializeField] private LayerMask _allyLayer;
         [SerializeField] private SkinnedMeshRenderer _renderer;
-        [SerializeField] private float _auraValue;
         private float _currentReloadTime = 0;
         protected float _speedUnit;
 
@@ -194,9 +193,9 @@ namespace Assets.Scripts.Models
             _renderer.SetPropertyBlock(propBlock);
         }
 
-        public void AuraSpeed()
+        public void AuraSpeed(float auraValue)
         {
-            _speedUnit = 1; //_speedUnit * _auraValue + _speedUnit;
+            _speedUnit = _speedUnit * auraValue + _speedUnit;
         }
 
         public virtual void RetrunSpeedUnit()

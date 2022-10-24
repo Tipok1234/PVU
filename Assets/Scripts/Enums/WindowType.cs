@@ -6,6 +6,7 @@ namespace Assets.Scripts.Enums
         Shop,
         Hand,
         Calendar,
-        Skill
+        Skill,
+        Map
     }
 }

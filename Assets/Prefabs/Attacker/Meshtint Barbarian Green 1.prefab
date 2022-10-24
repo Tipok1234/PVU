@@ -432,12 +432,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _renderer: {fileID: 137552248658659406}
-  _auraValue: 0.2
   _isImmunity: 0
   _isAuraImmunity: 1
   _auraLayer:
     serializedVersion: 2
     m_Bits: 128
+  _auraValue: 0.5
 --- !u!1 &1445803591102028
 GameObject:
   m_ObjectHideFlags: 0

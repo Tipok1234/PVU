@@ -50,14 +50,12 @@ namespace Assets.Scripts.UI
                     _musicToggle.isOn = true;
                     AudioManager.Instance.TurnOnMainMusic();
                     _musicText.text = LocalizationManager.Localize(LocalizationConst.Options + "On");
-                    //_musicText.text = "ON";
                 }
                 else
                 {
                     _musicToggle.isOn = false;
                     AudioManager.Instance.TurnOffMainMusic();
                     _musicText.text = LocalizationManager.Localize(LocalizationConst.Options + "Off");
-                    // _musicText.text = "OFF";
                 }
             }
 
@@ -86,14 +84,12 @@ namespace Assets.Scripts.UI
                     _soundToggle.isOn = true;
                     AudioManager.Instance.TurnOnAllSound();
                     _soundText.text = LocalizationManager.Localize(LocalizationConst.Options + "On");
-                    //_soundText.text = "ON";
                 }
                 else
                 {
                     _soundToggle.isOn = false;
                     AudioManager.Instance.TurnOffAllSound();
                     _soundText.text = LocalizationManager.Localize(LocalizationConst.Options + "Off"); 
-                    //_soundText.text = "OFF";
                 }
             }
         }
@@ -130,14 +126,12 @@ namespace Assets.Scripts.UI
                 _musicText.text = LocalizationManager.Localize(LocalizationConst.Options + "On");
                 AudioManager.Instance.TurnOnMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 1);
-                // _musicText.text = "ON";
             }
             else
             {
                 _musicText.text = LocalizationManager.Localize(LocalizationConst.Options + "Off");
                 AudioManager.Instance.TurnOffMainMusic();
                 PlayerPrefs.SetInt(_musicToggleKey, 0);
-                //   _musicText.text = "OFF";
             }
             PlayerPrefs.Save();
         }
@@ -153,11 +147,9 @@ namespace Assets.Scripts.UI
                 AudioManager.Instance.TurnOnAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 1);
                 _soundText.text = LocalizationManager.Localize(LocalizationConst.Options + "On");
-                // _soundText.text = "ON";
             }
             else
             {
-                // _soundText.text = "OFF";
                 _soundText.text = LocalizationManager.Localize(LocalizationConst.Options + "Off");
                 AudioManager.Instance.TurnOffAllSound();
                 PlayerPrefs.SetInt(_soundToggleKey, 0);
