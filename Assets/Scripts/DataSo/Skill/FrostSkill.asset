@@ -16,5 +16,5 @@ MonoBehaviour:
   _skillType: 1
   _particleType: 7
   _damageSkill: 0
-  _cooldownSkill: 5
+  _cooldownSkill: 60
   _priceSkill: 100

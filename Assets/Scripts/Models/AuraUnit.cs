@@ -15,6 +15,10 @@ namespace Assets.Scripts.Models
 
         protected override void FixedUpdate()
         {
+            if (_isDead)
+                return;
+
+
             base.FixedUpdate();
 
             _allyUnitsCollider = Physics.OverlapSphere(_selfTransform.position, 2f, _auraLayer);

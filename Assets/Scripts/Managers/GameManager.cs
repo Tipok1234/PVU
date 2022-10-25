@@ -102,7 +102,6 @@ namespace Assets.Scripts.Managers
             switch(currencyType)
             {
                 case CurrencyType.HardCurrency:
-                    _currentGunpowder += currencyAmount;
                     _gameUIController.UpdateCurrency(currencyAmount, currencyType);
                     break;
                 case CurrencyType.SoftCurrency:
@@ -144,8 +143,6 @@ namespace Assets.Scripts.Managers
 
         public void OnSkillSelect(SkillType skillType,float price)
         {
-            Debug.LogError("SKILL FROST");
-
             if (_dataManager.HardCurrency >= price)
             {
                 _gameUIController.UpdateHightLightSkillUI(_dataManager.HardCurrency);
