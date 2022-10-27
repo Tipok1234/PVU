@@ -11,7 +11,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private ShopWindow _shopWindow;
         [SerializeField] private UnitDataSo[] _unitDataSO;
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
-        [SerializeField] private ShopUnitUIItem _shopUnitUIItemPrefab;
 
         private DataManager _dataManager;
 
@@ -37,6 +36,7 @@ namespace Assets.Scripts.UI
             }
 
             _shopWindow.BuyUnitAction += OnBuyUnit;
+
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
             _shopWindow.SelectUnitAction += OnSelectedAction;
 

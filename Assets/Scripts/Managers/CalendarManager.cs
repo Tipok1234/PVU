@@ -38,7 +38,7 @@ namespace Assets.Scripts.Managers
             {
                 RewardUI rewardUI = Instantiate(_rewardUIPrefab, _spawnRewardPrefabUI);
 
-                rewardUI.Setup(_rewardDailySOs.RewardDailies[i].CurrenctCurrencyDaily, i);
+                rewardUI.Setup(_rewardDailySOs.RewardDailies[i].CurrenctCurrencyDaily, i+1);
 
                 rewardUI.CollectRewardAction += OnCollectReward;
 

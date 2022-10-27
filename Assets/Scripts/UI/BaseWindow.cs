@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using Assets.Scripts.Managers;
 using Assets.Scripts.Enums;
+using Assets.Scripts.DataSo;
 
 namespace Assets.Scripts.UI
 {

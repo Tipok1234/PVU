@@ -28,7 +28,7 @@ namespace Assets.Scripts.UI
 
         [SerializeField] private Button _fightButton;
         [SerializeField] private PopUp _popUpCanvas;
-        [SerializeField] private MapController _mapWindow;
+        [SerializeField] private MapWindow _mapWindow;
         [SerializeField] private HandItem _handItem;
         [SerializeField] private ShowUnitUIItem _showUnitUIItem;
         [SerializeField] private BGImage _bgImage;

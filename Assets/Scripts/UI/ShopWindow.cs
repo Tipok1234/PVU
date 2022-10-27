@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Assets.SimpleLocalization;
+using Assets.Scripts.Config;
 
 namespace Assets.Scripts.UI
 {
@@ -31,8 +32,9 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _currentLevelText;
         [SerializeField] private TMP_Text _descriptionUnitText;
 
-        [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
+        [SerializeField] private Config.Config _config;
 
+        [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
 
@@ -43,10 +45,11 @@ namespace Assets.Scripts.UI
             _buyButton.onClick.AddListener(BuyUnitGame);
             _upgradeButton.onClick.AddListener(UpgradeUnitButton);
             _closeWindowButton.onClick.AddListener(CloseWindow);
-        }     
+        }
 
         public void Setup(UnitDataSo[] unitDataSo)
         {
+            Debug.LogError("OPEN SHOP WINDOW");
 
             for (int i = 0; i < unitDataSo.Length; i++)
             {
@@ -82,6 +85,13 @@ namespace Assets.Scripts.UI
             OnUnitSelected(unitDataSo[0].DefencUnitType);
         }
 
+        //private void RemoveUIItem()
+        //{
+        //    for (int i = 0; i < _shopUnitUIItems.Count; i++)
+        //    {
+        //        _shopUnitUIItems.Remove(_shopUnitUIItemPrefab);
+        //    }
+        //}
         private void OnUnitSelected(DefenceUnitType defenceUnitType)
         {
             for (int i = _spawnCharacteristicParent.childCount - 1; i >= 0; i--)
@@ -185,6 +195,7 @@ namespace Assets.Scripts.UI
 
         public override void OpenWindow()
         {
+            Setup(_config.UnitDataSos);
             //_currentLevelText.text = LocalizationManager.Localize("Shop.Level", level + 1);
             _unitName.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + _selectedUnitUIItem.DefenceUnitType);
             _descriptionUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + "Description." + _selectedUnitUIItem.DefenceUnitType);
@@ -193,7 +204,7 @@ namespace Assets.Scripts.UI
 
         public override void CloseWindow()
         {
-
+           // RemoveUIItem();
             base.CloseWindow();
         }
     }

@@ -4563,6 +4563,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89ce62134df12bc499d7e8276e4ce9ee, type: 2}
   - {fileID: 11400000, guid: 7d09f4ae952c052428b1957ee6c1d992, type: 2}
   - {fileID: 11400000, guid: a3b163ce7f196f2479019f42815e516c, type: 2}
+  - {fileID: 11400000, guid: 343a3c02fb1e17541805e1ada15a0a33, type: 2}
   _levelText: {fileID: 618355337}
 --- !u!4 &1418450339
 Transform:
