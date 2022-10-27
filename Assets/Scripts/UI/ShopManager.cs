@@ -2,6 +2,7 @@ using UnityEngine;
 using Assets.Scripts.Managers;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
+using Assets.Scripts.Config;
 
 namespace Assets.Scripts.UI
 {
@@ -9,8 +10,10 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private SelectHandManager _selectHandManager;
         [SerializeField] private ShopWindow _shopWindow;
-        [SerializeField] private UnitDataSo[] _unitDataSO;
-        [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
+        [SerializeField] private Config.Config _config;
+
+        //[SerializeField] private UnitDataSo[] _unitDataSO;
+        //[SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
         private DataManager _dataManager;
 
@@ -21,17 +24,17 @@ namespace Assets.Scripts.UI
 
             _dataManager.LoadData();
 
-            for (int i = 0; i < _unitDataSO.Length; i++)
+            for (int i = 0; i < _config.UnitDataSos.Length; i++)
             {
-                if (_dataManager.UnitsDictionary.TryGetValue(_unitDataSO[i].DefencUnitType, out int level))
+                if (_dataManager.UnitsDictionary.TryGetValue(_config.UnitDataSos[i].DefencUnitType, out int level))
                 {
-                    _unitDataSO[i].OpenUnit();
-                    _unitDataSO[i].SetLevel(level);
-                    _unitDataSO[i].SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(_unitDataSO[i].DefencUnitType, level).UnitCharacteristicDatas);
+                    _config.UnitDataSos[i].OpenUnit();
+                    _config.UnitDataSos[i].SetLevel(level);
+                    _config.UnitDataSos[i].SetCharacteristicData(_config.UpgradeConfig.DefenceUpgradeUnits(_config.UnitDataSos[i].DefencUnitType, level).UnitCharacteristicDatas);
                 }
                 else
                 {
-                    _unitDataSO[i].ResetData();
+                    _config.UnitDataSos[i].ResetData();
                 }
             }
 
@@ -40,8 +43,8 @@ namespace Assets.Scripts.UI
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
             _shopWindow.SelectUnitAction += OnSelectedAction;
 
-            _shopWindow.Setup(_unitDataSO);
-            _selectHandManager.Setup(_unitDataSO, _dataManager);
+            //_shopWindow.Setup(_unitDataSO);
+            _selectHandManager.Setup(_dataManager);
         }
 
         private void OnUpdateCurrency(float amount, CurrencyType type)
@@ -51,13 +54,13 @@ namespace Assets.Scripts.UI
 
         private void OnBuyUnit(DefenceUnitType defenceUnitType)
         {
-            for (int i = 0; i < _defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas.Length; i++)
+            for (int i = 0; i < _config.UpgradeConfig.DefenceUnitUpgradeDatas.Length; i++)
             {
 
-                if (defenceUnitType != _defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas[i].DefenceUnitType)
+                if (defenceUnitType != _config.UpgradeConfig.DefenceUnitUpgradeDatas[i].DefenceUnitType)
                     continue;
 
-                DefenceUnitUpgradeData upgradeData = _defenceUnitsUpgradeConfig.DefenceUnitUpgradeDatas[i];
+                DefenceUnitUpgradeData upgradeData = _config.UpgradeConfig.DefenceUnitUpgradeDatas[i];
 
                 if (_dataManager.CheckCurrency(upgradeData.UnlockUnitPrice, upgradeData.CurrencyUnlockType))
                 {
@@ -67,18 +70,18 @@ namespace Assets.Scripts.UI
 
                     _dataManager.BuyUnit(defenceUnitType);
 
-                    for (int j = 0; j < _unitDataSO.Length; j++)
+                    for (int j = 0; j < _config.UnitDataSos.Length; j++)
                     {
-                        UnitDataSo unitDataSo = _unitDataSO[j];
+                        UnitDataSo unitDataSo = _config.UnitDataSos[j];
 
                         if (defenceUnitType == unitDataSo.DefencUnitType)
                         {
                             unitDataSo.OpenUnit();
                             unitDataSo.SetLevel(unitDataSo.Level);
 
-                            unitDataSo.SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);
+                            unitDataSo.SetCharacteristicData(_config.UpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);
 
-                            int upgradeCost = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
+                            int upgradeCost = _config.UpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
 
                             _shopWindow.BuyUnit(upgradeCost, CurrencyType.SoftCurrency);
 
@@ -95,20 +98,20 @@ namespace Assets.Scripts.UI
 
         private void OnUpgradeAction(DefenceUnitType defenceUnitType)
         {
-            for (int i = 0; i < _unitDataSO.Length; i++)
+            for (int i = 0; i < _config.UnitDataSos.Length; i++)
             {
-                UnitDataSo unitDataSo = _unitDataSO[i];
+                UnitDataSo unitDataSo = _config.UnitDataSos[i];
 
                 if (defenceUnitType == unitDataSo.DefencUnitType)
                 {
 
-                    if (_defenceUnitsUpgradeConfig.IsMaxUnitLevel(defenceUnitType, unitDataSo.Level))
+                    if (_config.UpgradeConfig.IsMaxUnitLevel(defenceUnitType, unitDataSo.Level))
                     {
                         _shopWindow.DisableUnitPrice();
                         return;
                     }
 
-                    DefenceUnitUpgradeDataModel unitUpgrade = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, unitDataSo.Level);
+                    DefenceUnitUpgradeDataModel unitUpgrade = _config.UpgradeConfig.DefenceUpgradeUnits(defenceUnitType, unitDataSo.Level);
 
                     if (_dataManager.CheckCurrency(unitUpgrade.UpgradeCost, CurrencyType.SoftCurrency))
                     {
@@ -118,9 +121,9 @@ namespace Assets.Scripts.UI
                         _dataManager.LevelUpUnit(defenceUnitType);
                         unitDataSo.LevelUpUnit();
 
-                        unitDataSo.SetCharacteristicData(_defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);                      
+                        unitDataSo.SetCharacteristicData(_config.UpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UnitCharacteristicDatas);                      
 
-                        int upgradeCost = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
+                        int upgradeCost = _config.UpgradeConfig.DefenceUpgradeUnits(unitDataSo.DefencUnitType, unitDataSo.Level).UpgradeCost;
                         _shopWindow.UpgradeUnit(upgradeCost, CurrencyType.SoftCurrency);
 
                     }
@@ -134,26 +137,26 @@ namespace Assets.Scripts.UI
 
         private void OnSelectedAction(DefenceUnitType defenceUnitType)
         {
-            for (int i = 0; i < _unitDataSO.Length; i++)
+            for (int i = 0; i < _config.UnitDataSos.Length; i++)
             {
-                if (_unitDataSO[i].DefencUnitType == defenceUnitType)
+                if (_config.UnitDataSos[i].DefencUnitType == defenceUnitType)
                 {
-                    DefenceUnitUpgradeDataModel d1 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, _unitDataSO[i].Level);
+                    DefenceUnitUpgradeDataModel d1 = _config.UpgradeConfig.DefenceUpgradeUnits(defenceUnitType, _config.UnitDataSos[i].Level);
 
                     DefenceUnitUpgradeDataModel d2 = d1;
 
-                    if (_unitDataSO[i].IsOpen)
+                    if (_config.UnitDataSos[i].IsOpen)
                     {
-                        if (!_defenceUnitsUpgradeConfig.IsMaxUnitLevel(defenceUnitType, _unitDataSO[i].Level))
+                        if (!_config.UpgradeConfig.IsMaxUnitLevel(defenceUnitType, _config.UnitDataSos[i].Level))
                         {
-                            d2 = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(defenceUnitType, _unitDataSO[i].Level + 1);
+                            d2 = _config.UpgradeConfig.DefenceUpgradeUnits(defenceUnitType, _config.UnitDataSos[i].Level + 1);
                         }
                         else
                         {
                             _shopWindow.DisableUnitPrice();
                         }
                     }
-                    _shopWindow.SelectUnit(d1, d2, _unitDataSO[i].Level);
+                    _shopWindow.SelectUnit(d1, d2, _config.UnitDataSos[i].Level);
                     break;
                 }
             }
@@ -162,9 +165,9 @@ namespace Assets.Scripts.UI
         [ContextMenu("ResetData")]
         public void ResetSO()
         {
-            for (int i = 0; i < _unitDataSO.Length; i++)
+            for (int i = 0; i < _config.UnitDataSos.Length; i++)
             {
-                _unitDataSO[i].ResetData();
+                _config.UnitDataSos[i].ResetData();
             }
         }
     }

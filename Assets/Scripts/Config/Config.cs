@@ -5,16 +5,13 @@ using Assets.Scripts.DataSo;
 
 namespace Assets.Scripts.Config
 {
-    public class Config : MonoBehaviour
+    [CreateAssetMenu(fileName = "MainConfig", menuName = "MainConfig/Config")]
+    public class Config : ScriptableObject
     {
         public UnitDataSo[] UnitDataSos => _unitDataSOs;
+        public DefenceUnitsUpgradeConfig UpgradeConfig => _defenceUnitsUpgradeConfig;
 
         [SerializeField] private UnitDataSo[] _unitDataSOs;
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
-
-        public interface IConfig
-        {
-
-        }
     }
 }

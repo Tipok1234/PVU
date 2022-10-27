@@ -24,6 +24,11 @@ namespace Assets.Scripts.Managers
 
         private bool _isReward = false;
 
+        private void Awake()
+        {
+            _closeWindowButton.onClick.AddListener(CloseWindow);
+        }
+
         private void Start()
         {
             _dataManager = FindObjectOfType<DataManager>();

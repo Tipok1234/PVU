@@ -34,7 +34,7 @@ namespace Assets.Scripts.UI
 
         [SerializeField] private Config.Config _config;
 
-        [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
+        //[SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
 
@@ -61,20 +61,20 @@ namespace Assets.Scripts.UI
 
                 if (unitDataSo[i].IsOpen)
                 {
-                    if (_defenceUnitsUpgradeConfig.IsMaxUnitLevel(unitDataSo[i].DefencUnitType, unitDataSo[i].Level))
+                    if (_config.UpgradeConfig.IsMaxUnitLevel(unitDataSo[i].DefencUnitType, unitDataSo[i].Level))
                     {
                         shopUI.DisablePrices();
                     }
                     else
                     {
 
-                        var upgradeData = _defenceUnitsUpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
+                        var upgradeData = _config.UpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
                         shopUI.UpdatePriceText(upgradeData.UpgradeCost, CurrencyType.SoftCurrency);
                     }
                 }
                 else
                 {
-                    int unlockPrice = _defenceUnitsUpgradeConfig.GetDefenceUnitUnlockPrice(unitDataSo[i].DefencUnitType);
+                    int unlockPrice = _config.UpgradeConfig.GetDefenceUnitUnlockPrice(unitDataSo[i].DefencUnitType);
                     shopUI.UpdatePriceText(unlockPrice, CurrencyType.HardCurrency);
                 }
 
@@ -200,12 +200,20 @@ namespace Assets.Scripts.UI
             _unitName.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + _selectedUnitUIItem.DefenceUnitType);
             _descriptionUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + "Description." + _selectedUnitUIItem.DefenceUnitType);
             base.OpenWindow();
+            Debug.LogError("COUNT: " + _shopUnitUIItems.Count);
         }
 
         public override void CloseWindow()
         {
            // RemoveUIItem();
             base.CloseWindow();
+
+            for (int i = 0; i < _shopUnitUIItems.Count; i++)
+            {
+                Destroy(_shopUnitUIItems[i].gameObject);
+            }
+            Debug.LogError("COUNT: " + _shopUnitUIItems.Count);
+            _shopUnitUIItems.Clear();
         }
     }
 }

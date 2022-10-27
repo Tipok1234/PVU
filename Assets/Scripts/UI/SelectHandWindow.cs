@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using Assets.Scripts.Managers;
-using UnityEngine.SceneManagement;
+using Assets.Scripts.Config;
 using Assets.SimpleLocalization;
 using System.Linq;
 
@@ -35,6 +35,8 @@ namespace Assets.Scripts.UI
 
         private int _countHandItem = 0;
 
+        [SerializeField] private Config.Config _config;
+
         private List<HandItem> _handItems = new List<HandItem>();
         private List<ShowUnitUIItem> _showUnitUIItems = new List<ShowUnitUIItem>();
 
@@ -45,8 +47,27 @@ namespace Assets.Scripts.UI
 
             //LocalizationManager.LocalizationChanged += OnLangueageChanged;
         }
+
+        public override void CloseWindow()
+        {
+            base.CloseWindow();
+
+            for (int i = 0; i < _showUnitUIItems.Count; i++)
+            {
+                Destroy(_showUnitUIItems[i].gameObject);
+            }
+
+            _showUnitUIItems.Clear();
+        }
+        public override void OpenWindow()
+        {
+            base.OpenWindow();
+            Setup(_config.UnitDataSos, DataManager.Instance.UnitHandItems);
+        }
         public void Setup(UnitDataSo[] unitDataSO, List<DefenceUnitType> unitHandItems)
         {
+            Debug.LogError("Open HandWindow");
+
             for (int i = 0; i < unitDataSO.Length; i++)
             {
                 if (_countHandItem < 8)
@@ -101,32 +122,8 @@ namespace Assets.Scripts.UI
             {
                 _mapWindow.OpenWindow();
                 CloseWindow();
-                //SceneManager.LoadScene("GameScene");
-                //OpenWindow();
             }
         }
-
-        //public void RefreshSelectHandWindow(UnitDataSo[] unitDataSO)
-        //{
-        //    for (int i = 0; i < unitDataSO.Length; i++)
-        //    {
-        //        if (unitDataSO[i].IsOpen)
-        //        {
-        //            _showUnitUIItems[i].transform.SetAsFirstSibling();
-        //        }
-        //    }
-        //}
-
-        //public void RemoveShowUnit(UnitDataSo[] unitDataSo)
-        //{
-        //    for (int i = 0; i < unitDataSo.Length; i++)
-        //    {
-        //        if (unitDataSo[i].DefencUnitType == _showUnitUIItem.DefenceUnitType)
-        //        {
-        //            _showUnitUIItems.Remove(_showUnitUIItem);
-        //        }
-        //    }       
-        //}
 
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {

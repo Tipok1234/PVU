@@ -19,10 +19,10 @@ namespace Assets.Scripts.Managers
             _selectHandWindow.RemoveHandItemAction += OnRemoveHandItem;
         }
 
-        public void Setup(UnitDataSo[] unitDataSo,DataManager dataManager)
+        public void Setup(DataManager dataManager)
         {
             _dataManager = dataManager;
-            _selectHandWindow.Setup(unitDataSo,dataManager.UnitHandItems);
+           // _selectHandWindow.Setup(unitDataSo,dataManager.UnitHandItems);
         }
 
         private void OnSaveHandItem(DefenceUnitType defenceUnitType)
