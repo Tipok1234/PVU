@@ -35,13 +35,18 @@ namespace Assets.Scripts.UI
         }
         public void DeleteUnit()
         {
+            ResetElement();
+
+            DeleteUnitHandActioon?.Invoke(_defenceUnitType);
+        }
+
+        public void ResetElement()
+        {
             if (_isBusy == true)
             {
                 _isBusy = false;
                 Destroy(_tranform.gameObject);
             }
-
-            DeleteUnitHandActioon?.Invoke(_defenceUnitType);
         }
     }
 }

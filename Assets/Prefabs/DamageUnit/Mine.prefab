@@ -127,17 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09effbc8d8bcfe4ab736354e22bebc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 20
   _colliderUnit: {fileID: 2583906590177926897}
   _unitDefenceType: 4
-  _unitData: {fileID: 11400000, guid: 1ff9df3e6372c2542bc79a116144c6da, type: 2}
+  _unitData: {fileID: 11400000, guid: 94dbda70994f3a4479c0f06ccedd6462, type: 2}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   _animationMane: {fileID: -4482867987974782674}
   _particleType: 3
-  _damage: 100
-  _timeDamage: 5
 --- !u!114 &-4482867987974782674
 MonoBehaviour:
   m_ObjectHideFlags: 0

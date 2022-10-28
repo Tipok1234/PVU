@@ -123,10 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222abcfb8753e9841923e07dafe78722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 30
   _colliderUnit: {fileID: 3658771024515912081}
   _unitDefenceType: 1
-  _unitData: {fileID: 11400000, guid: 528ff0a17cdba2442851124425771e48, type: 2}
+  _unitData: {fileID: 11400000, guid: 6c0cbbae488f1c5418c44061ef1e818c, type: 2}
   _bulletType: 0
   _enemyLayer:
     serializedVersion: 2

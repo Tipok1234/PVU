@@ -48,26 +48,8 @@ namespace Assets.Scripts.UI
             //LocalizationManager.LocalizationChanged += OnLangueageChanged;
         }
 
-        public override void CloseWindow()
-        {
-            base.CloseWindow();
-
-            for (int i = 0; i < _showUnitUIItems.Count; i++)
-            {
-                Destroy(_showUnitUIItems[i].gameObject);
-            }
-
-            _showUnitUIItems.Clear();
-        }
-        public override void OpenWindow()
-        {
-            base.OpenWindow();
-            Setup(_config.UnitDataSos, DataManager.Instance.UnitHandItems);
-        }
         public void Setup(UnitDataSo[] unitDataSO, List<DefenceUnitType> unitHandItems)
         {
-            Debug.LogError("Open HandWindow");
-
             for (int i = 0; i < unitDataSO.Length; i++)
             {
                 if (_countHandItem < 8)
@@ -81,13 +63,17 @@ namespace Assets.Scripts.UI
                 {
                     HandItem hand = _handItems.FirstOrDefault(h => !h.IsBusy);
 
-                    if (hand != null)
+                    if (hand != null)  //fix
                     {
                         BGImage bgImage = Instantiate(_bgImage, hand.transform.position, Quaternion.identity, hand.transform);
+
+                        // Debug.LogError(unitDataSO[i].name);
 
                         bgImage.Setup(unitDataSO[i].UnitSprite);
 
                         hand.SetBusy(true, unitDataSO[i].DefencUnitType, bgImage.transform);
+
+                        Debug.LogError(unitHandItems.Count);
                     }
                 }
 
@@ -168,6 +154,31 @@ namespace Assets.Scripts.UI
         public void OnDeleteUnitHndAction(DefenceUnitType defenceUnitType)
         {
             RemoveHandItemAction?.Invoke(defenceUnitType);
+        }
+
+        public override void CloseWindow()
+        {
+            base.CloseWindow();
+
+            for (int i = 0; i < _showUnitUIItems.Count; i++)
+            {
+                Destroy(_showUnitUIItems[i].gameObject);
+            }
+
+            for (int i = 0; i < _handItems.Count; i++)
+            {
+                _handItems[i].ResetElement();
+            }
+
+            _showUnitUIItems.Clear();
+        }
+        public override void OpenWindow()
+        {
+            base.OpenWindow();
+
+            // Debug.LogError(_showUnitUIItems.Count + " COUNT");
+
+            Setup(_config.UnitDataSos, DataManager.Instance.UnitHandItems);
         }
         //public void OnLangueageChanged()
         //{

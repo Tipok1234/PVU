@@ -71,6 +71,8 @@ namespace Assets.Scripts.UI
 
         private void StartGame()
         {
+            Debug.LogError(DataManager.Instance.UnitHandItems.Count + " COUNT UNIT");
+
             if (DataManager.Instance.UnitHandItems.Count == 0)
             {
                 OpenHandWindow();

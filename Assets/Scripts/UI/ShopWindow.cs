@@ -49,7 +49,6 @@ namespace Assets.Scripts.UI
 
         public void Setup(UnitDataSo[] unitDataSo)
         {
-            Debug.LogError("OPEN SHOP WINDOW");
 
             for (int i = 0; i < unitDataSo.Length; i++)
             {
@@ -205,14 +204,13 @@ namespace Assets.Scripts.UI
 
         public override void CloseWindow()
         {
-           // RemoveUIItem();
             base.CloseWindow();
 
             for (int i = 0; i < _shopUnitUIItems.Count; i++)
             {
                 Destroy(_shopUnitUIItems[i].gameObject);
             }
-            Debug.LogError("COUNT: " + _shopUnitUIItems.Count);
+
             _shopUnitUIItems.Clear();
         }
     }
