@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Assets.SimpleLocalization;
+using Assets.Scripts.Managers;
 using Assets.Scripts.Config;
 
 namespace Assets.Scripts.UI
@@ -32,7 +33,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _currentLevelText;
         [SerializeField] private TMP_Text _descriptionUnitText;
 
-        [SerializeField] private Config.Config _config;
 
         //[SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
@@ -60,20 +60,20 @@ namespace Assets.Scripts.UI
 
                 if (unitDataSo[i].IsOpen)
                 {
-                    if (_config.UpgradeConfig.IsMaxUnitLevel(unitDataSo[i].DefencUnitType, unitDataSo[i].Level))
+                    if (ConfigManager.Intsance.Config.UpgradeConfig.IsMaxUnitLevel(unitDataSo[i].DefencUnitType, unitDataSo[i].Level))
                     {
                         shopUI.DisablePrices();
                     }
                     else
                     {
 
-                        var upgradeData = _config.UpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
+                        var upgradeData = ConfigManager.Intsance.Config.UpgradeConfig.DefenceUpgradeUnits(unitDataSo[i].DefencUnitType, unitDataSo[i].Level);
                         shopUI.UpdatePriceText(upgradeData.UpgradeCost, CurrencyType.SoftCurrency);
                     }
                 }
                 else
                 {
-                    int unlockPrice = _config.UpgradeConfig.GetDefenceUnitUnlockPrice(unitDataSo[i].DefencUnitType);
+                    int unlockPrice = ConfigManager.Intsance.Config.UpgradeConfig.GetDefenceUnitUnlockPrice(unitDataSo[i].DefencUnitType);
                     shopUI.UpdatePriceText(unlockPrice, CurrencyType.HardCurrency);
                 }
 
@@ -194,12 +194,10 @@ namespace Assets.Scripts.UI
 
         public override void OpenWindow()
         {
-            Setup(_config.UnitDataSos);
-            //_currentLevelText.text = LocalizationManager.Localize("Shop.Level", level + 1);
+            Setup(ConfigManager.Intsance.Config.UnitDataSos);
             _unitName.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + _selectedUnitUIItem.DefenceUnitType);
             _descriptionUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + "Description." + _selectedUnitUIItem.DefenceUnitType);
             base.OpenWindow();
-            Debug.LogError("COUNT: " + _shopUnitUIItems.Count);
         }
 
         public override void CloseWindow()

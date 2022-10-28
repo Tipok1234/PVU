@@ -13,5 +13,6 @@ namespace Assets.Scripts.Config
 
         [SerializeField] private UnitDataSo[] _unitDataSOs;
         [SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
+
     }
 }

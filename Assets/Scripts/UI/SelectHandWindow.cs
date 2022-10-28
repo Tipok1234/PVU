@@ -35,8 +35,6 @@ namespace Assets.Scripts.UI
 
         private int _countHandItem = 0;
 
-        [SerializeField] private Config.Config _config;
-
         private List<HandItem> _handItems = new List<HandItem>();
         private List<ShowUnitUIItem> _showUnitUIItems = new List<ShowUnitUIItem>();
 
@@ -44,8 +42,6 @@ namespace Assets.Scripts.UI
         {
             _fightButton.onClick.AddListener(CheckHandItems);
             _closeWindowButton.onClick.AddListener(CloseWindow);
-
-            //LocalizationManager.LocalizationChanged += OnLangueageChanged;
         }
 
         public void Setup(UnitDataSo[] unitDataSO, List<DefenceUnitType> unitHandItems)
@@ -63,11 +59,9 @@ namespace Assets.Scripts.UI
                 {
                     HandItem hand = _handItems.FirstOrDefault(h => !h.IsBusy);
 
-                    if (hand != null)  //fix
+                    if (hand != null)
                     {
                         BGImage bgImage = Instantiate(_bgImage, hand.transform.position, Quaternion.identity, hand.transform);
-
-                        // Debug.LogError(unitDataSO[i].name);
 
                         bgImage.Setup(unitDataSO[i].UnitSprite);
 
@@ -91,7 +85,6 @@ namespace Assets.Scripts.UI
                 _showUnitUIItems.Add(showUnit);
 
                 _nameUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + unitDataSO[1].DefencUnitType);
-                //_nameUnitText.text = unitDataSO[1].DefencUnitType.ToString();
                 _mainImage.sprite = unitDataSO[1].UnitSprite;
 
                 _countHandItem++;
@@ -114,7 +107,6 @@ namespace Assets.Scripts.UI
         public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {
             _nameUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + showUnitUIItem.DefenceUnitType);
-            //_nameUnitText.text = showUnitUIItem.DefenceUnitType.ToString();
             _mainImage.sprite = showUnitUIItem.UnitShowImage;
 
             if (showUnitUIItem.IsOpenImage)
@@ -176,14 +168,8 @@ namespace Assets.Scripts.UI
         {
             base.OpenWindow();
 
-            // Debug.LogError(_showUnitUIItems.Count + " COUNT");
-
-            Setup(_config.UnitDataSos, DataManager.Instance.UnitHandItems);
+            Setup(ConfigManager.Intsance.Config.UnitDataSos, DataManager.Instance.UnitHandItems);
         }
-        //public void OnLangueageChanged()
-        //{
-        //    _nameUnitText.text = LocalizationManager.Localize("DefenceUnits." + _showUnitUIItem.DefenceUnitType);
-        //}
     }
 }
 
