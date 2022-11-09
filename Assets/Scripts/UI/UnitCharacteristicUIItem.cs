@@ -32,12 +32,5 @@ namespace Assets.Scripts.UI
 
             _mainImage.sprite = AssetManager.Instance.GetCharacteristicSprite(current.CharacteristicUnitType);
         }
-
-        public void SetupLowLevel(UnitCharacteristicData current)
-        {
-            _typeText.text = current.CharacteristicUnitType.ToString();
-            _valueText.text = current.Value.ToString();
-        }
-
     }
 }

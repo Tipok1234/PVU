@@ -1,6 +1,5 @@
 using UnityEngine;
 using Assets.Scripts.Enums;
-using Assets.Scripts.UI;
 
 namespace Assets.Scripts.DataSo
 {

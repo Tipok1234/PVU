@@ -5,7 +5,7 @@ namespace Assets.Scripts.AnimationsModel
 {
     public class AnimationModel : MonoBehaviour
     {
-        public virtual void PlayAnimation()//bool isIgnorTimeScale = false)
+        public virtual void PlayAnimation()
         {
             
         }

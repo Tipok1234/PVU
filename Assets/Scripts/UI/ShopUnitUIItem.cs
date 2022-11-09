@@ -94,7 +94,7 @@ namespace Assets.Scripts.UI
             _hardCurrencyImage.enabled = false;
         }
 
-        public void SelectUnitUI()
+        private void SelectUnitUI()
         {
             SelectUnitAction?.Invoke(_defenceUnitType);
         }

@@ -28,7 +28,6 @@ namespace Assets.Scripts.UI
 
         public void RestartGameUI()
         {
-            Debug.LogError("GAME OVER");
             _restartGameCanvas.enabled = true;
             _animationModel.PlayAnimation();
 

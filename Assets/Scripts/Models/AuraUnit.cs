@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Models
 {
@@ -17,7 +15,6 @@ namespace Assets.Scripts.Models
         {
             if (_isDead)
                 return;
-
 
             base.FixedUpdate();
 
@@ -48,18 +45,8 @@ namespace Assets.Scripts.Models
                             i = 0;
                         }
                     }
-
                 }
             }
         }
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_selfTransform.position, 2f);
-        }
-        //public override void MoveUnit()
-        //{
-        //    base.MoveUnit();
-        //}
     }
 }

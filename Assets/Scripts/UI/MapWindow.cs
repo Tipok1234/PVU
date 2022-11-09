@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Assets.Scripts.Managers;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.UI
 {
@@ -40,7 +37,6 @@ namespace Assets.Scripts.UI
         private void OnSelectedLevel()
         {
             _mainMenu.FightGame();
-            //CloseWindow();
         }
         public override void CloseWindow()
         {

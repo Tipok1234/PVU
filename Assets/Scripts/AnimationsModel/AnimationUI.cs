@@ -23,25 +23,18 @@ namespace Assets.Scripts.AnimationsModel
             _sequence.Join(_canvasGroup.DOFade(1, _fadeTime));
         }
 
-        //public override void PlayAnimationIngorTimeScale()
-        //{
-        //    _canvasGroup.alpha = 0f;
-        //    _rectTransform.localScale = Vector2.zero;
-
-        //    _sequence = DOTween.Sequence().SetUpdate(false);
-        //    _sequence.Append(_rectTransform.DOScale(Vector2.one, _fadeTime).SetEase(Ease.InOutQuint)).SetUpdate(false);
-        //    _sequence.Join(_canvasGroup.DOFade(1, _fadeTime).SetUpdate(false));
-        //}
-
         public override void PlayAnimation(Action callback)
         {
             _canvasGroup.alpha = 0f;
             _rectTransform.localScale = Vector2.zero;
 
-            _sequence = DOTween.Sequence();
-            _sequence.Append(_rectTransform.DOScale(Vector2.one, _fadeTime).SetEase(Ease.InOutQuint));
-            _sequence.Join(_canvasGroup.DOFade(1, _fadeTime));
-            _sequence.AppendCallback(() => { callback?.Invoke(); });
+            if (_rectTransform.position != null)
+            {
+                _sequence = DOTween.Sequence();
+                _sequence.Append(_rectTransform.DOScale(Vector2.one, _fadeTime).SetEase(Ease.InOutQuint));
+                _sequence.Join(_canvasGroup.DOFade(1, _fadeTime));
+                _sequence.AppendCallback(() => { callback?.Invoke(); });
+            }
         }
 
         public override void OnDestroy()

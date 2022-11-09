@@ -12,14 +12,6 @@ namespace Assets.Scripts.AnimationsModel
 
         public override void PlayAnimation(Action callback)
         {
-            //void action()
-            //{
-            //    callback?.Invoke();
-            //    CallBack(); 
-            //}
-
-            //_cartModel.DOMoveX(_xStartPos, _animationTime).OnComplete(action);
-
             _cartModel.DOMoveX(_xStartPos, _animationTime).OnComplete(() =>
             {
                 callback?.Invoke();

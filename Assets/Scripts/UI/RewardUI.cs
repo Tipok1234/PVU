@@ -24,8 +24,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private Image _received;
         [SerializeField] private AnimationModel _animationsModel;
 
-        private RewardType _rewardType;
-
         private float _currentCurrency;
         private int _dayIndex;
 
@@ -47,7 +45,6 @@ namespace Assets.Scripts.UI
             _animationsModel.PlayAnimation();
             _lockReward.enabled = false;
             _received.enabled = false;
-            _rewardType = RewardType.Open_Type;
         }
 
         public void ReceivedReward()
@@ -55,7 +52,6 @@ namespace Assets.Scripts.UI
             _clickButton.enabled = false;
             _lockReward.enabled = false;
             _received.enabled = true;
-            _rewardType = RewardType.Received_Type;
         }
 
         public void LockkReward()
@@ -63,7 +59,6 @@ namespace Assets.Scripts.UI
             _clickButton.enabled = false;
             _lockReward.enabled = true;
             _received.enabled = false;
-            _rewardType = RewardType.Lock_Type;
         }
 
         private void CollectRewardOnClick()

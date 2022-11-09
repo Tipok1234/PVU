@@ -92,11 +92,9 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public void OnCollectReward(float currency, RewardUI rewardUI)
+        private void OnCollectReward(float currency, RewardUI rewardUI)
         {
             _index = _rewardUIItems.IndexOf(rewardUI);
-
-            Debug.LogError("IDNEX: " + _index);
 
 
             if (_index == -1)

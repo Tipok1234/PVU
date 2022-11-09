@@ -16,7 +16,6 @@ namespace Assets.Scripts.Models
         {
             _skillGameUI.RechargeTimeSkill();
             var rayCast = Physics.OverlapSphere(new Vector3(0, 0, 0), 14f, _enemyLayer);
-            Debug.LogError("SKILL:");
 
             for (int i = 0; i < rayCast.Length; i++)
             {

@@ -53,7 +53,7 @@ namespace Assets.Scripts.Managers
 
         public void LoadData()
         {
-            _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 2500);
+            _softCurrency = PlayerPrefs.GetFloat(_softCurrencyKey, 200);
             _hardCurrency = PlayerPrefs.GetFloat(_hardCurrencyKey, 250);
             _levelIndex = PlayerPrefs.GetInt(_levelKey, 0);
 
@@ -108,7 +108,6 @@ namespace Assets.Scripts.Managers
         public void UpdateLevel()
         {
             _levelIndex++;
-            Debug.LogError(_levelIndex + " COUUUUUNTTTT");
             PlayerPrefs.SetInt(_levelKey, _levelIndex);
         }
 
@@ -135,7 +134,6 @@ namespace Assets.Scripts.Managers
                 return;
 
             _unitsDictionary.Add(defenceUnitType, 0);
-            Debug.LogError(JsonConvert.SerializeObject(_unitsDictionary));
 
             Save(_defencesUnitsUpgradeKey, _unitsDictionary);
 

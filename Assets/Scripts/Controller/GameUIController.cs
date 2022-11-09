@@ -49,18 +49,6 @@ namespace Assets.Scripts.Controller
             }
         }
 
-        public void OpenOptionCanvas()
-        {
-            AudioManager.Instance.PlaySoundGame(AudioSoundType.ClickSound);
-            _optionCanvas.enabled = !_optionCanvas.enabled;
-            Time.timeScale = 0f;
-        }
-
-        public void ExitOptionCanvas()
-        {
-            _optionCanvas.enabled = !_optionCanvas.enabled;
-            Time.timeScale = 1f;
-        }
         public void Setup(UnitDataSo[] unitDataSo, DataManager dataManager)
         {
             ResetUI();
@@ -92,24 +80,6 @@ namespace Assets.Scripts.Controller
                 _unitGameUIList[i].HightLight(gunPowder >= _unitGameUIList[i].UnitPrice);
             }
         }
-        private void ResetUI()
-        {
-            for (int i = 0; i < _unitGameUIList.Count; i++)
-            {
-                _unitGameUIList[i].BuyUnitAction -= OnBuyUnit;
-            }
-
-            _unitGameUIList.Clear();
-        }
-        private void OnBuyUnit(DefenceUnitType unitType)
-        {
-            UnitSelectedAction?.Invoke(unitType);
-        }
-
-        private void OnSkillSelect(SkillType skillType, float price)
-        {
-            SkillSelectAction?.Invoke(skillType, price);
-        }
 
         public void RechargePlaceCooldown(DefenceUnitType unitType)
         {
@@ -138,8 +108,6 @@ namespace Assets.Scripts.Controller
                     _frostSkill.UseSkill();
                     break;
             }
-            //_rainSkill.UseSkill();
-            //_frostSkill.UseSkill();
         }
         public void UpdateCurrency(float CurrencyAmount, CurrencyType currencyType)
         {
@@ -155,6 +123,36 @@ namespace Assets.Scripts.Controller
                     _hardCurrencyText.text = CurrencyAmount.ToString();
                     break;
             }
+        }
+        private void OpenOptionCanvas()
+        {
+            AudioManager.Instance.PlaySoundGame(AudioSoundType.ClickSound);
+            _optionCanvas.enabled = !_optionCanvas.enabled;
+            Time.timeScale = 0f;
+        }
+
+        private void ExitOptionCanvas()
+        {
+            _optionCanvas.enabled = !_optionCanvas.enabled;
+            Time.timeScale = 1f;
+        }
+        private void ResetUI()
+        {
+            for (int i = 0; i < _unitGameUIList.Count; i++)
+            {
+                _unitGameUIList[i].BuyUnitAction -= OnBuyUnit;
+            }
+
+            _unitGameUIList.Clear();
+        }
+        private void OnBuyUnit(DefenceUnitType unitType)
+        {
+            UnitSelectedAction?.Invoke(unitType);
+        }
+
+        private void OnSkillSelect(SkillType skillType, float price)
+        {
+            SkillSelectAction?.Invoke(skillType, price);
         }
     }
 }

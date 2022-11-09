@@ -7,7 +7,6 @@ using TMPro;
 using System;
 using Assets.SimpleLocalization;
 using Assets.Scripts.Managers;
-using Assets.Scripts.Config;
 
 namespace Assets.Scripts.UI
 {
@@ -32,9 +31,6 @@ namespace Assets.Scripts.UI
         [SerializeField] private TMP_Text _hardCurrencyText;
         [SerializeField] private TMP_Text _currentLevelText;
         [SerializeField] private TMP_Text _descriptionUnitText;
-
-
-        //[SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
         private List<ShopUnitUIItem> _shopUnitUIItems = new List<ShopUnitUIItem>();
 
@@ -84,13 +80,6 @@ namespace Assets.Scripts.UI
             OnUnitSelected(unitDataSo[0].DefencUnitType);
         }
 
-        //private void RemoveUIItem()
-        //{
-        //    for (int i = 0; i < _shopUnitUIItems.Count; i++)
-        //    {
-        //        _shopUnitUIItems.Remove(_shopUnitUIItemPrefab);
-        //    }
-        //}
         private void OnUnitSelected(DefenceUnitType defenceUnitType)
         {
             for (int i = _spawnCharacteristicParent.childCount - 1; i >= 0; i--)
@@ -135,12 +124,10 @@ namespace Assets.Scripts.UI
             }
 
             _currentLevelText.text = LocalizationManager.Localize(LocalizationConst.Shop + "Level", level +1);
-          //  _currentLevelText.text = (level + 1).ToString();
             _imageUnit.sprite = _selectedUnitUIItem.UnitSprite;
 
             _unitName.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + _selectedUnitUIItem.DefenceUnitType);
             _descriptionUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + "Description." + _selectedUnitUIItem.DefenceUnitType);
-            //_unitName.text = _selectedUnitUIItem.DefenceUnitType.ToString();
         }
 
         public void UpdateCurrency(float amount, CurrencyType currencyType)

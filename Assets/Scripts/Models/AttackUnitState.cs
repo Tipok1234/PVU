@@ -13,13 +13,8 @@ namespace Assets.Scripts.Models
 
             ProccesDebuff();
         }
-        public void RemoveDebuff()
-        {
 
-        }
-
-
-        public void ProccesDebuff()
+        private void ProccesDebuff()
         {
             if (_baseDebuff.Count == 0)
                 return;

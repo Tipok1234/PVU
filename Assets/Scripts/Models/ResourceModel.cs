@@ -1,11 +1,14 @@
 using UnityEngine;
 using Assets.Scripts.Enums;
 using System.Collections;
+using System;
+using Assets.Scripts.Managers;
 
 namespace Assets.Scripts.Models
 {
     public class ResourceModel : MonoBehaviour
     {
+        public static event Action<float, CurrencyType> CurrencyCollectedAction;
         public float CurrencyAmount => _currencyAmount;
         public CurrencyType CurrencyType => _currencyType;
 
@@ -13,6 +16,11 @@ namespace Assets.Scripts.Models
 
         [SerializeField] private CurrencyType _currencyType;
 
+        private void OnMouseDown()
+        {
+            CurrencyCollectedAction?.Invoke(_currencyAmount, _currencyType);
+            gameObject.SetActive(false);
+        }
         public void Setup(float currency, CurrencyType currencyType)
         {
             _currencyType = currencyType;

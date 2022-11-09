@@ -4,7 +4,6 @@ using Assets.Scripts.Enums;
 using Assets.Scripts.Models;
 using Assets.Scripts.UI;
 using Assets.Scripts.DataSo;
-using Assets.Scripts.AnimationsModel;
 
 namespace Assets.Scripts.Managers
 {
@@ -110,7 +109,7 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public void OnUnitSelect(DefenceUnitType unitType)
+        private void OnUnitSelect(DefenceUnitType unitType)
         {
 
             for (int i = 0; i < _unitDataSo.Length; i++)
@@ -126,7 +125,7 @@ namespace Assets.Scripts.Managers
                 }
             }
         }
-        public void OnUnitCreated(DefenceUnitType defenceUnit)
+        private void OnUnitCreated(DefenceUnitType defenceUnit)
         {
             for (int i = 0; i < _unitDataSo.Length; i++)
             {
@@ -141,7 +140,7 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public void OnSkillSelect(SkillType skillType,float price)
+        private void OnSkillSelect(SkillType skillType,float price)
         {
             if (_dataManager.HardCurrency >= price)
             {

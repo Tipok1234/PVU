@@ -1,0 +1,8 @@
+Key,English,Russian
+GameMenu.Resume,RESUME,Продолжить
+GameMenu.MainMenu,Main Menu,Главное Меню
+GameMenu.NextGame,Next Game,Следующая игра
+GameMenu.Level,Level {0},Уровень {0}
+GameMenu.GameOver,Game Over,Конец игры
+GameMenu.YouWin,You WIN,Вы выиграли
+GameMenu.LevelReward,You have won {0} coins.,Вы выиграли {0} монет.

@@ -8,7 +8,6 @@ namespace Assets.Scripts.UI
     public class HandItem : MonoBehaviour
     {
         public event Action<DefenceUnitType> DeleteUnitHandActioon;
-
         public DefenceUnitType DefenceUnitType => _defenceUnitType;
 
         [SerializeField] private Button _deleteUnitHandButton;
@@ -29,11 +28,7 @@ namespace Assets.Scripts.UI
             _defenceUnitType = defenceUnitType;
         }
 
-        public void SetBool(bool isBusy)
-        {
-            _isBusy = isBusy;
-        }
-        public void DeleteUnit()
+        private void DeleteUnit()
         {
             ResetElement();
 

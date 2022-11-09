@@ -88,7 +88,7 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public void SetVolumeMainSound(float volume)
+        private void SetVolumeMainSound(float volume)
         {
             _audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
             _audioMixer.SetFloat(_mixerMusicKey, volume);
@@ -96,7 +96,7 @@ namespace Assets.Scripts.Managers
             PlayerPrefs.Save();
         }
 
-        public void SetVolumeSound(float volume)
+        private void SetVolumeSound(float volume)
         {
             _audioMixerSound.SetFloat("volume", Mathf.Log10(volume) * 20);
             _audioMixerSound.SetFloat(_mixerSoundKey, volume);
@@ -104,7 +104,7 @@ namespace Assets.Scripts.Managers
             PlayerPrefs.Save();
         }
 
-        public void SetSliderValue()
+        private void SetSliderValue()
         {
             _sliderMusic.value = _music;
             _sliderSound.value = _sound;

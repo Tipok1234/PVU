@@ -1,10 +1,15 @@
 using Assets.Scripts.Models;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System;
+using Assets.Scripts.Enums;
 
 namespace Assets.Scripts.Grids
 {
     public class GridCell : MonoBehaviour
     {
+        public static event Action<DefenceUnitType> UnitCreateAction;
+      //  public static event Action<DefenceUnitType> UnitSoldAction;
         public DefenceUnit BaseUnit => _baseUnit;
         public Transform SpawnPoint => _spawnPoint;
         public int X => _x;
@@ -19,6 +24,35 @@ namespace Assets.Scripts.Grids
         [SerializeField] private GameObject _hightLight;
 
         private DefenceUnit _baseUnit;
+
+        private void OnMouseDown()
+        {
+            if (Grid.GameUnit == null)
+                return;
+
+            if (!_isBusy)
+            {
+                PlaceUnit(Grid.GameUnit);
+                Grid.GameUnit.Create();
+                UnitCreateAction?.Invoke(Grid.GameUnit.DefencUnitType);
+                // Grid.GameUnit = null;
+            }
+            else if(_isBusy && _baseUnit.CurrentHP <= 20)
+            {
+                if (Grid.GameUnit.DefencUnitType != _baseUnit.DefencUnitType)
+                    return;
+
+                RegenurationUnit();
+                UnitCreateAction?.Invoke(Grid.GameUnit.DefencUnitType);
+            }
+
+
+            //if(Grid.IsSell && Grid.GameUnit != null)
+            //{
+            //    UnitSoldAction?.Invoke(Grid.GameUnit.DefencUnitType);
+            //    Grid.GameUnit.Death();
+            //}
+        }
 
         public void SetCell(int x, int z)
         {
@@ -41,7 +75,7 @@ namespace Assets.Scripts.Grids
             _baseUnit.Refresh();
         }
 
-        public void SetEmpty()
+        private void SetEmpty()
         {
             _isBusy = false;
         }
@@ -52,7 +86,7 @@ namespace Assets.Scripts.Grids
         }
 
         private void OnMouseEnter()
-        {         
+        {
             _hightLight.SetActive(true);
         }
         private void OnMouseExit()

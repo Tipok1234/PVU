@@ -17,7 +17,6 @@ namespace Assets.Scripts.DataSo
     public class RewardDaily
     {
         public float CurrenctCurrencyDaily => _currentCurrencyDaily;
-        public CurrencyType CurrencyType => _currencyType;
 
         [SerializeField] private float _currentCurrencyDaily;
         [SerializeField] private CurrencyType _currencyType;

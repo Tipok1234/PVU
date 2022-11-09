@@ -43,7 +43,7 @@ namespace Assets.Scripts.UI
 
         }
 
-        public void SelectUnit()
+        private void SelectUnit()
         {
             SelectHandUnitAction?.Invoke(this);
         }

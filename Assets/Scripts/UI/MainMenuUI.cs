@@ -57,11 +57,9 @@ namespace Assets.Scripts.UI
 
         private void OnOpenWindow(BaseWindow baseWindow)
         {
-           // _mainCanvas.enabled = false;
         }
         private void OnCloseWindow(BaseWindow baseWindow)
         {
-           // _mainCanvas.enabled = true;
         }
 
         private void OpenCalendarWindow()
@@ -71,8 +69,6 @@ namespace Assets.Scripts.UI
 
         private void StartGame()
         {
-            Debug.LogError(DataManager.Instance.UnitHandItems.Count + " COUNT UNIT");
-
             if (DataManager.Instance.UnitHandItems.Count == 0)
             {
                 OpenHandWindow();
@@ -80,9 +76,6 @@ namespace Assets.Scripts.UI
             else
             {
                 OpenMapWindow();
-                //SceneManager.LoadScene("GameScene");
-                //_mainCanvas.enabled = !_mainCanvas.enabled;
-                //_loadingScene.enabled = true;
             }
         }
 

@@ -46,16 +46,24 @@ namespace Assets.Scripts.UI
         private void AnimationCallback()
         {
             StartCoroutine(MoveCurrency());
-        }    
+        }
 
+        private void OnDestroy()
+        {
+            StopCoroutine(MoveCurrency());
+        }
         private IEnumerator MoveCurrency()
         {
+
             for (int i = 0; i < _softCurrencyTransoform.Length; i++)
             {
-                int index = i;
-                _softCurrencyTransoform[i].enabled = true;
-                _softCurrencyTransoform[i].transform.DOMove(_targetTransform.position, 0.3f).OnComplete(() => { _softCurrencyTransoform[index].enabled = false; });
-                yield return new WaitForSeconds(0.15f);
+                if (_nextGameCanvas != null && _softCurrencyTransoform[i] != null)
+                {
+                    int index = i;
+                    _softCurrencyTransoform[i].enabled = true;
+                    _softCurrencyTransoform[i].transform.DOMove(_targetTransform.position, 0.3f).OnComplete(() => { _softCurrencyTransoform[index].enabled = false; });
+                    yield return new WaitForSeconds(0.15f);
+                }
             }
         }
     }

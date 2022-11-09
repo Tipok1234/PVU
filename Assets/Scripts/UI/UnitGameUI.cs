@@ -44,7 +44,7 @@ namespace Assets.Scripts.UI
         {
             _unitImage.color = hightlight ? _normalColor : _noMoneyColor;
         }
-        public void BuyButton()
+        private void BuyButton()
         {
             BuyUnitAction?.Invoke(_unitType);
         }

@@ -11,7 +11,6 @@ namespace Assets.Scripts.Models
         [SerializeField] private LayerMask _enemyLayer;
         [SerializeField] private Transform _spawnBullet;
 
-
         [SerializeField] private AnimationModel _animationModel;
         [SerializeField] private ParticleType _particleType;
 

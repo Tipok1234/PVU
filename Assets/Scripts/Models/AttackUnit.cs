@@ -46,11 +46,8 @@ namespace Assets.Scripts.Models
 
             var ray = new Ray(transform.position, transform.forward * (0.5f));
 
-            Debug.DrawRay(transform.position, transform.forward * (0.5f), Color.red, Time.deltaTime);
-
             if (Physics.Raycast(ray, out RaycastHit hit, 0.5f, _allyLayer))
             {
-                //AttackerUnit();
 
                 if (_currentReloadTime >= _attackUnitSO.ReloadTimeAttack && hit.transform.TryGetComponent<DefenceUnit>(out DefenceUnit ally))
                 {

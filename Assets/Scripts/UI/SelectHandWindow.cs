@@ -2,12 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using DG.Tweening;
 using UnityEngine.UI;
 using System;
 using TMPro;
 using Assets.Scripts.Managers;
-using Assets.Scripts.Config;
 using Assets.SimpleLocalization;
 using System.Linq;
 
@@ -66,8 +64,6 @@ namespace Assets.Scripts.UI
                         bgImage.Setup(unitDataSO[i].UnitSprite);
 
                         hand.SetBusy(true, unitDataSO[i].DefencUnitType, bgImage.transform);
-
-                        Debug.LogError(unitHandItems.Count);
                     }
                 }
 
@@ -91,7 +87,7 @@ namespace Assets.Scripts.UI
             }
         }
 
-        public void CheckHandItems()
+        private void CheckHandItems()
         {
             if (!_handItems[0].IsBusy)
             {
@@ -104,7 +100,7 @@ namespace Assets.Scripts.UI
             }
         }
 
-        public void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
+        private void OnUnitSelected(ShowUnitUIItem showUnitUIItem)
         {
             _nameUnitText.text = LocalizationManager.Localize(LocalizationConst.DefenceUnits + showUnitUIItem.DefenceUnitType);
             _mainImage.sprite = showUnitUIItem.UnitShowImage;
@@ -143,7 +139,7 @@ namespace Assets.Scripts.UI
                 _lockText.gameObject.SetActive(true);
             }
         }
-        public void OnDeleteUnitHndAction(DefenceUnitType defenceUnitType)
+        private void OnDeleteUnitHndAction(DefenceUnitType defenceUnitType)
         {
             RemoveHandItemAction?.Invoke(defenceUnitType);
         }

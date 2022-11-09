@@ -29,7 +29,6 @@ namespace Assets.Scripts.Managers
             indexLevel++;
 
             _levelText.text = LocalizationManager.Localize(LocalizationConst.GameMenu + "Level", indexLevel);
-           // _levelText.text = "Level " + indexLevel.ToString();
         }
     }
 }

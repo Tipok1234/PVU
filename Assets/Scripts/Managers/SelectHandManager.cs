@@ -22,7 +22,6 @@ namespace Assets.Scripts.Managers
         public void Setup(DataManager dataManager)
         {
             _dataManager = dataManager;
-           // _selectHandWindow.Setup(unitDataSo,dataManager.UnitHandItems);
         }
 
         private void OnSaveHandItem(DefenceUnitType defenceUnitType)

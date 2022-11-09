@@ -2,7 +2,6 @@ using UnityEngine;
 using Assets.Scripts.Managers;
 using Assets.Scripts.DataSo;
 using Assets.Scripts.Enums;
-using Assets.Scripts.Config;
 
 namespace Assets.Scripts.UI
 {
@@ -10,9 +9,6 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private SelectHandManager _selectHandManager;
         [SerializeField] private ShopWindow _shopWindow;
-
-        //[SerializeField] private UnitDataSo[] _unitDataSO;
-        //[SerializeField] private DefenceUnitsUpgradeConfig _defenceUnitsUpgradeConfig;
 
         private DataManager _dataManager;
 
@@ -42,7 +38,6 @@ namespace Assets.Scripts.UI
             _shopWindow.UpgradeUnitAction += OnUpgradeAction;
             _shopWindow.SelectUnitAction += OnSelectedAction;
 
-            //_shopWindow.Setup(_unitDataSO);
             _selectHandManager.Setup(_dataManager);
         }
 

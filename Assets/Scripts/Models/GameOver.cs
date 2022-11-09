@@ -27,7 +27,6 @@ namespace Assets.Scripts.Models
 
             if (Physics.Raycast(ray, out RaycastHit hit, 10f, _enemyLayer))
             {
-                Debug.LogError("GAME OVER");
                 StartCoroutine(GameOverCoroutine());
                 _isGameOver = true;
             }

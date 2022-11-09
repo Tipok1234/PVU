@@ -31,15 +31,13 @@ namespace Assets.Scripts.Models
                 {
                     var ray = new Ray(transform.position, transform.right * (-10));
 
-                    Debug.DrawRay(transform.position, transform.right * (-10),Color.red);
-
                     if (Physics.Raycast(ray, out RaycastHit hit, 150f, _enemyLayer))
                     {
                         if (hit.transform.TryGetComponent<AttackUnit>(out AttackUnit enemy))
                         {
                             FrostDebuff frostDebuff = new FrostDebuff(0.5f, 1.5f);
 
-                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);//,frostDebuff);
+                            PoolManager.Instance.GetBulletByType(_bulletType, _spawnBullet.transform).Setup(_damage, -transform.right);
 
                             enemy.BuffUnit(DebuffType.Poison_Debuff);
                             ShootParticle();

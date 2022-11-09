@@ -6,7 +6,6 @@ namespace Assets.Scripts.Models
 {
     public class ExplodingWallUnit : DefenceUnit
     {
-       // [SerializeField] private ParticleSystem _deathParticle;
         [SerializeField] private LayerMask _enemyLayer;
 
         private float _damage;
