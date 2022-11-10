@@ -61,10 +61,6 @@ namespace Assets.Scripts.Controller
                     _unitGameUIList.Add(unitUI);
                 }
             }
-
-
-            Debug.LogError("COUNT UIITEM: " + _unitGameUIList.Count);
-            Debug.LogError("COUNT SKILL: " + _skillGameUI.Length);
         }
 
         public void UpdateHightLightSkillUI(float currency)
@@ -140,9 +136,6 @@ namespace Assets.Scripts.Controller
         }
         private void OnDestroy()
         {
-            Debug.LogError("COUNT UIITEM: " + _unitGameUIList.Count);
-            Debug.LogError("COUNT SKILL: " + _skillGameUI.Length);
-
             for (int i = 0; i < _unitGameUIList.Count; i++)
             {
                 _unitGameUIList[i].BuyUnitAction -= OnBuyUnit;

@@ -12,7 +12,6 @@ namespace Assets.Scripts.Managers
     {
         [SerializeField] private RewardUI _rewardUIPrefab;
         [SerializeField] private Transform _spawnRewardPrefabUI;
-        [SerializeField] private TMP_Text _timeText;
         [SerializeField] private Canvas _rewardDailyCanvas;
 
         [SerializeField] private RewardDailySO _rewardDailySOs;
@@ -66,7 +65,6 @@ namespace Assets.Scripts.Managers
                         TimeSpan diff = DateTime.UtcNow - DateTime.Parse(_dataManager.DateString);
 
                         _rewardDailyCanvas.enabled = false;
-                        _timeText.text = diff.ToString();
 
                         if (diff.TotalHours > _rewardDailySOs.TimeReward)
                         {
