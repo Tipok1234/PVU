@@ -54,6 +54,18 @@ namespace Assets.Scripts.Managers
 
         }
 
+        private void OnDestroy()
+        {
+            _grid.UnitSoldAction -= OnUnitSold;
+            _grid.CurrencyCollectedAction -= OnCurrencyCollected;
+            _grid.UnitCreateAction -= OnUnitCreated;
+            _gameUIController.UnitSelectedAction -= OnUnitSelect;
+            _gameOver.RestartGameAction -= RestartGame;
+            _enemyManager.LevelCompletedAction -= OnLevelCompleted;
+            _gameUIController.SkillSelectAction -= OnSkillSelect;
+            _dataManager.UpdateCurrencyAction -= OnUpdatedCurrency;
+        }
+
         public void OnLevelCompleted()
         {
             _dataManager.UpdateLevel();

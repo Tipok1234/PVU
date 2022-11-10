@@ -43,6 +43,13 @@ namespace Assets.Scripts.Grids
             ResourceModel.CurrencyCollectedAction += OnCurrencyCollected;
         }
 
+        private void OnDestroy()
+        {
+            GridCell.UnitCreateAction -= OnUnitCreated;
+            DefenceUnit.UnitSoldAction -= OnUnitSold;
+            ResourceModel.CurrencyCollectedAction -= OnCurrencyCollected;
+        }
+
         private void OnCurrencyCollected(float amount, CurrencyType currencyType)
         {
             CurrencyCollectedAction?.Invoke(amount,currencyType);

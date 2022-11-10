@@ -12,7 +12,7 @@ namespace Assets.Scripts.Managers
 
         public event Action<float, CurrencyType> UpdateCurrencyAction;
         public List<DefenceUnitType> UnitHandItems => _unitHandItems;
-        public int LevelIndex => _levelIndex;
+        public int LevelIndex =>  _levelIndex;
         public float SoftCurrency => _softCurrency;
         public float HardCurrency => _hardCurrency;
         public int CalendarIndex => PlayerPrefs.GetInt(_calendarIndexKey, 0);

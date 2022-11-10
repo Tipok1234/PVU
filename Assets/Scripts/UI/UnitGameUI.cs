@@ -23,14 +23,15 @@ namespace Assets.Scripts.UI
         public event Action<DefenceUnitType> BuyUnitAction;
 
         private DefenceUnitType _unitType;
-
         private Sequence _sequence;
         private int _unitPrice = 0;
         private float _placeCooldown = 0;
+
         private void Awake()
         {
             _buyButton.onClick.AddListener(BuyButton);
         }
+
         public void Setup(UnitDataSo unitDataSo)
         {
             _unitPrice = (int)unitDataSo.GetCharacteristicData(CharacteristicUnitType.Price);
@@ -57,8 +58,9 @@ namespace Assets.Scripts.UI
             _sequence.Append(_fillImage.DOFillAmount(0f, _placeCooldown).SetEase(Ease.Linear).OnComplete(() => _buyButton.enabled = true));
         }
 
-        private void OnDestroy()
+        public void ResetGameUIItem()
         {
+            _buyButton.onClick.RemoveListener(BuyButton);
             _sequence?.Kill();
         }
     }

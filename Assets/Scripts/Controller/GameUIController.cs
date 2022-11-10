@@ -51,8 +51,6 @@ namespace Assets.Scripts.Controller
 
         public void Setup(UnitDataSo[] unitDataSo, DataManager dataManager)
         {
-            ResetUI();
-
             for (int i = 0; i < unitDataSo.Length; i++)
             {
                 if (dataManager.UnitHandItems.Contains(unitDataSo[i].DefencUnitType))
@@ -63,6 +61,10 @@ namespace Assets.Scripts.Controller
                     _unitGameUIList.Add(unitUI);
                 }
             }
+
+
+            Debug.LogError("COUNT UIITEM: " + _unitGameUIList.Count);
+            Debug.LogError("COUNT SKILL: " + _skillGameUI.Length);
         }
 
         public void UpdateHightLightSkillUI(float currency)
@@ -136,14 +138,22 @@ namespace Assets.Scripts.Controller
             _optionCanvas.enabled = !_optionCanvas.enabled;
             Time.timeScale = 1f;
         }
-        private void ResetUI()
+        private void OnDestroy()
         {
+            Debug.LogError("COUNT UIITEM: " + _unitGameUIList.Count);
+            Debug.LogError("COUNT SKILL: " + _skillGameUI.Length);
+
             for (int i = 0; i < _unitGameUIList.Count; i++)
             {
                 _unitGameUIList[i].BuyUnitAction -= OnBuyUnit;
+                _unitGameUIList[i].ResetGameUIItem();
             }
 
-            _unitGameUIList.Clear();
+            for (int i = 0; i < _skillGameUI.Length; i++)
+            {
+                _skillGameUI[i].SkillSelectAction -= OnSkillSelect;
+                _skillGameUI[i].ResetSkillUIItem();
+            }
         }
         private void OnBuyUnit(DefenceUnitType unitType)
         {

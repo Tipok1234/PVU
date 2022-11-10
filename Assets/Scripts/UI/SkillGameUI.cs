@@ -47,8 +47,9 @@ namespace Assets.Scripts.UI
             _sequence.Append(_fillImage.DOFillAmount(0f, _skillDataSO.CooldownSkill).SetEase(Ease.Linear).OnComplete(() => _skillButton.enabled = true));
         }
 
-        private void OnDestroy()
+        public void ResetSkillUIItem()
         {
+            _skillButton.onClick.RemoveListener(CastSkillOnClick);
             _sequence?.Kill();
         }
     }
