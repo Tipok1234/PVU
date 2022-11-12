@@ -50,7 +50,7 @@ MeshRenderer:
   m_GameObject: {fileID: 3466891859829433890}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -140,15 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105da61c70679ae4b8b4dba0e24105ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 20
   _colliderUnit: {fileID: 7597023454866348744}
   _unitDefenceType: 6
   _unitData: {fileID: 11400000, guid: 7ee1faacd66557d409e97a71a37fd591, type: 2}
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  _damage: 10
-  _reloadTimeDamage: 2
   _animationModel: {fileID: -2279884026411911093}
 --- !u!114 &-2279884026411911093
 MonoBehaviour:

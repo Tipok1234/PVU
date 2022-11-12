@@ -53,7 +53,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1509607895093206}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -110,12 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4bfb1238205a94caf6645736eb8ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 50
   _colliderUnit: {fileID: 4152333605567350561}
   _unitDefenceType: 0
   _unitData: {fileID: 11400000, guid: bf65df82402650d42a7e8a27bcf77250, type: 2}
-  _softIncomeAmount: 25
-  _softIncomeCooldown: 7
   _gunPowderPrefab: {fileID: 4809060521006752121, guid: 7f8700aa7b84a09458be09fe1aa253ca,
     type: 3}
   _spawnDimond: {fileID: 7071430838357703759}

@@ -27,33 +27,33 @@ namespace UnityStandardAssets.Water
         }
 
 
-        Camera CreateReflectionCameraFor(Camera cam)
-        {
-            String reflName = gameObject.name + "Reflection" + cam.name;
-            GameObject go = GameObject.Find(reflName);
+        //Camera CreateReflectionCameraFor(Camera cam)
+        //{
+        //    String reflName = gameObject.name + "Reflection" + cam.name;
+        //    GameObject go = GameObject.Find(reflName);
 
-            if (!go)
-            {
-                go = new GameObject(reflName, typeof(Camera));
-            }
-            if (!go.GetComponent(typeof(Camera)))
-            {
-                go.AddComponent(typeof(Camera));
-            }
-            Camera reflectCamera = go.GetComponent<Camera>();
+        //    if (!go)
+        //    {
+        //        go = new GameObject(reflName, typeof(Camera));
+        //    }
+        //    if (!go.GetComponent(typeof(Camera)))
+        //    {
+        //        go.AddComponent(typeof(Camera));
+        //    }
+        //    Camera reflectCamera = go.GetComponent<Camera>();
 
-            reflectCamera.backgroundColor = clearColor;
-            reflectCamera.clearFlags = reflectSkybox ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
+        //    reflectCamera.backgroundColor = clearColor;
+        //    reflectCamera.clearFlags = reflectSkybox ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
 
-            SetStandardCameraParameter(reflectCamera, reflectionMask);
+        //    SetStandardCameraParameter(reflectCamera, reflectionMask);
 
-            if (!reflectCamera.targetTexture)
-            {
-                reflectCamera.targetTexture = CreateTextureFor(cam);
-            }
+        //    if (!reflectCamera.targetTexture)
+        //    {
+        //        reflectCamera.targetTexture = CreateTextureFor(cam);
+        //    }
 
-            return reflectCamera;
-        }
+        //    return reflectCamera;
+        //}
 
 
         void SetStandardCameraParameter(Camera cam, LayerMask mask)
@@ -73,31 +73,31 @@ namespace UnityStandardAssets.Water
         }
 
 
-        public void RenderHelpCameras(Camera currentCam)
-        {
-            if (null == m_HelperCameras)
-            {
-                m_HelperCameras = new Dictionary<Camera, bool>();
-            }
+        //public void RenderHelpCameras(Camera currentCam)
+        //{
+        //    if (null == m_HelperCameras)
+        //    {
+        //        m_HelperCameras = new Dictionary<Camera, bool>();
+        //    }
 
-            if (!m_HelperCameras.ContainsKey(currentCam))
-            {
-                m_HelperCameras.Add(currentCam, false);
-            }
-            if (m_HelperCameras[currentCam])
-            {
-                return;
-            }
+        //    if (!m_HelperCameras.ContainsKey(currentCam))
+        //    {
+        //        m_HelperCameras.Add(currentCam, false);
+        //    }
+        //    if (m_HelperCameras[currentCam])
+        //    {
+        //        return;
+        //    }
 
-            if (!m_ReflectionCamera)
-            {
-                m_ReflectionCamera = CreateReflectionCameraFor(currentCam);
-            }
+        //    //if (!m_ReflectionCamera)
+        //    //{
+        //    //    m_ReflectionCamera = CreateReflectionCameraFor(currentCam);
+        //    //}
 
-            RenderReflectionFor(currentCam, m_ReflectionCamera);
+        //    RenderReflectionFor(currentCam, m_ReflectionCamera);
 
-            m_HelperCameras[currentCam] = true;
-        }
+        //    m_HelperCameras[currentCam] = true;
+        //}
 
 
         public void LateUpdate()
@@ -111,12 +111,12 @@ namespace UnityStandardAssets.Water
 
         public void WaterTileBeingRendered(Transform tr, Camera currentCam)
         {
-            RenderHelpCameras(currentCam);
+            //RenderHelpCameras(currentCam);
 
-            if (m_ReflectionCamera && m_SharedMaterial)
-            {
-                m_SharedMaterial.SetTexture(reflectionSampler, m_ReflectionCamera.targetTexture);
-            }
+            //if (m_ReflectionCamera && m_SharedMaterial)
+            //{
+            //    m_SharedMaterial.SetTexture(reflectionSampler, m_ReflectionCamera.targetTexture);
+            //}
         }
 
 
